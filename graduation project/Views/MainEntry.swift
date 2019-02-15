@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainEntry: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //let identifiers = ["calendar","notification","notes","location","weather"]
     let segueIdentifiers = ["calendar","todo","notification","email","notes","location","weather"]
@@ -18,6 +18,8 @@ class MainEntry: UIViewController , UITableViewDataSource, UITableViewDelegate{
     override func viewDidLoad() {
      
         super.viewDidLoad()
+        //MainEntryTableView.delegate = self
+        //MainEntryTableView.dataSource = self
        // MainEntryTableView.reloadData()
         
         let profileButton = UIButton(type: .custom)

@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3107FCC322121BC00011CD6C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107FCC222121BC00011CD6C /* ToDo.swift */; };
-		313B43EC220C5121000BACF7 /* NoteClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313B43EB220C5121000BACF7 /* NoteClass.swift */; };
 		313FBF70220DB89D002997FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313FBF6F220DB89D002997FE /* GoogleService-Info.plist */; };
 		3142677F220CE33D0058448E /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3142677E220CE33D0058448E /* planet.png */; };
+		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
 		31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */; };
 		31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE3697220B3DDF00C9B2E6 /* Main.storyboard */; };
@@ -33,9 +33,9 @@
 
 /* Begin PBXFileReference section */
 		3107FCC222121BC00011CD6C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
-		313B43EB220C5121000BACF7 /* NoteClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteClass.swift; sourceTree = "<group>"; };
 		313FBF6F220DB89D002997FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3142677E220CE33D0058448E /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
+		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
 		31DE3690220B3DDE00C9B2E6 /* graduation project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "graduation project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				31DE36C0220B444100C9B2E6 /* E-mail.swift */,
 				31DE36C8220B8FEA00C9B2E6 /* Notes.swift */,
 				31DE36CA220B972E00C9B2E6 /* NoteDetails.swift */,
-				313B43EB220C5121000BACF7 /* NoteClass.swift */,
+				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
 				31DE36B7220B3F1300C9B2E6 /* Location.swift */,
 				31DE36B5220B3F1300C9B2E6 /* Weather.swift */,
 			);
@@ -272,7 +272,6 @@
 			files = (
 				31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */,
 				31DE36C9220B8FEA00C9B2E6 /* Notes.swift in Sources */,
-				313B43EC220C5121000BACF7 /* NoteClass.swift in Sources */,
 				31DE36CB220B972E00C9B2E6 /* NoteDetails.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
@@ -281,6 +280,7 @@
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
 				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
+				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				3107FCC322121BC00011CD6C /* ToDo.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
