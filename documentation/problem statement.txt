@@ -1,0 +1,47 @@
+
+
+                                                                                                  ----------problem statement--------------
+
+
+A problem statement is a short, succinct explanation of a problem a business is facing and a proposed solution to the problem.
+ Problem statements can be effective ways to define an issue and communicate a solution within a short span of time.
+ Before you write your problem statement, think about the problem and your proposed solution,
+ and be prepared to back it up with facts!
+
+
+                             * the main problem that  we face many problems that we faced as users * :- 
+1. many peaple were suffering from dialy organization of their time in presence 
+    of alot of meetings , conference  , trips and imprtant events in life .
+2. many peaple need to a special secratery in organization to organize and arrange time 
+but get aspecial secrtary is very expensive  , especialy if dealing with all segments of society
+3. acclimate weather with important meeting places
+4. solve the problem that conflict dates with each others
+5. determine place location 
+6. need to  alarm for events and meetings
+7. problem of  schedule medication for patients
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
