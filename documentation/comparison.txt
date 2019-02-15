@@ -1,0 +1,28 @@
+                     
+
+
+
+
+                                              -----------------------------------------------                                                  comparison                                                --------------------------------------------------------
+
+applications that perform alot of same functions:-
+ - when we search for applications that performed the same purpose,
+ we found (google assistant , cortana and Robin) but it has  alot of disadvantage that illustrate it
+1. outlook is very complex , not comfotable 
+2. it need to training to use it well
+3. not firendly user interface , we can add application for google assistant  development to use it easily.
+4. outlook is not free , the cost of package was several dollers , beacause of part of  google developers
+5. platform outlook   is to  run on operating system and google services
+
+
+
+
+              -     Difference between my application and outlook :-
+1. my app is very simple and quickly 
+2. it is free and can improve features of application
+3. platform is  an IOS and Android  mobile application that can download from ggogle play or app store 
+4. we can use it manualy or voice 
+5. oraganize dialy oraginzation list every day.
+ 
+
+ 
