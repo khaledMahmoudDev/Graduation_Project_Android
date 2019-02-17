@@ -51,7 +51,6 @@ class NoteDetails: UIViewController {
     
     @objc func cancel(){
         //let backToNote = storyboard?.instantiateViewController(withIdentifier: "note")
-        //createAlert()
         if name.text != "" || content.text != ""{
             
             let alert = UIAlertController(title: "Discard This Note", message: "do you want to discard this not ? ", preferredStyle: .alert)
@@ -67,29 +66,32 @@ class NoteDetails: UIViewController {
             present(alert, animated: true, completion: nil)
         }else{
                 self.navigationController?.popViewController(animated: true)
+            
         }
   
     }
-    
-    
 
-    
     func saveNote(completion: (_ finished : Bool) -> ()){
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        let noteName = Note(context: managedContext)
-        let noteContent = Note(context: managedContext)
-        
-        noteName.title = name.text
-        noteContent.content = content.text
-        
-        do{
+        let managedContext = ((UIApplication.shared.delegate) as!AppDelegate).persistentContainer.viewContext
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "Note",into: managedContext)
+        entity.setValue(name.text, forKey:"title")
+        entity.setValue(content.text, forKey: "content")
+        do
+        {
             try managedContext.save()
-            print("saved")
+            name.text = ""
+            content.text = ""
             completion(true)
-        }catch{
-            print("not saved", error.localizedDescription)
-            completion(false)
+            print("saved")
         }
+        catch
+        {
+            completion(false)
+            print("not saved")
+        }
+        print("Record Inserted")
+        dismiss(animated: true, completion: nil)
+        
     }
 
 
