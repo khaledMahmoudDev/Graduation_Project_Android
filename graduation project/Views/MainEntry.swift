@@ -10,7 +10,6 @@ import UIKit
 
 class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //let identifiers = ["calendar","notification","notes","location","weather"]
     let segueIdentifiers = ["calendar","todo","notification","email","notes","location","weather"]
     let tableContent = ["Calendar","To Do","Notification","Email","Notes","Location","Weather"]
     @IBOutlet weak var MainEntryTableView: UITableView!
@@ -28,11 +27,19 @@ class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
         profileButton.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
         let barButton = UIBarButtonItem(customView: profileButton)
         self.navigationItem.leftBarButtonItem = barButton
+        
+        
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
+        self.navigationItem.rightBarButtonItem = searchButton
     }
     
     @objc func profile(){
         let newNote = storyboard?.instantiateViewController(withIdentifier: "profile")
         self.navigationController?.pushViewController(newNote!, animated: true)
+    }
+    
+    @objc func search(){
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,23 +56,9 @@ class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         performSegue(withIdentifier: segueIdentifiers[indexPath.row], sender: self)
         
-//        let vc = identifiers [indexPath.row]
-//        let viewControllers = storyboard?.instantiateViewController(withIdentifier: vc)
-//        self.navigationController?.pushViewController(viewControllers!, animated: true)
         
     }
     
 
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
