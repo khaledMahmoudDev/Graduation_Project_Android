@@ -36,6 +36,7 @@ class SignUp: UIViewController {
             if error == nil || user != nil{
                 
                 print("user created")
+                
                 self.performSegue(withIdentifier: "goToMain", sender: self)
             }else{
                 print("error\(error!.localizedDescription)")

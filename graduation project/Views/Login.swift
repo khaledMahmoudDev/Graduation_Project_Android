@@ -29,6 +29,15 @@ class Login: UIViewController {
             (user, error) in
             if user != nil{
                 self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+            }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
+                
+                let alert =  UIAlertController(title: "User Not Found", message: "There is no such user", preferredStyle: .alert)
+                
+                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKButton)
+                self.present(alert, animated: true, completion: nil)
+
+                
             }else{
                 let alert =  UIAlertController(title: "Invalid Sign In", message: "your email or password may be wrong", preferredStyle: .alert)
 

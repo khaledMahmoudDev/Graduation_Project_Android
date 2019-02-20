@@ -10,8 +10,8 @@
 		3107FCC322121BC00011CD6C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107FCC222121BC00011CD6C /* ToDo.swift */; };
 		310ED66D2218591B00EF59D9 /* updateNoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */; };
 		310ED6742218A05900EF59D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310ED66A22183D4100EF59D9 /* CoreData.framework */; };
-		313FBF70220DB89D002997FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313FBF6F220DB89D002997FE /* GoogleService-Info.plist */; };
 		3142677F220CE33D0058448E /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3142677E220CE33D0058448E /* planet.png */; };
+		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
 		31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */; };
@@ -37,8 +37,8 @@
 		3107FCC222121BC00011CD6C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		310ED66A22183D4100EF59D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateNoteDetails.swift; sourceTree = "<group>"; };
-		313FBF6F220DB89D002997FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3142677E220CE33D0058448E /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
+		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
 		31DE3690220B3DDE00C9B2E6 /* graduation project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "graduation project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +105,7 @@
 				3142677E220CE33D0058448E /* planet.png */,
 				31DE369C220B3DFF00C9B2E6 /* LaunchScreen.storyboard */,
 				31DE369F220B3DFF00C9B2E6 /* Info.plist */,
-				313FBF6F220DB89D002997FE /* GoogleService-Info.plist */,
+				31634675221DAB9000E70AC0 /* GoogleService-Info.plist */,
 				31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */,
 			);
 			path = "graduation project";
@@ -213,7 +213,7 @@
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
 				3142677F220CE33D0058448E /* planet.png in Resources */,
-				313FBF70220DB89D002997FE /* GoogleService-Info.plist in Resources */,
+				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,
 				31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */,
 			);
