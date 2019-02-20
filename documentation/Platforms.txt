@@ -1,0 +1,10 @@
+android (write in details)
+	android studio
+	using Kotlen (including JAVA + write in details)
+
+iOS
+	XCODE 
+	using swift 4 (including Obj-c + write in details)
+
+Database
+Firebase + use Node ?
