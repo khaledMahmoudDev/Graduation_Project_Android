@@ -12,13 +12,20 @@ import FirebaseAuth
 class Login: UIViewController {
 
     @IBOutlet weak var signInEmail: UITextField!
-    
     @IBOutlet weak var signInPassword: UITextField!
+    
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if userDefault.bool(forKey: "signedIn"){
+            self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+        }
     }
     
 
@@ -28,6 +35,8 @@ class Login: UIViewController {
         Auth.auth().signIn(withEmail: signInEmail.text!, password: signInPassword.text!){
             (user, error) in
             if user != nil{
+                self.userDefault.set(true, forKey: "signedIn")
+                self.userDefault.synchronize()
                 self.performSegue(withIdentifier: "goToMainEntry", sender: self)
             }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
                 

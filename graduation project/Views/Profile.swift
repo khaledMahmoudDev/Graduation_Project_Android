@@ -15,7 +15,7 @@ class Profile: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phone: UILabel!
-    
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,8 @@ class Profile: UIViewController {
 
         do {
             try Auth.auth().signOut()
+            userDefault.removeObject(forKey: "signedIn")
+            userDefault.synchronize()
             self.performSegue(withIdentifier: "logOut", sender: self)
             //self.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
