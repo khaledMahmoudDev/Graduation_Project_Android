@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 
 class Profile: UIViewController {
@@ -30,10 +31,13 @@ class Profile: UIViewController {
 
         do {
             try Auth.auth().signOut()
+            try GIDSignIn.sharedInstance()?.signOut()
             userDefault.removeObject(forKey: "signedIn")
             userDefault.synchronize()
-            self.performSegue(withIdentifier: "logOut", sender: self)
-            //self.dismiss(animated: true, completion: nil)
+            let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigation") as! LoginNavigation
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = login
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

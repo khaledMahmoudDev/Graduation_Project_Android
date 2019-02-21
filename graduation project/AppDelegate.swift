@@ -9,17 +9,59 @@
 import UIKit
 import CoreData
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+    let userDefault = UserDefaults.standard
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
         return true
+    }
+    
+    
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error{
+            print(error.localizedDescription)
+            return
+        }else{
+            guard let authentication = user.authentication else {return}
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            Auth.auth().signInAndRetrieveData(with: credential){ (result , error) in
+                if error == nil {
+                    self.userDefault.set(true, forKey: "signedIn")
+                    self.userDefault.synchronize()
+                    //self.window?.rootViewController?.performSegue(withIdentifier: "mainEntryNavigation", sender: self)
+                    
+                    let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+                    let mainEntry = mainStoryBoard.instantiateViewController(withIdentifier: "mainEntryNavigation") as! MainEntryNavigation
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = mainEntry
+                    
+                    
+                }else{
+                    print(error?.localizedDescription)
+                }
+                
+            }
+        }
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let googleAuthentication = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        
+        
+        return googleAuthentication
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

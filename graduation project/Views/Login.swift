@@ -8,20 +8,34 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
-class Login: UIViewController {
+class Login: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var signInEmail: UITextField!
     @IBOutlet weak var signInPassword: UITextField!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+//        signInButton.layer.cornerRadius = signInButton.frame.size.width/2
+//        signInButton.clipsToBounds = true
+//        signInButton.layer.borderColor = UIColor.white.cgColor
+//        signInButton.layer.borderWidth = 5.0
+        
+//        let image = UIImage(named: "gmail50")
+//        let imageView = UIImageView(image: image!)
+//        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+//        signInButton.addSubview(imageView)
 
         // Do any additional setup after loading the view.
     }
     
+
     override func viewDidAppear(_ animated: Bool) {
         if userDefault.bool(forKey: "signedIn"){
             self.performSegue(withIdentifier: "goToMainEntry", sender: self)
@@ -33,8 +47,8 @@ class Login: UIViewController {
     @IBAction func signIn(_ sender: Any) {
         
         Auth.auth().signIn(withEmail: signInEmail.text!, password: signInPassword.text!){
-            (user, error) in
-            if user != nil{
+            (result, error) in
+            if result != nil{
                 self.userDefault.set(true, forKey: "signedIn")
                 self.userDefault.synchronize()
                 self.performSegue(withIdentifier: "goToMainEntry", sender: self)
@@ -66,4 +80,11 @@ class Login: UIViewController {
         self.navigationController?.pushViewController(goToSignUp!, animated: true)
     }
     
+    
+    
+   /* @IBAction func LoginWithGmail(_ sender: Any) {
+        GIDSignIn.sharedInstance().delegate=self as? GIDSignInDelegate
+        GIDSignIn.sharedInstance().uiDelegate=self
+        GIDSignIn.sharedInstance().signIn()
+    }*/
 }

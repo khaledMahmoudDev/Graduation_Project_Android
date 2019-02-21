@@ -53,12 +53,18 @@
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ide-Ug-GVj"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4O-Wa-dlS" customClass="GIDSignInButton">
+                                <rect key="frame" x="59" y="361" width="202" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NMP-9t-KCt"/>
                     <connections>
+                        <outlet property="signInButton" destination="m4O-Wa-dlS" id="i9q-Kj-rJG"/>
                         <outlet property="signInEmail" destination="mtq-qk-zm9" id="zJ4-8M-Njc"/>
                         <outlet property="signInPassword" destination="QPA-VT-CAw" id="0Xr-MI-Qk9"/>
                         <segue destination="2cL-nu-UpS" kind="show" identifier="goToMainEntry" id="we9-CN-XAb"/>
@@ -66,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="992"/>
+            <point key="canvasLocation" x="1921.875" y="991.90140845070425"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="fQL-ej-y18">
@@ -104,7 +110,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Configure Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stC-t2-NAm">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stC-t2-NAm">
                                 <rect key="frame" x="11" y="300" width="197" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -122,6 +128,11 @@
                                     <action selector="signUp:" destination="aOQ-BS-1Bo" eventType="touchUpInside" id="uZs-rZ-Vdq"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9P-w7-HoF" customClass="GIDSignInButton">
+                                <rect key="frame" x="59" y="443" width="202" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oQc-5R-zue"/>
@@ -138,12 +149,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoM-MM-1cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2919" y="154"/>
+            <point key="canvasLocation" x="2917.5" y="153.16901408450704"/>
         </scene>
         <!--Main Entry-->
         <scene sceneID="Aq4-Pf-YJL">
             <objects>
-                <viewController id="2cL-nu-UpS" customClass="MainEntry" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainEntry" id="2cL-nu-UpS" customClass="MainEntry" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Czp-4W-xgS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -521,10 +532,10 @@
             </objects>
             <point key="canvasLocation" x="6317" y="1706"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Entry Navigation-->
         <scene sceneID="I7a-h8-zR1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PcT-tv-4mz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainEntryNavigation" automaticallyAdjustsScrollViewInsets="NO" id="PcT-tv-4mz" customClass="MainEntryNavigation" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ev6-TU-IzS">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -619,10 +630,10 @@
             </objects>
             <point key="canvasLocation" x="6981" y="-713"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Login Navigation-->
         <scene sceneID="OLY-u6-glE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WKk-od-n3k" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigation" automaticallyAdjustsScrollViewInsets="NO" id="WKk-od-n3k" customClass="LoginNavigation" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qNj-Pq-IeZ">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -715,6 +726,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="KWo-zi-swb"/>
         <segue reference="we9-CN-XAb"/>
-        <segue reference="JnZ-ya-3oI"/>
+        <segue reference="CVn-th-ttV"/>
     </inferredMetricsTieBreakers>
 </document>

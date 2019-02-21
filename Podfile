@@ -9,5 +9,6 @@ target 'graduation project' do
 
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
 end

@@ -10,7 +10,8 @@
 		3107FCC322121BC00011CD6C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107FCC222121BC00011CD6C /* ToDo.swift */; };
 		310ED66D2218591B00EF59D9 /* updateNoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */; };
 		310ED6742218A05900EF59D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310ED66A22183D4100EF59D9 /* CoreData.framework */; };
-		3142677F220CE33D0058448E /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3142677E220CE33D0058448E /* planet.png */; };
+		315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */; };
+		315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */; };
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
@@ -37,7 +38,8 @@
 		3107FCC222121BC00011CD6C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		310ED66A22183D4100EF59D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateNoteDetails.swift; sourceTree = "<group>"; };
-		3142677E220CE33D0058448E /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
+		315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryNavigation.swift; sourceTree = "<group>"; };
+		315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 				31DE36BF220B3F1300C9B2E6 /* Views */,
 				31DE3697220B3DDF00C9B2E6 /* Main.storyboard */,
 				31DE369A220B3DFF00C9B2E6 /* Assets.xcassets */,
-				3142677E220CE33D0058448E /* planet.png */,
 				31DE369C220B3DFF00C9B2E6 /* LaunchScreen.storyboard */,
 				31DE369F220B3DFF00C9B2E6 /* Info.plist */,
 				31634675221DAB9000E70AC0 /* GoogleService-Info.plist */,
@@ -114,8 +115,10 @@
 		31DE36BF220B3F1300C9B2E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				31DE36A7220B3F1300C9B2E6 /* Login.swift */,
 				31DE36A9220B3F1300C9B2E6 /* SignUp.swift */,
+				315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */,
+				31DE36A7220B3F1300C9B2E6 /* Login.swift */,
+				315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */,
 				31DE36C4220B574200C9B2E6 /* MainEntry.swift */,
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
 				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
@@ -163,6 +166,7 @@
 				31DE368D220B3DDE00C9B2E6 /* Frameworks */,
 				31DE368E220B3DDE00C9B2E6 /* Resources */,
 				6F86FDA65AC383EA9775B123 /* [CP] Embed Pods Frameworks */,
+				19DD35F3BC507E0C3CC7559A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
-				3142677F220CE33D0058448E /* planet.png in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,
 				31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */,
@@ -222,6 +225,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19DD35F3BC507E0C3CC7559A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-graduation project/Pods-graduation project-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-graduation project/Pods-graduation project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6F86FDA65AC383EA9775B123 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +257,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-graduation project/Pods-graduation project-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -240,6 +266,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -289,11 +316,13 @@
 				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
+				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
 				3107FCC322121BC00011CD6C /* ToDo.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */,
+				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
