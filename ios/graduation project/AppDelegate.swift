@@ -11,6 +11,10 @@ import CoreData
 import Firebase
 import GoogleSignIn
 
+
+let appdelegate = UIApplication.shared.delegate as! AppDelegate
+let context = appdelegate.persistentContainer.viewContext
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 

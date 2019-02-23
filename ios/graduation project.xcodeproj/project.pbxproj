@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3107FCC322121BC00011CD6C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107FCC222121BC00011CD6C /* ToDo.swift */; };
-		310ED66D2218591B00EF59D9 /* updateNoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */; };
 		310ED6742218A05900EF59D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310ED66A22183D4100EF59D9 /* CoreData.framework */; };
+		3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FB2221F2210066C46A /* NoteDetails.swift */; };
+		3157F3FE2221F23D0066C46A /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FD2221F23D0066C46A /* Notes.swift */; };
 		315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */; };
 		315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */; };
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
@@ -29,15 +30,14 @@
 		31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C0220B444100C9B2E6 /* E-mail.swift */; };
 		31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C4220B574200C9B2E6 /* MainEntry.swift */; };
 		31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C6220B762600C9B2E6 /* Calendar.swift */; };
-		31DE36C9220B8FEA00C9B2E6 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C8220B8FEA00C9B2E6 /* Notes.swift */; };
-		31DE36CB220B972E00C9B2E6 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36CA220B972E00C9B2E6 /* NoteDetails.swift */; };
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3107FCC222121BC00011CD6C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		310ED66A22183D4100EF59D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateNoteDetails.swift; sourceTree = "<group>"; };
+		3157F3FB2221F2210066C46A /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
+		3157F3FD2221F23D0066C46A /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryNavigation.swift; sourceTree = "<group>"; };
 		315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -59,8 +59,6 @@
 		31DE36C0220B444100C9B2E6 /* E-mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E-mail.swift"; sourceTree = "<group>"; };
 		31DE36C4220B574200C9B2E6 /* MainEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntry.swift; sourceTree = "<group>"; };
 		31DE36C6220B762600C9B2E6 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
-		31DE36C8220B8FEA00C9B2E6 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
-		31DE36CA220B972E00C9B2E6 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 		3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduation_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2617FCC9609508046B1C51 /* Pods-graduation project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.debug.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.debug.xcconfig"; sourceTree = "<group>"; };
 		68601CB213A9611F76C64AFB /* Pods-graduation project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.release.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,9 +124,8 @@
 				31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */,
 				31DE36B9220B3F1300C9B2E6 /* Notification.swift */,
 				31DE36C0220B444100C9B2E6 /* E-mail.swift */,
-				31DE36C8220B8FEA00C9B2E6 /* Notes.swift */,
-				31DE36CA220B972E00C9B2E6 /* NoteDetails.swift */,
-				310ED66C2218591B00EF59D9 /* updateNoteDetails.swift */,
+				3157F3FD2221F23D0066C46A /* Notes.swift */,
+				3157F3FB2221F2210066C46A /* NoteDetails.swift */,
 				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
 				31DE36B7220B3F1300C9B2E6 /* Location.swift */,
 				31DE36B5220B3F1300C9B2E6 /* Weather.swift */,
@@ -305,13 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */,
-				31DE36C9220B8FEA00C9B2E6 /* Notes.swift in Sources */,
-				31DE36CB220B972E00C9B2E6 /* NoteDetails.swift in Sources */,
+				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
 				31DE36B8220B3F1300C9B2E6 /* Location.swift in Sources */,
+				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
-				310ED66D2218591B00EF59D9 /* updateNoteDetails.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
 				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
