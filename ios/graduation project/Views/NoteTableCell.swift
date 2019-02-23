@@ -11,19 +11,20 @@ import UIKit
 class NoteTableCell: UITableViewCell {
     
     
-    @IBOutlet weak var noteTitle: UILabel!
-    @IBOutlet weak var noteContent: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func mycell(note: UserNotes){
+        name.text = note.notename
+        //        let dateformat = DateFormatter()
+        //        dateformat.dateFormat = "DD/MM/yy h:mm a"
+        //        date.text = dateformat.string(from: note.date as! Date)
+        
     }
 
 }
