@@ -9,7 +9,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".calender.Calender">
+        </activity>
+        <activity android:name=".profile.Profile">
+        </activity>
+        <activity android:name=".profile.SignIn">
+        </activity>
+        <activity android:name=".profile.Signup">
+        </activity>
+        <activity android:name=".location.Location">
+        </activity>
+        <activity android:name=".weather.Weather">
+        </activity>
+        <activity android:name=".note.Note">
+        </activity>
+        <activity android:name=".toDo.ToDo">
+        </activity>
+        <activity android:name=".email.Email">
+        </activity>
+        <activity android:name=".mainPac.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
