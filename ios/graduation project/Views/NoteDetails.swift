@@ -32,7 +32,7 @@ class NoteDetails: UIViewController {
         
         note.notename = name.text
         note.notecontent = content.text
-        note.date = Date()
+        note.date = NSDate() as Date
         do{
             appdelegate.saveContext()
             name.text = ""

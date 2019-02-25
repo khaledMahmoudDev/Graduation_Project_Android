@@ -21,9 +21,9 @@ class NoteTableCell: UITableViewCell {
     
     func mycell(note: UserNotes){
         name.text = note.notename
-        //        let dateformat = DateFormatter()
-        //        dateformat.dateFormat = "DD/MM/yy h:mm a"
-        //        date.text = dateformat.string(from: note.date as! Date)
+                let dateformat = DateFormatter()
+                dateformat.dateFormat = "dd/MM/yyyy h:mm a"
+                date.text = dateformat.string(from: note.date as! Date)
         
     }
 

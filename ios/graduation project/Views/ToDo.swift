@@ -11,7 +11,7 @@ import UIKit
 class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewController: [UIViewController] = {
-        return [self.newVc(viewController: "toDoList"),self.newVc(viewController: "review"),self.newVc(viewController: "done")]
+        return [self.newVc(viewController: "toDoList"),self.newVc(viewController: "done")]
     }()
     
     var pageControl = UIPageControl()
@@ -28,6 +28,7 @@ class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewContro
         configurePagecontrol()
         
     }
+    
     
     
     func configurePagecontrol ()
@@ -90,14 +91,5 @@ class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewContro
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
