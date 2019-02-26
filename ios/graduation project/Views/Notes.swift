@@ -23,6 +23,9 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         fetch()
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -67,8 +70,6 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
             context.delete(note)
             appdelegate.saveContext()
             print("deleted")
-            //self.fetch()
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
         return [deleteAction]

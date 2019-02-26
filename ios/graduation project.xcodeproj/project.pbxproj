@@ -15,6 +15,9 @@
 		315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */; };
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
+		3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */; };
+		319B596D2224D903007F73AF /* DoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B596C2224D903007F73AF /* DoneList.swift */; };
+		319B596F2224D91E007F73AF /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B596E2224D91E007F73AF /* ToDoList.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
 		31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */; };
 		31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE3697220B3DDF00C9B2E6 /* Main.storyboard */; };
@@ -42,6 +45,9 @@
 		315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
+		3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryTableCell.swift; sourceTree = "<group>"; };
+		319B596C2224D903007F73AF /* DoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneList.swift; sourceTree = "<group>"; };
+		319B596E2224D91E007F73AF /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
 		31DE3690220B3DDE00C9B2E6 /* graduation project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "graduation project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +124,12 @@
 				31DE36A7220B3F1300C9B2E6 /* Login.swift */,
 				315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */,
 				31DE36C4220B574200C9B2E6 /* MainEntry.swift */,
+				3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */,
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
 				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
 				3107FCC222121BC00011CD6C /* ToDo.swift */,
+				319B596E2224D91E007F73AF /* ToDoList.swift */,
+				319B596C2224D903007F73AF /* DoneList.swift */,
 				31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */,
 				31DE36B9220B3F1300C9B2E6 /* Notification.swift */,
 				31DE36C0220B444100C9B2E6 /* E-mail.swift */,
@@ -303,12 +312,15 @@
 			files = (
 				31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */,
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
+				319B596D2224D903007F73AF /* DoneList.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
 				31DE36B8220B3F1300C9B2E6 /* Location.swift in Sources */,
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
+				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
+				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
 				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
