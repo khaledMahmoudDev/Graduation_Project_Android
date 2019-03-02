@@ -1,0 +1,24 @@
+//
+//  DoneTableCell.swift
+//  graduation project
+//
+//  Created by farah on 3/2/19.
+//  Copyright © 2019 Ajenda. All rights reserved.
+//
+
+import UIKit
+
+class DoneTableCell: UITableViewCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
