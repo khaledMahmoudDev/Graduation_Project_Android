@@ -16,7 +16,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     
     
-    var colorArray = [UIColor.red, UIColor.green, UIColor.blue]
+    var colorArray = [UIColor.red, UIColor.green, UIColor.blue, UIColor.cyan, UIColor.darkGray, UIColor.gray, UIColor.lightGray, UIColor.magenta, UIColor.orange, UIColor.purple, UIColor.yellow]
     
     var colorToPass : UIColor!
     

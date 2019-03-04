@@ -12,19 +12,35 @@ class ToDoList: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       
+        
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(Add))
+//        self.navigationItem.leftBarButtonItem = addButton
+        
+//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+//        self.view.addSubview(navBar);
+//
+//        let navItem = UINavigationItem(title: "SomeTitle")
+//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(Add))
+//        navItem.rightBarButtonItem = doneItem
+//
+//        navBar.setItems([navItem], animated: false)
+    }
+    
+ 
+    @IBAction func addButton(_ sender: Any) {
+        performSegue(withIdentifier: "add", sender: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    */
+    
+    
+    }
 
-}
+    
+
+
