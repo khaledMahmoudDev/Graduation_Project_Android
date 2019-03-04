@@ -21,6 +21,7 @@
 		319B596D2224D903007F73AF /* DoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B596C2224D903007F73AF /* DoneList.swift */; };
 		319B596F2224D91E007F73AF /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B596E2224D91E007F73AF /* ToDoList.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
+		31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C7D515222D63A8006DB7B0 /* CategoryPopUp.swift */; };
 		31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */; };
 		31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE3697220B3DDF00C9B2E6 /* Main.storyboard */; };
 		31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DE369A220B3DFF00C9B2E6 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		319B596C2224D903007F73AF /* DoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneList.swift; sourceTree = "<group>"; };
 		319B596E2224D91E007F73AF /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
+		31C7D515222D63A8006DB7B0 /* CategoryPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPopUp.swift; sourceTree = "<group>"; };
 		31DE3690220B3DDE00C9B2E6 /* graduation project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "graduation project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DE3698220B3DDF00C9B2E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				319B596C2224D903007F73AF /* DoneList.swift */,
 				31012D85222AC202007A3D8C /* DoneTableCell.swift */,
 				31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */,
+				31C7D515222D63A8006DB7B0 /* CategoryPopUp.swift */,
 				31DE36B9220B3F1300C9B2E6 /* Notification.swift */,
 				31DE36C0220B444100C9B2E6 /* E-mail.swift */,
 				3157F3FD2221F23D0066C46A /* Notes.swift */,
@@ -332,6 +335,7 @@
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
 				3107FCC322121BC00011CD6C /* ToDo.swift in Sources */,
+				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
 				31012D84222AC1E8007A3D8C /* ToDoTableCell.swift in Sources */,
