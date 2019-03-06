@@ -15,11 +15,12 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     @IBOutlet weak var todoDetails: UITextView!
     @IBOutlet weak var todoTitle: UITextField!
     @IBOutlet weak var showLabel: UILabel!
-    
+    @IBOutlet weak var saveToDone: UIButton!
     var showData = ""
     var showColor : UIColor!
     var catFetched = [Categories]()
     var editORdeletTODO:ToDoItems?
+    var editOrEditDone:DoneItems?
     
     
     override func viewDidLoad() {
@@ -27,9 +28,17 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         todoPicker.delegate = self
         todoPicker.dataSource = self
         LoadCat()
+        saveToDone.isHidden = true
+        
+        
         
         if editORdeletTODO != nil{
             loadforEditTODO()
+            saveToDone.isHidden = false
+        }
+        
+        if editOrEditDone != nil{
+            loadforEditDone()
         }
         
     }
@@ -53,6 +62,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = catFetched[row]
+        showLabel.text = category.categoryname
         return category.categoryname
         
     }
@@ -75,6 +85,26 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             }
         }
        
+    }
+    
+    func loadforEditDone (){
+        if let doneItem = editOrEditDone{
+            todoTitle.text = doneItem.donetitle
+            todoDetails.text = doneItem.donedetails
+            
+            if let doneCat = doneItem.fromdonetocategory{
+                var index = 0
+                while index<catFetched.count {
+                    let row = catFetched[index]
+                    if row.categoryname == doneCat.categoryname {
+                        todoPicker.selectRow(index, inComponent: 0, animated: false)
+                    }
+                    index = index + 1
+                    
+                }
+            }
+        }
+        
     }
     
     @IBAction func popupbtn(_ sender: Any) {
@@ -142,4 +172,28 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func moveToDone(_ sender: Any) {
+        let doneItem : DoneItems!
+        if editOrEditDone == nil && editORdeletTODO != nil{
+            doneItem = DoneItems (context: context)
+            doneItem.donetitle = todoTitle.text!
+            doneItem.donedetails = todoDetails.text!
+            doneItem.donedate = NSDate() as Date
+            doneItem.fromdonetocategory = catFetched[todoPicker.selectedRow(inComponent: 0)]
+            do {
+                appdelegate.saveContext()
+                todoDetails.text = ""
+                todoTitle.text = ""
+                print("saved to done")
+            } catch  {
+                print(error.localizedDescription)
+            }
+            
+            context.delete(editORdeletTODO!)
+            appdelegate.saveContext()
+            print("deleted from todo")
+            
+            self.performSegue(withIdentifier: "doneList" , sender : self)
+        }
+    }
 }

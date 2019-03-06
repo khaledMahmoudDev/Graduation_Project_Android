@@ -10,9 +10,17 @@ import UIKit
 
 class DoneTableCell: UITableViewCell {
 
+    @IBOutlet weak var doneCat: UILabel!
+    @IBOutlet weak var doneTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func doneCell(item: DoneItems) {
+        
+        doneTitle.text = item.donetitle
+        doneCat.text = item.fromdonetocategory?.categoryname
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

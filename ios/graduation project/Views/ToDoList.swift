@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoList: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate {
+class ToDoList: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableview: UITableView!
 
@@ -25,6 +25,8 @@ class ToDoList: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFet
         loadItems()
 
     }
+    
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,11 +58,11 @@ class ToDoList: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let obj = controller.fetchedObjects{
             let todo = obj[indexPath.row]
-            performSegue(withIdentifier: "goToDoList", sender: todo)
+            performSegue(withIdentifier: "goFromToDoToDetails", sender: todo)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDoList"{
+        if segue.identifier == "goFromToDoToDetails"{
             if let dest = segue.destination as? ToDoDetails {
                 if let item = sender as? ToDoItems{
                     dest.editORdeletTODO = item
