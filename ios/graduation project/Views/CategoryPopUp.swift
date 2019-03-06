@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -62,6 +63,18 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         let destvc = segue.destination as! ToDoDetails
         destvc.showData = newCategory.text!
         destvc.showColor = colorToPass
+        
+        let newcat = Categories(context: context)
+        newcat.categoryname = newCategory.text!
+        do{ appdelegate.saveContext()
+            newCategory.text = ""
+            print("saved")
+ 
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        
     }
     
     
