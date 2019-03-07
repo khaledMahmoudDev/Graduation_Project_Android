@@ -1,0 +1,66 @@
+package com.example.graduationproject.event
+
+import android.content.Context
+import android.widget.Toast
+import io.realm.Realm
+import io.realm.RealmConfiguration
+
+class EventDb(val context: Context) {
+
+
+    var realm: Realm? = null
+    fun configuration()
+    {
+        val config = RealmConfiguration.Builder().name("event.realm").build()
+        realm = Realm.getInstance(config)
+        realm!!.beginTransaction()
+
+    }
+
+    fun addEvent(event: Event)
+    {
+
+        var mEvent = realm!!.createObject(Event::class.java)
+        mEvent.mDate = event.mDate
+        mEvent.details = event.details
+        mEvent.title = event.title
+        mEvent.startTime =event.startTime
+        mEvent.endTime = event.endTime
+
+        Toast.makeText(context,"object add date is ${event.mDate} and title ${event.title}",Toast.LENGTH_LONG).show()
+
+    }
+
+    fun returnEvents(dateQuery:String): ArrayList<Event>
+    {
+
+        Toast.makeText(context,"query is $dateQuery",Toast.LENGTH_SHORT).show()
+        var events = ArrayList<Event>()
+
+
+        val allData = realm!!.where(Event::class.java).equalTo("mDate",dateQuery).findAll()
+
+      //  Toast.makeText(context,"result all data size is ${allData.size}",Toast.LENGTH_SHORT).show()
+
+        allData.forEach{
+            var mEv: Event = it
+
+
+        //    Toast.makeText(context,"mdate is ${mEv.mDate}",Toast.LENGTH_SHORT).show()
+            events.add(mEv)
+
+
+
+        }
+
+//        Toast.makeText(context,"result size is ${events.size}",Toast.LENGTH_SHORT).show()
+        return events
+
+    }
+
+    fun closeRealm()
+    {
+        realm!!.commitTransaction()
+        realm!!.close()
+    }
+}
