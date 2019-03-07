@@ -10,9 +10,13 @@ import UIKit
 
 class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    lazy var orderedViewController: [UIViewController] = {
-        return [self.newVc(viewController: "toDoList"),self.newVc(viewController: "review"),self.newVc(viewController: "done")]
-    }()
+
+    lazy var subViewControllers : [UIViewController] = {
+        return [
+            UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDoList") as! ToDoList,
+            UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "done") as! DoneList ]}()
+    
+    
     
     var pageControl = UIPageControl()
 
@@ -20,84 +24,49 @@ class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewContro
         super.viewDidLoad()
 
         self.dataSource = self
-        if let firstViewController = orderedViewController.first{
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        }
-        
         self.delegate = self
-        configurePagecontrol()
         
+        setViewControllers([subViewControllers[0]], direction: .forward, animated: true, completion: nil)
+
     }
     
     
-    func configurePagecontrol ()
-    {
-        pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50 , width: UIScreen.main.bounds.width, height: 50))
-        
-        pageControl.numberOfPages = orderedViewController.count
-        pageControl.currentPage = 0
-        pageControl.tintColor = UIColor.black
-        pageControl.pageIndicatorTintColor = UIColor.gray
-        pageControl.currentPageIndicatorTintColor = UIColor.black
-        self.view.addSubview(pageControl)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // Show the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    func newVc (viewController: String)-> UIViewController{
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier : viewController)
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    
+    
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return subViewControllers.count
+    }
+    
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewController.index(of: viewController) else{
-            return nil
-        }
+        let currentIndex : Int = subViewControllers.index(of : viewController) ?? 0
+        if (currentIndex <= 0){
+                return nil
+            }
         
-        let previousIndex = viewControllerIndex - 1
-        
-        guard previousIndex >= 0 else{
-            //return orderedViewController.last // 3shn lw 3wza l scroll yfdl ylf
-            return nil
-        }
-        
-        guard orderedViewController.count > previousIndex else{
-            return nil
-        }
-        
-        return orderedViewController[previousIndex]
-        
+        return subViewControllers[currentIndex - 1]
     }
+    
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewController.index(of: viewController) else{
+       let currentIndex : Int = subViewControllers.index(of : viewController) ?? 0
+        if(currentIndex >= subViewControllers.count - 1){
             return nil
         }
-        let nextIndex = viewControllerIndex + 1
-        
-        guard orderedViewController.count != nextIndex else{
-            //return orderedViewController.first    // 3shn lw 3wza l view yfdl ylf
-            return nil
-        }
-        
-        guard orderedViewController.count > nextIndex else{
-            return nil
-        }
-        
-        return orderedViewController[nextIndex]
+        return subViewControllers[currentIndex + 1]
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let pageContentViewController =  pageViewController.viewControllers![0]
-        self.pageControl.currentPage = orderedViewController.index(of: pageContentViewController)!
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
