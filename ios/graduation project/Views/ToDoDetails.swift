@@ -25,6 +25,14 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        self.navigationItem.rightBarButtonItem = saveButton
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        self.navigationItem.leftBarButtonItem = cancelButton
+        
+        
+        
         todoPicker.delegate = self
         todoPicker.dataSource = self
         LoadCat()
@@ -42,6 +50,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         }
         
     }
+    
     
     func LoadCat(){
         let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
@@ -143,7 +152,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
  
-    @IBAction func todoSave(_ sender: Any) {
+    @objc func save(){
         let newItem:ToDoItems!
         if editORdeletTODO == nil{
             newItem = ToDoItems (context: context)
@@ -151,7 +160,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         else{
             newItem = editORdeletTODO
         }
-            
+        
         newItem.todotitle = todoTitle.text!
         newItem.tododetails = todoDetails.text!
         newItem.tododate = NSDate() as Date
@@ -164,13 +173,15 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         } catch  {
             print(error.localizedDescription)
         }
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         
     }
     
-    @IBAction func todoCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @objc func cancel(){
+        navigationController?.popViewController(animated: true)
     }
+    
+   
     
     @IBAction func moveToDone(_ sender: Any) {
         let doneItem : DoneItems!
