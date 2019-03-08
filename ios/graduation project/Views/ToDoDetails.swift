@@ -171,6 +171,21 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
     @objc func save(){
+        if todoTitle.text == "" || todoDetails.text == "" {
+            let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Three Fields Empty.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+            
+        }else{
         let newItem:ToDoItems!
         if editORdeletTODO == nil{
             newItem = ToDoItems (context: context)
@@ -192,11 +207,48 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             print(error.localizedDescription)
         }
         navigationController?.popViewController(animated: true)
-        
+        }
     }
     
     @objc func cancel(){
-        navigationController?.popViewController(animated: true)
+        if todoTitle.text != "" || todoDetails.text != ""{
+            if editORdeletTODO == nil{
+                let alert = UIAlertController(title: "", message: "Do You Want To Discard This TODO ?", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                
+                present(alert, animated: true, completion: nil)
+            } else if editORdeletTODO != nil {
+                if todoTitle.text != editORdeletTODO?.todotitle || todoDetails.text != editORdeletTODO?.tododetails {
+                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    
+                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    
+                    present(alert, animated: true, completion: nil)
+                }else{
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            }
+        }else{
+            navigationController?.popViewController(animated: true)
+        }
+
     }
     
    

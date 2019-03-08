@@ -24,9 +24,11 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     var colorToPass : UIColor!
     var catFetchedForPopUp = [Categories]()
-    var rowForCat = Int()
+    
+    
     //static variable to declare a variable is selected from picker view to handle deleting
     static var Selected = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +36,18 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         newCategory.delegate = self
         //hide the collection view of colors
         self.collectionView.isHidden = true
+        //self.pickerview.isHidden = true
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         LoadCatForPopUp()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        LoadCatForPopUp()
+        pickerview.reloadAllComponents()
     }
     
     //function to fetch objects from coredata
@@ -75,17 +83,18 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             CategoryPopUp.Selected = 0
             
         }
+        
         return category.categoryname
         
     }
-
+    
     
     //action of delet button to select item
     @IBAction func deleteFromPicker(_ sender: Any) {
         CategoryPopUp.Selected = 1
         pickerview.reloadAllComponents()
     }
-    
+   
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.colorArray.count
@@ -115,8 +124,10 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     @IBAction func toggleCollectionViewHideShow(sender: UIButton) {
         if collectionView.isHidden == true{
             collectionView.isHidden = false
+            pickerview.isHidden = true
         }else{
             collectionView.isHidden = true
+            pickerview.isHidden = false
         }
     }
     
@@ -127,14 +138,14 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         let destvc = segue.destination as! ToDoDetails
         destvc.showData = newCategory.text!
         destvc.showColor = colorToPass
-        
+
         let newcat = Categories(context: context)
         newcat.categoryname = newCategory.text!
         newcat.categorycolor = colorToPass
         do{ appdelegate.saveContext()
             newCategory.text = ""
             print("saved")
- 
+
         }catch{
             print(error.localizedDescription)
         }
