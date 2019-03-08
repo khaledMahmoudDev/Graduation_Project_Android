@@ -736,6 +736,7 @@
                         <viewLayoutGuide key="safeArea" id="3K0-ab-F15"/>
                     </view>
                     <navigationItem key="navigationItem" id="v0e-h3-5z5"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableview" destination="dKC-aL-KMW" id="86e-oT-GUU"/>
                         <segue destination="l4n-ht-JPT" kind="show" identifier="goFromToDoToDetails" id="uAx-ZG-5bC"/>
@@ -810,6 +811,7 @@
                         <viewLayoutGuide key="safeArea" id="lGZ-32-oen"/>
                     </view>
                     <navigationItem key="navigationItem" id="Aag-1a-SGp"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableview" destination="k1c-GO-9Gg" id="yBS-NM-CAg"/>
                         <segue destination="l4n-ht-JPT" kind="show" identifier="goFromDoneToDetails" id="aR8-6F-1r7"/>
@@ -882,7 +884,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olg-hu-wFl">
-                                <rect key="frame" x="242" y="92" width="35" height="30"/>
+                                <rect key="frame" x="308" y="55" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="done"/>
                                 <connections>
@@ -890,7 +892,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nA3-Sz-Rla">
-                                <rect key="frame" x="16" y="168" width="320" height="336"/>
+                                <rect key="frame" x="23" y="168" width="320" height="336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="VCa-0M-hcx">
@@ -915,7 +917,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgm-qX-8jW">
-                                <rect key="frame" x="238" y="130" width="42" height="30"/>
+                                <rect key="frame" x="34" y="93" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="colors"/>
                                 <connections>
@@ -923,12 +925,28 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter new category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNg-2x-bhS">
-                                <rect key="frame" x="24" y="92" width="170" height="30"/>
+                                <rect key="frame" x="29" y="55" width="236" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJ0-Ek-md2">
+                                <rect key="frame" x="23" y="168" width="320" height="336"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="g7n-cR-Da7" id="1AC-pw-hWw"/>
+                                    <outlet property="delegate" destination="g7n-cR-Da7" id="9p7-bn-1ti"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1K-Nh-RKn">
+                                <rect key="frame" x="162" y="93" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="delete"/>
+                                <connections>
+                                    <action selector="deleteFromPicker:" destination="g7n-cR-Da7" eventType="touchUpInside" id="foj-kh-sBJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Tcf-5y-g7X"/>
@@ -936,6 +954,7 @@
                     <connections>
                         <outlet property="collectionView" destination="nA3-Sz-Rla" id="hfw-dj-i4Q"/>
                         <outlet property="newCategory" destination="GNg-2x-bhS" id="WuD-AB-1Ro"/>
+                        <outlet property="pickerview" destination="OJ0-Ek-md2" id="9Zy-28-Cwz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvh-5s-Xag" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -945,7 +964,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9LK-ew-Rqd"/>
         <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
         <segue reference="aR8-6F-1r7"/>

@@ -52,6 +52,10 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        LoadCat()
+//    }
     
     func LoadCat(){
         let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
@@ -126,7 +130,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pop" {
             let vc = segue.destination
-            vc.preferredContentSize = CGSize(width: 400, height: 400)
+            vc.preferredContentSize = CGSize(width: 400, height: 500)
             let controller = vc.popoverPresentationController
             
             controller?.delegate = self
@@ -148,8 +152,6 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
     @IBAction func unwindSegue (_sender : UIStoryboardSegue){
-        showLabel.text = showData
-        showLabel.textColor = showColor
         
     }
     

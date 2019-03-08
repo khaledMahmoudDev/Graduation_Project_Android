@@ -21,13 +21,11 @@ class ToDoList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
+
         loadItems()
 
     }
     
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

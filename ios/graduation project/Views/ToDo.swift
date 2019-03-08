@@ -32,7 +32,7 @@ class ToDo: UIPageViewController, UIPageViewControllerDelegate, UIPageViewContro
 
     }
 //    @objc func save(){
-//
+//        performSegue(withIdentifier: "add", sender: nil)
 //    }
     
     override func viewWillAppear(_ animated: Bool) {
