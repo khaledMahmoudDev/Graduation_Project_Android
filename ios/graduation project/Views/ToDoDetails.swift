@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var todoPicker: UIPickerView!
     @IBOutlet weak var todoDetails: UITextView!
@@ -35,6 +35,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
         todoPicker.delegate = self
         todoPicker.dataSource = self
+        todoPicker.isHidden = true
         LoadCat()
         saveToDone.isHidden = true
         
@@ -72,6 +73,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = catFetched[row]
         showLabel.text = category.categoryname
+        showLabel.textColor = category.categorycolor as? UIColor
         return category.categoryname
         
     }
@@ -152,6 +154,20 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
  
+    
+    
+    @IBAction func showAndHidePicker(_ sender: Any) {
+        if todoPicker.isHidden == true{
+            todoPicker.isHidden = false
+        }else{
+            todoPicker.isHidden = true
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.todoPicker.isHidden = true
+    }
+    
     @objc func save(){
         let newItem:ToDoItems!
         if editORdeletTODO == nil{

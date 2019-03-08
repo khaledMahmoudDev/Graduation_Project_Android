@@ -56,7 +56,11 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     
     @IBAction func toggleCollectionViewHideShow(sender: UIButton) {
-        self.collectionView.isHidden = !self.collectionView.isHidden
+        if collectionView.isHidden == true{
+            collectionView.isHidden = false
+        }else{
+            collectionView.isHidden = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,6 +70,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         
         let newcat = Categories(context: context)
         newcat.categoryname = newCategory.text!
+        newcat.categorycolor = colorToPass
         do{ appdelegate.saveContext()
             newCategory.text = ""
             print("saved")
@@ -80,6 +85,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         newCategory.resignFirstResponder()
+        self.collectionView.isHidden = true
     }
     
     

@@ -401,6 +401,13 @@
                                     <segue destination="Lwh-mm-dXr" kind="show" identifier="doneList" id="9LK-ew-Rqd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-ft-4hV">
+                                <rect key="frame" x="16" y="73" width="212" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="showAndHidePicker:" destination="l4n-ht-JPT" eventType="touchUpInside" id="Aeo-hC-Ewl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Y0s-94-Ozb"/>
@@ -651,7 +658,9 @@
         <!--To Do-->
         <scene sceneID="5ur-4O-DU4">
             <objects>
-                <pageViewController storyboardIdentifier="todo" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="05f-eA-vsC" customClass="ToDo" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="todo" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="05f-eA-vsC" customClass="ToDo" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0d-QY-SLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4561" y="-1412"/>
@@ -790,7 +799,7 @@
                                     <navigationItem title="Done" id="lVx-CK-u9F">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="Nuk-lp-YjM">
                                             <connections>
-                                                <action selector="backButton:" destination="Lwh-mm-dXr" id="WLY-v6-rBU"/>
+                                                <action selector="backButton:" destination="Lwh-mm-dXr" id="NGp-Kr-Qlm"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -800,6 +809,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lGZ-32-oen"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Aag-1a-SGp"/>
                     <connections>
                         <outlet property="tableview" destination="k1c-GO-9Gg" id="yBS-NM-CAg"/>
                         <segue destination="l4n-ht-JPT" kind="show" identifier="goFromDoneToDetails" id="aR8-6F-1r7"/>
@@ -807,7 +817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46K-wP-81p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6316" y="-714.69265367316348"/>
+            <point key="canvasLocation" x="6316" y="-688"/>
         </scene>
         <!--Login Navigation-->
         <scene sceneID="OLY-u6-glE">

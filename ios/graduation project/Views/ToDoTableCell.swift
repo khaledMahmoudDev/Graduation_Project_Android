@@ -21,6 +21,7 @@ class ToDoTableCell: UITableViewCell {
         
         itemTitle.text = item.todotitle
         itemCat.text = item.tocategory?.categoryname
+        itemCat.textColor = item.tocategory?.categorycolor as? UIColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
