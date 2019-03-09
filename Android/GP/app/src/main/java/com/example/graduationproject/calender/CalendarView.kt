@@ -1,5 +1,6 @@
 package com.example.graduationproject.calender
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,11 +12,12 @@ import kotlinx.android.synthetic.main.activity_calendar_view.*
 
 class CalendarView : AppCompatActivity() {
 
+    lateinit var  event: Event
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_view)
 
-        val event: Event = intent.getParcelableExtra("clickedEvent")
+        event= intent.getParcelableExtra("clickedEvent")
 
         show_start_time.text = event.startTime
         show_end_time.text = event.endTime
@@ -37,6 +39,9 @@ class CalendarView : AppCompatActivity() {
         // Handle item selection
         return when (item.itemId) {
             R.id.edit_menu_button -> {
+                val intent = Intent(this, UpdateThisEvent::class.java)
+                intent.putExtra("clickedEventTobeUpdated",event)
+                startActivity(intent)
 
 
                 true

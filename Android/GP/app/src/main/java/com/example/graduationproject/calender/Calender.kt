@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -31,6 +32,7 @@ class Calender : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calender)
+        Log.i("lifesycle","oncreate Calendar")
 
         Realm.init(this)
         eventDb = EventDb(this)
@@ -57,6 +59,7 @@ class Calender : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        Log.i("lifesycle","onStart Calendar")
 
 
         CalendarList.onItemClickListener =
@@ -68,7 +71,9 @@ class Calender : AppCompatActivity() {
 
             }
 
+
         listEvent = eventDb.returnEvents(mDateOfTheDay!!)
+
         Toast.makeText(this," count = ${listEvent!!.size}",Toast.LENGTH_SHORT).show()
 
         if (listEvent!!.size == 0)
@@ -89,7 +94,10 @@ class Calender : AppCompatActivity() {
 
             mDateOfTheDay = "$year$month$dayOfMonth"
 
+            //////////////////////////
+
             listEvent = eventDb.returnEvents(mDateOfTheDay!!)
+
 
             if (listEvent!!.size == 0)
             {
@@ -121,6 +129,7 @@ class Calender : AppCompatActivity() {
 
 
                 eventDb.addEvent(eventToBeAdded)
+
               //  adapterForEventList.notifyDataSetChanged()
 
             }
@@ -128,10 +137,8 @@ class Calender : AppCompatActivity() {
     }
 
 
-
     override fun onDestroy() {
         super.onDestroy()
         eventDb.closeRealm()
-
     }
 }
