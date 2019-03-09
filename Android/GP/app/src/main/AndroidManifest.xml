@@ -9,10 +9,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".calender.CalendarView">
+        </activity>
         <activity android:name=".calender.AddEvent">
             <intent-filter>
-                <action android:name="com.gb.action.addEvent"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name="com.gb.action.addEvent"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".calender.Calender">

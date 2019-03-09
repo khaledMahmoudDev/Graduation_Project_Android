@@ -5,6 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.graduationproject.AdapterForEventList
 import com.example.graduationproject.R
@@ -12,6 +14,7 @@ import com.example.graduationproject.event.Event
 import com.example.graduationproject.event.EventDb
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_calender.*
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -54,6 +57,16 @@ class Calender : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+
+        CalendarList.onItemClickListener =
+            AdapterView.OnItemClickListener { p0, p1, p2, p3 ->
+                var eve = listEvent!!.get(p2)
+                val intent = Intent(this, CalendarView::class.java)
+                intent.putExtra("clickedEvent",eve)
+                startActivity(intent)
+
+            }
 
         listEvent = eventDb.returnEvents(mDateOfTheDay!!)
         Toast.makeText(this," count = ${listEvent!!.size}",Toast.LENGTH_SHORT).show()
@@ -114,8 +127,11 @@ class Calender : AppCompatActivity() {
         }
     }
 
+
+
     override fun onDestroy() {
         super.onDestroy()
         eventDb.closeRealm()
+
     }
 }
