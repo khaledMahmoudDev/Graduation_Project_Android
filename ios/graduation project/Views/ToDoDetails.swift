@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var todoPicker: UIPickerView!
     @IBOutlet weak var todoDetails: UITextView!
@@ -25,8 +25,17 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        self.navigationItem.rightBarButtonItem = saveButton
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        self.navigationItem.leftBarButtonItem = cancelButton
+        
+        
+        
         todoPicker.delegate = self
         todoPicker.dataSource = self
+        todoPicker.isHidden = true
         LoadCat()
         saveToDone.isHidden = true
         
@@ -42,6 +51,11 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         }
         
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        LoadCat()
+//    }
     
     func LoadCat(){
         let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
@@ -63,6 +77,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = catFetched[row]
         showLabel.text = category.categoryname
+        showLabel.textColor = category.categorycolor as? UIColor
         return category.categoryname
         
     }
@@ -115,7 +130,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pop" {
             let vc = segue.destination
-            vc.preferredContentSize = CGSize(width: 400, height: 400)
+            vc.preferredContentSize = CGSize(width: 400, height: 500)
             let controller = vc.popoverPresentationController
             
             controller?.delegate = self
@@ -137,13 +152,40 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
     @IBAction func unwindSegue (_sender : UIStoryboardSegue){
-        showLabel.text = showData
-        showLabel.textColor = showColor
         
     }
     
  
-    @IBAction func todoSave(_ sender: Any) {
+    
+    
+    @IBAction func showAndHidePicker(_ sender: Any) {
+        if todoPicker.isHidden == true{
+            todoPicker.isHidden = false
+        }else{
+            todoPicker.isHidden = true
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.todoPicker.isHidden = true
+    }
+    
+    @objc func save(){
+        if todoTitle.text == "" || todoDetails.text == "" {
+            let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Three Fields Empty.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+            
+        }else{
         let newItem:ToDoItems!
         if editORdeletTODO == nil{
             newItem = ToDoItems (context: context)
@@ -151,7 +193,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         else{
             newItem = editORdeletTODO
         }
-            
+        
         newItem.todotitle = todoTitle.text!
         newItem.tododetails = todoDetails.text!
         newItem.tododate = NSDate() as Date
@@ -164,13 +206,52 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         } catch  {
             print(error.localizedDescription)
         }
-        dismiss(animated: true, completion: nil)
-        
+        navigationController?.popViewController(animated: true)
+        }
     }
     
-    @IBAction func todoCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @objc func cancel(){
+        if todoTitle.text != "" || todoDetails.text != ""{
+            if editORdeletTODO == nil{
+                let alert = UIAlertController(title: "", message: "Do You Want To Discard This TODO ?", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                
+                present(alert, animated: true, completion: nil)
+            } else if editORdeletTODO != nil {
+                if todoTitle.text != editORdeletTODO?.todotitle || todoDetails.text != editORdeletTODO?.tododetails {
+                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    
+                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    
+                    present(alert, animated: true, completion: nil)
+                }else{
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            }
+        }else{
+            navigationController?.popViewController(animated: true)
+        }
+
     }
+    
+   
     
     @IBAction func moveToDone(_ sender: Any) {
         let doneItem : DoneItems!

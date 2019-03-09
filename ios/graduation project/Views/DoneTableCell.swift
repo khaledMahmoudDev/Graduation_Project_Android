@@ -21,6 +21,7 @@ class DoneTableCell: UITableViewCell {
         
         doneTitle.text = item.donetitle
         doneCat.text = item.fromdonetocategory?.categoryname
+        doneCat.textColor = item.fromdonetocategory?.categorycolor as? UIColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

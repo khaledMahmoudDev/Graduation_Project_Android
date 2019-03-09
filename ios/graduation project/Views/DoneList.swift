@@ -22,9 +22,22 @@ class DoneList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // Show the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -55,8 +68,8 @@ class DoneList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let obj = controller.fetchedObjects{
-            let todo = obj[indexPath.row]
-            performSegue(withIdentifier: "goFromDoneToDetails", sender: todo)
+            let done = obj[indexPath.row]
+            performSegue(withIdentifier: "goFromDoneToDetails", sender: done)
         }
     }
     
