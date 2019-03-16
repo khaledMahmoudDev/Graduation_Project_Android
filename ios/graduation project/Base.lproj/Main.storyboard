@@ -398,7 +398,6 @@
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="moveToDone:" destination="l4n-ht-JPT" eventType="touchUpInside" id="08p-cP-911"/>
-                                    <segue destination="Lwh-mm-dXr" kind="show" identifier="doneList" id="9LK-ew-Rqd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-ft-4hV">

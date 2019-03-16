@@ -22,18 +22,6 @@ class DoneList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        // Show the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }

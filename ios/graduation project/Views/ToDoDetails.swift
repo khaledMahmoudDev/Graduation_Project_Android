@@ -185,6 +185,40 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             
             present(alert, animated: true, completion: nil)
             
+        }else if editOrEditDone != nil && editORdeletTODO == nil{
+            let alert = UIAlertController(title: "", message: "Do you want to add this to new ToDo?", preferredStyle: .alert)
+            
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+                let newItem: ToDoItems!
+                newItem = ToDoItems (context: context)
+                newItem.todotitle = self.todoTitle.text!
+                newItem.tododetails = self.todoDetails.text!
+                newItem.tododate = NSDate() as Date
+                newItem.tocategory = self.catFetched[self.todoPicker.selectedRow(inComponent: 0)]
+                do {
+                    appdelegate.saveContext()
+                    self.todoDetails.text = ""
+                    self.todoTitle.text = ""
+                    print("new saved to todo")
+                } catch  {
+                    print(error.localizedDescription)
+                }
+                
+                context.delete(self.editOrEditDone!)
+                appdelegate.saveContext()
+                print("deleted from done")
+                self.navigationController?.popViewController(animated: false)
+            }))
+            
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+            
         }else{
         let newItem:ToDoItems!
         if editORdeletTODO == nil{
@@ -212,7 +246,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     @objc func cancel(){
         if todoTitle.text != "" || todoDetails.text != ""{
-            if editORdeletTODO == nil{
+            if editORdeletTODO == nil && editOrEditDone == nil{
                 let alert = UIAlertController(title: "", message: "Do You Want To Discard This TODO ?", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
@@ -244,6 +278,24 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                     navigationController?.popViewController(animated: true)
                 }
                 
+            }else if editOrEditDone != nil{
+                if todoTitle.text != editOrEditDone?.donetitle || todoDetails.text != editOrEditDone?.donedetails{
+                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    
+                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    
+                    present(alert, animated: true, completion: nil)
+                }else{
+                    navigationController?.popViewController(animated: true)
+                }
             }
         }else{
             navigationController?.popViewController(animated: true)
@@ -273,8 +325,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             context.delete(editORdeletTODO!)
             appdelegate.saveContext()
             print("deleted from todo")
-            
-            self.performSegue(withIdentifier: "doneList" , sender : self)
+            self.navigationController?.popViewController(animated: false)
+            //self.performSegue(withIdentifier: "doneList" , sender : self)
         }
     }
 }
