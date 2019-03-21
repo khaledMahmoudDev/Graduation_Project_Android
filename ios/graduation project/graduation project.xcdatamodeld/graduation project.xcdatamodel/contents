@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Categories" representedClassName="Categories" syncable="YES" codeGenerationType="class">
+        <attribute name="categorycolor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="categoryname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="todoneitems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DoneItems" inverseName="fromdonetocategory" inverseEntity="DoneItems" syncable="YES"/>
+        <relationship name="totodoitems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ToDoItems" inverseName="tocategory" inverseEntity="ToDoItems" syncable="YES"/>
+    </entity>
+    <entity name="DoneItems" representedClassName="DoneItems" syncable="YES" codeGenerationType="class">
+        <attribute name="donedate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="donedetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="donetitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fromdonetocategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="todoneitems" inverseEntity="Categories" syncable="YES"/>
+    </entity>
+    <entity name="ToDoItems" representedClassName="ToDoItems" syncable="YES" codeGenerationType="class">
+        <attribute name="tododate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tododetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="todotitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tocategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="totodoitems" inverseEntity="Categories" syncable="YES"/>
+    </entity>
+    <entity name="UserNotes" representedClassName="UserNotes" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notecontent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notename" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Categories" positionX="-65.9921875" positionY="26.953125" width="128" height="105"/>
+        <element name="DoneItems" positionX="-240.9453125" positionY="17.015625" width="128" height="103"/>
+        <element name="ToDoItems" positionX="130.04296875" positionY="24" width="128" height="103"/>
+        <element name="UserNotes" positionX="-207" positionY="-153.9765625" width="128" height="90"/>
+    </elements>
+</model>

@@ -1,0 +1,38 @@
+related solutions:
+
+calendar : google calendar
+		problem : 1- problem with sync needs fixing
+			  2- how to make it refresh on iphone
+			  3- https://zapier.com/help/common-problems-google-calendar/
+
+NOT FREE :
+Fantastical 2 (iOS: $4.99/£4.99) ...
+Calendars 5 (iOS: $6.99/£6.99/AU$10.99 ) ...
+BusyCal (iOS: $4.99/£4.99) ...
+Timepage (iPhone, $1.99/£1.79)
+
+
+TO-DO list : Trello * doesn't offer time tracking while we do *
+
+		problem : 1- https://zapier.com/help/common-problems-trello/
+			  2- https://www.bitrix24.com/alternatives/free-trello-alternative.php?gclid=Cj0KCQiAzKnjBRDPARIsAKxfTRANVZxTU44_WuYD0VKs6oHS8PCKhQ7ZNt1VHPYfv0u7pMploYTe3vUaAqwwEALw_wcB
+
+
+NOT FREE :
+Todoist (free/premium options)
+Evernote (free/premium options)
+Bear (free/premium options)
+
+
+
+
+Notes : mobile local notes * no integrations or sync *
+
+
+other notes with PROBLEMS :
+
+Bear (iOS, macOS) * doesn't work for android *
+Milanote (web) * doesn't work for mobile *
+Paper (iOS) * doen't work for android or web *
+Quip (Android, iOS, macOS, web, Windows)
+Simplenote (Android, iOS, Linux, macOS, web, Windows)
