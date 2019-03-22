@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate{
+class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate{
     
     @IBOutlet weak var todoPicker: UIPickerView!
     @IBOutlet weak var todoDetails: UITextView!
@@ -30,6 +30,16 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         self.navigationItem.leftBarButtonItem = cancelButton
+        
+        todoDetails.text = "Enter Details.."
+        todoDetails.textColor = UIColor.lightGray
+        todoDetails.returnKeyType = .done
+        todoDetails.delegate = self
+        
+        todoTitle.text = "Enter Title"
+        todoTitle.textColor = UIColor.lightGray
+        todoTitle.returnKeyType = .done
+        todoTitle.delegate = self
         
         
         
@@ -52,10 +62,10 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        LoadCat()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        LoadCat()
+    }
     
     func LoadCat(){
         let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
@@ -152,7 +162,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
     @IBAction func unwindSegue (_sender : UIStoryboardSegue){
-        
+        showLabel.text = showData
+        showLabel.textColor = showColor
     }
     
  
@@ -168,7 +179,42 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.todoPicker.isHidden = true
+        if textField.text == "Enter Title"{
+            textField.text = ""
+            textField.textColor = UIColor.black
+        }
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "" {
+            todoTitle.text = "Enter Title"
+            todoTitle.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.todoPicker.isHidden = true
+        if textView.text == "Enter Details.."{
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            todoDetails.text = "Enter Details.."
+            todoDetails.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    
     
     @objc func save(){
         if todoTitle.text == "" || todoDetails.text == "" {

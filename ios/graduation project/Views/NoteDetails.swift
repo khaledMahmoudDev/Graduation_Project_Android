@@ -9,16 +9,63 @@
 import UIKit
 import CoreData
 
-class NoteDetails: UIViewController {
+class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var name: UITextField!
     var editOrDeleteNote: UserNotes?
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        content.text = "Enter Note.."
+        content.textColor = UIColor.lightGray
+        content.returnKeyType = .done
+        content.delegate = self
+        
+        name.text = "Enter Note Title"
+        name.textColor = UIColor.lightGray
+        name.returnKeyType = .done
+        name.delegate = self
+        
         if editOrDeleteNote != nil{
             loadForEdit()
         }
+    }
+    
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Enter Note Title"{
+            textField.text = ""
+            textField.textColor = UIColor.black
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "" {
+            name.text = "Enter Note Title"
+            name.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Enter Note.."{
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            content.text = "Enter Note.."
+            content.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+        }
+        return true
     }
     
     @IBAction func save(_ sender: Any) {
@@ -109,4 +156,5 @@ class NoteDetails: UIViewController {
             content.text = selectedNote.notecontent
         }
     }
+    
 }
