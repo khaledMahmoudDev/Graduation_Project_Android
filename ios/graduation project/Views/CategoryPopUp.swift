@@ -42,13 +42,10 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        LoadCatForPopUp()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        LoadCatForPopUp()
         pickerview.reloadAllComponents()
+        LoadCatForPopUp()
     }
+   
     
     //function to fetch objects from coredata
     func LoadCatForPopUp(){
@@ -67,32 +64,51 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return catFetchedForPopUp.count
+           return catFetchedForPopUp.count
+
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = catFetchedForPopUp[row]
-        newCategory.text = category.categoryname
-        newCategory.textColor = category.categorycolor as? UIColor
-        
+//        newCategory.text = category.categoryname
+//        newCategory.textColor = category.categorycolor as? UIColor
+//
         //delet the selectd item, flag is set when delet buttion is clicked
-        if CategoryPopUp.Selected == 1 {
-            context.delete(category)
-            appdelegate.saveContext()
-            newCategory.text = ""
-            print("deleted from picker")
-            CategoryPopUp.Selected = 0
-            
-        }
+//        if CategoryPopUp.Selected == 1 {
+//            context.delete(category)
+//            appdelegate.saveContext()
+//            newCategory.text = ""
+//            print("deleted from picker")
+//            CategoryPopUp.Selected = 0
+//            catFetchedForPopUp.remove(at: row)
+//            pickerview.reloadAllComponents()
+//
+//        }
         
         return category.categoryname
         
     }
     
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let category = catFetchedForPopUp[row]
+        newCategory.text = category.categoryname
+        newCategory.textColor = category.categorycolor as? UIColor
+        if CategoryPopUp.Selected == 1 {
+            context.delete(category)
+            appdelegate.saveContext()
+            newCategory.text = ""
+            print("deleted from picker at did select",row)
+            CategoryPopUp.Selected = 0
+            catFetchedForPopUp.remove(at: row)
+            pickerview.reloadAllComponents()
+            
+        }
+    }
+
     //action of delet button to select item
     @IBAction func deleteFromPicker(_ sender: Any) {
         CategoryPopUp.Selected = 1
         pickerview.reloadAllComponents()
+        
     }
    
     
@@ -117,6 +133,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     {
         let SelectedItem = indexPath.row + 1
         print(SelectedItem)
+        self.newCategory.textColor = self.colorArray[indexPath.item]
         self.colorToPass = self.colorArray[indexPath.item]
     }
     
