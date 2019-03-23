@@ -139,27 +139,11 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pop" {
-            let vc = segue.destination
-            vc.preferredContentSize = CGSize(width: 400, height: 500)
-            let controller = vc.popoverPresentationController
-            
-            controller?.delegate = self
-            //you could set the following in your storyboard
-            controller?.sourceView = self.view
-            controller?.sourceRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-            controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 1)
+            let vc = segue.destination as! CategoryPopUp
             
         }
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        //return .fullScreen
-        //return .popover
-        //return .pageSheet
-        return .none
-        //return .overFullScreen
-        
-    }
     
     @IBAction func unwindSegue (_sender : UIStoryboardSegue){
         showLabel.text = showData

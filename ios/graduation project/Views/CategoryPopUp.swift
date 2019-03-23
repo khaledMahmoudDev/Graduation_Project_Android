@@ -38,6 +38,31 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         self.collectionView.isHidden = true
         //self.pickerview.isHidden = true
         
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(Done))
+        self.navigationItem.rightBarButtonItem = doneButton
+        
+    }
+    
+    
+    @objc func Done(){
+//        let destvc = segue.destination as! ToDoDetails
+//        destvc.showData = newCategory.text!
+//        destvc.showColor = colorToPass
+        
+        let newcat = Categories(context: context)
+        newcat.categoryname = newCategory.text!
+        newcat.categorycolor = colorToPass
+        do{ appdelegate.saveContext()
+            newCategory.text = ""
+            print("saved")
+            
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        navigationController?.popViewController(animated: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

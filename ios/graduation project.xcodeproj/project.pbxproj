@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		31012D84222AC1E8007A3D8C /* ToDoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31012D83222AC1E8007A3D8C /* ToDoTableCell.swift */; };
 		31012D86222AC202007A3D8C /* DoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31012D85222AC202007A3D8C /* DoneTableCell.swift */; };
-		3107FCC322121BC00011CD6C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107FCC222121BC00011CD6C /* ToDo.swift */; };
 		310ED6742218A05900EF59D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310ED66A22183D4100EF59D9 /* CoreData.framework */; };
 		3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FB2221F2210066C46A /* NoteDetails.swift */; };
 		3157F3FE2221F23D0066C46A /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FD2221F23D0066C46A /* Notes.swift */; };
 		315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */; };
 		315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */; };
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
+		316F0BA02246879B008ACFC2 /* ToDoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */; };
 		319B596D2224D903007F73AF /* DoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B596C2224D903007F73AF /* DoneList.swift */; };
@@ -42,13 +42,13 @@
 /* Begin PBXFileReference section */
 		31012D83222AC1E8007A3D8C /* ToDoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableCell.swift; sourceTree = "<group>"; };
 		31012D85222AC202007A3D8C /* DoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableCell.swift; sourceTree = "<group>"; };
-		3107FCC222121BC00011CD6C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		310ED66A22183D4100EF59D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3157F3FB2221F2210066C46A /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 		3157F3FD2221F23D0066C46A /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryNavigation.swift; sourceTree = "<group>"; };
 		315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTabBar.swift; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryTableCell.swift; sourceTree = "<group>"; };
 		319B596C2224D903007F73AF /* DoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneList.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 				3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */,
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
 				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
-				3107FCC222121BC00011CD6C /* ToDo.swift */,
+				316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */,
 				319B596E2224D91E007F73AF /* ToDoList.swift */,
 				31012D83222AC1E8007A3D8C /* ToDoTableCell.swift */,
 				319B596C2224D903007F73AF /* DoneList.swift */,
@@ -334,12 +334,12 @@
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
-				3107FCC322121BC00011CD6C /* ToDo.swift in Sources */,
 				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
 				31012D84222AC1E8007A3D8C /* ToDoTableCell.swift in Sources */,
 				31012D86222AC202007A3D8C /* DoneTableCell.swift in Sources */,
+				316F0BA02246879B008ACFC2 /* ToDoTabBar.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,

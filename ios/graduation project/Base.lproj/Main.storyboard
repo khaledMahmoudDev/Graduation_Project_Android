@@ -207,8 +207,8 @@
                         <segue destination="gXq-Dd-OEB" kind="show" identifier="notification" id="38L-4k-nUj"/>
                         <segue destination="ruf-4y-l2L" kind="show" identifier="calendar" id="Eg2-mG-R55"/>
                         <segue destination="iDT-to-6vq" kind="show" identifier="email" id="hUP-hr-tKb"/>
-                        <segue destination="05f-eA-vsC" kind="show" identifier="todo" id="6XZ-Zm-jBa"/>
                         <segue destination="FvH-uJ-zZb" kind="show" identifier="notes" id="Gri-jk-t1S"/>
+                        <segue destination="Z6l-b6-m1w" kind="show" identifier="todo" id="mli-yJ-UGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCd-AY-RAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,9 +417,7 @@
                         <outlet property="todoDetails" destination="YoD-0P-KJB" id="qTr-dS-aSC"/>
                         <outlet property="todoPicker" destination="t6h-ci-SLJ" id="Zrn-Jj-Rwj"/>
                         <outlet property="todoTitle" destination="CVf-3R-kua" id="Izd-eU-oAf"/>
-                        <segue destination="g7n-cR-Da7" kind="popoverPresentation" identifier="pop" popoverAnchorView="6lt-KY-lxJ" id="Qag-kf-0KN">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="g7n-cR-Da7" kind="show" identifier="pop" id="Qag-kf-0KN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCw-hC-xsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -654,17 +652,7 @@
             </objects>
             <point key="canvasLocation" x="2340" y="-713"/>
         </scene>
-        <!--To Do-->
-        <scene sceneID="5ur-4O-DU4">
-            <objects>
-                <pageViewController storyboardIdentifier="todo" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="05f-eA-vsC" customClass="ToDo" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
-                    <nil key="simulatedTopBarMetrics"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C0d-QY-SLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4561" y="-1412"/>
-        </scene>
-        <!--To Do List-->
+        <!--Item-->
         <scene sceneID="Yje-fo-2tQ">
             <objects>
                 <viewController storyboardIdentifier="toDoList" id="aSH-tA-Yo1" customClass="ToDoList" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -734,6 +722,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3K0-ab-F15"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="fPc-ER-hzd"/>
                     <navigationItem key="navigationItem" id="v0e-h3-5z5"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -743,9 +732,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7C-GQ-52Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4561" y="-687"/>
+            <point key="canvasLocation" x="4318" y="-645"/>
         </scene>
-        <!--Done List-->
+        <!--Item-->
         <scene sceneID="oja-eX-ZId">
             <objects>
                 <viewController storyboardIdentifier="done" id="Lwh-mm-dXr" customClass="DoneList" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -809,6 +798,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lGZ-32-oen"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="M5t-aP-Eca"/>
                     <navigationItem key="navigationItem" id="Aag-1a-SGp"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -818,7 +808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46K-wP-81p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6316" y="-688"/>
+            <point key="canvasLocation" x="6316" y="-645"/>
         </scene>
         <!--Login Navigation-->
         <scene sceneID="OLY-u6-glE">
@@ -961,11 +951,30 @@
             </objects>
             <point key="canvasLocation" x="6316" y="-1412.7436281859073"/>
         </scene>
+        <!--To Do Tab Bar-->
+        <scene sceneID="m30-EQ-R9F">
+            <objects>
+                <tabBarController storyboardIdentifier="todo" automaticallyAdjustsScrollViewInsets="NO" id="Z6l-b6-m1w" customClass="ToDoTabBar" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="whl-CB-XQF">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aSH-tA-Yo1" kind="relationship" relationship="viewControllers" id="5JX-Kl-15n"/>
+                        <segue destination="Lwh-mm-dXr" kind="relationship" relationship="viewControllers" id="eeM-40-d7a"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Su-CT-KxY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4305" y="-1412"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
-        <segue reference="aR8-6F-1r7"/>
+        <segue reference="yGK-MF-B3h"/>
         <segue reference="oeR-2o-rpE"/>
         <segue reference="JnZ-ya-3oI"/>
     </inferredMetricsTieBreakers>
