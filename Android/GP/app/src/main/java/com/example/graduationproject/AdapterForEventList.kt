@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.graduationproject.event.Event
+import com.example.graduationproject.model.Event
 import kotlinx.android.synthetic.main.row_event_list.view.*
 
 class AdapterForEventList(context: Context, events: ArrayList<Event>) : ArrayAdapter<Event>(context,0,events){

@@ -3,4 +3,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="login_title">Login</string>
+    <string name="create_act">Create Account</string>
+    <string name="pick_an_image">Pick an Image</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="update_data">update data</string>
+    <string name="profileEmail">Email</string>
+    <string name="profile_last_name">last name</string>
+    <string name="profile_first_name">First Name</string>
+    <string name="user_name">User name</string>
+    <string name="title_activity_event_location">Map</string>
+
 </resources>

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "166376758608",
+    "firebase_url": "https://ajenda-a702f.firebaseio.com",
+    "project_id": "ajenda-a702f",
+    "storage_bucket": "ajenda-a702f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166376758608:android:040d2b3ebf436bce",
+        "android_client_info": {
+          "package_name": "com.example.graduationproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166376758608-3fd4onm20fcb4jfltdtht1clbfp08uiv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduationproject",
+            "certificate_hash": "d252e4fcc6e03f0a17c24b48779d6d1eceb4a26f"
+          }
+        },
+        {
+          "client_id": "166376758608-o96npf61tkfdmblsm57bqqg3esphphsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCSvEIqgeC0tG3FiHn8sgHpCVyvSDrd6k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166376758608-o96npf61tkfdmblsm57bqqg3esphphsp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "166376758608-1jdk7j5pda11h7h8c6tcbjam54t9qgmq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Ajenda.graduation-project"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

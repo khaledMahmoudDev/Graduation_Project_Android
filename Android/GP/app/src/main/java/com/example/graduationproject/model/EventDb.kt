@@ -1,4 +1,4 @@
-package com.example.graduationproject.event
+package com.example.graduationproject.model
 
 import android.content.Context
 import android.widget.Toast
@@ -11,7 +11,7 @@ class EventDb(val context: Context) {
     var realm: Realm? = null
     fun configuration()
     {
-        val config = RealmConfiguration.Builder().name("event.realm").build()
+        val config = RealmConfiguration.Builder().name("event1.realm").build()
         realm = Realm.getInstance(config)
 
 
@@ -27,12 +27,19 @@ class EventDb(val context: Context) {
         mEvent.title = event.title
         mEvent.startTime =event.startTime
         mEvent.endTime = event.endTime
+        mEvent.id = event.id
 
         Toast.makeText(context,"object add date is ${event.mDate} and title ${event.title}",Toast.LENGTH_LONG).show()
         realm!!.commitTransaction()
 
     }
 
+    fun cleareDB()
+    {
+        realm!!.beginTransaction()
+        realm!!.deleteAll()
+        realm!!.commitTransaction()
+    }
     fun returnEvents(dateQuery:String): ArrayList<Event>
     {
 
