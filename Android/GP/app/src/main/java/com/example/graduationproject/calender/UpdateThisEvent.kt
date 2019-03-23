@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import com.example.graduationproject.R
-import com.example.graduationproject.event.Event
+import com.example.graduationproject.model.Event
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import kotlinx.android.synthetic.main.activity_add_event.*
 import kotlinx.android.synthetic.main.activity_update_this_event.*
 import java.util.*
 

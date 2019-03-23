@@ -7,7 +7,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.graduationproject.R
-import com.example.graduationproject.event.Event
+import com.example.graduationproject.eventLocation.EventLocation
+import com.example.graduationproject.model.Event
 import kotlinx.android.synthetic.main.activity_calendar_view.*
 
 class CalendarView : AppCompatActivity() {
@@ -16,6 +17,10 @@ class CalendarView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_view)
+
+
+        show_Location.setOnClickListener {
+        }
 
         event= intent.getParcelableExtra("clickedEvent")
 
