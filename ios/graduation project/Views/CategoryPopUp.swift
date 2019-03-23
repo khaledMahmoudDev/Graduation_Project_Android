@@ -28,6 +28,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     //static variable to declare a variable is selected from picker view to handle deleting
     static var Selected = 0
+    
 
     
     override func viewDidLoad() {
@@ -115,6 +116,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let category = catFetchedForPopUp[row]
+      //  var editedText = ""
         newCategory.text = category.categoryname
         newCategory.textColor = category.categorycolor as? UIColor
         if CategoryPopUp.Selected == 1 {
@@ -127,6 +129,8 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             pickerview.reloadAllComponents()
             
         }
+        
+       
     }
 
     //action of delet button to select item
@@ -135,7 +139,22 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         pickerview.reloadAllComponents()
         
     }
-   
+   //edit a text in picker,remove old and save to a new one
+    @IBAction func EditInPicker(_ sender: Any) {
+
+        CategoryPopUp.Selected = 1
+        let newcat = Categories(context: context)
+        newcat.categoryname = newCategory.text!
+        newcat.categorycolor = colorToPass
+        do{ appdelegate.saveContext()
+            print("saved")
+            
+        }catch{
+            print(error.localizedDescription)
+        }
+        catFetchedForPopUp.append(newcat)
+        pickerview.reloadAllComponents()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.colorArray.count

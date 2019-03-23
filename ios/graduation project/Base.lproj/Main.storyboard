@@ -378,7 +378,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="add new category"/>
                                 <connections>
-                                    <action selector="popupbtn:" destination="l4n-ht-JPT" eventType="touchUpInside" id="lgS-IZ-xFb"/>
+                                    <segue destination="g7n-cR-Da7" kind="show" identifier="pop" id="lna-6E-TBW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef0-aE-UpN">
@@ -417,7 +417,6 @@
                         <outlet property="todoDetails" destination="YoD-0P-KJB" id="qTr-dS-aSC"/>
                         <outlet property="todoPicker" destination="t6h-ci-SLJ" id="Zrn-Jj-Rwj"/>
                         <outlet property="todoTitle" destination="CVf-3R-kua" id="Izd-eU-oAf"/>
-                        <segue destination="g7n-cR-Da7" kind="show" identifier="pop" id="Qag-kf-0KN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCw-hC-xsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -867,7 +866,7 @@
         <!--Category Pop Up-->
         <scene sceneID="9mP-3a-VXU">
             <objects>
-                <viewController id="g7n-cR-Da7" customClass="CategoryPopUp" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pop" id="g7n-cR-Da7" customClass="CategoryPopUp" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5i6-bl-ddF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -934,6 +933,14 @@
                                 <state key="normal" title="delete"/>
                                 <connections>
                                     <action selector="deleteFromPicker:" destination="g7n-cR-Da7" eventType="touchUpInside" id="foj-kh-sBJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qH-8e-Cml">
+                                <rect key="frame" x="310" y="93" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="EditInPicker:" destination="g7n-cR-Da7" eventType="touchUpInside" id="I9A-4i-Q8K"/>
                                 </connections>
                             </button>
                         </subviews>

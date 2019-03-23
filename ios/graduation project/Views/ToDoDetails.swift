@@ -137,18 +137,12 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pop" {
-            let vc = segue.destination as! CategoryPopUp
-            
-        }
-    }
     
     
-    @IBAction func unwindSegue (_sender : UIStoryboardSegue){
-        showLabel.text = showData
-        showLabel.textColor = showColor
-    }
+//    @IBAction func unwindSegue (_sender : UIStoryboardSegue){
+//        showLabel.text = showData
+//        showLabel.textColor = showColor
+//    }
     
  
     
