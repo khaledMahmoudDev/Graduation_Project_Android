@@ -47,9 +47,12 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     
     @objc func Done(){
-//        let destvc = segue.destination as! ToDoDetails
-//        destvc.showData = newCategory.text!
-//        destvc.showColor = colorToPass
+
+        let goBackToDetails = storyboard?.instantiateViewController(withIdentifier: "tododetails") as! ToDoDetails
+        
+        goBackToDetails.showData = newCategory.text!
+        print(goBackToDetails.showData)
+        goBackToDetails.showColor = colorToPass
         
         let newcat = Categories(context: context)
         newcat.categoryname = newCategory.text!
@@ -62,8 +65,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             print(error.localizedDescription)
         }
         
+       self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
