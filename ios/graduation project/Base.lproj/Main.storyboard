@@ -303,7 +303,7 @@
             </objects>
             <point key="canvasLocation" x="931.875" y="150"/>
         </scene>
-        <!--mail-->
+        <!--Email-->
         <scene sceneID="d4J-TY-IKg">
             <objects>
                 <viewController storyboardIdentifier="email" id="iDT-to-6vq" customClass="E_mail" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -311,8 +311,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qpj-Pq-yb9">
-                                <rect key="frame" x="117" y="236" width="97" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Email Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pJO-DC-Q4T">
+                                <rect key="frame" x="9" y="234" width="357" height="425"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="EmailTo" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email to example@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4an-e0-v1j">
+                                <rect key="frame" x="16" y="118" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your subject here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-kN-36f">
+                                <rect key="frame" x="16" y="176" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="From" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email from example@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-8Z-8sF">
+                                <rect key="frame" x="16" y="64" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -322,10 +343,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9QU-jN-M7Q"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Email" id="aOr-tz-q9K">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="kDa-Fb-yfU">
+                            <connections>
+                                <action selector="SendEmail:" destination="iDT-to-6vq" id="dR0-Z1-zKR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="EmailBody" destination="pJO-DC-Q4T" id="DK4-Vk-vUT"/>
+                        <outlet property="EmailFrom" destination="AQ2-8Z-8sF" id="AnG-Rj-xp1"/>
+                        <outlet property="EmailTo" destination="4an-e0-v1j" id="JcD-nH-hpm"/>
+                        <outlet property="Subject" destination="j8Y-kN-36f" id="hKy-3t-yyv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHi-bO-Tr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6317" y="992"/>
+            <point key="canvasLocation" x="6316" y="991.75412293853083"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="PUg-81-aFo">
@@ -354,7 +388,7 @@
         <!--To Do Details-->
         <scene sceneID="1k5-gc-zbb">
             <objects>
-                <viewController id="l4n-ht-JPT" customClass="ToDoDetails" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tododetails" id="l4n-ht-JPT" customClass="ToDoDetails" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nLl-nz-xWP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -965,6 +999,7 @@
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="whl-CB-XQF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
