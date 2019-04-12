@@ -14,6 +14,9 @@ open class Event(
     ,var details: String = ""
     ,var startTime :String = ""
     ,var endTime :String = "",
-    var eventCreator : String = ""):RealmObject(), Parcelable {
+    var eventCreator : String = "",
+    var privacy : Boolean = true,
+    var location: String = ""
+):RealmObject(), Parcelable {
 
 }

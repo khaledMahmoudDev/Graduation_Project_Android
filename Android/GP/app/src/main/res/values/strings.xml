@@ -18,5 +18,10 @@
     <string name="profile_first_name">First Name</string>
     <string name="user_name">User name</string>
     <string name="title_activity_event_location">Map</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main_page_calender">MainPageCalender</string>
 
 </resources>

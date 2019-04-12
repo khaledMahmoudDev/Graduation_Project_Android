@@ -11,7 +11,7 @@ class EventDb(val context: Context) {
     var realm: Realm? = null
     fun configuration()
     {
-        val config = RealmConfiguration.Builder().name("event1.realm").build()
+        val config = RealmConfiguration.Builder().name("event4.realm").build()
         realm = Realm.getInstance(config)
 
 
@@ -28,6 +28,8 @@ class EventDb(val context: Context) {
         mEvent.startTime =event.startTime
         mEvent.endTime = event.endTime
         mEvent.id = event.id
+        mEvent.privacy = event.privacy
+        mEvent.location = event.location
 
         Toast.makeText(context,"object add date is ${event.mDate} and title ${event.title}",Toast.LENGTH_LONG).show()
         realm!!.commitTransaction()

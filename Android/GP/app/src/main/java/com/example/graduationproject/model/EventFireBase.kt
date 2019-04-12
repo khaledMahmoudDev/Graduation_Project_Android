@@ -7,5 +7,9 @@ class EventFireBase(
     ,var mDetails: String = ""
     ,var mStartTime :String = ""
     ,var mEndTime :String = "",
-    var mEventCreator : String = "") {
+    var mEventCreator : String = "",
+    var privacy : Boolean = true,
+    var location: String = "") {
+
+
 }

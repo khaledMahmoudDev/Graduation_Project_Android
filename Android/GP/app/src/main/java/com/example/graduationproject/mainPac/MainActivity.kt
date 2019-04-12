@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.graduationproject.calender.Calender
 import com.example.graduationproject.R
+import com.example.graduationproject.calender.MainPageCalender
 import com.example.graduationproject.email.Email
 import com.example.graduationproject.location.Location
 import com.example.graduationproject.note.Note
@@ -28,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
          mAuth = FirebaseAuth.getInstance()
 
-         mainCalender.setOnClickListener { startActivity(Intent(this, Calender::class.java)) }
+         mainCalender.setOnClickListener { startActivity(Intent(this, MainPageCalender::class.java)) }
          mainSendMail.setOnClickListener { startActivity(Intent(this,Email::class.java)) }
          mainToDo.setOnClickListener { startActivity(Intent(this,ToDo::class.java)) }
          mainNote.setOnClickListener { startActivity(Intent(this,Note::class.java)) }

@@ -63,6 +63,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:orientation="vertical"
     >
         <Button
                 android:id="@+id/addLocation"
@@ -71,6 +72,21 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:textSize="20sp"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text= "privacy "
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+            />
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            android:id="@+id/spinnerPrivacy"></Spinner>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"

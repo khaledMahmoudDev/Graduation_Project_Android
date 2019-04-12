@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat
 import android.view.View
 import android.widget.Toast
 import com.example.graduationproject.R
+import com.example.graduationproject.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -32,6 +33,7 @@ class Signup : AppCompatActivity() {
     private var storage : FirebaseStorage? = null
     private var storageRef : StorageReference? = null
     var imageUri:Uri ? = null
+    var imageLink1 : String? = null
 
 
 
@@ -44,6 +46,8 @@ class Signup : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         myref = database1!!.reference
         storageRef = storage!!.reference
+
+        
 
 
         btn_register.setOnClickListener {signUpNow()}
@@ -121,9 +125,10 @@ class Signup : AppCompatActivity() {
                 taskSnapshot ->
                 filePath.downloadUrl.addOnCompleteListener(){
                     task ->
-                    val downloadUrl = task.result.toString()
+                    imageLink1 = task.result.toString()
+                    myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("imageLink").setValue(imageLink1)
                     Toast.makeText(applicationContext,"image uploaded", Toast.LENGTH_SHORT).show()
-                    myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("imageLink").setValue(downloadUrl)
+
 
                 }
             }!!.addOnFailureListener{
@@ -185,8 +190,21 @@ class Signup : AppCompatActivity() {
 
                     if (it.isSuccessful)
                     {
-                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("email").setValue(auth!!.currentUser!!.email)
-                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("userName").setValue(et_first_name.text.toString())
+                        var uId = auth!!.currentUser!!.uid
+                        var usr = User()
+                        usr.email = auth!!.currentUser!!.email
+                        usr.firstName = et_first_name.text.toString()
+                        usr.imageLink = imageLink1
+                        usr.userId = uId
+
+                        myref!!.child("USERS").child(uId).setValue(usr)
+
+
+
+
+//                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("email").setValue(auth!!.currentUser!!.email)
+//                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("userName").setValue(et_first_name.text.toString())
+                        //myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("Id").setValue(auth!!.currentUser!!.uid)
 
 
 //                        myref!!.child("Events").push().child("em").setValue("no way")
