@@ -25,6 +25,10 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showLabel.text = "Choose Category.."
+        showLabel.textColor = UIColor.lightGray
+        
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         self.navigationItem.rightBarButtonItem = saveButton
         
@@ -64,6 +68,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLabel.text = "Choose Category.."
+        showLabel.textColor = UIColor.lightGray
         LoadCat()
     }
     
@@ -86,10 +92,16 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let category = catFetched[row]
-        showLabel.text = category.categoryname
-        showLabel.textColor = category.categorycolor as? UIColor
+//        showLabel.text = category.categoryname
+//        showLabel.textColor = category.categorycolor as? UIColor
         return category.categoryname
         
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let category = catFetched[row]
+        showLabel.text = category.categoryname
+        showLabel.textColor = category.categorycolor as? UIColor
     }
     
     func loadforEditTODO (){
@@ -135,35 +147,6 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     @IBAction func popupbtn(_ sender: Any) {
         self.performSegue(withIdentifier: "pop" , sender : self)
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pop" {
-            let vc = segue.destination
-            vc.preferredContentSize = CGSize(width: 400, height: 500)
-            let controller = vc.popoverPresentationController
-            
-            controller?.delegate = self
-            //you could set the following in your storyboard
-            controller?.sourceView = self.view
-            controller?.sourceRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-            controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 1)
-            
-        }
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        //return .fullScreen
-        //return .popover
-        //return .pageSheet
-        return .none
-        //return .overFullScreen
-        
-    }
-    
-    @IBAction func unwindSegue (_sender : UIStoryboardSegue){
-        showLabel.text = showData
-        showLabel.textColor = showColor
     }
     
  
@@ -217,7 +200,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     
     @objc func save(){
-        if todoTitle.text == "" || todoDetails.text == "" {
+        if todoTitle.text == "" || todoDetails.text == "" || (todoTitle.text == "Enter Title" && todoTitle.textColor == UIColor.lightGray) || (todoDetails.text == "Enter Details.." && todoDetails.textColor == UIColor.lightGray){
             let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Three Fields Empty.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
@@ -291,7 +274,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     }
     
     @objc func cancel(){
-        if todoTitle.text != "" || todoDetails.text != ""{
+        if todoTitle.text != "" || todoDetails.text != "" /*|| (todoTitle.text != "Enter Title" && todoTitle.textColor != UIColor.lightGray) || (todoDetails.text != "Enter Details.." && todoDetails.textColor != UIColor.lightGray)*/ {
             if editORdeletTODO == nil && editOrEditDone == nil{
                 let alert = UIAlertController(title: "", message: "Do You Want To Discard This TODO ?", preferredStyle: .alert)
                 

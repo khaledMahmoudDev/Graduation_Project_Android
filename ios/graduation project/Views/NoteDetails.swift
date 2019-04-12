@@ -69,7 +69,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if name.text == "" || content.text == "" {
+        if name.text == "" || content.text == "" || (name.text == "Enter Note Title" && name.textColor == UIColor.lightGray) || (content.text == "Enter Note.." && content.textColor == UIColor.lightGray){
             let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Two Fields Empty.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
@@ -110,7 +110,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
 }
     
     @IBAction func cancel(_ sender: Any) {
-        if name.text != "" || content.text != ""{
+        if name.text != "" || content.text != "" || (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) {
             if editOrDeleteNote == nil{
             let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
             
