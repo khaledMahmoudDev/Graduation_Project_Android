@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
+
 
 
 class Profile: UIViewController {
@@ -31,7 +31,6 @@ class Profile: UIViewController {
 
         do {
             try Auth.auth().signOut()
-            try GIDSignIn.sharedInstance()?.signOut()
             userDefault.removeObject(forKey: "signedIn")
             userDefault.synchronize()
             let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigation") as! LoginNavigation

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PcT-tv-4mz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WKk-od-n3k">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,18 +53,12 @@
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ide-Ug-GVj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m4O-Wa-dlS" customClass="GIDSignInButton">
-                                <rect key="frame" x="86" y="361" width="202" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NMP-9t-KCt"/>
                     <connections>
-                        <outlet property="signInButton" destination="m4O-Wa-dlS" id="i9q-Kj-rJG"/>
                         <outlet property="signInEmail" destination="mtq-qk-zm9" id="zJ4-8M-Njc"/>
                         <outlet property="signInPassword" destination="QPA-VT-CAw" id="0Xr-MI-Qk9"/>
                         <segue destination="2cL-nu-UpS" kind="show" identifier="goToMainEntry" id="we9-CN-XAb"/>
@@ -82,29 +76,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-rM-ICc">
-                                <rect key="frame" x="16" y="68" width="343" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-jp-a82">
-                                <rect key="frame" x="16" y="126" width="343" height="50"/>
+                                <rect key="frame" x="16" y="160" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-5k-ZHK">
-                                <rect key="frame" x="14" y="242" width="345" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4lB-eR-e2U">
-                                <rect key="frame" x="16" y="184" width="343" height="50"/>
+                                <rect key="frame" x="11" y="235" width="345" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -128,11 +108,13 @@
                                     <action selector="signUp:" destination="aOQ-BS-1Bo" eventType="touchUpInside" id="uZs-rZ-Vdq"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9P-w7-HoF" customClass="GIDSignInButton">
-                                <rect key="frame" x="59" y="443" width="202" height="74"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-rM-ICc">
+                                <rect key="frame" x="16" y="102" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oQc-5R-zue"/>
@@ -142,7 +124,6 @@
                         <outlet property="configPass" destination="stC-t2-NAm" id="0Nn-PM-Ibw"/>
                         <outlet property="email" destination="8a9-jp-a82" id="4ft-bg-ZJ2"/>
                         <outlet property="password" destination="hF2-5k-ZHK" id="CEn-j1-v2U"/>
-                        <outlet property="phone" destination="4lB-eR-e2U" id="8kC-b8-ToR"/>
                         <outlet property="username" destination="hyV-rM-ICc" id="ngm-0x-jlZ"/>
                         <segue destination="2cL-nu-UpS" kind="show" identifier="goToMain" id="fHg-Bh-kzx"/>
                     </connections>
@@ -1017,7 +998,7 @@
         <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
         <segue reference="yGK-MF-B3h"/>
-        <segue reference="oeR-2o-rpE"/>
-        <segue reference="JnZ-ya-3oI"/>
+        <segue reference="we9-CN-XAb"/>
+        <segue reference="CVn-th-ttV"/>
     </inferredMetricsTieBreakers>
 </document>

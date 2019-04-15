@@ -7,8 +7,9 @@ target 'graduation project' do
 
   # Pods for graduation project
 
-	pod 'Firebase/Core'
-	pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
+pod 'Firebase/Storage'
+pod 'Firebase/Core'
 
 end

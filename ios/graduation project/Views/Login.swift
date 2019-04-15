@@ -8,19 +8,16 @@
 
 import UIKit
 import FirebaseAuth
-import GoogleSignIn
 
-class Login: UIViewController, GIDSignInUIDelegate {
+class Login: UIViewController {
 
     @IBOutlet weak var signInEmail: UITextField!
     @IBOutlet weak var signInPassword: UITextField!
-    @IBOutlet weak var signInButton: GIDSignInButton!
     
     let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = self
         
 //        signInButton.layer.cornerRadius = signInButton.frame.size.width/2
 //        signInButton.clipsToBounds = true
@@ -46,11 +43,12 @@ class Login: UIViewController, GIDSignInUIDelegate {
  
     @IBAction func signIn(_ sender: Any) {
         
-        Auth.auth().signIn(withEmail: signInEmail.text!, password: signInPassword.text!){
-            (result, error) in
-            if result != nil{
-                self.userDefault.set(true, forKey: "signedIn")
-                self.userDefault.synchronize()
+        
+        guard let email = signInEmail.text , let pass = signInPassword.text else{ return }
+        
+        Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+            if user != nil {
+                print(error)
                 self.performSegue(withIdentifier: "goToMainEntry", sender: self)
             }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
                 
@@ -59,18 +57,51 @@ class Login: UIViewController, GIDSignInUIDelegate {
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
-
+                
                 
             }else{
                 let alert =  UIAlertController(title: "Invalid Sign In", message: "your email or password may be wrong", preferredStyle: .alert)
-
+                
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
-//                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
-//                print("...")
+                //                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+                //                print("...")
             }
+            
+            //successfully logged on our user
+            
         }
+        
+        
+        
+        
+        
+//        Auth.auth().signIn(withEmail: signInEmail.text!, password: signInPassword.text!){
+//            (result, error) in
+//            if result != nil{
+//                self.userDefault.set(true, forKey: "signedIn")
+//                self.userDefault.synchronize()
+//                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+//            }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
+//
+//                let alert =  UIAlertController(title: "User Not Found", message: "There is no such user", preferredStyle: .alert)
+//
+//                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(OKButton)
+//                self.present(alert, animated: true, completion: nil)
+//
+//
+//            }else{
+//                let alert =  UIAlertController(title: "Invalid Sign In", message: "your email or password may be wrong", preferredStyle: .alert)
+//
+//                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(OKButton)
+//                self.present(alert, animated: true, completion: nil)
+////                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+////                print("...")
+//            }
+//        }
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -80,11 +111,4 @@ class Login: UIViewController, GIDSignInUIDelegate {
         self.navigationController?.pushViewController(goToSignUp!, animated: true)
     }
     
-    
-    
-   /* @IBAction func LoginWithGmail(_ sender: Any) {
-        GIDSignIn.sharedInstance().delegate=self as? GIDSignInDelegate
-        GIDSignIn.sharedInstance().uiDelegate=self
-        GIDSignIn.sharedInstance().signIn()
-    }*/
 }

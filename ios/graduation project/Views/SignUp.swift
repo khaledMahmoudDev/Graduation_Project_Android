@@ -7,23 +7,24 @@
 //
 
 import UIKit
-import FirebaseAuth
-import GoogleSignIn
+import Firebase
 
-class SignUp: UIViewController, GIDSignInUIDelegate {
+class SignUp: UIViewController{
+    
+    var ref: DatabaseReference!
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var configPass: UITextField!
     
     let userDefault = UserDefaults.standard
     
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -39,23 +40,43 @@ class SignUp: UIViewController, GIDSignInUIDelegate {
             self.present(alertController, animated: true, completion: nil)
             
         }else{
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!){ result, error in
             
-            if error == nil || result != nil{
-                
-                print("user created")
-                self.userDefault.set(true, forKey: "signedIn")
-                self.userDefault.synchronize()
-                self.performSegue(withIdentifier: "goToMain", sender: self)
-            }else{
-                print("error\(error!.localizedDescription)")
-//                self.performSegue(withIdentifier: "goToMain", sender: self)
+            
+            guard let username = username.text, let email = email.text, let password = password.text, let configPass = configPass.text else {return}
+            
+            
+            
+            Auth.auth().createUser(withEmail: email, password: password){ user, error in
+                if error != nil{
+                    print(error!)
+                    self.performSegue(withIdentifier: "goToMain", sender: self)
+                    //return
                 }
-            }
-            
+                
+                guard let uid = user?.user.uid else{
+                    return
+                }
+                
+                self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+                let usersReference = self.ref.child("USERS").child(uid)
+                 let values = ["username" : username , "email": email]
+                usersReference.updateChildValues(values, withCompletionBlock :{
+                    (err, ref) in
+                    if err != nil{
+                        print(err!)
+                        return
+                    }
+                    self.performSegue(withIdentifier: "goToMain", sender: self)
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    print("saved user successfully into firebase db")
+                    
+                } )
+                
         }
     }
 
     
 
+}
 }

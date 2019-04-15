@@ -21,9 +21,7 @@ class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
      
         super.viewDidLoad()
-        //MainEntryTableView.delegate = self
-        //MainEntryTableView.dataSource = self
-       // MainEntryTableView.reloadData()
+
         
         let profileButton = UIButton(type: .custom)
         profileButton.setImage(UIImage(named: "planet.png"), for: .normal)
