@@ -1,29 +1,30 @@
 //
-//  DoneTableCell.swift
+//  CategoryTableCell.swift
 //  graduation project
 //
-//  Created by farah on 3/2/19.
+//  Created by ahmed on 4/16/19.
 //  Copyright © 2019 Ajenda. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class DoneTableCell: UITableViewCell {
+class CategoryTableCell: UITableViewCell {
 
-    @IBOutlet weak var doneCat: UILabel!
-    @IBOutlet weak var doneTitle: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func doneCell(item: DoneItems) {
+    
+    func categoryCell(item: Categories) {
         
-        doneTitle.text = item.donetitle
-        doneCat.text = item.fromdonetocategory?.categoryname
-        doneCat.textColor = item.fromdonetocategory?.categorycolor as? UIColor
+        categoryLabel.text = item.categoryname
+        categoryLabel.textColor = item.categorycolor as? UIColor
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

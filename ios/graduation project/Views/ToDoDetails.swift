@@ -9,15 +9,16 @@
 import UIKit
 import CoreData
 
-class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate{
+class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate, selectCategoryProtocal {
     
     @IBOutlet weak var todoPicker: UIPickerView!
     @IBOutlet weak var todoDetails: UITextView!
     @IBOutlet weak var todoTitle: UITextField!
     @IBOutlet weak var showLabel: UILabel!
     @IBOutlet weak var saveToDone: UIButton!
-    var showData = ""
+    var showData : String = ""
     var showColor : UIColor!
+    var IndexPathFromcat : Int?
     var catFetched = [Categories]()
     var editORdeletTODO:ToDoItems?
     var editOrEditDone:DoneItems?
@@ -26,6 +27,11 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        showLabel.text = showData
+//        showLabel.textColor = showColor
+//        print(showData)
+//        print(showLabel.text)
+//
         showLabel.text = "Choose Category.."
         showLabel.textColor = UIColor.lightGray
         
@@ -68,10 +74,15 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showLabel.text = "Choose Category.."
-        showLabel.textColor = UIColor.lightGray
         LoadCat()
+        
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     
     func LoadCat(){
         let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
@@ -144,14 +155,24 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         
     }
     
-    @IBAction func popupbtn(_ sender: Any) {
-        self.performSegue(withIdentifier: "pop" , sender : self)
-        
+
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "pop"){
+            let categoryView = segue.destination as! CategoryView
+            categoryView.selectionDelegete = self
+        }
     }
     
- 
     
+    func selectCategory(catName: String, catColor: UIColor, indexPath: Int) {
+        showLabel.text = catName
+        showLabel.textColor = catColor
+        IndexPathFromcat = indexPath
+    }
     
+
     @IBAction func showAndHidePicker(_ sender: Any) {
         if todoPicker.isHidden == true{
             todoPicker.isHidden = false
@@ -159,6 +180,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             todoPicker.isHidden = true
         }
     }
+    
+ 
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.todoPicker.isHidden = true
@@ -189,6 +212,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             todoDetails.textColor = UIColor.lightGray
         }
     }
+    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
@@ -226,6 +250,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                 newItem.tododetails = self.todoDetails.text!
                 newItem.tododate = NSDate() as Date
                 newItem.tocategory = self.catFetched[self.todoPicker.selectedRow(inComponent: 0)]
+                //newItem.tocategory = self.showLabel.text!
+                
                 do {
                     appdelegate.saveContext()
                     self.todoDetails.text = ""
@@ -260,7 +286,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         newItem.todotitle = todoTitle.text!
         newItem.tododetails = todoDetails.text!
         newItem.tododate = NSDate() as Date
-        newItem.tocategory = catFetched[todoPicker.selectedRow(inComponent: 0)]
+        newItem.tocategory = catFetched[IndexPathFromcat!]
         do {
             appdelegate.saveContext()
             todoDetails.text = ""
@@ -341,7 +367,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             doneItem.donetitle = todoTitle.text!
             doneItem.donedetails = todoDetails.text!
             doneItem.donedate = NSDate() as Date
-            doneItem.fromdonetocategory = catFetched[todoPicker.selectedRow(inComponent: 0)]
+            doneItem.fromdonetocategory = catFetched[IndexPathFromcat!]
             do {
                 appdelegate.saveContext()
                 todoDetails.text = ""

@@ -131,7 +131,10 @@ class DoneList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
                 tableview.insertRows(at: [indexPath], with: .fade)
             }
             break
+        @unknown default:
+            break
         }
+        
         
         
     }

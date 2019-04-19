@@ -72,7 +72,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pickerview.reloadAllComponents()
+        DispatchQueue.main.async {
+            self.pickerview.reloadAllComponents()
+        }
         LoadCatForPopUp()
     }
    
@@ -130,7 +132,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             print("deleted from picker at did select",row)
             CategoryPopUp.Selected = 0
             catFetchedForPopUp.remove(at: row)
-            pickerview.reloadAllComponents()
+            DispatchQueue.main.async {
+                self.pickerview.reloadAllComponents()
+            }
             
         }
         
@@ -140,7 +144,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     //action of delet button to select item
     @IBAction func deleteFromPicker(_ sender: Any) {
         CategoryPopUp.Selected = 1
-        pickerview.reloadAllComponents()
+        DispatchQueue.main.async {
+            self.pickerview.reloadAllComponents()
+        }
         
     }
    //edit a text in picker,remove old and save to a new one
@@ -157,7 +163,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             print(error.localizedDescription)
         }
         catFetchedForPopUp.append(newcat)
-        pickerview.reloadAllComponents()
+        DispatchQueue.main.async {
+            self.pickerview.reloadAllComponents()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
