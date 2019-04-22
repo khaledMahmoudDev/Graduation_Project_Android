@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate ,UIPickerViewDelegate , UIPickerViewDataSource{
+class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate ,UIPickerViewDelegate , UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
 
+  
     @IBOutlet weak var newCategory: UITextField!
     
     
@@ -18,6 +19,9 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var tableview: UITableView!
+    
+    var controller : NSFetchedResultsController<Categories>!
     
     
     var colorArray = [UIColor.red, UIColor.green, UIColor.blue, UIColor.cyan, UIColor.darkGray, UIColor.gray, UIColor.lightGray, UIColor.magenta, UIColor.orange, UIColor.purple, UIColor.yellow]
@@ -34,6 +38,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadCatForPopUp()
+        loadCategories()
         newCategory.delegate = self
         //hide the collection view of colors
         self.collectionView.isHidden = true
@@ -43,6 +48,21 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         let doneButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(Done))
         self.navigationItem.rightBarButtonItem = doneButton
         
+    }
+    
+    
+    func loadCategories(){
+        let fetchrequest:NSFetchRequest<Categories>=Categories.fetchRequest()
+        
+        let itemName = NSSortDescriptor (key: "categoryname", ascending: false)
+        fetchrequest.sortDescriptors = [itemName]
+        controller=NSFetchedResultsController(fetchRequest: fetchrequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        do {
+            try controller.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     
@@ -76,6 +96,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             self.pickerview.reloadAllComponents()
         }
         LoadCatForPopUp()
+        self.tableview.reloadData()
     }
    
     
@@ -243,4 +264,127 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     }
     
     
+    
+    
+    
+    //-----------------------------------------------------------
+    
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = controller.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableview.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CatTableCell
+        configureCellForCategories(cell: cell, indexPath: indexPath)
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let obj = controller.fetchedObjects{
+            let todo = obj[indexPath.row]
+            print(indexPath.row)
+            
+            newCategory.text = todo.categoryname
+            newCategory.textColor = todo.categorycolor as? UIColor
+
+        }
+    }
+    
+
+    @IBAction func editCatTableRow(_ sender: Any) {
+        
+        var path = tableview.indexPathForSelectedRow
+        
+        let obj = self.controller.fetchedObjects
+        let Cat = obj![(path?.row)!]
+        
+        if Cat.categoryname != self.newCategory.text || Cat.categorycolor != self.newCategory.textColor{
+            Cat.categoryname = self.newCategory.text
+            Cat.categorycolor = self.newCategory.textColor
+            appdelegate.saveContext()
+            print("cat is edited")
+        }
+        
+        
+    }
+    
+    
+    @IBAction func deleteCatTableRow(_ sender: Any) {
+        
+        var path = tableview.indexPathForSelectedRow
+        
+        let obj = self.controller.fetchedObjects
+        let Cat = obj![(path?.row)!]
+        
+        context.delete(Cat)
+        appdelegate.saveContext()
+        print("cat is deleted")
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableview.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableview.endUpdates()
+    }
+    
+    func configureCellForCategories(cell: CatTableCell, indexPath: IndexPath){
+        let itemChosen = controller.object(at: indexPath)
+        cell.categoryCell(item: itemChosen)
+        
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath{
+                tableview.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .delete:
+            if let indexPath = indexPath{
+                tableview.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .update:
+            if let indexPath = indexPath{
+                let cell = tableview.cellForRow(at: indexPath) as! CatTableCell
+                configureCellForCategories(cell: cell, indexPath: indexPath )
+            }
+            break
+        case .move:
+            if let indexPath = indexPath{
+                tableview.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath{
+                tableview.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        @unknown default:
+            break
+        }
+        
+        
+    }
+    
+    
 }
+
