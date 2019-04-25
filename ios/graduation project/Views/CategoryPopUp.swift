@@ -9,13 +9,10 @@
 import UIKit
 import CoreData
 
-class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate ,UIPickerViewDelegate , UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
+class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
 
   
     @IBOutlet weak var newCategory: UITextField!
-    
-    
-    @IBOutlet weak var pickerview: UIPickerView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,23 +24,16 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     var colorArray = [UIColor.red, UIColor.green, UIColor.blue, UIColor.cyan, UIColor.darkGray, UIColor.gray, UIColor.lightGray, UIColor.magenta, UIColor.orange, UIColor.purple, UIColor.yellow]
     
     var colorToPass : UIColor!
-    var catFetchedForPopUp = [Categories]()
-    
-    
-    //static variable to declare a variable is selected from picker view to handle deleting
-    static var Selected = 0
+    //var tableIndex : Int!
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadCatForPopUp()
         loadCategories()
         newCategory.delegate = self
         //hide the collection view of colors
         self.collectionView.isHidden = true
-        //self.pickerview.isHidden = true
-        
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(Done))
         self.navigationItem.rightBarButtonItem = doneButton
@@ -77,6 +67,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
         let newcat = Categories(context: context)
         newcat.categoryname = newCategory.text!
         newcat.categorycolor = colorToPass
+        
         do{ appdelegate.saveContext()
             newCategory.text = ""
             print("saved")
@@ -93,101 +84,20 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
-            self.pickerview.reloadAllComponents()
+            //self.pickerview.reloadAllComponents()
+            
+//            var path = self.tableview.indexPathForSelectedRow
+//
+//            let obj = self.controller.fetchedObjects
+//            let Cat = obj![(path?.row)!]
+//            Cat.categoryname = self.newCategory.text
+//            Cat.categorycolor = self.newCategory.textColor
+            self.tableview.reloadData()
+            
         }
-        LoadCatForPopUp()
         self.tableview.reloadData()
     }
    
-    
-    //function to fetch objects from coredata
-    func LoadCatForPopUp(){
-        let fetchReq : NSFetchRequest<Categories> = Categories.fetchRequest()
-        do {
-            catFetchedForPopUp = try context.fetch(fetchReq)
-        } catch  {
-            print(error.localizedDescription)
-        }
-        
-    }
-    
-    //functions of picker view
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-           return catFetchedForPopUp.count
-
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let category = catFetchedForPopUp[row]
-//        newCategory.text = category.categoryname
-//        newCategory.textColor = category.categorycolor as? UIColor
-//
-        //delet the selectd item, flag is set when delet buttion is clicked
-//        if CategoryPopUp.Selected == 1 {
-//            context.delete(category)
-//            appdelegate.saveContext()
-//            newCategory.text = ""
-//            print("deleted from picker")
-//            CategoryPopUp.Selected = 0
-//            catFetchedForPopUp.remove(at: row)
-//            pickerview.reloadAllComponents()
-//
-//        }
-        
-        return category.categoryname
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let category = catFetchedForPopUp[row]
-      //  var editedText = ""
-        newCategory.text = category.categoryname
-        newCategory.textColor = category.categorycolor as? UIColor
-        if CategoryPopUp.Selected == 1 {
-            context.delete(category)
-            appdelegate.saveContext()
-            newCategory.text = ""
-            print("deleted from picker at did select",row)
-            CategoryPopUp.Selected = 0
-            catFetchedForPopUp.remove(at: row)
-            DispatchQueue.main.async {
-                self.pickerview.reloadAllComponents()
-            }
-            
-        }
-        
-       
-    }
-
-    //action of delet button to select item
-    @IBAction func deleteFromPicker(_ sender: Any) {
-        CategoryPopUp.Selected = 1
-        DispatchQueue.main.async {
-            self.pickerview.reloadAllComponents()
-        }
-        
-    }
-   //edit a text in picker,remove old and save to a new one
-    @IBAction func EditInPicker(_ sender: Any) {
-
-        CategoryPopUp.Selected = 1
-        let newcat = Categories(context: context)
-        newcat.categoryname = newCategory.text!
-        newcat.categorycolor = colorToPass
-        do{ appdelegate.saveContext()
-            print("saved")
-            
-        }catch{
-            print(error.localizedDescription)
-        }
-        catFetchedForPopUp.append(newcat)
-        DispatchQueue.main.async {
-            self.pickerview.reloadAllComponents()
-        }
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.colorArray.count
@@ -218,10 +128,8 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     @IBAction func toggleCollectionViewHideShow(sender: UIButton) {
         if collectionView.isHidden == true{
             collectionView.isHidden = false
-            pickerview.isHidden = true
         }else{
             collectionView.isHidden = true
-            pickerview.isHidden = false
         }
     }
     
@@ -255,10 +163,11 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        newCategory.resignFirstResponder()
+        //textField.resignFirstResponder()
         return true
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.collectionView.isHidden = true
     }
@@ -284,21 +193,38 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CatTableCell
+        //cell.selectionStyle = UITableViewCell.SelectionStyle.default
         configureCellForCategories(cell: cell, indexPath: indexPath)
         return cell
         
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let obj = controller.fetchedObjects{
+//        DispatchQueue.main.async{
+//            if let obj = self.controller.fetchedObjects{
+//            let todo = obj[indexPath.row]
+//            print(indexPath.row)
+//
+//                self.newCategory.text = todo.categoryname
+//                self.newCategory.textColor = todo.categorycolor as? UIColor
+//
+//            }
+//        }
+        
+        DispatchQueue.global(qos: .background).sync {
+            if let obj = self.controller.fetchedObjects{
             let todo = obj[indexPath.row]
-            print(indexPath.row)
-            
-            newCategory.text = todo.categoryname
-            newCategory.textColor = todo.categorycolor as? UIColor
-
+                print(indexPath.row)
+            DispatchQueue.main.async {
+                self.newCategory.text = todo.categoryname
+                self.newCategory.textColor = todo.categorycolor as? UIColor
+                }
+            }
         }
+        
+       // tableView.deselectRow(at: indexPath, animated: false)
     }
     
 
@@ -316,6 +242,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             print("cat is edited")
         }
         
+       // tableview.deselectRow(at: path!, animated: false)
         
     }
     

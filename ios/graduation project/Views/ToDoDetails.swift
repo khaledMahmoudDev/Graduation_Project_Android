@@ -70,6 +70,10 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             loadforEditDone()
         }
         
+        let category = catFetched[IndexPathFromcat!]
+        showLabel.text = category.categoryname
+        showLabel.textColor = category.categorycolor as? UIColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +149,9 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                 while index<catFetched.count {
                     let row = catFetched[index]
                     if row.categoryname == doneCat.categoryname {
-                        todoPicker.selectRow(index, inComponent: 0, animated: false)
+                      //  todoPicker.selectRow(index, inComponent: 0, animated: false)
+                        //self.catFetched[IndexPathFromcat!]
+                    
                     }
                     index = index + 1
                     
@@ -170,6 +176,7 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         showLabel.text = catName
         showLabel.textColor = catColor
         IndexPathFromcat = indexPath
+        //print(IndexPathFromcat)
     }
     
 
@@ -249,7 +256,8 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                 newItem.todotitle = self.todoTitle.text!
                 newItem.tododetails = self.todoDetails.text!
                 newItem.tododate = NSDate() as Date
-                newItem.tocategory = self.catFetched[self.todoPicker.selectedRow(inComponent: 0)]
+                newItem.tocategory = self.catFetched[self.IndexPathFromcat!]
+                print("need to be printed",self.IndexPathFromcat!)
                 //newItem.tocategory = self.showLabel.text!
                 
                 do {

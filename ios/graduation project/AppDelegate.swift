@@ -18,7 +18,7 @@ let context = appdelegate.persistentContainer.viewContext
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-    let userDefault = UserDefaults.standard
+   // let userDefault = UserDefaults.standard
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -77,28 +77,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-jp-a82">
-                                <rect key="frame" x="16" y="160" width="343" height="50"/>
+                                <rect key="frame" x="13" y="311" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-5k-ZHK">
-                                <rect key="frame" x="11" y="235" width="345" height="50"/>
+                                <rect key="frame" x="13" y="369" width="345" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stC-t2-NAm">
-                                <rect key="frame" x="11" y="300" width="348" height="50"/>
+                                <rect key="frame" x="13" y="427" width="348" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iat-sx-Vjx">
-                                <rect key="frame" x="90" y="399" width="141" height="36"/>
+                                <rect key="frame" x="117" y="574" width="141" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign up">
@@ -109,12 +109,16 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-rM-ICc">
-                                <rect key="frame" x="16" y="102" width="343" height="50"/>
+                                <rect key="frame" x="13" y="253" width="343" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileImg" translatesAutoresizingMaskIntoConstraints="NO" id="tMw-qL-4C3">
+                                <rect key="frame" x="135" y="101" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oQc-5R-zue"/>
@@ -124,6 +128,7 @@
                         <outlet property="configPass" destination="stC-t2-NAm" id="0Nn-PM-Ibw"/>
                         <outlet property="email" destination="8a9-jp-a82" id="4ft-bg-ZJ2"/>
                         <outlet property="password" destination="hF2-5k-ZHK" id="CEn-j1-v2U"/>
+                        <outlet property="profileImg" destination="tMw-qL-4C3" id="6GP-DU-62e"/>
                         <outlet property="username" destination="hyV-rM-ICc" id="ngm-0x-jlZ"/>
                         <segue destination="2cL-nu-UpS" kind="show" identifier="goToMain" id="fHg-Bh-kzx"/>
                     </connections>
@@ -900,14 +905,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <pickerView key="backgroundView" contentMode="scaleToFill" fixedFrame="YES" id="OJ0-Ek-md2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="336"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="g7n-cR-Da7" id="1AC-pw-hWw"/>
-                                        <outlet property="delegate" destination="g7n-cR-Da7" id="9p7-bn-1ti"/>
-                                    </connections>
-                                </pickerView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="T1O-m4-Oys" customClass="colorsCollectionCell" customModule="graduation_project" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="319" height="43"/>
@@ -984,6 +981,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="g7n-cR-Da7" id="1y4-jr-qJS"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -992,7 +992,6 @@
                     <connections>
                         <outlet property="collectionView" destination="nA3-Sz-Rla" id="hfw-dj-i4Q"/>
                         <outlet property="newCategory" destination="XCj-kg-Jqh" id="8j3-Qv-Iw1"/>
-                        <outlet property="pickerview" destination="OJ0-Ek-md2" id="9Zy-28-Cwz"/>
                         <outlet property="tableview" destination="C6I-kN-JaP" id="O3Z-3W-qvH"/>
                     </connections>
                 </viewController>
@@ -1073,6 +1072,9 @@
             <point key="canvasLocation" x="4305" y="-1412"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profileImg" width="225" height="225"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
