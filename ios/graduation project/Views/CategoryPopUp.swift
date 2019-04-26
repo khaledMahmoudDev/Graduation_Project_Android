@@ -10,11 +10,7 @@ import UIKit
 import CoreData
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
-=======
-class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate ,UIPickerViewDelegate , UIPickerViewDataSource{
->>>>>>> parent of 751ae1d... category functionality 100% work..
 =======
 class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDataSource, UICollectionViewDelegate ,UIPickerViewDelegate , UIPickerViewDataSource{
 >>>>>>> parent of 751ae1d... category functionality 100% work..
@@ -35,11 +31,7 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 <<<<<<< HEAD
-<<<<<<< HEAD
         loadCategories()
-=======
-        LoadCatForPopUp()
->>>>>>> parent of 751ae1d... category functionality 100% work..
 =======
         LoadCatForPopUp()
 >>>>>>> parent of 751ae1d... category functionality 100% work..
@@ -236,7 +228,6 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     
     
 <<<<<<< HEAD
-<<<<<<< HEAD
     
     
     
@@ -377,8 +368,6 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
     }
     
     
-=======
->>>>>>> parent of 751ae1d... category functionality 100% work..
 =======
 >>>>>>> parent of 751ae1d... category functionality 100% work..
 }
