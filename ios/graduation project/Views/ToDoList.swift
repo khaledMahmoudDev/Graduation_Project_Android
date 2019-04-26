@@ -129,8 +129,6 @@ class ToDoList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
                 tableview.insertRows(at: [indexPath], with: .fade)
             }
             break
-        default:
-            print("error")
         }
         
         

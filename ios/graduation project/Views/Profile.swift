@@ -13,13 +13,21 @@ import Firebase
 
 class Profile: UIViewController {
     
+<<<<<<< HEAD
     var reference :DatabaseReference!
+=======
+    var ref: DatabaseReference!
+
+>>>>>>> parent of f74227e... fetching user profile image from firebase
     
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phone: UILabel!
+<<<<<<< HEAD
     let userDefault = UserDefaults.standard
+=======
+>>>>>>> parent of f74227e... fetching user profile image from firebase
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +36,7 @@ class Profile: UIViewController {
         print(emailValue)
         email.text = emailValue
         
+<<<<<<< HEAD
         
 //        //let userID = Auth.auth().currentUser?.uid
 //        reference.child("USERS").child(emailValue).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -58,6 +67,28 @@ class Profile: UIViewController {
 ////                        print(error.localizedDescription)
 //                    }
 //    )}
+=======
+        let userID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("USERS").child(userID!)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            
+            let value = snapshot.value as? NSDictionary
+            
+            let usernameValue = value?["username"] as? String ?? ""
+            self.username.text = "\(usernameValue)"
+            
+            let emailValue = value?["email"] as? String ?? ""
+            self.email.text = "\(emailValue)"
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+  
+    }
+    
+>>>>>>> parent of f74227e... fetching user profile image from firebase
 
      // your ref ie. root.child("users").child("stephenwarren001@yahoo.com")
     

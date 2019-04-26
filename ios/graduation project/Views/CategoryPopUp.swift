@@ -72,6 +72,8 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             newCategory.text = ""
             print("saved")
             
+        }catch{
+            print(error.localizedDescription)
         }
         
        self.dismiss(animated: true, completion: nil)
@@ -146,6 +148,8 @@ class CategoryPopUp: UIViewController ,UITextFieldDelegate , UICollectionViewDat
             newCategory.text = ""
             print("saved")
 
+        }catch{
+            print(error.localizedDescription)
         }
         
         
