@@ -38,6 +38,7 @@
 		31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C6220B762600C9B2E6 /* Calendar.swift */; };
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 		E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203E283226652EB001CA54B /* CategoryTableCell.swift */; };
+		E206CA9E2271FC9100F80BE3 /* RedunTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E206CA9D2271FC9100F80BE3 /* RedunTableCell.swift */; };
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
 		E241E9FF226E50F600369683 /* CatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241E9FE226E50F600369683 /* CatTableCell.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		4A2617FCC9609508046B1C51 /* Pods-graduation project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.debug.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.debug.xcconfig"; sourceTree = "<group>"; };
 		68601CB213A9611F76C64AFB /* Pods-graduation project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.release.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.release.xcconfig"; sourceTree = "<group>"; };
 		E203E283226652EB001CA54B /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
+		E206CA9D2271FC9100F80BE3 /* RedunTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedunTableCell.swift; sourceTree = "<group>"; };
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E241E9FE226E50F600369683 /* CatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 				319B596C2224D903007F73AF /* DoneList.swift */,
 				31012D85222AC202007A3D8C /* DoneTableCell.swift */,
 				31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */,
+				E206CA9D2271FC9100F80BE3 /* RedunTableCell.swift */,
 				31C7D515222D63A8006DB7B0 /* CategoryPopUp.swift */,
 				E241E9FE226E50F600369683 /* CatTableCell.swift */,
 				E20AEC7622664FD100AB2EE0 /* CategoryView.swift */,
@@ -323,6 +326,7 @@
 				E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
 				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
+				E206CA9E2271FC9100F80BE3 /* RedunTableCell.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
 				31012D84222AC1E8007A3D8C /* ToDoTableCell.swift in Sources */,

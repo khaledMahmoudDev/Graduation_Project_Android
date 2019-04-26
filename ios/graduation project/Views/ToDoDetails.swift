@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate, selectCategoryProtocal {
+class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate, selectCategoryProtocal, NSFetchedResultsControllerDelegate,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var todoPicker: UIPickerView!
     @IBOutlet weak var todoDetails: UITextView!
@@ -22,7 +22,10 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
     var catFetched = [Categories]()
     var editORdeletTODO:ToDoItems?
     var editOrEditDone:DoneItems?
+    var controller : NSFetchedResultsController<Categories>!
+
     
+    @IBOutlet weak var redunTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +73,30 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             loadforEditDone()
         }
         
-        let category = catFetched[IndexPathFromcat!]
-        showLabel.text = category.categoryname
-        showLabel.textColor = category.categorycolor as? UIColor
-        
+    
+        loadCategories()
     }
     
+    
+    
+    func loadCategories(){
+        let fetchrequest:NSFetchRequest<Categories>=Categories.fetchRequest()
+        
+        let itemName = NSSortDescriptor (key: "categoryname", ascending: false)
+        fetchrequest.sortDescriptors = [itemName]
+        controller=NSFetchedResultsController(fetchRequest: fetchrequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        do {
+            try controller.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+        
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        redunTable.reloadData()
         LoadCat()
         
     }
@@ -265,8 +284,6 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                     self.todoDetails.text = ""
                     self.todoTitle.text = ""
                     print("new saved to todo")
-                } catch  {
-                    print(error.localizedDescription)
                 }
                 
                 context.delete(self.editOrEditDone!)
@@ -294,14 +311,12 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
         newItem.todotitle = todoTitle.text!
         newItem.tododetails = todoDetails.text!
         newItem.tododate = NSDate() as Date
-        newItem.tocategory = catFetched[IndexPathFromcat!]
+        //newItem.tocategory = catFetched[redunTable.indexPath(for: RedunTableCell)!]
         do {
             appdelegate.saveContext()
             todoDetails.text = ""
             todoTitle.text = ""
             print("saved")
-        } catch  {
-            print(error.localizedDescription)
         }
         navigationController?.popViewController(animated: true)
         }
@@ -381,8 +396,6 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
                 todoDetails.text = ""
                 todoTitle.text = ""
                 print("saved to done")
-            } catch  {
-                print(error.localizedDescription)
             }
             
             context.delete(editORdeletTODO!)
@@ -392,4 +405,91 @@ class ToDoDetails: UIViewController ,  UIPopoverPresentationControllerDelegate,U
             //self.performSegue(withIdentifier: "doneList" , sender : self)
         }
     }
+    
+   // ----------------
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = controller.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = redunTable.dequeueReusableCell(withIdentifier: "redunTableCell", for: indexPath) as! RedunTableCell
+        //cell.selectionStyle = UITableViewCell.SelectionStyle.default
+        configureCellForCategories(cell: cell, indexPath: indexPath)
+        return cell
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+      
+    }
+    
+   
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        redunTable.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        redunTable.endUpdates()
+    }
+    
+    func configureCellForCategories(cell: RedunTableCell, indexPath: IndexPath){
+        let itemChosen = controller.object(at: indexPath)
+        cell.categoryCell(item: itemChosen)
+        
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath{
+                redunTable.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .delete:
+            if let indexPath = indexPath{
+                redunTable.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .update:
+            if let indexPath = indexPath{
+                let cell = redunTable.cellForRow(at: indexPath) as! RedunTableCell
+                configureCellForCategories(cell: cell, indexPath: indexPath )
+            }
+            break
+        case .move:
+            if let indexPath = indexPath{
+                redunTable.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath{
+                redunTable.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        @unknown default:
+            break
+        }
+        
+        
+    }
+    
+    
 }
+
+
+
