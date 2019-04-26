@@ -48,7 +48,7 @@ class Login: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
             if user != nil {
-                print(error as Any)
+                print(error)
                 self.performSegue(withIdentifier: "goToMainEntry", sender: self)
             }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
                 
