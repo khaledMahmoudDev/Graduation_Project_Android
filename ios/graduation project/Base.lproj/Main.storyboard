@@ -936,6 +936,7 @@
                                 </connections>
                             </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C6I-kN-JaP">
                                 <rect key="frame" x="166" y="171" width="193" height="447"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -995,6 +996,8 @@
                             </textField>
 =======
 >>>>>>> parent of 751ae1d... category functionality 100% work..
+=======
+>>>>>>> parent of 751ae1d... category functionality 100% work..
                         </subviews>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Tcf-5y-g7X"/>
@@ -1002,8 +1005,13 @@
                     <connections>
                         <outlet property="collectionView" destination="nA3-Sz-Rla" id="hfw-dj-i4Q"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <outlet property="newCategory" destination="XCj-kg-Jqh" id="8j3-Qv-Iw1"/>
                         <outlet property="tableview" destination="C6I-kN-JaP" id="O3Z-3W-qvH"/>
+=======
+                        <outlet property="newCategory" destination="GNg-2x-bhS" id="WuD-AB-1Ro"/>
+                        <outlet property="pickerview" destination="OJ0-Ek-md2" id="9Zy-28-Cwz"/>
+>>>>>>> parent of 751ae1d... category functionality 100% work..
 =======
                         <outlet property="newCategory" destination="GNg-2x-bhS" id="WuD-AB-1Ro"/>
                         <outlet property="pickerview" destination="OJ0-Ek-md2" id="9Zy-28-Cwz"/>
