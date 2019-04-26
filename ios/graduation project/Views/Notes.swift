@@ -136,6 +136,8 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
                 tableViewList.insertRows(at: [indexPath], with: .fade)
             }
             break
+        default:
+            print("error")
         }
         
         

@@ -57,7 +57,7 @@ class SignUp: UIViewController{
         }else{
             
             
-            guard let username = username.text, let email = email.text, let password = password.text, let configPass = configPass.text , let profileImg = profileImg.image else {return}
+            guard let username = username.text, let email = email.text, let password = password.text else {return}
             
             
             

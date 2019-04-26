@@ -101,8 +101,6 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
                 name.text = ""
                 content.text = ""
                 print("saved")
-            }catch{
-                print("error",error.localizedDescription)
             }
             
             navigationController?.popViewController(animated: true)
