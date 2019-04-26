@@ -14,13 +14,12 @@ import Firebase
 class Profile: UIViewController {
     
     var ref: DatabaseReference!
-
+    var reference: StorageReference!
     
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var phone: UILabel!
-    
+    @IBOutlet weak var profileImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +39,24 @@ class Profile: UIViewController {
             
         }) { (error) in
             print(error.localizedDescription)
+        }
+        
+        
+        let storageRef = Storage.storage().reference(forURL: "gs://ajenda-a702f.appspot.com/").child("profileImages").child(userID!)
+        
+        storageRef.downloadURL { url, error in
+            if let error = error {
+                // Handle any errors
+                print(error)
+            } else {
+                // Get the download URL for 'images/stars.jpg'
+//                let UrlString = url!.absoluteString
+//                print(UrlString)
+                
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)
+                self.profileImage.image = image
+            }
         }
   
     }
