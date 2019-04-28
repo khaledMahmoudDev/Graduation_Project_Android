@@ -130,7 +130,6 @@
                         <outlet property="password" destination="hF2-5k-ZHK" id="CEn-j1-v2U"/>
                         <outlet property="profileImg" destination="tMw-qL-4C3" id="6GP-DU-62e"/>
                         <outlet property="username" destination="hyV-rM-ICc" id="ngm-0x-jlZ"/>
-                        <segue destination="2cL-nu-UpS" kind="show" identifier="goToMain" id="fHg-Bh-kzx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoM-MM-1cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1080,7 +1079,7 @@
         <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
         <segue reference="aR8-6F-1r7"/>
-        <segue reference="oeR-2o-rpE"/>
+        <segue reference="we9-CN-XAb"/>
         <segue reference="JnZ-ya-3oI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,6 @@ class Login: UIViewController {
     @IBOutlet weak var signInEmail: UITextField!
     @IBOutlet weak var signInPassword: UITextField!
     
-    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +29,16 @@ class Login: UIViewController {
 //        signInButton.addSubview(imageView)
 
         // Do any additional setup after loading the view.
+        
     }
     
 
     override func viewDidAppear(_ animated: Bool) {
-        if userDefault.bool(forKey: "signedIn"){
+        super.viewDidAppear(false)
+        if Auth.auth().currentUser != nil{
             self.performSegue(withIdentifier: "goToMainEntry", sender: self)
         }
+        
     }
     
 
@@ -47,30 +49,41 @@ class Login: UIViewController {
         guard let email = signInEmail.text , let pass = signInPassword.text else{ return }
         
         Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
-            if user != nil {
-                print(error)
-                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
-            }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
-                
-                let alert =  UIAlertController(title: "User Not Found", message: "There is no such user", preferredStyle: .alert)
-                
-                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(OKButton)
-                self.present(alert, animated: true, completion: nil)
-                
-                
-            }else{
-                let alert =  UIAlertController(title: "Invalid Sign In", message: "your email or password may be wrong", preferredStyle: .alert)
-                
-                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(OKButton)
-                self.present(alert, animated: true, completion: nil)
-                //                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
-                //                print("...")
+            
+            if let authresult = user {
+                let verifiedUser = authresult.user
+                if verifiedUser.isEmailVerified{
+                    print("this email is verified")
+                    self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+                }else{
+                    print("this mail is not verified")
+                }
             }
+//            if user != nil{
+//                print(error)
+//                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+//                        }else if (error?._code == AuthErrorCode.userNotFound.rawValue){
+//
+//                let alert =  UIAlertController(title: "User Not Found", message: "There is no such user", preferredStyle: .alert)
+//                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(OKButton)
+//                self.present(alert, animated: true, completion: nil)
+//
+//
+//            }else{
+//                let alert =  UIAlertController(title: "Invalid Sign In", message: "your email or password may be wrong", preferredStyle: .alert)
+//
+//                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(OKButton)
+//                self.present(alert, animated: true, completion: nil)
+//               //                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+//               //                print("...")
+//            }
+
+            
             
             //successfully logged on our user
-            
+
         }
         
         
@@ -112,3 +125,20 @@ class Login: UIViewController {
     }
     
 }
+
+
+/*
+ 
+ if let err = error{
+ print(err)
+ //                self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+ }else if user != nil && user?.user.isEmailVerified == nil{
+ print ("")
+ }
+ else if user != nil && user?.user.isEmailVerified != nil{
+ self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+ }
+ 
+ 
+ 
+ */
