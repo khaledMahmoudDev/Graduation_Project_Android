@@ -8,12 +8,17 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
+    
+    var ref: DatabaseReference!
+    var DetailsArray = [Note]()
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var name: UITextField!
     var editOrDeleteNote: UserNotes?
     override func viewDidLoad() {
+        //fetchUsersNoteFromFirebase()
         super.viewDidLoad()
         
         content.text = "Enter Note.."
@@ -84,7 +89,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         
         }else{
-            
+            //updateUsersNoteInFirebase()
             let note : UserNotes!
             
             if editOrDeleteNote == nil{
@@ -92,6 +97,8 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             }else{
                 note = editOrDeleteNote
             }
+            
+            saveUsersNoteInFirebase()
             
             note.notename = name.text
             note.notecontent = content.text
@@ -101,8 +108,6 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
                 name.text = ""
                 content.text = ""
                 print("saved")
-            }catch{
-                print("error",error.localizedDescription)
             }
             
             navigationController?.popViewController(animated: true)
@@ -157,4 +162,76 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         }
     }
     
+    
+  
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
+  
+    func saveUsersNoteInFirebase(){
+        
+        guard let noteContent = content.text, let noteName = name.text else{
+            return
+        }
+        self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+        let values = ["noteName" : noteName , "noteContent": noteContent]
+        let usersReference = self.ref.child("UserNotes").child(User!.uid).childByAutoId().setValue(values)
+        
+            print("saved savely for the current user")
+    }
+    
+    
+    func fetchUsersNoteFromFirebase(){
+        
+        guard let noteContent = content.text, let noteName = name.text else{
+            return
+        }
+        
+        //let userId = Auth.auth().currentUser?.uid
+        ref.child("UserNotes").child(User!.uid).childByAutoId().observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let noteContentFIR = value?["noteName"] as? String ?? ""
+            print(noteContentFIR)
+
+
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    
+//        ref.child("UserNotes").child(User!.uid).childByAutoId().observe(.childAdded) { (snapshot) in
+//            let value = snapshot.value as? NSDictionary
+//            let noteContentFIR = value?["noteName"] as? String ?? ""
+//            print(noteContentFIR)
+//
+//
+//    }
+        
+    }
+    
+    func updateUsersNoteInFirebase(){
+        
+        let userId = User!.uid
+        
+        guard let noteContent = content.text, let noteName = name.text else{
+            return
+        }
+        guard let key = ref.child("UserNotes").child(userId).childByAutoId().key else {
+            return
+        }
+        
+        let userNote = ["noteName" : noteName , "noteContent": noteContent]
+        
+        let childUpdates = ["/posts/\(key)": userNote,
+                            "/user-posts/\(userId)/\(key)/": userNote]
+        ref.updateChildValues(childUpdates)
+        
+    }
+    
 }
+
+
+//}
+

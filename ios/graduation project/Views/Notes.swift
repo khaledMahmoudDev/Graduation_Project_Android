@@ -8,19 +8,24 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-
+    
+    var ref: DatabaseReference!
+    var noteArray = [Note]()
     @IBOutlet weak var tableViewList: UITableView!
-    //var notelist = [Notes]()
-    var controller : NSFetchedResultsController<UserNotes>!
+
+    //var controller : NSFetchedResultsController<UserNotes>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetch()
+        fetchNotesFromFirebase()
+        //getUniqueFirebaseKey()
+        //fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetch()
+        //fetch()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,12 +34,12 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let sections = controller.sections{
-            let secInfo = sections[section]
-            return secInfo.numberOfObjects
-        }
+//        if let sections = controller.sections{
+//            let secInfo = sections[section]
+//            return secInfo.numberOfObjects
+//        }
         
-        return 0
+        return noteArray.count
         //return notelist.count
     }
     
@@ -42,7 +47,9 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         let cell : NoteTableCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NoteTableCell
         
         //cell.mycell(note: notelist[indexPath.row])
-        configureCell(cell: cell, indexPath: indexPath )
+       // configureCell(cell: cell, indexPath: indexPath )
+        
+        cell.textLabel?.text = noteArray[indexPath.row].noteName
         return cell
     }
     
@@ -51,29 +58,32 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     
-    func configureCell(cell: NoteTableCell, indexPath: IndexPath) {
-        let noteitem = controller.object(at: indexPath )
-        cell.mycell(note: noteitem)
-    }
+//    func configureCell(cell: NoteTableCell, indexPath: IndexPath) {
+//        let noteitem = controller.object(at: indexPath )
+//        cell.mycell(note: noteitem)
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let obj = controller.fetchedObjects{
-            let note = obj[indexPath.row]
-            performSegue(withIdentifier: "noteDetails", sender: note)
-        }
+//        if let obj = controller.fetchedObjects{
+//            let note = obj[indexPath.row]
+          // performSegue(withIdentifier: "noteDetails", sender: note)
+        let choosenNote = noteArray[indexPath.row].noteKey
+        //print("choosenKey", choosenNote)
+       performSegue(withIdentifier: "noteDetails", sender: choosenNote)
+//        }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "delete"){(action,indexPath) in
-            let obj = self.controller.fetchedObjects
-            let note = obj![indexPath.row]
-            context.delete(note)
-            appdelegate.saveContext()
-            print("deleted")
-        }
-        
-        return [deleteAction]
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let deleteAction = UITableViewRowAction(style: .destructive, title: "delete"){(action,indexPath) in
+//            let obj = self.controller.fetchedObjects
+//            let note = obj![indexPath.row]
+//            context.delete(note)
+//            appdelegate.saveContext()
+//            print("deleted")
+//        }
+//        
+//        return [deleteAction]
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "noteDetails"{
@@ -85,59 +95,97 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
-    func fetch (){
-        let fetchRequest : NSFetchRequest<UserNotes> = UserNotes.fetchRequest()
-        
-        let sortByDate = NSSortDescriptor(key: "date", ascending: false)
-        fetchRequest.sortDescriptors = [sortByDate]
-        controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        controller.delegate = self
-        do{
-            //notelist = try context.fetch(fetchRequest)
-            try controller.performFetch()
-            tableViewList.reloadData()
-        }catch{
-            print("error")
+//    func fetch (){
+//        let fetchRequest : NSFetchRequest<UserNotes> = UserNotes.fetchRequest()
+//
+//        let sortByDate = NSSortDescriptor(key: "date", ascending: false)
+//        fetchRequest.sortDescriptors = [sortByDate]
+//        controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//        controller.delegate = self
+//        do{
+//            //notelist = try context.fetch(fetchRequest)
+//            try controller.performFetch()
+//            tableViewList.reloadData()
+//        }catch{
+//            print("error")
+//        }
+//    }
+//
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableViewList.beginUpdates()
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableViewList.endUpdates()
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch (type) {
+//        case .insert:
+//            if let indexPath = newIndexPath{
+//                tableViewList.insertRows(at: [indexPath], with: .fade)
+//            }
+//            break
+//        case .delete:
+//            if let indexPath = indexPath{
+//                tableViewList.deleteRows(at: [indexPath], with: .fade)
+//            }
+//            break
+//        case .update:
+//            if let indexPath = indexPath{
+//                let cell = tableViewList.cellForRow(at: indexPath) as! NoteTableCell
+//                configureCell(cell: cell, indexPath: indexPath )
+//            }
+//            break
+//        case .move:
+//            if let indexPath = indexPath{
+//                tableViewList.deleteRows(at: [indexPath], with: .fade)
+//            }
+//            if let indexPath = newIndexPath{
+//                tableViewList.insertRows(at: [indexPath], with: .fade)
+//            }
+//            break
+//        }
+//
+//
+//    }
+    
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
+    
+    func fetchNotesFromFirebase(){
+        Database.database().reference().ref.child("UserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String : Any]{
+                let noteName = dict["noteName"] as! String
+                let noteKey = snapshot.key
+                print("this is note key", noteKey)
+                let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey)
+                self.noteArray.append(notes)
+                self.tableViewList.reloadData()
+            }
+            
         }
     }
     
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableViewList.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableViewList.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
-        case .insert:
-            if let indexPath = newIndexPath{
-                tableViewList.insertRows(at: [indexPath], with: .fade)
-            }
-            break
-        case .delete:
-            if let indexPath = indexPath{
-                tableViewList.deleteRows(at: [indexPath], with: .fade)
-            }
-            break
-        case .update:
-            if let indexPath = indexPath{
-                let cell = tableViewList.cellForRow(at: indexPath) as! NoteTableCell
-                configureCell(cell: cell, indexPath: indexPath )
-            }
-            break
-        case .move:
-            if let indexPath = indexPath{
-                tableViewList.deleteRows(at: [indexPath], with: .fade)
-            }
-            if let indexPath = newIndexPath{
-                tableViewList.insertRows(at: [indexPath], with: .fade)
-            }
-            break
-        }
-        
-        
-    }
+//    func getUniqueFirebaseKey(){
+//        let ref = Database.database().reference()
+//        ref.child("UserNotes").child(User!.uid)
+//            .queryEqual(toValue: "UNIQUE_ID")
+//            .observe(.value, with: { (snapshot) in
+//
+//                if let dict = snapshot.value as? [String:Any] {
+//
+//                    for key in dict.keys{
+//                        print("this is key from loop ", key)
+//                    }
+//                }
+//        }
+//
+//    )}
+  
+
 }
