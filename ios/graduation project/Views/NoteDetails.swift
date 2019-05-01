@@ -13,13 +13,26 @@ import Firebase
 class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     var ref: DatabaseReference!
-    var DetailsArray = [Note]()
+    var choosedNote : String!
+    
+    //var DetailsArray = [Note]()
+    
+    
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var name: UITextField!
-    var editOrDeleteNote: UserNotes?
+    //var editOrDeleteNote: UserNotes?
     override func viewDidLoad() {
-        //fetchUsersNoteFromFirebase()
         super.viewDidLoad()
+        
+        if choosedNote != nil {
+            fetchUsersNoteFromFirebase()
+        }
+        
+//        if let unwarppedNoteDetails = choosedNote{
+//            print("here we are el7 :'D",unwarppedNoteDetails)
+//        }
+        
+        
         
         content.text = "Enter Note.."
         content.textColor = UIColor.lightGray
@@ -31,9 +44,9 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         name.returnKeyType = .done
         name.delegate = self
         
-        if editOrDeleteNote != nil{
-            loadForEdit()
-        }
+//        if editOrDeleteNote != nil{
+//            loadForEdit()
+//        }
     }
     
     
@@ -89,78 +102,82 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         
         }else{
-            //updateUsersNoteInFirebase()
-            let note : UserNotes!
             
-            if editOrDeleteNote == nil{
-                note = UserNotes(context: context)
+//            let note : UserNotes!
+//
+//            if editOrDeleteNote == nil{
+//                note = UserNotes(context: context)
+//            }else{
+//                note = editOrDeleteNote
+//            }
+//
+//            note.notename = name.text
+//            note.notecontent = content.text
+//            note.date = NSDate() as Date
+//            do{
+//                appdelegate.saveContext()
+//                name.text = ""
+//                content.text = ""
+//                print("saved")
+//            }
+            
+            if choosedNote != nil{
+                updateUsersNoteInFirebase()
             }else{
-                note = editOrDeleteNote
+                saveUsersNoteInFirebase()
             }
-            
-            saveUsersNoteInFirebase()
-            
-            note.notename = name.text
-            note.notecontent = content.text
-            note.date = NSDate() as Date
-            do{
-                appdelegate.saveContext()
-                name.text = ""
-                content.text = ""
-                print("saved")
-            }
-            
             navigationController?.popViewController(animated: true)
     }
 }
     
     @IBAction func cancel(_ sender: Any) {
         if name.text != "" || content.text != "" || (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) {
-            if editOrDeleteNote == nil{
-            let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-
-            alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
-            }))
-            
-            present(alert, animated: true, completion: nil)
-            } else if editOrDeleteNote != nil {
-                if name.text != editOrDeleteNote?.notename || content.text != editOrDeleteNote?.notecontent {
-                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
-                    
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                    }))
-                    
-                    
-                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                        self.navigationController?.popViewController(animated: true)
-                    }))
-                    
-                    present(alert, animated: true, completion: nil)
-                }else{
+//            if editOrDeleteNote == nil{
+//            let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
+//
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+//                alert.dismiss(animated: true, completion: nil)
+//            }))
+//
+//            alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+//                alert.dismiss(animated: true, completion: nil)
+//                self.navigationController?.popViewController(animated: true)
+//            }))
+//
+//            present(alert, animated: true, completion: nil)
+//            } else if editOrDeleteNote != nil {
+//                if name.text != editOrDeleteNote?.notename || content.text != editOrDeleteNote?.notecontent {
+//                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
+//
+//                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+//                        alert.dismiss(animated: true, completion: nil)
+//                    }))
+//
+//
+//                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+//                        alert.dismiss(animated: true, completion: nil)
+//                        self.navigationController?.popViewController(animated: true)
+//                    }))
+//
+//                    present(alert, animated: true, completion: nil)
+//                }else{
                     navigationController?.popViewController(animated: true)
-                }
-                
-            }
-        }else{
-            navigationController?.popViewController(animated: true)
-        }
+//                }
+//
+//            }
+//        }else{
+//            navigationController?.popViewController(animated: true)
+//        }
 
+        }
     }
     
-    func loadForEdit(){
-        if let selectedNote = editOrDeleteNote{
-            name.text = selectedNote.notename
-            content.text = selectedNote.notecontent
-        }
-    }
+//    func loadForEdit(){
+//        if let selectedNote = editOrDeleteNote{
+//            name.text = selectedNote.notename
+//            content.text = selectedNote.notecontent
+//        }
+//    }
     
     
   
@@ -184,31 +201,23 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     func fetchUsersNoteFromFirebase(){
         
-        guard let noteContent = content.text, let noteName = name.text else{
-            return
-        }
+      
+        let userId = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("UserNotes").child(userId!).child(choosedNote)
         
-        //let userId = Auth.auth().currentUser?.uid
-        ref.child("UserNotes").child(User!.uid).childByAutoId().observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            // Get user value
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
             let value = snapshot.value as? NSDictionary
-            let noteContentFIR = value?["noteName"] as? String ?? ""
-            print(noteContentFIR)
+            let noteNameFIR = value?["noteName"] as? String ?? ""
+            self.name.text = "\(noteNameFIR)"
+            let noteContent = value?["noteContent"] as? String ?? ""
+            self.content.text = "\(noteContent)"
+        
 
-
-            // ...
+            
         }) { (error) in
             print(error.localizedDescription)
         }
-    
-//        ref.child("UserNotes").child(User!.uid).childByAutoId().observe(.childAdded) { (snapshot) in
-//            let value = snapshot.value as? NSDictionary
-//            let noteContentFIR = value?["noteName"] as? String ?? ""
-//            print(noteContentFIR)
-//
-//
-//    }
-        
     }
     
     func updateUsersNoteInFirebase(){
@@ -218,20 +227,15 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         guard let noteContent = content.text, let noteName = name.text else{
             return
         }
-        guard let key = ref.child("UserNotes").child(userId).childByAutoId().key else {
-            return
-        }
         
+        ref = Database.database().reference().child("UserNotes").child(userId).child(choosedNote)
         let userNote = ["noteName" : noteName , "noteContent": noteContent]
-        
-        let childUpdates = ["/posts/\(key)": userNote,
-                            "/user-posts/\(userId)/\(key)/": userNote]
-        ref.updateChildValues(childUpdates)
+        ref.updateChildValues(userNote)
+
         
     }
     
 }
 
 
-//}
 

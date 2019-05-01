@@ -19,12 +19,23 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     //var controller : NSFetchedResultsController<UserNotes>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNotesFromFirebase()
+        //fetchNotesFromFirebase()
+        //print("********************1")
         //getUniqueFirebaseKey()
         //fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        DispatchQueue.global(qos: .utility).async {
+                // do something time consuming here
+                DispatchQueue.main.async {
+                    // now update UI on main thread
+                   print("//////////////////////2")
+                    self.fetchNotesFromFirebase()
+                }
+        }
         //fetch()
     }
     
@@ -68,10 +79,22 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
 //            let note = obj[indexPath.row]
           // performSegue(withIdentifier: "noteDetails", sender: note)
         let choosenNote = noteArray[indexPath.row].noteKey
-        //print("choosenKey", choosenNote)
+        print("choosenKey", choosenNote)
        performSegue(withIdentifier: "noteDetails", sender: choosenNote)
+        self.noteArray.removeAll()
 //        }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            ref = Database.database().reference()
+            let removeRef = ref.child("UserNotes").child(User!.uid).child(noteArray[indexPath.row].noteKey)
+            removeRef.removeValue()
+            noteArray.remove(at: indexPath.row)
+            tableViewList.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        let deleteAction = UITableViewRowAction(style: .destructive, title: "delete"){(action,indexPath) in
@@ -88,9 +111,14 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "noteDetails"{
             if let destination = segue.destination as? NoteDetails{
-                if let selectedNote = sender as? UserNotes{
-                    destination.editOrDeleteNote = selectedNote
+                if let selectedNote = sender as? String{
+                    
+                    destination.choosedNote = selectedNote
                 }
+
+//                if let selectedNote = sender as? UserNotes{
+//                    destination.editOrDeleteNote = selectedNote
+//                }
             }
         }
     }
@@ -165,6 +193,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
                 let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey)
                 self.noteArray.append(notes)
                 self.tableViewList.reloadData()
+                print("fetched")
             }
             
         }

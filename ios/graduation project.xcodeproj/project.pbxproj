@@ -40,7 +40,6 @@
 		E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203E283226652EB001CA54B /* CategoryTableCell.swift */; };
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
 		E2167B852277C8F6004D6BC3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2167B842277C8F6004D6BC3 /* Note.swift */; };
-		E2167B872277D1A0004D6BC3 /* OneNoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2167B862277D1A0004D6BC3 /* OneNoteDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +80,6 @@
 		E203E283226652EB001CA54B /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E2167B842277C8F6004D6BC3 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		E2167B862277D1A0004D6BC3 /* OneNoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneNoteDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				E2167B842277C8F6004D6BC3 /* Note.swift */,
-				E2167B862277D1A0004D6BC3 /* OneNoteDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,7 +323,6 @@
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
-				E2167B872277D1A0004D6BC3 /* OneNoteDetails.swift in Sources */,
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
 				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
 				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
