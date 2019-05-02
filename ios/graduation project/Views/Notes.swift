@@ -185,7 +185,8 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func fetchNotesFromFirebase(){
-        Database.database().reference().ref.child("UserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
+        let reference = Database.database().reference()
+        reference.ref.child("UserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 let noteName = dict["noteName"] as! String
                 let noteKey = snapshot.key
@@ -193,6 +194,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
                 let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey)
                 self.noteArray.append(notes)
                 self.tableViewList.reloadData()
+                reference.keepSynced(true)
                 print("fetched")
             }
             
