@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 import Firebase
+import RealmSwift
 
+var noteRealmFile = try! Realm()
 
 let appdelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appdelegate.persistentContainer.viewContext

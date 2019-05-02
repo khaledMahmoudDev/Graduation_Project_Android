@@ -188,11 +188,11 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
   
     func saveUsersNoteInFirebase(){
         
-        guard let noteContent = content.text, let noteName = name.text else{
+        guard let noteContent = content.text, let noteName = name.text, let userId = Auth.auth().currentUser?.uid else{
             return
         }
         self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["noteName" : noteName , "noteContent": noteContent]
+        let values = ["noteName" : noteName , "noteContent": noteContent, "userId": userId]
         let usersReference = self.ref.child("UserNotes").child(User!.uid).childByAutoId().setValue(values)
         
             print("saved savely for the current user")
@@ -210,8 +210,8 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             let value = snapshot.value as? NSDictionary
             let noteNameFIR = value?["noteName"] as? String ?? ""
             self.name.text = "\(noteNameFIR)"
-            let noteContent = value?["noteContent"] as? String ?? ""
-            self.content.text = "\(noteContent)"
+            let noteContentFIR = value?["noteContent"] as? String ?? ""
+            self.content.text = "\(noteContentFIR)"
         
 
             

@@ -39,7 +39,7 @@
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 		E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203E283226652EB001CA54B /* CategoryTableCell.swift */; };
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
-		E2167B852277C8F6004D6BC3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2167B842277C8F6004D6BC3 /* Note.swift */; };
+		E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2187697227B2FC000A9F6AC /* RealmObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +79,7 @@
 		68601CB213A9611F76C64AFB /* Pods-graduation project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.release.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.release.xcconfig"; sourceTree = "<group>"; };
 		E203E283226652EB001CA54B /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		E2167B842277C8F6004D6BC3 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E2187697227B2FC000A9F6AC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +172,7 @@
 		E2167B832277C8A0004D6BC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E2167B842277C8F6004D6BC3 /* Note.swift */,
+				E2187697227B2FC000A9F6AC /* RealmObjects.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +334,7 @@
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
+				E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */,
 				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
@@ -341,7 +342,6 @@
 				31012D86222AC202007A3D8C /* DoneTableCell.swift in Sources */,
 				316F0BA02246879B008ACFC2 /* ToDoTabBar.swift in Sources */,
 				E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */,
-				E2167B852277C8F6004D6BC3 /* Note.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
