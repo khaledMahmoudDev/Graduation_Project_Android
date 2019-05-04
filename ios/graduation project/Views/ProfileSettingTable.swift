@@ -45,7 +45,7 @@ class ProfileSettingTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "AccountSetting", sender: self)
+        performSegue(withIdentifier: "userResetPass", sender: self)
     }
  
 

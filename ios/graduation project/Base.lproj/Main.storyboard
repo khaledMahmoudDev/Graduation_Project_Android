@@ -249,20 +249,51 @@
             </objects>
             <point key="canvasLocation" x="3749.5999999999999" y="151.57421289355324"/>
         </scene>
-        <!--Setting View-->
+        <!--User Reset Password-->
         <scene sceneID="Joc-Ny-1z0">
             <objects>
-                <viewController id="V9R-vU-J0h" customClass="SettingView" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="V9R-vU-J0h" customClass="UserResetPassword" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HcR-Jk-IVi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jeo-y0-VKf">
+                                <rect key="frame" x="16" y="248" width="343" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EI-Xf-swf">
+                                <rect key="frame" x="114" y="344" width="146" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="restPass:" destination="V9R-vU-J0h" eventType="touchUpInside" id="ibW-0Y-EVU"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRg-nV-9lY">
+                                <rect key="frame" x="16" y="142" width="343" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WqE-jb-Z40"/>
                     </view>
+                    <connections>
+                        <outlet property="currPassword" destination="qRg-nV-9lY" id="2Ib-Wt-dV9"/>
+                        <outlet property="newPassword" destination="jeo-y0-VKf" id="9Sp-51-Gyh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QK0-40-GdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-601" y="152"/>
+            <point key="canvasLocation" x="-602.39999999999998" y="151.57421289355324"/>
         </scene>
         <!--Profile Setting Table-->
         <scene sceneID="d6j-ZH-aTg">
@@ -288,7 +319,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="V9R-vU-J0h" kind="show" identifier="AccountSetting" id="3aD-My-mZu"/>
+                        <segue destination="V9R-vU-J0h" kind="show" identifier="userResetPass" id="3aD-My-mZu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7t-kN-hUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,6 +1204,6 @@
         <segue reference="Gri-jk-t1S"/>
         <segue reference="aR8-6F-1r7"/>
         <segue reference="we9-CN-XAb"/>
-        <segue reference="CVn-th-ttV"/>
+        <segue reference="JnZ-ya-3oI"/>
     </inferredMetricsTieBreakers>
 </document>
