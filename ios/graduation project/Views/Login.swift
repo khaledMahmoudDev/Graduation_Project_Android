@@ -117,6 +117,12 @@ class Login: UIViewController {
 //        }
     }
     
+    @IBAction func ResetPassword(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ResetPassword", sender: self)
+        
+    }
+    
     @IBAction func signUp(_ sender: Any) {
         
 //      self.performSegue(withIdentifier: "signUp", sender: self)

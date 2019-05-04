@@ -38,7 +38,11 @@
 		31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C6220B762600C9B2E6 /* Calendar.swift */; };
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 		E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203E283226652EB001CA54B /* CategoryTableCell.swift */; };
+		E20A51CC227CEABF0033C0E8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CB227CEABF0033C0E8 /* SettingView.swift */; };
+		E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */; };
+		E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */; };
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
+		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
 		E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2187697227B2FC000A9F6AC /* RealmObjects.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +82,11 @@
 		4A2617FCC9609508046B1C51 /* Pods-graduation project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.debug.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.debug.xcconfig"; sourceTree = "<group>"; };
 		68601CB213A9611F76C64AFB /* Pods-graduation project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.release.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.release.xcconfig"; sourceTree = "<group>"; };
 		E203E283226652EB001CA54B /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
+		E20A51CB227CEABF0033C0E8 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
+		E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		E2187697227B2FC000A9F6AC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,10 +143,14 @@
 				31DE36A9220B3F1300C9B2E6 /* SignUp.swift */,
 				315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */,
 				31DE36A7220B3F1300C9B2E6 /* Login.swift */,
+				E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */,
 				315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */,
 				31DE36C4220B574200C9B2E6 /* MainEntry.swift */,
 				3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */,
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
+				E20E170B227CC60B002783DA /* ProfileSettingTable.swift */,
+				E20A51CB227CEABF0033C0E8 /* SettingView.swift */,
+				E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */,
 				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
 				316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */,
 				319B596E2224D91E007F73AF /* ToDoList.swift */,
@@ -323,8 +335,10 @@
 				319B596D2224D903007F73AF /* DoneList.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
+				E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */,
 				31DE36B8220B3F1300C9B2E6 /* Location.swift in Sources */,
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
+				E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
@@ -333,6 +347,7 @@
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */,
+				E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
 				E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */,
 				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
@@ -344,6 +359,7 @@
 				E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */,
+				E20A51CC227CEABF0033C0E8 /* SettingView.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,6 +53,17 @@
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ide-Ug-GVj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VED-KP-tHG">
+                                <rect key="frame" x="97" y="378" width="180" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Forget Password?">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FQ7-Vx-tKw" kind="show" identifier="ResetSetting" id="PPA-ti-Xvg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -66,7 +77,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921.875" y="991.90140845070425"/>
+            <point key="canvasLocation" x="1920.8" y="991.75412293853083"/>
+        </scene>
+        <!--Reset Setting-->
+        <scene sceneID="dOz-bR-CmW">
+            <objects>
+                <viewController id="FQ7-Vx-tKw" customClass="ResetSetting" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4rZ-6y-TcH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vga-Zj-CHM">
+                                <rect key="frame" x="16" y="94" width="343" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOJ-Ds-UvT">
+                                <rect key="frame" x="123" y="174" width="128" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="SendEmailToResetPass:" destination="FQ7-Vx-tKw" eventType="touchUpInside" id="TRl-hf-OIu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="piP-Ya-cYn"/>
+                    </view>
+                    <connections>
+                        <outlet property="Email" destination="vga-Zj-CHM" id="0wz-4w-UOZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PBX-Uv-iKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="991.75412293853083"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="fQL-ej-y18">
@@ -200,6 +249,52 @@
             </objects>
             <point key="canvasLocation" x="3749.5999999999999" y="151.57421289355324"/>
         </scene>
+        <!--Setting View-->
+        <scene sceneID="Joc-Ny-1z0">
+            <objects>
+                <viewController id="V9R-vU-J0h" customClass="SettingView" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HcR-Jk-IVi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WqE-jb-Z40"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QK0-40-GdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="152"/>
+        </scene>
+        <!--Profile Setting Table-->
+        <scene sceneID="d6j-ZH-aTg">
+            <objects>
+                <tableViewController id="tFO-J8-cTY" customClass="ProfileSettingTable" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xYb-hc-1YG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingCell" id="d6B-r8-sUs">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d6B-r8-sUs" id="ajb-49-iZ1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tFO-J8-cTY" id="gXQ-lG-cH5"/>
+                            <outlet property="delegate" destination="tFO-J8-cTY" id="eKn-bH-jlH"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="V9R-vU-J0h" kind="show" identifier="AccountSetting" id="3aD-My-mZu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7t-kN-hUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="150"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="pXZ-dP-yNL">
             <objects>
@@ -233,14 +328,6 @@
                                 <rect key="frame" x="16" y="52" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cks-VT-lch">
-                                <rect key="frame" x="225" y="70" width="108" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Change Pic">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVc-th-6Hx">
                                 <rect key="frame" x="224" y="494" width="75" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -273,6 +360,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cks-VT-lch">
+                                <rect key="frame" x="16" y="414" width="171" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Account Settings">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tFO-J8-cTY" kind="show" identifier="AccountSettingTable" id="E5s-x8-NrQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2o9-Hd-zaK"/>
@@ -287,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0o-2o-WDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="931.875" y="150"/>
+            <point key="canvasLocation" x="930.39999999999998" y="149.77511244377811"/>
         </scene>
         <!--Email-->
         <scene sceneID="d4J-TY-IKg">
@@ -584,11 +682,7 @@
                         <viewLayoutGuide key="safeArea" id="tQS-28-9Zf"/>
                     </view>
                     <navigationItem key="navigationItem" id="RGe-1E-lxn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ioY-eC-k2U">
-                            <connections>
-                                <segue destination="h4U-6X-6Rh" kind="show" id="mO3-rv-KoJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ioY-eC-k2U"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableViewList" destination="urL-hv-Nqj" id="DoD-Qj-p0A"/>
@@ -849,7 +943,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nt-gP-l92" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="992"/>
+            <point key="canvasLocation" x="1921" y="1753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FIl-ps-7OA">
@@ -1076,10 +1170,9 @@
         <image name="profileImg" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LCB-po-DI7"/>
         <segue reference="Gri-jk-t1S"/>
         <segue reference="aR8-6F-1r7"/>
         <segue reference="we9-CN-XAb"/>
-        <segue reference="JnZ-ya-3oI"/>
+        <segue reference="CVn-th-ttV"/>
     </inferredMetricsTieBreakers>
 </document>

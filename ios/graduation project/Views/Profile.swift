@@ -89,6 +89,13 @@ class Profile: UIViewController {
         }
         
     }
+    
+    
+    @IBAction func AccountSetting(_ sender: Any) {
+        self.performSegue(withIdentifier: "AccountSettingTable", sender: self)
+    }
+    
+    
 }
 
 
