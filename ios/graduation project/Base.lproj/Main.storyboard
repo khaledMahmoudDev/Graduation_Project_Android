@@ -293,7 +293,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QK0-40-GdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602.39999999999998" y="151.57421289355324"/>
+            <point key="canvasLocation" x="158" y="992"/>
+        </scene>
+        <!--Delete User-->
+        <scene sceneID="qIE-7V-8eb">
+            <objects>
+                <viewController id="heL-ke-v8K" customClass="DeleteUser" customModule="graduation_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WUK-9D-jFL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-do-oG4">
+                                <rect key="frame" x="16" y="86" width="343" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLD-hw-JAs">
+                                <rect key="frame" x="141" y="258" width="92" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccount:" destination="heL-ke-v8K" eventType="touchUpInside" id="Uax-3D-00U"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mf3-t0-JJS"/>
+                    </view>
+                    <connections>
+                        <outlet property="userPassword" destination="7Wf-do-oG4" id="HfA-BT-WAx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clU-vh-6i6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-714.39999999999998" y="151.57421289355324"/>
         </scene>
         <!--Profile Setting Table-->
         <scene sceneID="d6j-ZH-aTg">
@@ -320,6 +358,7 @@
                     </tableView>
                     <connections>
                         <segue destination="V9R-vU-J0h" kind="show" identifier="userResetPass" id="3aD-My-mZu"/>
+                        <segue destination="heL-ke-v8K" kind="show" identifier="deleteUser" id="0JL-4t-MSm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7t-kN-hUl" userLabel="First Responder" sceneMemberID="firstResponder"/>

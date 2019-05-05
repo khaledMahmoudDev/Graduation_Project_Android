@@ -25,7 +25,7 @@ class UserResetPassword: UIViewController {
 
   
     @IBAction func restPass(_ sender: Any) {
-        guard let user = Auth.auth().currentUser ,let userId = Auth.auth().currentUser?.uid ,let newPass = newPassword.text, let currPass = currPassword.text else{
+        guard let user = Auth.auth().currentUser ,let newPass = newPassword.text, let currPass = currPassword.text else{
             return
         }
         

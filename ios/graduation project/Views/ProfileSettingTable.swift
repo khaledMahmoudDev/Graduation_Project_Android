@@ -10,7 +10,8 @@ import UIKit
 
 class ProfileSettingTable: UITableViewController {
     
-    let tableSettingContent = ["Change Password","Disable Account", "Delete Account"]
+    let segueId = ["userResetPass","deleteUser"]
+    let tableSettingContent = ["Change Password", "Delete Account"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class ProfileSettingTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "userResetPass", sender: self)
+        performSegue(withIdentifier: segueId[indexPath.row], sender: self)
     }
  
 

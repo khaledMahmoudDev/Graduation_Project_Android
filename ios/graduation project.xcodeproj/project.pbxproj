@@ -43,6 +43,7 @@
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
 		E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2187697227B2FC000A9F6AC /* RealmObjects.swift */; };
+		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		E2187697227B2FC000A9F6AC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
+		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
 				E20E170B227CC60B002783DA /* ProfileSettingTable.swift */,
 				E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */,
+				E273C00E227E671B00738DAE /* DeleteUser.swift */,
 				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
 				316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */,
 				319B596E2224D91E007F73AF /* ToDoList.swift */,
@@ -337,6 +340,7 @@
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
+				E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
 				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
