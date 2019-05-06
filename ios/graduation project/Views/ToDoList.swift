@@ -134,15 +134,7 @@ class ToDoList: UIViewController, UITableViewDataSource, UITableViewDelegate, NS
         
     }
     
-    @IBAction func addButton(_ sender: Any) {
-        performSegue(withIdentifier: "add", sender: nil)
-    }
-    
-
-    
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+   
     
     
     }

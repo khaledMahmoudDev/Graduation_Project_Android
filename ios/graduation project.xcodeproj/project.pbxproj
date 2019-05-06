@@ -30,8 +30,6 @@
 		31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36A9220B3F1300C9B2E6 /* SignUp.swift */; };
 		31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36AF220B3F1300C9B2E6 /* Profile.swift */; };
 		31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */; };
-		31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B5220B3F1300C9B2E6 /* Weather.swift */; };
-		31DE36B8220B3F1300C9B2E6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B7220B3F1300C9B2E6 /* Location.swift */; };
 		31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B9220B3F1300C9B2E6 /* Notification.swift */; };
 		31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C0220B444100C9B2E6 /* E-mail.swift */; };
 		31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C4220B574200C9B2E6 /* MainEntry.swift */; };
@@ -72,8 +70,6 @@
 		31DE36A9220B3F1300C9B2E6 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		31DE36AF220B3F1300C9B2E6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		31DE36B3220B3F1300C9B2E6 /* ToDoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetails.swift; sourceTree = "<group>"; };
-		31DE36B5220B3F1300C9B2E6 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		31DE36B7220B3F1300C9B2E6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		31DE36B9220B3F1300C9B2E6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		31DE36C0220B444100C9B2E6 /* E-mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E-mail.swift"; sourceTree = "<group>"; };
 		31DE36C4220B574200C9B2E6 /* MainEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntry.swift; sourceTree = "<group>"; };
@@ -166,8 +162,6 @@
 				3157F3FD2221F23D0066C46A /* Notes.swift */,
 				3157F3FB2221F2210066C46A /* NoteDetails.swift */,
 				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
-				31DE36B7220B3F1300C9B2E6 /* Location.swift */,
-				31DE36B5220B3F1300C9B2E6 /* Weather.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,7 +330,6 @@
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
 				E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */,
-				31DE36B8220B3F1300C9B2E6 /* Location.swift in Sources */,
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
@@ -344,7 +337,6 @@
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
 				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
-				31DE36B6220B3F1300C9B2E6 /* Weather.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */,

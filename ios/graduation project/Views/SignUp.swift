@@ -20,7 +20,7 @@ class SignUp: UIViewController{
     @IBOutlet weak var configPass: UITextField!
     @IBOutlet weak var profileImg: UIImageView!
     
-    var selectedImage: UIImage?
+    var selectedImage = UIImage(named: "profileImg.png")
     
     let userDefault = UserDefaults.standard
     
@@ -115,6 +115,7 @@ class SignUp: UIViewController{
                     }
                     
                     //making the image as a url and set it in the firebase database with the other information of the user such as username, email
+                    
                         storageRef.downloadURL(completion: { (url, error) in
                             if let err = error{
                                 // error happened - implement code to handle it
@@ -151,6 +152,7 @@ class SignUp: UIViewController{
 }
 
 extension SignUp : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
     
     //to set the selected image into the UIImage view
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

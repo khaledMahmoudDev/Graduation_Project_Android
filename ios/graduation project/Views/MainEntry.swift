@@ -13,10 +13,10 @@ class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var MainEntryTableView: UITableView!
     
-    let segueIdentifiers = ["calendar","todo","notification","email","notes","location","weather"]
-    let tableContent = ["Calendar","To Do","Notification","Email","Notes","Location","Weather"]
+    let segueIdentifiers = ["calendar","todo","notification","email","notes"]
+    let tableContent = ["Calendar","To Do","Notification","Email","Notes"]
     
-    let tableContentimages = [UIImage(named: "calendar"), UIImage(named: "todo"), UIImage(named: "notification"), UIImage(named: "email"), UIImage(named: "note"), UIImage(named: "location"), UIImage(named: "weather")]
+    let tableContentimages = [UIImage(named: "calendar"), UIImage(named: "todo"), UIImage(named: "notification"), UIImage(named: "email"), UIImage(named: "note")]
   
     override func viewDidLoad() {
      

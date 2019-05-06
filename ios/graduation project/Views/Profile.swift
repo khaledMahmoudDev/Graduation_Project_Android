@@ -80,9 +80,10 @@ class Profile: UIViewController {
         do {
             try Auth.auth().signOut()
             
-            let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigation") as! LoginNavigation
-            let appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = login
+            //let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigation") as! LoginNavigation
+            //let appDelegate = UIApplication.shared.delegate
+            //appDelegate?.window??.rootViewController = login
+            self.navigationController?.popToRootViewController(animated: true)
             
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

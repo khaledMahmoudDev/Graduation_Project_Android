@@ -40,6 +40,14 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         //fetch()
     }
     
+    
+    @IBAction func AddNewNote(_ sender: Any) {
+
+        performSegue(withIdentifier: "noteDetails", sender: self)
+        
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
