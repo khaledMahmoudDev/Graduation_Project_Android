@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        Theme.current = DefaultTheme()
         return true
     }
 

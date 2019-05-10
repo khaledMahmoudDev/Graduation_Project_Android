@@ -33,7 +33,6 @@
 		31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B9220B3F1300C9B2E6 /* Notification.swift */; };
 		31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C0220B444100C9B2E6 /* E-mail.swift */; };
 		31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C4220B574200C9B2E6 /* MainEntry.swift */; };
-		31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C6220B762600C9B2E6 /* Calendar.swift */; };
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 		E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203E283226652EB001CA54B /* CategoryTableCell.swift */; };
 		E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */; };
@@ -42,6 +41,46 @@
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
 		E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2187697227B2FC000A9F6AC /* RealmObjects.swift */; };
 		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
+		E295B2792283099500112E8C /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2782283099400112E8C /* Coordinates.swift */; };
+		E295B27B228309B200112E8C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B27A228309B100112E8C /* CurrentWeather.swift */; };
+		E295B27D228309C300112E8C /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B27C228309C300112E8C /* CurrentWeatherViewModel.swift */; };
+		E295B27F228309D200112E8C /* DarkSkyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B27E228309D100112E8C /* DarkSkyAPIClient.swift */; };
+		E295B281228309FE00112E8C /* DarkSkyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B280228309FD00112E8C /* DarkSkyAPIClient.swift */; };
+		E295B28322830A0B00112E8C /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28222830A0B00112E8C /* JSONDownloader.swift */; };
+		E295B28522830A2C00112E8C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28422830A2C00112E8C /* Weather.swift */; };
+		E295B28722830ACC00112E8C /* DarkSkyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28622830ACB00112E8C /* DarkSkyError.swift */; };
+		E295B29222830AF000112E8C /* CustomSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28822830AE600112E8C /* CustomSearch.swift */; };
+		E295B29322830AF000112E8C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28922830AE700112E8C /* UIColor+Hex.swift */; };
+		E295B29422830AF000112E8C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28A22830AE800112E8C /* CustomTabBar.swift */; };
+		E295B29522830AF000112E8C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28B22830AE900112E8C /* Buttons.swift */; };
+		E295B29622830AF000112E8C /* TextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28C22830AEA00112E8C /* TextViewPlaceholder.swift */; };
+		E295B29722830AF000112E8C /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28D22830AEB00112E8C /* TextFieldDelegate.swift */; };
+		E295B29822830AF000112E8C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28E22830AEC00112E8C /* Theme.swift */; };
+		E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28F22830AED00112E8C /* TextViewDelegate.swift */; };
+		E295B29A22830AF000112E8C /* Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B29022830AEE00112E8C /* Shadows.swift */; };
+		E295B29B22830AF000112E8C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B29122830AEF00112E8C /* CardView.swift */; };
+		E295B2A322830BDC00112E8C /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2A222830BDC00112E8C /* ActivityCell.swift */; };
+		E295B2A522830C0300112E8C /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2A422830C0200112E8C /* Appointment+CoreDataClass.swift */; };
+		E295B2A722830C2100112E8C /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2A622830C2100112E8C /* Appointment+CoreDataProperties.swift */; };
+		E295B2A922830C3900112E8C /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2A822830C3800112E8C /* CoreDataStore.swift */; };
+		E295B2AD22830C6000112E8C /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E295B2AA22830C5F00112E8C /* AppointmentModel.xcdatamodeld */; };
+		E295B2BB22830DAC00112E8C /* ApptDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2BA22830DAC00112E8C /* ApptDetailTVC.swift */; };
+		E295B2BD22830DBF00112E8C /* TimeSlotsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2BC22830DBD00112E8C /* TimeSlotsCVC.swift */; };
+		E295B2BF22830DCD00112E8C /* NewApptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2BE22830DCC00112E8C /* NewApptTableViewController.swift */; };
+		E295B2C122830DE300112E8C /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2C022830DE200112E8C /* ActivityTableViewController.swift */; };
+		E295B2C322830DFB00112E8C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2C222830DFA00112E8C /* CalendarViewController.swift */; };
+		E295B2C522830E1D00112E8C /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2C422830E1C00112E8C /* ServerRequest.swift */; };
+		E295B2C722830E3F00112E8C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2C622830E3F00112E8C /* Place.swift */; };
+		E295B2C922830E5700112E8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2C822830E5600112E8C /* ViewController.swift */; };
+		E295B2CB22830E6700112E8C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2CA22830E6600112E8C /* Constants.swift */; };
+		E295B2CD22830E7F00112E8C /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2CC22830E7F00112E8C /* CommonFunctions.swift */; };
+		E295B2CF22830E9700112E8C /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2CE22830E9700112E8C /* DateFormatters.swift */; };
+		E295B2D122830EA900112E8C /* TimeSlotFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */; };
+		E295B2D322830EBA00112E8C /* TimeSlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D222830EB800112E8C /* TimeSlotter.swift */; };
+		E295B2D52283163700112E8C /* UpdateApptTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D42283163600112E8C /* UpdateApptTVC.swift */; };
+		E295B2D72283168900112E8C /* TimeSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D62283168800112E8C /* TimeSlotCell.swift */; };
+		E295B2D9228316A400112E8C /* AppointmentCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D8228316A300112E8C /* AppointmentCelll.swift */; };
+		E295B2DB228316B900112E8C /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2DA228316B800112E8C /* CalendarDayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +112,6 @@
 		31DE36B9220B3F1300C9B2E6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		31DE36C0220B444100C9B2E6 /* E-mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E-mail.swift"; sourceTree = "<group>"; };
 		31DE36C4220B574200C9B2E6 /* MainEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntry.swift; sourceTree = "<group>"; };
-		31DE36C6220B762600C9B2E6 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduation_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2617FCC9609508046B1C51 /* Pods-graduation project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.debug.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.debug.xcconfig"; sourceTree = "<group>"; };
 		68601CB213A9611F76C64AFB /* Pods-graduation project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.release.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +122,47 @@
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		E2187697227B2FC000A9F6AC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
+		E295B2782283099400112E8C /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinates.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/Coordinates.swift"; sourceTree = "<group>"; };
+		E295B27A228309B100112E8C /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentWeather.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/CurrentWeather.swift"; sourceTree = "<group>"; };
+		E295B27C228309C300112E8C /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentWeatherViewModel.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/CurrentWeatherViewModel.swift"; sourceTree = "<group>"; };
+		E295B27E228309D100112E8C /* DarkSkyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarkSkyAPIClient.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/DarkSkyAPIClient.swift"; sourceTree = "<group>"; };
+		E295B280228309FD00112E8C /* DarkSkyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarkSkyAPIClient.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/DarkSkyAPIClient.swift"; sourceTree = "<group>"; };
+		E295B28222830A0B00112E8C /* JSONDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONDownloader.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/JSONDownloader.swift"; sourceTree = "<group>"; };
+		E295B28422830A2C00112E8C /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weather.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/Weather.swift"; sourceTree = "<group>"; };
+		E295B28622830ACB00112E8C /* DarkSkyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarkSkyError.swift; path = "../../../../../Desktop/calendar-7/calendar/weather/DarkSkyError.swift"; sourceTree = "<group>"; };
+		E295B28822830AE600112E8C /* CustomSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearch.swift; sourceTree = "<group>"; };
+		E295B28922830AE700112E8C /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		E295B28A22830AE800112E8C /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		E295B28B22830AE900112E8C /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		E295B28C22830AEA00112E8C /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
+		E295B28D22830AEB00112E8C /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		E295B28E22830AEC00112E8C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E295B28F22830AED00112E8C /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
+		E295B29022830AEE00112E8C /* Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadows.swift; sourceTree = "<group>"; };
+		E295B29122830AEF00112E8C /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E295B2A222830BDC00112E8C /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityCell.swift; path = "../../../../../Desktop/calendar-7/calendar/cells/ActivityCell.swift"; sourceTree = "<group>"; };
+		E295B2A422830C0200112E8C /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E295B2A622830C2100112E8C /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E295B2A822830C3800112E8C /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		E295B2AB22830C5F00112E8C /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
+		E295B2AC22830C5F00112E8C /* AppointmentModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel2.xcdatamodel; sourceTree = "<group>"; };
+		E295B2BA22830DAC00112E8C /* ApptDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApptDetailTVC.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/ApptDetailTVC.swift"; sourceTree = "<group>"; };
+		E295B2BC22830DBD00112E8C /* TimeSlotsCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSlotsCVC.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/TimeSlotsCVC.swift"; sourceTree = "<group>"; };
+		E295B2BE22830DCC00112E8C /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewApptTableViewController.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/NewApptTableViewController.swift"; sourceTree = "<group>"; };
+		E295B2C022830DE200112E8C /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityTableViewController.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/ActivityTableViewController.swift"; sourceTree = "<group>"; };
+		E295B2C222830DFA00112E8C /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/CalendarViewController.swift"; sourceTree = "<group>"; };
+		E295B2C422830E1C00112E8C /* ServerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerRequest.swift; path = "../../../../../Desktop/calendar-7/calendar/location /ServerRequest.swift"; sourceTree = "<group>"; };
+		E295B2C622830E3F00112E8C /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = "../../../../../Desktop/calendar-7/calendar/location /Place.swift"; sourceTree = "<group>"; };
+		E295B2C822830E5600112E8C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../../../../../Desktop/calendar-7/calendar/location /ViewController.swift"; sourceTree = "<group>"; };
+		E295B2CA22830E6600112E8C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "../../../../../Desktop/calendar-7/calendar/location /Constants.swift"; sourceTree = "<group>"; };
+		E295B2CC22830E7F00112E8C /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonFunctions.swift; path = "../../../../../Desktop/calendar-7/calendar/location /CommonFunctions.swift"; sourceTree = "<group>"; };
+		E295B2CE22830E9700112E8C /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotFormatter.swift; sourceTree = "<group>"; };
+		E295B2D222830EB800112E8C /* TimeSlotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotter.swift; sourceTree = "<group>"; };
+		E295B2D42283163600112E8C /* UpdateApptTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateApptTVC.swift; path = "../../../../../Desktop/calendar-7/calendar/controller/UpdateApptTVC.swift"; sourceTree = "<group>"; };
+		E295B2D62283168800112E8C /* TimeSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSlotCell.swift; path = "../../../../../Desktop/vm/calendar-7/calendar/cells/TimeSlotCell.swift"; sourceTree = "<group>"; };
+		E295B2D8228316A300112E8C /* AppointmentCelll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppointmentCelll.swift; path = "../../../../../Desktop/vm/calendar-7/calendar/cells/AppointmentCelll.swift"; sourceTree = "<group>"; };
+		E295B2DA228316B800112E8C /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarDayCell.swift; path = "../../../../../Desktop/vm/calendar-7/calendar/cells/CalendarDayCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +200,45 @@
 			isa = PBXGroup;
 			children = (
 				31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */,
+				E295B2782283099400112E8C /* Coordinates.swift */,
+				E295B27A228309B100112E8C /* CurrentWeather.swift */,
+				E295B28222830A0B00112E8C /* JSONDownloader.swift */,
+				E295B28422830A2C00112E8C /* Weather.swift */,
+				E295B27E228309D100112E8C /* DarkSkyAPIClient.swift */,
+				E295B28622830ACB00112E8C /* DarkSkyError.swift */,
+				E295B27C228309C300112E8C /* CurrentWeatherViewModel.swift */,
+				E295B280228309FD00112E8C /* DarkSkyAPIClient.swift */,
+				E295B28B22830AE900112E8C /* Buttons.swift */,
+				E295B29122830AEF00112E8C /* CardView.swift */,
+				E295B28822830AE600112E8C /* CustomSearch.swift */,
+				E295B28A22830AE800112E8C /* CustomTabBar.swift */,
+				E295B29022830AEE00112E8C /* Shadows.swift */,
+				E295B28D22830AEB00112E8C /* TextFieldDelegate.swift */,
+				E295B28F22830AED00112E8C /* TextViewDelegate.swift */,
+				E295B28C22830AEA00112E8C /* TextViewPlaceholder.swift */,
+				E295B28E22830AEC00112E8C /* Theme.swift */,
+				E295B28922830AE700112E8C /* UIColor+Hex.swift */,
+				E295B2DA228316B800112E8C /* CalendarDayCell.swift */,
+				E295B2D8228316A300112E8C /* AppointmentCelll.swift */,
+				E295B2D62283168800112E8C /* TimeSlotCell.swift */,
+				E295B2A222830BDC00112E8C /* ActivityCell.swift */,
+				E295B2A422830C0200112E8C /* Appointment+CoreDataClass.swift */,
+				E295B2A622830C2100112E8C /* Appointment+CoreDataProperties.swift */,
+				E295B2A822830C3800112E8C /* CoreDataStore.swift */,
+				E295B2BA22830DAC00112E8C /* ApptDetailTVC.swift */,
+				E295B2D42283163600112E8C /* UpdateApptTVC.swift */,
+				E295B2BC22830DBD00112E8C /* TimeSlotsCVC.swift */,
+				E295B2BE22830DCC00112E8C /* NewApptTableViewController.swift */,
+				E295B2C022830DE200112E8C /* ActivityTableViewController.swift */,
+				E295B2C222830DFA00112E8C /* CalendarViewController.swift */,
+				E295B2C422830E1C00112E8C /* ServerRequest.swift */,
+				E295B2C622830E3F00112E8C /* Place.swift */,
+				E295B2C822830E5600112E8C /* ViewController.swift */,
+				E295B2CA22830E6600112E8C /* Constants.swift */,
+				E295B2CC22830E7F00112E8C /* CommonFunctions.swift */,
+				E295B2CE22830E9700112E8C /* DateFormatters.swift */,
+				E295B2D222830EB800112E8C /* TimeSlotter.swift */,
+				E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */,
 				E2167B832277C8A0004D6BC3 /* Model */,
 				31DE36BF220B3F1300C9B2E6 /* Views */,
 				31DE3697220B3DDF00C9B2E6 /* Main.storyboard */,
@@ -129,6 +247,7 @@
 				31DE369F220B3DFF00C9B2E6 /* Info.plist */,
 				31634675221DAB9000E70AC0 /* GoogleService-Info.plist */,
 				31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */,
+				E295B2AA22830C5F00112E8C /* AppointmentModel.xcdatamodeld */,
 			);
 			path = "graduation project";
 			sourceTree = "<group>";
@@ -147,7 +266,6 @@
 				E20E170B227CC60B002783DA /* ProfileSettingTable.swift */,
 				E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */,
 				E273C00E227E671B00738DAE /* DeleteUser.swift */,
-				31DE36C6220B762600C9B2E6 /* Calendar.swift */,
 				316F0B9F2246879B008ACFC2 /* ToDoTabBar.swift */,
 				319B596E2224D91E007F73AF /* ToDoList.swift */,
 				31012D83222AC1E8007A3D8C /* ToDoTableCell.swift */,
@@ -274,6 +392,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-graduation project/Pods-graduation project-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -285,6 +404,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -325,34 +445,73 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */,
+				E295B2C722830E3F00112E8C /* Place.swift in Sources */,
+				E295B29A22830AF000112E8C /* Shadows.swift in Sources */,
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
 				319B596D2224D903007F73AF /* DoneList.swift in Sources */,
+				E295B27F228309D200112E8C /* DarkSkyAPIClient.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
 				E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */,
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */,
+				E295B2C922830E5700112E8C /* ViewController.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
+				E295B2C122830DE300112E8C /* ActivityTableViewController.swift in Sources */,
+				E295B2D72283168900112E8C /* TimeSlotCell.swift in Sources */,
+				E295B2BB22830DAC00112E8C /* ApptDetailTVC.swift in Sources */,
+				E295B2DB228316B900112E8C /* CalendarDayCell.swift in Sources */,
 				E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,
+				E295B29622830AF000112E8C /* TextViewPlaceholder.swift in Sources */,
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
+				E295B2D122830EA900112E8C /* TimeSlotFormatter.swift in Sources */,
 				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
+				E295B2CD22830E7F00112E8C /* CommonFunctions.swift in Sources */,
+				E295B2D9228316A400112E8C /* AppointmentCelll.swift in Sources */,
+				E295B29522830AF000112E8C /* Buttons.swift in Sources */,
+				E295B2D52283163700112E8C /* UpdateApptTVC.swift in Sources */,
+				E295B29B22830AF000112E8C /* CardView.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
+				E295B2BD22830DBF00112E8C /* TimeSlotsCVC.swift in Sources */,
+				E295B29422830AF000112E8C /* CustomTabBar.swift in Sources */,
 				E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */,
+				E295B27B228309B200112E8C /* CurrentWeather.swift in Sources */,
 				E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */,
 				315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */,
+				E295B2AD22830C6000112E8C /* AppointmentModel.xcdatamodeld in Sources */,
+				E295B28722830ACC00112E8C /* DarkSkyError.swift in Sources */,
 				E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */,
 				31C7D516222D63A8006DB7B0 /* CategoryPopUp.swift in Sources */,
+				E295B28322830A0B00112E8C /* JSONDownloader.swift in Sources */,
+				E295B2CB22830E6700112E8C /* Constants.swift in Sources */,
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
+				E295B2792283099500112E8C /* Coordinates.swift in Sources */,
+				E295B2D322830EBA00112E8C /* TimeSlotter.swift in Sources */,
 				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
+				E295B29822830AF000112E8C /* Theme.swift in Sources */,
+				E295B2A722830C2100112E8C /* Appointment+CoreDataProperties.swift in Sources */,
 				31012D84222AC1E8007A3D8C /* ToDoTableCell.swift in Sources */,
+				E295B27D228309C300112E8C /* CurrentWeatherViewModel.swift in Sources */,
+				E295B2CF22830E9700112E8C /* DateFormatters.swift in Sources */,
+				E295B2C322830DFB00112E8C /* CalendarViewController.swift in Sources */,
+				E295B281228309FE00112E8C /* DarkSkyAPIClient.swift in Sources */,
+				E295B2BF22830DCD00112E8C /* NewApptTableViewController.swift in Sources */,
+				E295B2A322830BDC00112E8C /* ActivityCell.swift in Sources */,
+				E295B29222830AF000112E8C /* CustomSearch.swift in Sources */,
 				31012D86222AC202007A3D8C /* DoneTableCell.swift in Sources */,
 				316F0BA02246879B008ACFC2 /* ToDoTabBar.swift in Sources */,
+				E295B29322830AF000112E8C /* UIColor+Hex.swift in Sources */,
 				E203E284226652EB001CA54B /* CategoryTableCell.swift in Sources */,
+				E295B29722830AF000112E8C /* TextFieldDelegate.swift in Sources */,
+				E295B2A922830C3900112E8C /* CoreDataStore.swift in Sources */,
+				E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
-				31DE36C7220B762600C9B2E6 /* Calendar.swift in Sources */,
+				E295B2A522830C0300112E8C /* Appointment+CoreDataClass.swift in Sources */,
+				E295B2C522830E1D00112E8C /* ServerRequest.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
+				E295B28522830A2C00112E8C /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B24STM79MS;
 				INFOPLIST_FILE = "graduation project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B24STM79MS;
 				INFOPLIST_FILE = "graduation project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,6 +722,17 @@
 			);
 			currentVersion = 31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */;
 			path = "graduation project.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		E295B2AA22830C5F00112E8C /* AppointmentModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E295B2AB22830C5F00112E8C /* AppointmentModel.xcdatamodel */,
+				E295B2AC22830C5F00112E8C /* AppointmentModel2.xcdatamodel */,
+			);
+			currentVersion = E295B2AC22830C5F00112E8C /* AppointmentModel2.xcdatamodel */;
+			path = AppointmentModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
