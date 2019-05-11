@@ -1,4 +1,10 @@
-
+//
+//  CalendarViewController.swift
+//  graduation project
+//
+//  Created by ahmed on 5/10/19.
+//  Copyright © 2019 Ajenda. All rights reserved.
+//
 
 import UIKit
 import CoreData
@@ -53,9 +59,9 @@ class CalendarViewController: UIViewController {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Calendar", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         client.getCurrentWeather(at: Coordinates.Ismailia){ [unowned self] currentWeather, error in
-        if let currentWeather = currentWeather {
-              let viewModel = CurrentWeatherViewModel(model: currentWeather)
-            self.displayWeather(using: viewModel)}
+            if let currentWeather = currentWeather {
+                let viewModel = CurrentWeatherViewModel(model: currentWeather)
+                self.displayWeather(using: viewModel)}
         }
     }
     func displayWeather(using viewModel: CurrentWeatherViewModel) {
@@ -63,7 +69,7 @@ class CalendarViewController: UIViewController {
         currentHumidityLabel.text = viewModel.humidity
         currentPrecipitationLabel.text = viewModel.precipitationProbability
         currentSummaryLabel.text = viewModel.summary
-       // currentWeatherIcon.image = viewModel.icon
+        // currentWeatherIcon.image = viewModel.icon
         cityName.text = "Ismailia , EG"
     }
     func performFetch() {
@@ -78,7 +84,7 @@ class CalendarViewController: UIViewController {
                 print("\(fetchError), \(fetchError.localizedDescription)")
             }
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
     }
     
     
@@ -208,11 +214,11 @@ extension CalendarViewController {
         
         if let fetchedObjects = fetchedResultsController.fetchedObjects {
             appointmentsOfTheDay = fetchedObjects.filter({ return dayPredicate.evaluate(with: $0) })
-          
+            
         }
-          print("dddddxxxxxx\(appointmentsOfTheDay.count)")
+        print("dddddxxxxxx\(appointmentsOfTheDay.count)")
         
-       // guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }
+        // guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }
         
         
         self.appointmentsOfTheDay.map { print("Appointment date is: \(String(describing: $0.date))") }
@@ -364,6 +370,3 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     
     
 }
-
-
-

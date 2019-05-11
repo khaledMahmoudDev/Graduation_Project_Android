@@ -69,7 +69,11 @@ class EditUserProfile: UIViewController {
         }
     }
     
-    @IBAction func updateUserInfo(_ sender: Any) {
+    @IBAction func saveUserUpdates(_ sender: Any) {
+        updateUserName()
+    }
+    
+    func updateUserName(){
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference().child("USERS").child(userID!)
         if let newUserName = username.text {
@@ -84,4 +88,22 @@ class EditUserProfile: UIViewController {
         }
     }
     
+    func updateProfileImage(){
+        let userID = Auth.auth().currentUser?.uid
+        let storageRef = Storage.storage().reference(forURL: "gs://ajenda-a702f.appspot.com/").child("profileImages").child(userID!)
+        guard let image = profileImage.image else{
+            return
+        }
+        
+        if let newImg = image.pngData(){
+            storageRef.putData(newImg, metadata: nil) { (metadata, error) in
+                if error != nil{
+                    print(error!)
+                    return
+                }
+        }
+        
+    }
+    
+}
 }

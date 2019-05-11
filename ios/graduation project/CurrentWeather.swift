@@ -1,9 +1,9 @@
 //
-//  CurrentWeather .swift
-//  Stormy
+//  CurrentWeather.swift
+//  graduation project
 //
-//  Created by Lou Batier on 09/04/2019.
-//  Copyright © 2019 Treehouse. All rights reserved.
+//  Created by ahmed on 5/10/19.
+//  Copyright © 2019 Ajenda. All rights reserved.
 //
 
 import Foundation
@@ -44,12 +44,12 @@ extension CurrentWeather {
         static let summary = "summary"
         static let icon = "icon"
     }
-
+    
     init?(json: [String: AnyObject]) {
         guard let tempValue = json[Key.temperature] as? Double,
-        let humidityValue = json[Key.humidity] as? Double,
-        let precipitationProbabilityValue = json[Key.precipitationProbability] as? Double,
-        let summaryString = json[Key.summary] as? String,
+            let humidityValue = json[Key.humidity] as? Double,
+            let precipitationProbabilityValue = json[Key.precipitationProbability] as? Double,
+            let summaryString = json[Key.summary] as? String,
             let iconString = json[Key.icon] as? String else {
                 return nil
         }

@@ -1,9 +1,9 @@
 //
 //  CurrentWeatherViewModel.swift
-//  Stormy
+//  graduation project
 //
-//  Created by Lou Batier on 09/04/2019.
-//  Copyright © 2019 Treehouse. All rights reserved.
+//  Created by ahmed on 5/10/19.
+//  Copyright © 2019 Ajenda. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ struct CurrentWeatherViewModel {
     let humidity: String
     let precipitationProbability: String
     let summary: String
-   // let icon: UIImage
+    // let icon: UIImage
     
     init(model:CurrentWeather) {
         let roundedTemperature = Int(model.temperature)
@@ -27,25 +27,6 @@ struct CurrentWeatherViewModel {
         self.precipitationProbability = "\(precipitationPercentValue)%"
         
         self.summary = model.summary
-       // self.icon = 0
+        // self.icon = 0
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
