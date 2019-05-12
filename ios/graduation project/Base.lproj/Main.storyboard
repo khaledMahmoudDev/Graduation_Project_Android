@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoM-MM-1cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4184.8000000000002" y="149.77511244377811"/>
+            <point key="canvasLocation" x="2745" y="-645"/>
         </scene>
         <!--Main Entry-->
         <scene sceneID="Aq4-Pf-YJL">
@@ -241,6 +241,7 @@
                         <segue destination="FvH-uJ-zZb" kind="show" identifier="notes" id="Gri-jk-t1S"/>
                         <segue destination="Z6l-b6-m1w" kind="show" identifier="todo" id="mli-yJ-UGJ"/>
                         <segue destination="8iZ-Y1-7dq" kind="show" identifier="calendar" id="dhL-aY-S1b"/>
+                        <segue destination="opo-By-nKg" kind="show" identifier="profile" id="Z6h-dV-kOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCd-AY-RAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,7 +438,7 @@
                     <navigationItem key="navigationItem" id="07H-Pj-UXV">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="setting" id="gjI-jD-Dny">
                             <connections>
-                                <segue destination="tFO-J8-cTY" kind="show" identifier="AccountSettingTable" id="LWu-kg-XrR"/>
+                                <segue destination="tFO-J8-cTY" kind="show" identifier="AccountSettingTable" id="nWg-YG-ghs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -445,7 +446,6 @@
                         <outlet property="email" destination="TN9-aP-Llg" id="lEi-oT-pqe"/>
                         <outlet property="profileImage" destination="PFa-xc-E2T" id="FV2-2a-T4d"/>
                         <outlet property="username" destination="9Cu-NB-dEg" id="0BI-E7-DUT"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOut" id="JnZ-ya-3oI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0o-2o-WDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1088,42 +1088,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Su-CT-KxY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5540" y="-1412"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="VPN-Ti-hi6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpl-WV-Jjs" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VRE-dM-f1O">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="opo-By-nKg" kind="relationship" relationship="rootViewController" id="gFz-tx-zTH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VJo-9c-gh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1625" y="-714"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xj8-Qa-f21">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jZ8-kN-kpe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aL2-oU-rCb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tFO-J8-cTY" kind="relationship" relationship="rootViewController" id="DSF-kV-3pn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eQX-Wn-cX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="279" y="-715"/>
         </scene>
         <!--Appt DetailTVC-->
         <scene sceneID="hUj-wI-Kdi">
@@ -2542,24 +2506,6 @@
             </objects>
             <point key="canvasLocation" x="4721" y="2691"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="r8p-bT-udU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="krk-72-xe2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e1h-T8-yxT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ebh-Is-AQS" kind="relationship" relationship="rootViewController" id="or4-0x-Ok3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pyv-I1-glU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1930" y="947"/>
-        </scene>
     </scenes>
     <resources>
         <image name="profileImg" width="225" height="225"/>
@@ -2571,8 +2517,5 @@
         <segue reference="L32-St-71b"/>
         <segue reference="pmo-A3-wRS"/>
         <segue reference="uAx-ZG-5bC"/>
-        <segue reference="LWu-kg-XrR"/>
-        <segue reference="Zeb-k8-aFJ"/>
-        <segue reference="CVn-th-ttV"/>
     </inferredMetricsTieBreakers>
 </document>

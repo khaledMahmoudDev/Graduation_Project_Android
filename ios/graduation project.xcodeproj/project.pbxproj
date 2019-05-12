@@ -240,12 +240,12 @@
 				E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */,
 				E2167B832277C8A0004D6BC3 /* Model */,
 				31DE36BF220B3F1300C9B2E6 /* Views */,
-				31DE3697220B3DDF00C9B2E6 /* Main.storyboard */,
 				31DE369A220B3DFF00C9B2E6 /* Assets.xcassets */,
 				31DE369C220B3DFF00C9B2E6 /* LaunchScreen.storyboard */,
 				31DE369F220B3DFF00C9B2E6 /* Info.plist */,
 				31634675221DAB9000E70AC0 /* GoogleService-Info.plist */,
 				31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */,
+				31DE3697220B3DDF00C9B2E6 /* Main.storyboard */,
 				E295B2AA22830C5F00112E8C /* AppointmentModel.xcdatamodeld */,
 			);
 			path = "graduation project";

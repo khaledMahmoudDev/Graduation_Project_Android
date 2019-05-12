@@ -22,7 +22,6 @@ class SignUp: UIViewController{
     
     var selectedImage = UIImage(named: "profileImg.png")
     
-    let userDefault = UserDefaults.standard
     
    
     

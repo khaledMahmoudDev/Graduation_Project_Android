@@ -40,7 +40,13 @@ class Profile: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchUserInformationFromFirebase()
+        DispatchQueue.global(qos: .utility).async {
+            // do something time consuming here
+            DispatchQueue.main.async {
+                // now update UI on main thread
+                self.fetchUserInformationFromFirebase()
+            }
+        }
     }
     
     func makeProfileImageRounded() {

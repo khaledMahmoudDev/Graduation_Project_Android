@@ -10,14 +10,21 @@ import UIKit
 import Firebase
 
 class EditUserProfile: UIViewController {
-
+    
     var ref: DatabaseReference!
     var reference: StorageReference!
+    var selectedImage = UIImage(named: "profileImg.png")
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUp.handleSelectProfileImageView))
+        profileImage.addGestureRecognizer(tapGesture)
+        profileImage.isUserInteractionEnabled = true
+        
         makeProfileImageRounded()
         
         DispatchQueue.global(qos: .utility).async {
@@ -27,6 +34,17 @@ class EditUserProfile: UIViewController {
                 self.fetchUserInformationFromFirebase()
             }
         }
+        
+    }
+    
+    //this func is here so we can go to the image gallery on the phone(UIImagePickerController)
+    @objc func handleSelectProfileImageView(){
+        print("hooo")
+        
+        let imgPickerController = UIImagePickerController()
+        imgPickerController.delegate = self
+        present(imgPickerController, animated: true, completion: nil)
+        
     }
     
     func makeProfileImageRounded() {
@@ -47,7 +65,7 @@ class EditUserProfile: UIViewController {
             // Get user value
             let value = snapshot.value as? NSDictionary
             let usernameValue = value?["username"] as? String ?? ""
-            self.username.placeholder = "\(usernameValue)"
+            self.username.text = "\(usernameValue)"
             
         }) { (error) in
             print(error.localizedDescription)
@@ -70,40 +88,106 @@ class EditUserProfile: UIViewController {
     }
     
     @IBAction func saveUserUpdates(_ sender: Any) {
-        updateUserName()
+        //updateUserName()
+        updateProfileImage()
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
-    func updateUserName(){
-        let userID = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("USERS").child(userID!)
-        if let newUserName = username.text {
-            ref?.updateChildValues(["username": newUserName]) { (error, refrence) in
-                if error == nil{
-                    print("updated")
-                    self.navigationController?.popViewController(animated: true)
-                }else{
-                    print(error?.localizedDescription)
-                }
-            }
-        }
-    }
+//    func updateUserName(){
+//        let userID = Auth.auth().currentUser?.uid
+//        ref = Database.database().reference().child("USERS").child(userID!)
+//        if let newUserName = username.text {
+//            ref?.updateChildValues(["username": newUserName]) { (error, refrence) in
+//                if error == nil{
+//                    print("username updated")
+//                }else{
+//                    print(error?.localizedDescription)
+//                }
+//            }
+//        }
+//    }
     
     func updateProfileImage(){
+        
         let userID = Auth.auth().currentUser?.uid
         let storageRef = Storage.storage().reference(forURL: "gs://ajenda-a702f.appspot.com/").child("profileImages").child(userID!)
         guard let image = profileImage.image else{
             return
         }
         
-        if let newImg = image.pngData(){
+        if let newImg = image.jpegData(compressionQuality: 0.1){
             storageRef.putData(newImg, metadata: nil) { (metadata, error) in
                 if error != nil{
                     print(error!)
                     return
                 }
+            }
+            
+            storageRef.downloadURL(completion: { (url, error) in
+                
+                //                if let updatedProfileImg = url?.absoluteString{
+                //                    guard let newUserName = self.username.text else {return}
+                //
+                //                    let updatedvalues = ["username" : newUserName , "imageLink":updatedProfileImg]
+                //                    self.ref = Database.database().reference()
+                //                    let usersReference = self.ref.child("USERS").child(userID!)
+                //                    usersReference.updateChildValues(updatedvalues, withCompletionBlock: { (error, ref) in
+                //                        if error != nil{
+                //                            print(error!)
+                //                            return
+                //                        }
+                //                        print("profile updated1")
+                //                    })
+                //                }
+                //
+                
+                
+                
+                if let err = error{
+                    print(err)
+                } else {
+                    
+                    print(url?.absoluteString) // this is the actual download url - the absolute string
+                    guard let newUserName = self.username.text else {return}
+                    let urlString: String = (url?.absoluteString) ?? ""
+                    let values = ["username" : newUserName , "imageLink":urlString]
+                    self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+                    let usersReference = self.ref.child("USERS").child(userID!)
+                    usersReference.updateChildValues(values, withCompletionBlock :{
+                        (err, ref) in
+                        if err != nil{
+                            print(err!)
+                            return
+                        }
+                        print("profile updated2")
+                        
+                        
+                        
+                    } )
+                }
+                
+                
+                
+                
+                
+            })
+            
         }
         
     }
+}
+extension EditUserProfile : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    
+    //to set the selected image into the UIImage view
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("selected")
+        if let img = info[.originalImage] as? UIImage{
+            selectedImage = img
+            profileImage.image = img
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }
-}
+

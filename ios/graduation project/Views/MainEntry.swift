@@ -41,8 +41,9 @@ class MainEntry: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func profile(){
-        let newNote = storyboard?.instantiateViewController(withIdentifier: "profile")
-        self.navigationController?.pushViewController(newNote!, animated: true)
+//        let newNote = storyboard?.instantiateViewController(withIdentifier: "profile")
+//        self.navigationController?.pushViewController(newNote!, animated: true)
+        performSegue(withIdentifier: "profile", sender: self)
     }
     
     @objc func search(){
