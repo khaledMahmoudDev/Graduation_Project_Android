@@ -58,7 +58,10 @@
 		E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */; };
 		E20AEC7722664FD100AB2EE0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AEC7622664FD100AB2EE0 /* CategoryView.swift */; };
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
+		E214212022898D400039D5CE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214211F22898D400039D5CE /* Note.swift */; };
 		E2187698227B2FC000A9F6AC /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2187697227B2FC000A9F6AC /* RealmObjects.swift */; };
+		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
+		E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DEA64228E4D4C00752B99 /* Appointments.swift */; };
 		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
 		E295B29222830AF000112E8C /* CustomSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28822830AE600112E8C /* CustomSearch.swift */; };
 		E295B29322830AF000112E8C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28922830AE700112E8C /* UIColor+Hex.swift */; };
@@ -139,7 +142,10 @@
 		E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
 		E20AEC7622664FD100AB2EE0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
+		E214211F22898D400039D5CE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E2187697227B2FC000A9F6AC /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
+		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
+		E21DEA64228E4D4C00752B99 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
 		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		E295B28822830AE600112E8C /* CustomSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearch.swift; sourceTree = "<group>"; };
 		E295B28922830AE700112E8C /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -297,6 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				E2187697227B2FC000A9F6AC /* RealmObjects.swift */,
+				E214211F22898D400039D5CE /* Note.swift */,
+				E21DEA64228E4D4C00752B99 /* Appointments.swift */,
+				E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 			files = (
 				31DE36B4220B3F1300C9B2E6 /* ToDoDetails.swift in Sources */,
 				E2076EA522861A20005EAAAD /* ActivityTableViewController.swift in Sources */,
+				E214212022898D400039D5CE /* Note.swift in Sources */,
 				E2076E8D228615EC005EAAAD /* CurrentWeather.swift in Sources */,
 				E295B29A22830AF000112E8C /* Shadows.swift in Sources */,
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
@@ -470,9 +480,11 @@
 				3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */,
 				E295B2D122830EA900112E8C /* TimeSlotFormatter.swift in Sources */,
 				319B596F2224D91E007F73AF /* ToDoList.swift in Sources */,
+				E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */,
 				31DE36C5220B574200C9B2E6 /* MainEntry.swift in Sources */,
 				E2076E9D22861885005EAAAD /* ApptDetailTVC.swift in Sources */,
 				E295B29522830AF000112E8C /* Buttons.swift in Sources */,
+				E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */,
 				E295B29B22830AF000112E8C /* CardView.swift in Sources */,
 				3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */,
 				E2076E8F2286162F005EAAAD /* JSONDownloader.swift in Sources */,

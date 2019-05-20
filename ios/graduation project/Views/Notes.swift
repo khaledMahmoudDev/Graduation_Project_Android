@@ -9,19 +9,20 @@
 import UIKit
 import CoreData
 import Firebase
-import RealmSwift
+//import RealmSwift
 
 
 class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var ref: DatabaseReference!
-    var noteArr : Results<NoteRealmObjects>!
+    var noteArray = [Note]()
+    //var noteArr : Results<NoteRealmObjects>!
     @IBOutlet weak var tableViewList: UITableView!
 
     //var controller : NSFetchedResultsController<UserNotes>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNotesFromFirebase()
+        //fetchNotesFromFirebase()
         //print("********************1")
 
         //fetch()
@@ -29,7 +30,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+
         DispatchQueue.global(qos: .utility).async {
                 // do something time consuming here
                 DispatchQueue.main.async {
@@ -58,11 +59,13 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
 //            let secInfo = sections[section]
 //            return secInfo.numberOfObjects
 //        }
-        if noteArr != nil{
-            return noteArr.count
+        if noteArray != nil{
+            return noteArray.count
         }else{
             return 0
         }
+        
+        //return noteArray.count
         
     }
     
@@ -72,8 +75,8 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         //cell.mycell(note: notelist[indexPath.row])
        // configureCell(cell: cell, indexPath: indexPath )
         
-        //cell.textLabel?.text = noteArray[indexPath.row].noteName
-        cell.textLabel?.text = noteArr[indexPath.row].noteNameRealm
+        cell.textLabel?.text = noteArray[indexPath.row].noteName
+        //cell.textLabel?.text = noteArr[indexPath.row].noteNameRealm
         return cell
     }
     
@@ -91,10 +94,11 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
 //        if let obj = controller.fetchedObjects{
 //            let note = obj[indexPath.row]
           // performSegue(withIdentifier: "noteDetails", sender: note)
-        let choosenNote = noteArr[indexPath.row].noteKeyRealm
+        let choosenNote = noteArray[indexPath.row].noteKey
+        //let choosenNote = noteArr[indexPath.row].noteKeyRealm
         print("choosenKey", choosenNote)
        performSegue(withIdentifier: "noteDetails", sender: choosenNote)
-        //self.noteArray.removeAll()
+        self.noteArray.removeAll()
 //        }
     }
     
@@ -115,16 +119,18 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         if editingStyle == .delete{
             
             
-            let noteArrayIndexPath = noteArr[indexPath.row].noteKeyRealm
+            //let noteArrayIndexPath = noteArr[indexPath.row].noteKeyRealm
             ref = Database.database().reference()
-            let removeRef = ref.child("UserNotes").child(User!.uid).child(noteArrayIndexPath!)
+            let removeRef = ref.child("UserNotes").child(User!.uid).child(noteArray[indexPath.row].noteKey)
+            //let removeRef = ref.child("UserNotes").child(User!.uid).child(noteArrayIndexPath!)
             
             removeRef.removeValue()
+            noteArray.remove(at: indexPath.row)
             
-            var choosenNoteToDelete = noteRealmFile.objects(NoteRealmObjects.self).filter("noteKeyRealm = '\(noteArrayIndexPath!)'")
-            try! noteRealmFile.write {
-               noteRealmFile.delete(choosenNoteToDelete)
-            }
+//            var choosenNoteToDelete = noteRealmFile.objects(NoteRealmObjects.self).filter("noteKeyRealm = '\(noteArrayIndexPath!)'")
+//            try! noteRealmFile.write {
+//               noteRealmFile.delete(choosenNoteToDelete)
+//            }
             
             tableViewList.deleteRows(at: [indexPath], with: .fade)
         }
@@ -239,22 +245,28 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         ref.child("UserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 
-                let userId = dict["userId"] as! String
+                //let userId = dict["userId"] as! String
                 let noteName = dict["noteName"] as! String
                 let noteKey = snapshot.key
                 print("this is note key", noteKey)
+                
+                let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey)
+                self.noteArray.append(notes)
+                self.tableViewList.reloadData()
+                self.ref.keepSynced(true)
+                print("fetched")
 
-                var noteToAddInRealm = NoteRealmObjects()
-                noteToAddInRealm.UserIdRealm = userId
-                noteToAddInRealm.noteNameRealm = noteName
-                noteToAddInRealm.noteKeyRealm = noteKey
-                noteToAddInRealm.writeToRealm()
+//                var noteToAddInRealm = NoteRealmObjects()
+//                noteToAddInRealm.UserIdRealm = userId
+//                noteToAddInRealm.noteNameRealm = noteName
+//                noteToAddInRealm.noteKeyRealm = noteKey
+//                noteToAddInRealm.writeToRealm()
                 
                 
                 //method for saving objects in realm file
-                self.reloadData()
+                //self.reloadData()
 
-                print("fetched")
+               
             }
             
         }
@@ -263,13 +275,13 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     //by using this method we give it the objects the we etched from "firebase database and putted in realm array" to store them in the realm file the we create
     //the creation of any realm file is in appDelegte
-    func reloadData(){
-        guard let userId = Auth.auth().currentUser?.uid else{
-            return
-        }
-        noteArr = noteRealmFile.objects(NoteRealmObjects.self).filter("UserIdRealm = '\(userId)'")
-        self.tableViewList.reloadData()
-    }
+//    func reloadData(){
+//        guard let userId = Auth.auth().currentUser?.uid else{
+//            return
+//        }
+//        noteArr = noteRealmFile.objects(NoteRealmObjects.self).filter("UserIdRealm = '\(userId)'")
+//        self.tableViewList.reloadData()
+//    }
     
   
 

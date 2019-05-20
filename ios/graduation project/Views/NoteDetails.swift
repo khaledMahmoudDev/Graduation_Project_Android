@@ -14,7 +14,8 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     var ref: DatabaseReference!
     var choosedNote : String!
-    
+    var noteNameFIR : String!
+    var noteContentFIR : String!
     //var DetailsArray = [Note]()
     
     
@@ -26,6 +27,23 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         
         if choosedNote != nil {
             fetchUsersNoteFromFirebase()
+            content.textColor = UIColor.black
+            content.returnKeyType = .done
+            content.delegate = self
+            name.textColor = UIColor.black
+            name.returnKeyType = .done
+            name.delegate = self
+        }else{
+            content.text = "Enter Note.."
+            content.textColor = UIColor.lightGray
+            content.returnKeyType = .done
+            content.delegate = self
+            name.text = "Enter Note Title"
+            name.textColor = UIColor.lightGray
+            name.returnKeyType = .done
+            name.delegate = self
+            
+        }
         }
         
 //        if let unwarppedNoteDetails = choosedNote{
@@ -34,46 +52,61 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         
         
         
-        content.text = "Enter Note.."
-        content.textColor = UIColor.lightGray
-        content.returnKeyType = .done
-        content.delegate = self
+//        if content.text != "" && name.text != ""{
+//            print("hereeeeeee")
+//            content.textColor = UIColor.black
+//            content.returnKeyType = .done
+//            content.delegate = self
+//            name.textColor = UIColor.black
+//            name.returnKeyType = .done
+//            name.delegate = self
+//
+//        }else{
+//
+//
+//            content.text = "Enter Note.."
+//            content.textColor = UIColor.lightGray
+//            content.returnKeyType = .done
+//            content.delegate = self
+//            name.text = "Enter Note Title"
+//            name.textColor = UIColor.lightGray
+//            name.returnKeyType = .done
+//            name.delegate = self
+//        }
         
-        name.text = "Enter Note Title"
-        name.textColor = UIColor.lightGray
-        name.returnKeyType = .done
-        name.delegate = self
+        
+        
         
 //        if editOrDeleteNote != nil{
 //            loadForEdit()
 //        }
-    }
+    //}
     
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "Enter Note Title"{
-            textField.text = ""
-            textField.textColor = UIColor.black
+        if name.text == "Enter Note Title"{
+            name.text = ""
+            name.textColor = UIColor.black
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text == "" {
+        if name.text == "" {
             name.text = "Enter Note Title"
             name.textColor = UIColor.lightGray
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Enter Note.."{
-            textView.text = ""
-            textView.textColor = UIColor.black
+        if content.text == "Enter Note.."{
+            content.text = ""
+            content.textColor = UIColor.black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
+        if content.text == "" {
             content.text = "Enter Note.."
             content.textColor = UIColor.lightGray
         }
@@ -81,7 +114,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
-            textView.resignFirstResponder()
+            content.resignFirstResponder()
         }
         return true
     }
@@ -131,7 +164,44 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
 }
     
     @IBAction func cancel(_ sender: Any) {
-        if name.text != "" || content.text != "" || (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) {
+        if name.text != "" || content.text != "" /*|| (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) */{
+            if choosedNote == nil && ((name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray)){
+                let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+
+                alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                }))
+
+                present(alert, animated: true, completion: nil)
+            }else if choosedNote != nil && (name.text != noteNameFIR || content.text != noteContentFIR ) {
+                
+                    let alert = UIAlertController(title: "", message: "Do You Want To Discard The Change You Have Made? ", preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+
+
+                    alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+
+                    present(alert, animated: true, completion: nil)
+
+
+            
+        }else{
+            navigationController?.popViewController(animated: true)
+        }
+
+
+
 //            if editOrDeleteNote == nil{
 //            let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
 //
@@ -161,7 +231,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
 //
 //                    present(alert, animated: true, completion: nil)
 //                }else{
-                    navigationController?.popViewController(animated: true)
+//                    navigationController?.popViewController(animated: true)
 //                }
 //
 //            }
@@ -188,12 +258,12 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
   
     func saveUsersNoteInFirebase(){
         
-        guard let noteContent = content.text, let noteName = name.text, let userId = Auth.auth().currentUser?.uid else{
+        guard let noteContent = content.text, let noteName = name.text else{
             return
         }
         self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["noteName" : noteName , "noteContent": noteContent, "userId": userId]
-        let usersReference = self.ref.child("UserNotes").child(User!.uid).childByAutoId().setValue(values)
+        let values = ["noteName" : noteName , "noteContent": noteContent]
+        self.ref.child("UserNotes").child(User!.uid).childByAutoId().setValue(values)
         
             print("saved savely for the current user")
     }
@@ -208,10 +278,10 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
-            let noteNameFIR = value?["noteName"] as? String ?? ""
-            self.name.text = "\(noteNameFIR)"
-            let noteContentFIR = value?["noteContent"] as? String ?? ""
-            self.content.text = "\(noteContentFIR)"
+            self.noteNameFIR = value?["noteName"] as? String ?? ""
+            self.name.text = self.noteNameFIR
+            self.noteContentFIR = value?["noteContent"] as? String ?? ""
+            self.content.text = self.noteContentFIR
         
 
             
