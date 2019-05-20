@@ -89,8 +89,58 @@ class SignUp: UIViewController{
             //creating the new account with email and password
             Auth.auth().createUser(withEmail: email, password: password){ user, error in
                 if let err = error {
-                    print(err)
-                    return
+                    
+                    if (err as NSError).code == 17008{
+                        
+                        let alert = UIAlertController(title: "ERROR", message: "The email address is badly formatted. ", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    else if(err as NSError).code == 17007{
+                        
+                        let alert = UIAlertController(title: "ERROR", message: "The email address is already in use by another account.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    else if (err as NSError).code == 17026{
+                        
+                        let alert = UIAlertController(title: "ERROR", message: "password must be 6 characters long or more.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+
+                    }
+                    else if (err as NSError).code == 17020{
+                        
+                        let alert = UIAlertController(title: "ERROR", message: "Network error (such as timeout, interrupted connection or unreachable host) has occurred.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }else if (err as NSError).code == 17034{
+                        
+                        let alert = UIAlertController(title: "ERROR", message: "An email address must be provided.", preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }else{
+                        print("ok")
+                    }
+                    
+                    print("error0000000000000",err)
+                    //return
                 }else{
                     self.sendVerificationMail()
                 }
@@ -118,7 +168,7 @@ class SignUp: UIViewController{
                         storageRef.downloadURL(completion: { (url, error) in
                             if let err = error{
                                 // error happened - implement code to handle it
-                                print(err)
+                                print("error88888888888",err)
                             } else {
                                 // no error happened; so just continue with your code
                                //print(url?.absoluteString) // this is the actual download url - the absolute string
@@ -127,25 +177,27 @@ class SignUp: UIViewController{
                                 let usersReference = self.ref.child("USERS").child(uid)
                                 let values = ["username" : username , "email": email, "imageLink":urlString]
                                 usersReference.updateChildValues(values, withCompletionBlock :{
-                                    (err, ref) in
-                                    if err != nil{
-                                        print(err!)
+                                    (error, ref) in
+                                    if let err = error{
+                                        print("err*********",err)
                                         return
                                     }
                                  
                                     print("saved user successfully into firebase db")
                                     
                                     } )
+                                
                                 }
                             })
 
                         }
                         
                     }
-            
             }
+//            self.navigationController?.popViewController(animated: true)
         }
-         self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
+         //self.navigationController?.popToRootViewController(animated: true)
 
     }
 }
