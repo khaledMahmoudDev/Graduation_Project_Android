@@ -8,8 +8,12 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class ActivityTableViewController: UITableViewController {
+    
+    var ref: DatabaseReference!
+    var homeAppointmentsArray = [HomeAppointments]()
     
     let persistentContainer = CoreDataStore.instance.persistentContainer
     
@@ -35,16 +39,37 @@ class ActivityTableViewController: UITableViewController {
     
     
     func performFetch() {
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            
-            do {
-                try self.fetchedResultsController.performFetch()
-                print("Appt Fetch Successful")
-            } catch {
-                let fetchError = error as NSError
-                print("Unable to Perform Fetch Request")
-                print("\(fetchError), \(fetchError.localizedDescription)")
+//        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+//            
+//            do {
+//                try self.fetchedResultsController.performFetch()
+//                print("Appt Fetch Successful")
+//            } catch {
+//                let fetchError = error as NSError
+//                print("Unable to Perform Fetch Request")
+//                print("\(fetchError), \(fetchError.localizedDescription)")
+//            }
+//        }
+        
+        guard let userId = Auth.auth().currentUser?.uid else{
+            return
+        }
+        ref = Database.database().reference()
+        ref.child("Events").child(userId).observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String : Any]{
+                let appointmentTitle = dict["appointmentTitle"] as! String
+                let appointmentTime = dict["appointmentTime"] as! String
+                let appointmentDate = dict["appointmentDate"] as! String
+                let appointmentLocation = dict["appointmentCost"] as! String
+                
+                let homeAppointments = HomeAppointments(appTitle : appointmentTitle, appTime : appointmentTime, appLocation : appointmentLocation , appDate : appointmentDate)
+                self.homeAppointmentsArray.append(homeAppointments)
+                self.tableView.reloadData()
+                self.ref.keepSynced(true)
+                print("fetched")
+                
             }
+            
         }
     }
     
@@ -54,8 +79,10 @@ class ActivityTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
-        return appointments.count
+//        guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
+//        return appointments.count
+        
+        return homeAppointmentsArray.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,13 +94,30 @@ class ActivityTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
         
-        let appointment = fetchedResultsController.object(at: indexPath)
-        //  cell.timeIntervalLabel.text = dateFormatter(date: appointment.date)
-        let timeAgo:String = timeAgoSinceDate(appointment.dateCreated, currentDate: Date(), numericDates: true)
+//        let appointment = fetchedResultsController.object(at: indexPath)
+//        //  cell.timeIntervalLabel.text = dateFormatter(date: appointment.date)
+//        let timeAgo:String = timeAgoSinceDate(appointment.dateCreated, currentDate: Date(), numericDates: true)
+//        
+//        cell.timeIntervalLabel.text = timeAgo
+//        cell.activityLabel.text = "New appointment with for \(dateFormatter(date: appointment.date)) at \(hourFormatter(date: appointment.date)) location \(String(describing: appointment.cost))"
         
-        cell.timeIntervalLabel.text = timeAgo
-        cell.activityLabel.text = "New appointment with for \(dateFormatter(date: appointment.date)) at \(hourFormatter(date: appointment.date)) location \(String(describing: appointment.cost))"
+        let inFormatter = DateFormatter()
+        inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        inFormatter.dateFormat = "HH:mm"
         
+        let appointmentTime = homeAppointmentsArray[indexPath.row].appointmentTime
+        let appointmentDate = homeAppointmentsArray[indexPath.row].appomtmentDate
+        let appointmentLocation = homeAppointmentsArray[indexPath.row].appointmentLocation
+        let appointmentTitle = homeAppointmentsArray[indexPath.row].appointmentTitle
+        let date = inFormatter.date(from: appointmentTime)!
+        let dateInHourFormatter = hourFormatter(date: date)
+        //print(dateInHourFormatter)
+        
+        //cell.timeIntervalLabel.text = dateInHourFormatter
+        
+        cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+
+ 
         return cell
     }
     

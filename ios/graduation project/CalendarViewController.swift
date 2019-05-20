@@ -8,8 +8,12 @@
 
 import UIKit
 import CoreData
+import Firebase
 import JTAppleCalendar
 class CalendarViewController: UIViewController {
+    
+    var ref: DatabaseReference!
+    var appointmentsArray = [Appointments]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -33,7 +37,7 @@ class CalendarViewController: UIViewController {
         let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
+        //fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
@@ -72,28 +76,94 @@ class CalendarViewController: UIViewController {
         // currentWeatherIcon.image = viewModel.icon
         cityName.text = "Ismailia , EG"
     }
+    
+    
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
+    
+    
     func performFetch() {
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            
-            do {
-                try self.fetchedResultsController.performFetch()
-                print("Appt Fetch Successful")
-            } catch {
-                let fetchError = error as NSError
-                print("Unable to Perform Fetch Request")
-                print("\(fetchError), \(fetchError.localizedDescription)")
-            }
+//        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+//            
+//            do {
+//                try self.fetchedResultsController.performFetch()
+//                print("Appt Fetch Successful")
+//            } catch {
+//                let fetchError = error as NSError
+//                print("Unable to Perform Fetch Request")
+//                print("\(fetchError), \(fetchError.localizedDescription)")
+//            }
+//        }
+//        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
+        
+        
+        //fetch appointment from firebase
+        
+        
+        guard let userId = Auth.auth().currentUser?.uid else{
+            return
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
+        ref = Database.database().reference()
+        ref.child("Events").child(userId).observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String : Any]{
+                let appointmentTitle = dict["appointmentTitle"] as! String
+                let appointmentDetail = dict["appointmentNote"] as! String
+                let appointmentTime = dict["appointmentTime"] as! String
+                print(appointmentTime)
+                let appointmentKey = snapshot.key
+
+                let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                self.appointmentsArray.append(appointments)
+                self.tableView.reloadData()
+                self.ref.keepSynced(true)
+                print("fetched")
+
+            }
+
+        }
+        
+//        let Events = self.ref.child("Events").child(userId)
+//        let query = Events.queryOrdered(byChild: "appointmentDate").queryEqual(toValue: "May 17, 2019")
+//        query.observeSingleEvent(of: .value, with: { snapshot in
+//            for child in snapshot.children {
+//                let childSnap = child as! DataSnapshot
+//                let dict = childSnap.value as! [String: Any]
+//                let appointmentTitle = dict["appointmentTitle"] as! String
+//                let appointmentDetail = dict["appointmentNote"] as! String
+//                let appointmentTime = dict["appointmentTime"] as! String
+//
+//                let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime)
+//                self.appointmentsArray.append(appointments)
+//                self.tableView.reloadData()
+//                self.ref.keepSynced(true)
+//                print("fetched")
+//
+//            }
+//        })
+        
+        
+        
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueApptDetail {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let appointment = fetchedResultsController.object(at: indexPath)
-                let controller = (segue.destination as! ApptDetailTVC)
-                controller.appointment = appointment
+//        if segue.identifier == segueApptDetail {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                let appointment = fetchedResultsController.object(at: indexPath)
+//                let controller = (segue.destination as! ApptDetailTVC)
+//                controller.appointment = appointment
+//            }
+//        }
+        
+        if segue.identifier == segueApptDetail{
+            if let destination = segue.destination as? ApptDetailTVC{
+                if let selectedAppointment = sender as? String{
+                    
+                    destination.choosedAppointment = selectedAppointment
+                }
             }
         }
         
@@ -123,23 +193,42 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
-        return appointments.count
+        
+        //guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
+        
+        return appointmentsArray.count
+        //return appointments.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
         
-        let appointment = fetchedResultsController.object(at: indexPath)
-        cell.dateLabel.text = hourFormatter(date: appointment.date)
+        //let appointment = fetchedResultsController.object(at: indexPath)
+        //cell.dateLabel.text = hourFormatter(date: appointment.date)
         
-        cell.noteLabel.text = appointment.note
-        cell.nameLabel.text = appointment.title
+        //cell.noteLabel.text = appointment.note
+        //cell.nameLabel.text = appointment.title
+        
+        let inFormatter = DateFormatter()
+        inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        inFormatter.dateFormat = "HH:mm"
+        
+        let appointmentTime = appointmentsArray[indexPath.row].appointmentTime
+        print("hooooo",appointmentTime)
+        let date = inFormatter.date(from: appointmentTime)!
+        let dateInHourFormatter = hourFormatter(date: date)
+        print(dateInHourFormatter)
+
+        cell.dateLabel.text = dateInHourFormatter
+        cell.nameLabel.text = appointmentsArray[indexPath.row].appointmentTitle
+        cell.noteLabel.text = appointmentsArray[indexPath.row].appointmentDetails
         
         // loadAppointmentsForDate(date: appointment.date)
         return cell
     }
+    
     /*  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
      let appointment = fetchedResultsController.object(at: indexPath)
      let scell = cell as? AppointmentCell
@@ -151,15 +240,28 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
      
      }*/
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let choosenAppointment = appointmentsArray[indexPath.row].appointmentKey
+        print("apptKey", choosenAppointment)
+        performSegue(withIdentifier: segueApptDetail, sender: choosenAppointment)
+        //self.appointmentsArray.removeAll()
+        
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Fetch Appointment
-            let appointment = fetchedResultsController.object(at: indexPath)
+//            let appointment = fetchedResultsController.object(at: indexPath)
+//
+//            // Delete Appointment
+//            persistentContainer.viewContext.delete(appointment)
+//            CoreDataStore.instance.save()
             
-            // Delete Appointment
-            persistentContainer.viewContext.delete(appointment)
-            CoreDataStore.instance.save()
+            ref = Database.database().reference()
+            let removeRef = ref.child("Events").child(User!.uid).child(appointmentsArray[indexPath.row].appointmentKey)
+            removeRef.removeValue()
+            appointmentsArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -167,45 +269,45 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 
-extension CalendarViewController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-        
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
-        case .insert:
-            if let indexPath = newIndexPath {
-                print("Appt Added")
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-            break;
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            break;
-        case .update:
-            if let indexPath = indexPath {
-                print("Appt Changed and updated")
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-        default:
-            print("...")
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
-    }
-    
-}
+//extension CalendarViewController: NSFetchedResultsControllerDelegate {
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch (type) {
+//        case .insert:
+//            if let indexPath = newIndexPath {
+//                print("Appt Added")
+//                tableView.insertRows(at: [indexPath], with: .automatic)
+//            }
+//            break;
+//        case .delete:
+//            if let indexPath = indexPath {
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//            }
+//            break;
+//        case .update:
+//            if let indexPath = indexPath {
+//                print("Appt Changed and updated")
+//                tableView.reloadRows(at: [indexPath], with: .automatic)
+//            }
+//        default:
+//            print("...")
+//        }
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//
+//    }
+//
+//}
 
 extension CalendarViewController {
     func loadAppointmentsForDate(date: Date){
@@ -216,6 +318,7 @@ extension CalendarViewController {
             appointmentsOfTheDay = fetchedObjects.filter({ return dayPredicate.evaluate(with: $0) })
             
         }
+        
         print("dddddxxxxxx\(appointmentsOfTheDay.count)")
         
         // guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }

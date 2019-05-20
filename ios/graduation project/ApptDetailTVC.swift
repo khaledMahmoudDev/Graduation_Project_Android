@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ApptDetailTVC: UITableViewController {
     
+    var ref: DatabaseReference!
+    
     var appointment: Appointment?
+    var choosedAppointment : String!
     
     var segueEditAppt = "SegueEditAppt"
     
@@ -28,6 +32,7 @@ class ApptDetailTVC: UITableViewController {
         noLargeTitles()
         setupUI()
         navBarDropShadow()
+        //print(choosedAppointment)
     }
     
     func noLargeTitles(){
@@ -50,20 +55,55 @@ class ApptDetailTVC: UITableViewController {
     }
     
     func setupUI() {
-        guard let appointment = self.appointment else { return }
-        dateLabel.text = dateFormatter(date: appointment.date)
-        let apptTimeStart = appointment.date
-        let apptTimeEnd = appointment.date + 1800
-        hourLabel.text = "\(hourFormatter(date: apptTimeStart)) - \(hourFormatter(date: apptTimeEnd))"
+//        guard let appointment = self.appointment else { return }
+//        dateLabel.text = dateFormatter(date: appointment.date)
+//        let apptTimeStart = appointment.date
+//        let apptTimeEnd = appointment.date + 1800
+//        hourLabel.text = "\(hourFormatter(date: apptTimeStart)) - \(hourFormatter(date: apptTimeEnd))"
+//
+//        if let title = appointment.title {
+//            titleLabel.text = "\(title)"
+//        }
+//        if let cost = appointment.cost {
+//            apptCostLabel.text = "\(cost)"
+//        }
+//        if let note = appointment.note {
+//            noteTextView.text = "\(note)"
+//        }
         
-        if let title = appointment.title {
-            titleLabel.text = "\(title)"
+        
+        //fetching appointment from firebase
+        guard let apptKey = self.choosedAppointment else {
+            return
         }
-        if let cost = appointment.cost {
-            apptCostLabel.text = "\(cost)"
-        }
-        if let note = appointment.note {
-            noteTextView.text = "\(note)"
+        print(apptKey)
+        
+        let userId = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let apptTitle = value?["appointmentTitle"] as? String ?? ""
+            self.titleLabel.text = apptTitle
+            let apptNote = value?["appointmentNote"] as? String ?? ""
+            self.noteTextView.text = apptNote
+            let apptLocation = value?["appointmentCost"] as? String ?? ""
+            self.apptCostLabel.text = apptLocation
+            let apptDate = value?["appointmentDate"] as? String ?? ""
+            self.dateLabel.text = apptDate
+            
+            let inFormatter = DateFormatter()
+            inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+            inFormatter.dateFormat = "HH:mm"
+            
+            let appointmentTimeStart = value?["appointmentTime"] as? String ?? ""
+            let startTime = inFormatter.date(from: appointmentTimeStart)!
+            let timeInHourFormatter = hourFormatter(date: startTime)
+            self.hourLabel.text = timeInHourFormatter
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     
@@ -71,8 +111,9 @@ class ApptDetailTVC: UITableViewController {
         if segue.identifier == segueEditAppt {
             if let destinationNavigationViewController = segue.destination as? UINavigationController {
                 let controller = (destinationNavigationViewController.topViewController as! UpdateApptTVC)
-                controller.appointment = appointment
-                controller.appointmentLoaded = true
+//                controller.appointment = appointment
+//                controller.appointmentLoaded = true
+                controller.apptKey = choosedAppointment
             }
         }
     }

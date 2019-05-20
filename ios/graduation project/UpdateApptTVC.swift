@@ -2,9 +2,13 @@
 
 import UIKit
 import CoreData
+import Firebase
 import JTAppleCalendar
 
 class UpdateApptTVC: UITableViewController, AppointmentTVC {
+    
+    var apptKey : String!
+    var ref: DatabaseReference!
     
     var selectedTimeSlot: Date?
     var appointmentsOfTheDay: [Appointment]?
@@ -71,6 +75,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         setTextFieldDelegates()
         setTextViewDelegates()
         setDoneOnKeyboard()
+        loadAppointment()
+        print("..........",apptKey)
         
         calendarView.visibleDates{ (visibleDates) in
             self.setupViewsFromCalendar(from: visibleDates)
@@ -82,40 +88,71 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if appointmentLoaded {
-            loadAppointment()
-            appointmentLoaded = false
-        }
-        if selectedTimeSlot != nil {
-            timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
-        }
-        if myString != "" {
-            
-            locationLabel.text = myString
-        }
+//        if appointmentLoaded {
+//            loadAppointment()
+//            appointmentLoaded = false
+//        }
+//        if selectedTimeSlot != nil {
+//            timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
+//        }
+//        if myString != "" {
+//
+//            locationLabel.text = myString
+//        }
         
         
     }
     
     func loadAppointment() {
         
-        guard let appointment = self.appointment else { return }
-        calendarView.scrollToDate(appointment.date, animateScroll: false)
-        calendarView.selectDates( [appointment.date] )
+//        guard let appointment = self.appointment else { return }
+//        calendarView.scrollToDate(appointment.date, animateScroll: false)
+//        calendarView.selectDates( [appointment.date] )
+//
+//
+//
+//        timeSlotLabel.text = hourFormatter(date: appointment.date)
+//        if let title = appointment.title {
+//            titleTextField.text = title
+//        }
+//        if let cost = appointment.cost {
+//            locationLabel.text = cost
+//        }
+//        if let note = appointment.note {
+//            noteTextView.text = note
+//        }
+//        print("Appointment date: \(String(describing: appointment.date))")
         
         
+        //fetch appointment from firebase to be edited
         
-        timeSlotLabel.text = hourFormatter(date: appointment.date)
-        if let title = appointment.title {
-            titleTextField.text = title
+        guard let apptKey = self.apptKey else {
+            return
         }
-        if let cost = appointment.cost {
-            locationLabel.text = cost
+        print(apptKey)
+        
+        let userId = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let apptTitle = value?["appointmentTitle"] as? String ?? ""
+            self.titleTextField.text = apptTitle
+            let apptNote = value?["appointmentNote"] as? String ?? ""
+            self.noteTextView.text = apptNote
+            let apptLocation = value?["appointmentCost"] as? String ?? ""
+            self.locationLabel.text = apptLocation
+            let apptDate = value?["appointmentDate"] as? String ?? ""
+            self.dateDetailLabel.text = apptDate
+            let appointmentTime = value?["appointmentTime"] as? String ?? ""
+            self.timeSlotLabel.text = appointmentTime
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
-        if let note = appointment.note {
-            noteTextView.text = note
-        }
-        print("Appointment date: \(String(describing: appointment.date))")
         
     }
     
@@ -125,22 +162,37 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         //  guard let appointment = appointment else { return }
         
         //guard let selectedTimeSlot = self.selectedTimeSlot else { return }
-        if selectedTimeSlot != nil {
-            appointment?.date = selectedTimeSlot!
-        }
-        appointment?.dateModified = Date()
+//        if selectedTimeSlot != nil {
+//            appointment?.date = selectedTimeSlot!
+//        }
+//        appointment?.dateModified = Date()
+//
+//        if noteTextView.text != nil {
+//            appointment?.note = noteTextView.text
+//        }
+//        if locationLabel.text != nil {
+//            appointment?.cost = locationLabel.text
+//        }
+//        if titleTextField.text != nil {
+//            appointment?.title = titleTextField.text
+//        }
+//
+//        CoreDataStore.instance.save()
         
-        if noteTextView.text != nil {
-            appointment?.note = noteTextView.text
-        }
-        if locationLabel.text != nil {
-            appointment?.cost = locationLabel.text
-        }
-        if titleTextField.text != nil {
-            appointment?.title = titleTextField.text
-        }
+        //updating appointment in firebase
         
-        CoreDataStore.instance.save()
+        let userId = Auth.auth().currentUser?.uid
+        
+        guard let apptDate = dateDetailLabel.text, let apptTime = timeSlotLabel.text, let apptTitle = titleTextField.text, let apptNote = noteTextView.text, let apptLocation = locationLabel.text else{
+            return
+        }
+        print(apptDate,apptNote,apptTitle, apptTime)
+        
+        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
+        let userAppointment = ["appointmentDate" : apptDate , "appointmentTime": apptTime , "appointmentTitle" : apptTitle , "appointmentNote" : apptNote , "appointmentCost" : apptLocation ]
+        ref.updateChildValues(userAppointment)
+        print("edited")
+        
         dismiss(animated: true, completion: nil)
     }
     

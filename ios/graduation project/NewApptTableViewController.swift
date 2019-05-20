@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 import JTAppleCalendar
 
 protocol AppointmentTVC {
@@ -20,6 +21,8 @@ protocol AppointmentTVC {
 }
 
 class NewApptTableViewController: UITableViewController, AppointmentTVC {
+    
+    var ref: DatabaseReference!
     
     var myString = String()
     var selectedTimeSlot: Date?
@@ -47,7 +50,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         }
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        
+
         return fetchedResultsController
     }()
     
@@ -102,18 +105,36 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         }
     }
     
+    
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
+    
+    
     func confirmAppointment() {
-        let appointment = Appointment(context: persistentContainer.viewContext)
-        //guard let patient = self.patient else { return }
-        guard let selectedTimeSlot = self.selectedTimeSlot else { return }
-        // appointment.patient = patient
-        appointment.date = selectedTimeSlot
-        appointment.note = noteTextView.text
-        appointment.cost = locationLabel.text
-        appointment.title = titleTextField.text
-        appointment.dateCreated = Date()
+//        let appointment = Appointment(context: persistentContainer.viewContext)
+//        //guard let patient = self.patient else { return }
+//        guard let selectedTimeSlot = self.selectedTimeSlot else { return }
+//        // appointment.patient = patient
+//        appointment.date = selectedTimeSlot
+//        appointment.note = noteTextView.text
+//        appointment.cost = locationLabel.text
+//        appointment.title = titleTextField.text
+//        appointment.dateCreated = Date()
+//
+//        CoreDataStore.instance.save()
         
-        CoreDataStore.instance.save()
+        //saving new appointment to firebase
+        
+        guard let appointmentTime = timeSlotLabel.text, let appointmentNote = noteTextView.text, let appointmentCost = locationLabel.text, let appointmentTitle = titleTextField.text, let appointmentDate = dateDetailLabel.text else{
+            return
+        }
+        self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+        let values = ["appointmentDate" : appointmentDate, "appointmentTime" : appointmentTime , "appointmentNote" : appointmentNote, "appointmentCost" : appointmentCost, "appointmentTitle" : appointmentTitle]
+        self.ref.child("Events").child(User!.uid).childByAutoId().setValue(values)
+        
+        print("Appoinment saved savely in firebase")
         
         dismiss(animated: true, completion: nil)
     }
@@ -371,15 +392,15 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
 }
 
 extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
@@ -403,7 +424,7 @@ extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
             print("...")
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     }
 }
