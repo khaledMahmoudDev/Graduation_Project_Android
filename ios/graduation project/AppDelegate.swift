@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import RealmSwift
 
 
 let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -26,7 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
         Theme.current = DefaultTheme()
+        do{
+            
+            _ = try Realm()
+            
+        }catch{
+            
+            print("Error while initilaise realm \(error)")
+            
+        }
+        
+        
         return true
+    
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

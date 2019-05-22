@@ -12,5 +12,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Core'
 pod 'JTAppleCalendar', '~> 7.0'
-
+ pod 'RealmSwift'
+    pod 'SwipeCellKit'
+    pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 end
