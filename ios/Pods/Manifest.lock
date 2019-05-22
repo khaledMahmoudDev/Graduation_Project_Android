@@ -74,11 +74,6 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Realm (3.14.1):
-    - Realm/Headers (= 3.14.1)
-  - Realm/Headers (3.14.1)
-  - RealmSwift (3.14.1):
-    - Realm (= 3.14.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -86,7 +81,6 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - JTAppleCalendar (~> 7.0)
-  - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -104,8 +98,6 @@ SPEC REPOS:
     - JTAppleCalendar
     - leveldb-library
     - nanopb
-    - Realm
-    - RealmSwift
 
 SPEC CHECKSUMS:
   Firebase: 963d5685fae888a56d6d4d9cfce6b9c976958798
@@ -122,9 +114,7 @@ SPEC CHECKSUMS:
   JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
-  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
 
-PODFILE CHECKSUM: 726c9c2370b2700d2ccc9c67648234dd41cc0a28
+PODFILE CHECKSUM: c964793d1228cc2aaf968be9f05a0739092bb5e1
 
 COCOAPODS: 1.6.1

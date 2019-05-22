@@ -52,31 +52,6 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         
         
         
-//        if content.text != "" && name.text != ""{
-//            print("hereeeeeee")
-//            content.textColor = UIColor.black
-//            content.returnKeyType = .done
-//            content.delegate = self
-//            name.textColor = UIColor.black
-//            name.returnKeyType = .done
-//            name.delegate = self
-//
-//        }else{
-//
-//
-//            content.text = "Enter Note.."
-//            content.textColor = UIColor.lightGray
-//            content.returnKeyType = .done
-//            content.delegate = self
-//            name.text = "Enter Note Title"
-//            name.textColor = UIColor.lightGray
-//            name.returnKeyType = .done
-//            name.delegate = self
-//        }
-        
-        
-        
-        
 //        if editOrDeleteNote != nil{
 //            loadForEdit()
 //        }
