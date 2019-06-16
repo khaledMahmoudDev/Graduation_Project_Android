@@ -20,14 +20,18 @@ class TodoTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
   //  @IBOutlet weak var CatLabel: UILabel!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (list.count)
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style:UITableViewCell.CellStyle.default, reuseIdentifier: "ToDoCell")
+        let cell = UITableViewCell(style:UITableViewCell.CellStyle.default, reuseIdentifier: "todocell")
         
         cell.textLabel?.text = list[indexPath.row]
         return (cell)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "tododetails", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
