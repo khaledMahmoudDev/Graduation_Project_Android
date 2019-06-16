@@ -60,7 +60,6 @@
 		E214212022898D400039D5CE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214211F22898D400039D5CE /* Note.swift */; };
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
 		E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DEA64228E4D4C00752B99 /* Appointments.swift */; };
-		E23EC56222B68F78000BE2D8 /* TodoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23EC56122B68F78000BE2D8 /* TodoTabBar.swift */; };
 		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
 		E2882C8122B3ED80000E6A34 /* TodoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2882C8022B3ED80000E6A34 /* TodoTable.swift */; };
 		E295B29222830AF000112E8C /* CustomSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28822830AE600112E8C /* CustomSearch.swift */; };
@@ -144,7 +143,6 @@
 		E214211F22898D400039D5CE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
 		E21DEA64228E4D4C00752B99 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
-		E23EC56122B68F78000BE2D8 /* TodoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTabBar.swift; sourceTree = "<group>"; };
 		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		E2882C8022B3ED80000E6A34 /* TodoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTable.swift; sourceTree = "<group>"; };
 		E295B28822830AE600112E8C /* CustomSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearch.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 				3157F3FD2221F23D0066C46A /* Notes.swift */,
 				3157F3FB2221F2210066C46A /* NoteDetails.swift */,
 				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
-				E23EC56122B68F78000BE2D8 /* TodoTabBar.swift */,
 				E2882C8022B3ED80000E6A34 /* TodoTable.swift */,
 				E202197B22B443EE003C7B10 /* ToDoCellDetails.swift */,
 				E202197D22B45B23003C7B10 /* DoneTable.swift */,
@@ -526,7 +523,6 @@
 				E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				E295B2A522830C0300112E8C /* Appointment+CoreDataClass.swift in Sources */,
-				E23EC56222B68F78000BE2D8 /* TodoTabBar.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,7 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B24STM79MS;
 				INFOPLIST_FILE = "graduation project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +690,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B24STM79MS;
 				INFOPLIST_FILE = "graduation project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
