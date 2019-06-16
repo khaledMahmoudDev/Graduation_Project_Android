@@ -56,6 +56,7 @@
 		E2076EB522862CEE005EAAAD /* AppointmentCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076EB422862CEE005EAAAD /* AppointmentCelll.swift */; };
 		E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */; };
 		E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */; };
+		E20CB8A822B6E4E000C47CF6 /* TodoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */; };
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
 		E214212022898D400039D5CE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214211F22898D400039D5CE /* Note.swift */; };
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
@@ -139,6 +140,7 @@
 		E2076EB422862CEE005EAAAD /* AppointmentCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCelll.swift; sourceTree = "<group>"; };
 		E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
+		E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTabBar.swift; sourceTree = "<group>"; };
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		E214211F22898D400039D5CE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				3157F3FD2221F23D0066C46A /* Notes.swift */,
 				3157F3FB2221F2210066C46A /* NoteDetails.swift */,
 				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
+				E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */,
 				E2882C8022B3ED80000E6A34 /* TodoTable.swift */,
 				E202197B22B443EE003C7B10 /* ToDoCellDetails.swift */,
 				E202197D22B45B23003C7B10 /* DoneTable.swift */,
@@ -523,6 +526,7 @@
 				E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				E295B2A522830C0300112E8C /* Appointment+CoreDataClass.swift in Sources */,
+				E20CB8A822B6E4E000C47CF6 /* TodoTabBar.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

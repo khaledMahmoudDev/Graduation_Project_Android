@@ -20,6 +20,10 @@ class ToDoCellDetails: UIViewController {
     
     //save button to save a todo in the table view
     
+    @IBAction func saveTodo(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func Save(_ sender: Any) {
         if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
             
