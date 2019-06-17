@@ -8,7 +8,7 @@
 
 import UIKit
 
-var DoneList = ["done1"]
+var DoneList = ["done1","done2"]
 
 class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -24,7 +24,7 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style:UITableViewCell.CellStyle.default, reuseIdentifier: "donecell")
         
-        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.text = DoneList[indexPath.row]
         return cell
     }
     

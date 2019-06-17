@@ -22,9 +22,7 @@ class ToDoCellDetails: UIViewController {
     
     @IBAction func saveTodo(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func Save(_ sender: Any) {
+        
         if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
             
             var title = ToDoTitle.text
@@ -38,8 +36,7 @@ class ToDoCellDetails: UIViewController {
             
             
             //save the category in category label in todo table
-            
-        }
+    }
         else {
             let alert = UIAlertController(title: "", message: "Please,fill in all the fields.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
@@ -50,13 +47,13 @@ class ToDoCellDetails: UIViewController {
             
         }
         
-      
+        
     }
+   
     @IBAction func MoveToDone(_ sender: Any) {
         
         DoneList.append(ToDoTitle.text!)
-        
-
+       // list.remove(at: index(ofAccessibilityElement: self))
     }
     
     
