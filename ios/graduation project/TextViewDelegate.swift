@@ -25,7 +25,7 @@ extension NewApptTableViewController {
     self.noteTextView.inputAccessoryView = keyboardToolbar
   }
   
-  @objc func dismissKeyboard() {
+    @objc override func dismissKeyboard() {
     view.endEditing(true)
   }
 }
@@ -53,7 +53,7 @@ extension UpdateApptTVC {
     self.noteTextView.inputAccessoryView = keyboardToolbar
   }
   
-  @objc func dismissKeyboard() {
+    @objc override func dismissKeyboard() {
     view.endEditing(true)
   }
 }
