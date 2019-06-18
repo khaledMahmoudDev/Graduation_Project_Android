@@ -106,11 +106,11 @@ class CalendarViewController: UIViewController {
             return
         }
         ref = Database.database().reference()
-        ref.child("Events").child(userId).observe(.childAdded) { (snapshot) in
+        ref.child("Events").observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
-                let appointmentTitle = dict["appointmentTitle"] as! String
-                let appointmentDetail = dict["appointmentNote"] as! String
-                let appointmentTime = dict["appointmentTime"] as! String
+                let appointmentTitle = dict["mtitle"] as! String
+                let appointmentDetail = dict["mdetails"] as! String
+                let appointmentTime = dict["mstartTime"] as! String
                 print(appointmentTime)
                 let appointmentKey = snapshot.key
 

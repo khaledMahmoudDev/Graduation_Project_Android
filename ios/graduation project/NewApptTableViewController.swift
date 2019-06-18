@@ -127,12 +127,12 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         
         //saving new appointment to firebase
         
-        guard let appointmentTime = timeSlotLabel.text, let appointmentNote = noteTextView.text, let appointmentCost = locationLabel.text, let appointmentTitle = titleTextField.text, let appointmentDate = dateDetailLabel.text else{
+        guard let mstartTime = timeSlotLabel.text, let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
             return
         }
         self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["appointmentDate" : appointmentDate, "appointmentTime" : appointmentTime , "appointmentNote" : appointmentNote, "appointmentCost" : appointmentCost, "appointmentTitle" : appointmentTitle]
-        self.ref.child("Events").child(User!.uid).childByAutoId().setValue(values)
+        let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "" ]
+        self.ref.child("Events").childByAutoId().setValue(values)
         
         print("Appoinment saved savely in firebase")
         

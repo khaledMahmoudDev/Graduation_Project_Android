@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MV0-V0-D8z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8iZ-Y1-7dq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -239,9 +239,9 @@
                         <segue destination="gXq-Dd-OEB" kind="show" identifier="notification" id="38L-4k-nUj"/>
                         <segue destination="iDT-to-6vq" kind="show" identifier="email" id="hUP-hr-tKb"/>
                         <segue destination="FvH-uJ-zZb" kind="show" identifier="notes" id="Gri-jk-t1S"/>
-                        <segue destination="8iZ-Y1-7dq" kind="show" identifier="calendar" id="dhL-aY-S1b"/>
                         <segue destination="opo-By-nKg" kind="show" identifier="profile" id="Z6h-dV-kOz"/>
                         <segue destination="TFK-b7-b41" kind="show" identifier="todo" id="IoM-Cb-JcG"/>
+                        <segue destination="8iZ-Y1-7dq" kind="show" identifier="calendar" id="uJi-8Q-a9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCd-AY-RAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1199,6 +1199,7 @@
         <!--Appointments-->
         <scene sceneID="van-NT-CqG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pYf-3S-9VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lp5-6y-cUI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Appointments" image="today" id="HY0-FB-T9Z"/>
                     <toolbarItems/>
@@ -1211,7 +1212,6 @@
                         <segue destination="Rfx-pT-1QG" kind="relationship" relationship="rootViewController" id="fVN-9r-1AY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pYf-3S-9VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4710" y="2749"/>
         </scene>
@@ -2473,7 +2473,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="acT-uA-LxE"/>
         <segue reference="hOK-MX-cos"/>
-        <segue reference="IgS-8A-6uT"/>
-        <segue reference="FBw-gp-2ID"/>
+        <segue reference="L32-St-71b"/>
+        <segue reference="pmo-A3-wRS"/>
     </inferredMetricsTieBreakers>
 </document>
