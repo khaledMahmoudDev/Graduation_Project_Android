@@ -23,7 +23,11 @@ protocol AppointmentTVC {
 class NewApptTableViewController: UITableViewController, AppointmentTVC {
     
     var ref: DatabaseReference!
-    
+    var mDay = ""
+    var Mday = ""
+    var Mmonth = ""
+    var Myear = ""
+    var publicVsPrivate = 0
     var myString = String()
     var selectedTimeSlot: Date?
     var appointmentsOfTheDay: [Appointment]?
@@ -73,6 +77,17 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         confirmAppointment()
     }
     
+    @IBAction func publicVSprivate(_ sender: Any) {
+        if (sender as AnyObject).isOn == true {
+            publicVsPrivate = 1
+            print("on")
+        }else
+        {
+            publicVsPrivate = 0
+            print("off")
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendarView()
@@ -177,6 +192,13 @@ extension NewApptTableViewController {
     func updateDateDetailLabel(date: Date){
         formatter.dateFormat = "MMMM dd, yyyy"
         dateDetailLabel.text = formatter.string(from: date)
+        mDay = dateDetailLabel.text! ;
+      //  print ( " dnt == ", mDay)
+let calanderDate = Calendar.current.dateComponents([.month, .day, .year], from: date)
+         Mday = String( calanderDate.day!)
+         Mmonth = String( calanderDate.month!)
+         Myear = String(calanderDate.year!)
+     //   print(Mday,Mmonth,Myear)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -267,6 +289,7 @@ extension NewApptTableViewController {
         updateDateDetailLabel(date: date)
         loadAppointmentsForDate(date: date)
     }
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let calendarDate = calendarView.selectedDates.first
