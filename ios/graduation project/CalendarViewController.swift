@@ -136,18 +136,78 @@ class CalendarViewController: UIViewController {
         
         print("........",result)
             ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.childAdded){ (snapshot) in
+                //print(snapshot)
             if let dict = snapshot.value as? [String : Any]{
-                let appointmentTitle = dict["mtitle"] as! String
-                let appointmentDetail = dict["mdetails"] as! String
-                let appointmentTime = dict["mstartTime"] as! String
-                print(appointmentTime)
-                let appointmentKey = snapshot.key
+                if dict["privacy"] as! String == "private" && dict["meventCreator"] as? String == self.User?.email{
+                    let appointmentTitle = dict["mtitle"] as! String
+                    let appointmentDetail = dict["mdetails"] as! String
+                    let appointmentTime = dict["mstartTime"] as! String
+                    //print(appointmentTime)
+                    let appointmentKey = snapshot.key
+                    
+                    let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                    self.appointmentsArray.append(appointments)
+                    self.tableView.reloadData()
+                    self.ref.keepSynced(true)
+                    print("private")
+                    
+                }else if  dict["privacy"] as! String == "public"{
+                    let appointmentTitle = dict["mtitle"] as! String
+                    let appointmentDetail = dict["mdetails"] as! String
+                    let appointmentTime = dict["mstartTime"] as! String
+                    //print(appointmentTime)
+                    let appointmentKey = snapshot.key
+                    
+                    let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                    self.appointmentsArray.append(appointments)
+                    self.tableView.reloadData()
+                    self.ref.keepSynced(true)
+                    print("public")
+                    
+                }else{
+                    if  dict["privacy"] as! String == "CustomUsers"{
+                        
+                        let customUsersArray = dict["customUsrs"] as! [String]
+                        let checkForCustomUserIsExist = customUsersArray.contains((self.User?.email)!)
+                        //print(checkForCustomUserIsExist)
+                        
+                        if checkForCustomUserIsExist == true{
+                            let appointmentTitle = dict["mtitle"] as! String
+                            let appointmentDetail = dict["mdetails"] as! String
+                            let appointmentTime = dict["mstartTime"] as! String
+//                          let CustomUsers = dict["customUsrs"] as! [String]
+//                          print(CustomUsers)
+                            let appointmentKey = snapshot.key
+                            
+                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                            self.appointmentsArray.append(appointments)
+                            self.tableView.reloadData()
+                            self.ref.keepSynced(true)
+                            
+                            print("custom")
 
-                let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                self.appointmentsArray.append(appointments)
-                self.tableView.reloadData()
-                self.ref.keepSynced(true)
-                print("fetched")
+                            
+                        }
+                        
+//                        if dict["customUsrs"] as! [String] == [self.User?.email]{
+//                            let appointmentTitle = dict["mtitle"] as! String
+//                            let appointmentDetail = dict["mdetails"] as! String
+//                            let appointmentTime = dict["mstartTime"] as! String
+////                            let CustomUsers = dict["customUsrs"] as! [String]
+////                            print(CustomUsers)
+//                            let appointmentKey = snapshot.key
+//
+//                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+//                            self.appointmentsArray.append(appointments)
+//                            self.tableView.reloadData()
+//                            self.ref.keepSynced(true)
+//
+//                            print("custom")
+//                        }
+
+                    }
+                }
+                
 
             }
                 
@@ -278,7 +338,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let choosenAppointment = appointmentsArray[indexPath.row].appointmentKey
         print("apptKey", choosenAppointment)
         performSegue(withIdentifier: segueApptDetail, sender: choosenAppointment)
-        //self.appointmentsArray.removeAll()
+        self.appointmentsArray.removeAll()
         
     }
     
