@@ -2278,6 +2278,11 @@
                                     <action selector="MoveToDone:" destination="pym-lw-JgE" eventType="touchUpInside" id="eJF-Lo-5Wl"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-9j-qvN">
+                                <rect key="frame" x="64" y="373" width="258" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Bno-nf-jW3"/>
@@ -2292,6 +2297,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="CategorySwiftyMenu" destination="MJI-9j-qvN" id="aqJ-KE-luz"/>
                         <outlet property="ToDoCategory" destination="2Qp-Ll-K7v" id="6ZP-y3-7cH"/>
                         <outlet property="ToDoDetail" destination="J0p-DB-mjg" id="Byo-UK-9Md"/>
                         <outlet property="ToDoTitle" destination="4h6-B7-tqB" id="6Wo-Tq-R9S"/>
@@ -2472,7 +2478,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="acT-uA-LxE"/>
-        <segue reference="hOK-MX-cos"/>
+        <segue reference="eMW-rH-YCH"/>
         <segue reference="IgS-8A-6uT"/>
         <segue reference="FBw-gp-2ID"/>
     </inferredMetricsTieBreakers>

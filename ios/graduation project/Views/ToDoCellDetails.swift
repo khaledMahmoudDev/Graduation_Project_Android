@@ -7,21 +7,33 @@
 //
 
 import UIKit
+import SwiftyMenu
 
 
 
-class ToDoCellDetails: UIViewController {
+
+class ToDoCellDetails: UIViewController , UITextViewDelegate {
 
     @IBOutlet weak var ToDoTitle: UITextField!
     @IBOutlet weak var ToDoDetail: UITextView!
     @IBOutlet weak var ToDoCategory: UITextField!
     
     
+    @IBOutlet weak var CategorySwiftyMenu: SwiftyMenu!
     
+    
+
+
+//    private let optionsData = ["Work", "Shopping", "Fun", "Others"]
+    
+
+    
+//
     //save button to save a todo in the table view
     
     @IBAction func saveTodo(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+        print("save clicked")
         
         if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
             
@@ -66,12 +78,50 @@ class ToDoCellDetails: UIViewController {
 //        ToDoCategory.addTarget(self, action: showCats, for: UITouch)
 //        func showCats (textfield: UITextField)
 //        { // show the cats table}
-//            
-            
-        // Do any additional setup after loading the view.
+        
+        ToDoDetail.delegate = self
+      //  CategorySwiftyMenu.delegate = self
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        ToDoDetail.text = ""
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        CategorySwiftyMenu.delegate = self as? SwiftyMenuDelegate
+//        CategorySwiftyMenu.options = optionsData as! [SwiftMenuDisplayable]
     }
     
 
-    
-
 }
+
+//extension ViewController: SwiftyMenuDelegate {
+//    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+//        print("Selected option: \(selectedOption), at index: \(index)")
+//        //save the selected option in a variable to handle
+//        var category = selectedOption
+//    }
+//
+//
+//
+//    // SwiftyMenu drop down menu will appear
+//    func swiftyMenuWillAppear(_ swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu will appear.")
+//    }
+//
+//    // SwiftyMenu drop down menu did appear
+//    func swiftyMenuDidAppear(_ swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu did appear.")
+//    }
+//
+//    // SwiftyMenu drop down menu will disappear
+//    func swiftyMenuWillDisappear(_ swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu will disappear.")
+//    }
+//
+//    // SwiftyMenu drop down menu did disappear
+//    func swiftyMenuDidDisappear(_ swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu did disappear.")
+//    }
+//}

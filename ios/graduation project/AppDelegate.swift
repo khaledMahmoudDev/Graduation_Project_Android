@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Firebase
 import RealmSwift
+//import SwiftyMenu
+
 
 
 let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -19,6 +21,7 @@ let context = appdelegate.persistentContainer.viewContext
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
+  //  CategorySwiftyMenu.delegate = self
    // let userDefault = UserDefaults.standard
 
 
