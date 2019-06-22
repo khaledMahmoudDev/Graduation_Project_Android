@@ -27,6 +27,9 @@ class CalendarViewController: UIViewController {
     var appointmentsOfTheDay = [Appointment] ()
     
     let formatter = DateFormatter()
+    let date = Date()
+    var result : String?
+    
     
     private let segueNewApptTVC = "SegueNewApptTVC"
     private let segueApptDetail = "SegueApptDetail"
@@ -50,9 +53,19 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.appointmentsArray.removeAll()
+        
+        
+
+        formatter.dateFormat = "MMMM dd, yyyy"
+        result = formatter.string(from: date)
+        print("..........",result)
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
-        performFetch()
+        //performFetch()
         noLargeTitles()
         setupCalendarView()
         
@@ -61,6 +74,8 @@ class CalendarViewController: UIViewController {
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
         
+        
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Calendar", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         client.getCurrentWeather(at: Coordinates.Ismailia){ [unowned self] currentWeather, error in
             if let currentWeather = currentWeather {
@@ -68,6 +83,16 @@ class CalendarViewController: UIViewController {
                 self.displayWeather(using: viewModel)}
         }
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.appointmentsArray.removeAll()
+        performFetch()
+    }
+    
+    
     func displayWeather(using viewModel: CurrentWeatherViewModel) {
         currentTemperatureLabel.text = viewModel.temperature
         currentHumidityLabel.text = viewModel.humidity
@@ -106,7 +131,11 @@ class CalendarViewController: UIViewController {
             return
         }
         ref = Database.database().reference()
-        ref.child("Events").observe(.childAdded) { (snapshot) in
+        //ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: "June 18, 2019").observeSingleEvent(of: .value, with: { (snapshot) in
+
+        
+        print("........",result)
+            ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.childAdded){ (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 let appointmentTitle = dict["mtitle"] as! String
                 let appointmentDetail = dict["mdetails"] as! String
@@ -121,7 +150,7 @@ class CalendarViewController: UIViewController {
                 print("fetched")
 
             }
-
+                
         }
         
 //        let Events = self.ref.child("Events").child(userId)
@@ -196,7 +225,12 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         //guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
         
-        return appointmentsArray.count
+        if appointmentsArray != nil{
+            return appointmentsArray.count
+        }else{
+            return 0
+        }
+        
         //return appointments.count
         
     }
@@ -258,7 +292,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 //            CoreDataStore.instance.save()
             
             ref = Database.database().reference()
-            let removeRef = ref.child("Events").child(User!.uid).child(appointmentsArray[indexPath.row].appointmentKey)
+            let removeRef = ref.child("Events").child(appointmentsArray[indexPath.row].appointmentKey)
             removeRef.removeValue()
             appointmentsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -440,7 +474,6 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         
     }
     
-    
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath) as! CalendarDayCell
         cell.dateLabel.text = cellState.text
@@ -456,8 +489,12 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        
+       formatter.dateFormat = "MMMM dd, yyyy"
+        result = formatter.string(from:date)
+        print("didselect date", result)
         loadAppointmentsForDate(date: date)
+        self.appointmentsArray.removeAll()
+        performFetch()
         //calendarViewDateChanged()
     }
     

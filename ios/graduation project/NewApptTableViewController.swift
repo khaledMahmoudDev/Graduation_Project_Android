@@ -20,7 +20,13 @@ protocol AppointmentTVC {
     func setupCalendarView()
 }
 
+
+
 class NewApptTableViewController: UITableViewController, AppointmentTVC {
+    
+    static var privateVsPublic = 0
+    
+    //var selectedUsersArray : Array<String> = []
     
     var ref: DatabaseReference!
     var mDay = ""
@@ -88,6 +94,16 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         }
         
     }
+    
+    @IBAction func CustomUsers(_ sender: Any) {
+        
+    }
+    
+    
+//    func setSelectedUsers (seleted :selectedUsersArray){
+//        print(selectedUsersArray)
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendarView()
@@ -145,11 +161,29 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         guard let mstartTime = timeSlotLabel.text, let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
             return
         }
-        self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "" ]
-        self.ref.child("Events").childByAutoId().setValue(values)
         
-        print("Appoinment saved savely in firebase")
+        if publicVsPrivate == 1 {
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            
+            print("Appoinment saved savely in firebase as public")
+            
+        }else if publicVsPrivate == 0 {
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            
+            print("Appoinment saved savely in firebase as private")
+            
+        }else{
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" ]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            print("Appoinment saved savely in firebase as CustomUsers")
+        }
+        
+        publicVsPrivate = 0
         
         dismiss(animated: true, completion: nil)
     }
@@ -194,10 +228,10 @@ extension NewApptTableViewController {
         dateDetailLabel.text = formatter.string(from: date)
         mDay = dateDetailLabel.text! ;
       //  print ( " dnt == ", mDay)
-let calanderDate = Calendar.current.dateComponents([.month, .day, .year], from: date)
-         Mday = String( calanderDate.day!)
-         Mmonth = String( calanderDate.month!)
-         Myear = String(calanderDate.year!)
+//let calanderDate = Calendar.current.dateComponents([.month, .day, .year], from: date)
+//         Mday = String( calanderDate.day!)
+//         Mmonth = String( calanderDate.month!)
+//         Myear = String(calanderDate.year!)
      //   print(Mday,Mmonth,Myear)
     }
     
@@ -303,9 +337,10 @@ extension NewApptTableViewController {
         else if segue.identifier == "segue2" {
             let destinationVC = segue.destination as! ViewController
             destinationVC.string2 = locationLabel.text!
-            
-            
-            
+ 
+        }else if  segue.identifier == "customuser" {
+            let addDestination: CustomUsers = segue.destination as! CustomUsers
+            addDestination.delegate = self as! SendSelectedUsers
         }
     }
     

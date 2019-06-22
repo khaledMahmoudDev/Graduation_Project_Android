@@ -221,15 +221,6 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     //fetching data from firebase and save it in realm database so it can be viewd in the tableview
     
     func fetchNotesFromFirebase(){
-        
-        //by using ref we are making refrence from firebase database so we can access the firebase database
-        //then using this ref to access the path to fetch the data by .observe method
-        //saving the fetched values from the snapshot in dictionary
-        //we used snapshot.key to get the autochildkey which is used to create key for each note for each user
-        
-        //then the realm part we create a var and give it the name of the class which in RealObjects in the model folder
-        //we use this var to access the variables within that class
-        //then we use witeToRealm to save the fetched data from firebase database
         guard let userId = Auth.auth().currentUser?.uid else{
             return
         }
