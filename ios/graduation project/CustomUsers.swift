@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 protocol SendSelectedUsers{
-    //Replace parameter with DeliveryDestinations
     func setSelectedUsers (selected : Array<String>)
 }
 
@@ -21,7 +20,7 @@ class CustomUsers: UITableViewController {
     var usersEmailArray = [CustomUsersEmail]()
     var selectedUsersEmailArray : Array<String> = []
     
-    var delegate: SendSelectedUsers?
+    var delegate: SendSelectedUsers!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +34,8 @@ class CustomUsers: UITableViewController {
 
 
     @IBAction func SlectedUsersButton(_ sender: Any) {
-        if delegate != nil {
-            if selectedUsersEmailArray != nil {
-                
-               
-                //add that object to previous view with delegate
-                delegate?.setSelectedUsers (selected : selectedUsersEmailArray)
-                navigationController?.popViewController(animated: true)
-            }
-        }
+        self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,8 +65,7 @@ class CustomUsers: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        let selectedUser = CustomUsersSelected(selectedUsersEmailtxt: eventCreator)
-        //self.selectedUsersEmailArray.append(selectedUser)
+        self.selectedUsersEmailArray.append(eventCreator)
     }
      
     

@@ -22,11 +22,16 @@ protocol AppointmentTVC {
 
 
 
-class NewApptTableViewController: UITableViewController, AppointmentTVC {
+class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSelectedUsers{
+    func setSelectedUsers(selected: Array<String>) {
+        self.selectedUsersEmailArray = selected
+        //print("noooooooo",selectedUsersEmailArray)
+    }
     
-    static var privateVsPublic = 0
+   
+    static var privateVsPublic = 3
     
-    //var selectedUsersArray : Array<String> = []
+    var selectedUsersEmailArray : Array<String> = []
     
     var ref: DatabaseReference!
     var mDay = ""
@@ -96,13 +101,10 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     }
     
     @IBAction func CustomUsers(_ sender: Any) {
-        
+        publicVsPrivate = 2
     }
     
-    
-//    func setSelectedUsers (seleted :selectedUsersArray){
-//        print(selectedUsersArray)
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,14 +178,14 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
             
             print("Appoinment saved savely in firebase as private")
             
-        }else{
+        }else if publicVsPrivate == 2{
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" ]
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
             self.ref.child("Events").childByAutoId().setValue(values)
             print("Appoinment saved savely in firebase as CustomUsers")
         }
         
-        publicVsPrivate = 0
+        publicVsPrivate = 3
         
         dismiss(animated: true, completion: nil)
     }
@@ -339,8 +341,10 @@ extension NewApptTableViewController {
             destinationVC.string2 = locationLabel.text!
  
         }else if  segue.identifier == "customuser" {
-            let addDestination: CustomUsers = segue.destination as! CustomUsers
-            addDestination.delegate = self as! SendSelectedUsers
+            if let destination = segue.destination as? CustomUsers{
+                destination.delegate = self
+            }
+            
         }
     }
     
