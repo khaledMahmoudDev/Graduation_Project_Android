@@ -78,10 +78,10 @@ class TimeSlotter {
   }
   
   func createDate(withDay day: Int, hour: Int, minute: Int) -> Date {
-    return DateComponents(calendar: Calendar.current, year: 2017, month: 7, day: day, hour: hour, minute: minute, second: 0).date!
+    return DateComponents(calendar: Calendar.current, year: 2019, month: 7, day: day, hour: hour, minute: minute, second: 0).date!
   }
   
   func createCompleteDate(year: Int, month: Int, withDay day: Int, hour: Int, minute: Int) -> Date {
-    return DateComponents(calendar: Calendar.current, timeZone: TimeZone(identifier: "US/Pacific"), year: year, month: month, day: day, hour: hour, minute: minute, second: 0).date!
+    return DateComponents(calendar: Calendar.current, timeZone: TimeZone(identifier: "GMT+2"), year: year, month: month, day: day, hour: hour, minute: minute, second: 0).date!
   }
 }
