@@ -1329,8 +1329,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day of Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5r-hY-BXn">
-                                                    <rect key="frame" x="16" y="16" width="192" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day of Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5r-hY-BXn">
+                                                    <rect key="frame" x="169" y="16" width="164" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date          :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-cd-DPd">
+                                                    <rect key="frame" x="16" y="11" width="122" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1338,11 +1346,6 @@
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="W5r-hY-BXn" secondAttribute="trailing" constant="167" id="2YK-mq-Jj8"/>
-                                            <constraint firstItem="W5r-hY-BXn" firstAttribute="leading" secondItem="r6Z-dy-Ffg" secondAttribute="leading" constant="16" id="HrQ-dY-EGn"/>
-                                            <constraint firstItem="W5r-hY-BXn" firstAttribute="centerY" secondItem="r6Z-dy-Ffg" secondAttribute="centerY" id="xGH-HZ-isj"/>
-                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="300" id="ukf-rl-CEJ">
                                         <rect key="frame" x="0.0" y="56" width="375" height="300"/>
@@ -1485,20 +1488,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time of Appointment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZl-DV-POy">
-                                                    <rect key="frame" x="16" y="0.0" width="192" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time of Appointment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZl-DV-POy">
+                                                    <rect key="frame" x="163" y="0.0" width="196" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start from    : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-3R-gUp">
+                                                    <rect key="frame" x="16" y="0.0" width="120" height="46"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="TZl-DV-POy" secondAttribute="trailing" constant="167" id="FJz-Ix-epe"/>
-                                            <constraint firstItem="TZl-DV-POy" firstAttribute="centerY" secondItem="sIv-1L-LkB" secondAttribute="centerY" id="bKD-Sb-LnS"/>
-                                            <constraint firstItem="TZl-DV-POy" firstAttribute="leading" secondItem="sIv-1L-LkB" secondAttribute="leading" constant="16" id="h48-UB-oqk"/>
-                                        </constraints>
                                         <connections>
                                             <segue destination="hOT-Eo-oiQ" kind="show" identifier="segueTimeSlots" id="FBw-gp-2ID"/>
                                         </connections>
@@ -1511,7 +1517,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV5-Rb-j1B">
-                                                    <rect key="frame" x="16" y="6" width="343" height="30"/>
+                                                    <rect key="frame" x="0.0" y="6" width="375" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Lqk-0M-Q3n"/>
                                                     </constraints>
@@ -1523,8 +1529,8 @@
                                             <constraints>
                                                 <constraint firstItem="FV5-Rb-j1B" firstAttribute="top" secondItem="ggW-5J-muz" secondAttribute="top" constant="6" id="QjE-a8-bSz"/>
                                                 <constraint firstAttribute="bottom" secondItem="FV5-Rb-j1B" secondAttribute="bottom" constant="7.5" id="hdx-iy-mvl"/>
-                                                <constraint firstItem="FV5-Rb-j1B" firstAttribute="leading" secondItem="ggW-5J-muz" secondAttribute="leading" constant="16" id="iMD-o9-ZEY"/>
-                                                <constraint firstAttribute="trailing" secondItem="FV5-Rb-j1B" secondAttribute="trailing" constant="16" id="vCy-Qr-wLe"/>
+                                                <constraint firstItem="FV5-Rb-j1B" firstAttribute="leading" secondItem="ggW-5J-muz" secondAttribute="leading" id="iMD-o9-ZEY"/>
+                                                <constraint firstAttribute="trailing" secondItem="FV5-Rb-j1B" secondAttribute="trailing" id="vCy-Qr-wLe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1884,7 +1890,6 @@
                                             <outlet property="dateLabel" destination="T0Y-nc-B5f" id="RO9-eY-pfT"/>
                                             <outlet property="nameLabel" destination="lC9-lo-58X" id="0a7-p2-Qjh"/>
                                             <outlet property="noteLabel" destination="zsO-yl-Dsw" id="oxL-hX-2RX"/>
-                                            <segue destination="JnP-Qa-Qfy" kind="show" identifier="SegueApptDetail" id="fUc-8N-Kxz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2091,6 +2096,7 @@
                         <outlet property="currentSummaryLabel" destination="2Je-fY-b8Q" id="xBO-Wr-wj4"/>
                         <outlet property="currentTemperatureLabel" destination="mjj-hF-c57" id="1f0-Jl-fU2"/>
                         <outlet property="tableView" destination="dcP-Kn-MoT" id="V34-Ry-aZv"/>
+                        <segue destination="JnP-Qa-Qfy" kind="show" identifier="SegueApptDetail" id="wAv-hb-fvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGD-gd-W91" userLabel="First Responder" sceneMemberID="firstResponder"/>
