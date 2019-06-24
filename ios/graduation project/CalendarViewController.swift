@@ -26,6 +26,9 @@ class CalendarViewController: UIViewController {
     let client = DarkSkyAPIClient()
     var appointmentsOfTheDay = [Appointment] ()
     
+    var isWillAppearLoadedFirstTime = true
+    var isDidSelectLoadedFirsttime = false
+    
     let formatter = DateFormatter()
     let date = Date()
     var result : String?
@@ -55,7 +58,8 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         
         //self.appointmentsArray.removeAll()
-        
+        isWillAppearLoadedFirstTime = true
+        isDidSelectLoadedFirsttime = true
         
 
         formatter.dateFormat = "MMMM dd, yyyy"
@@ -87,9 +91,17 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        //isDidSelectLoadedFirsttime = false
+        
+        if isWillAppearLoadedFirstTime {
+            // Do what you want to do when it is not the first load
+            self.appointmentsArray.removeAll()
+            performFetch()
+        }
+        isWillAppearLoadedFirstTime = true
 
-        self.appointmentsArray.removeAll()
-        performFetch()
+        
     }
     
     
@@ -127,9 +139,7 @@ class CalendarViewController: UIViewController {
         //fetch appointment from firebase
         
         
-        guard let userId = Auth.auth().currentUser?.uid else{
-            return
-        }
+        
         ref = Database.database().reference()
         //ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: "June 18, 2019").observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -533,12 +543,21 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        formatter.dateFormat = "MMMM dd, yyyy"
-        result = formatter.string(from:date)
-        print("didselect date", result)
-        loadAppointmentsForDate(date: date)
-        self.appointmentsArray.removeAll()
-        performFetch()
+        
+        isWillAppearLoadedFirstTime = false
+        if !isDidSelectLoadedFirsttime{
+            
+            formatter.dateFormat = "MMMM dd, yyyy"
+            result = formatter.string(from:date)
+            print("didselect date", result)
+            loadAppointmentsForDate(date: date)
+            self.appointmentsArray.removeAll()
+            performFetch()
+        }
+        isDidSelectLoadedFirsttime = false
+        
+        
+       
         //calendarViewDateChanged()
     }
     

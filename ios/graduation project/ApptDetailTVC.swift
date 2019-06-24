@@ -27,6 +27,8 @@ class ApptDetailTVC: UITableViewController {
     
     @IBOutlet weak var editApptButton: UIButton!
     
+    @IBOutlet weak var hideShowEditApptButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         noLargeTitles()
@@ -52,6 +54,12 @@ class ApptDetailTVC: UITableViewController {
     
     @IBAction func editAppt(_ sender: UIButton) {
         performSegue(withIdentifier: segueEditAppt, sender: self)
+    }
+    
+    
+    
+    private var User : User? {
+        return Auth.auth().currentUser
     }
     
     func setupUI() {
@@ -84,6 +92,15 @@ class ApptDetailTVC: UITableViewController {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
+            print(value)
+            
+            if value?["meventCreator"] as? String == self.User?.email{
+                self.hideShowEditApptButton.isHidden = false
+            }else{
+                self.hideShowEditApptButton.isHidden = true
+            }
+            
+            
             let apptTitle = value?["mtitle"] as? String ?? ""
             self.titleLabel.text = apptTitle
             let apptNote = value?["mdetails"] as? String ?? ""

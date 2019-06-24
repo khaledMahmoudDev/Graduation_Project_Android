@@ -574,17 +574,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhQ-v0-l2o">
-                                                    <rect key="frame" x="15" y="48" width="290" height="41"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="date" destination="FhQ-v0-l2o" id="ijp-en-X7R"/>
                                             <outlet property="name" destination="7Xv-i9-PLP" id="IfY-vr-G9O"/>
                                         </connections>
                                     </tableViewCell>
@@ -852,6 +844,7 @@
                         <outlet property="apptCostLabel" destination="QEU-mp-ebC" id="yeQ-o5-CGn"/>
                         <outlet property="dateLabel" destination="D6l-Ox-1qr" id="O3k-vW-Pju"/>
                         <outlet property="editApptButton" destination="Rav-lW-XYp" id="1Iw-de-vpU"/>
+                        <outlet property="hideShowEditApptButton" destination="Rav-lW-XYp" id="k1v-ue-FEa"/>
                         <outlet property="hourLabel" destination="SOS-uJ-kIr" id="eUP-9l-hRa"/>
                         <outlet property="noteTextView" destination="Vml-Nt-E6a" id="5ke-kR-vvk"/>
                         <outlet property="titleLabel" destination="YuG-VI-rQo" id="AeQ-oz-BCX"/>
@@ -1130,7 +1123,7 @@
                                                     <rect key="frame" x="98" y="0.0" width="158" height="56"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="Users"/>
+                                                    <state key="normal" title="Custom Users"/>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1617,7 +1610,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uck-yG-6aw">
                                                     <rect key="frame" x="129" y="-1" width="116" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Group"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Custom Users"/>
                                                     <connections>
                                                         <action selector="CustomUsers:" destination="Mr6-hT-RC2" eventType="touchUpInside" id="kqY-21-tNM"/>
                                                         <segue destination="6qf-Cc-NIy" kind="show" identifier="customuser" id="wdK-Dk-fvk"/>
@@ -2650,8 +2644,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="acT-uA-LxE"/>
         <segue reference="hOK-MX-cos"/>
-        <segue reference="L32-St-71b"/>
-        <segue reference="pmo-A3-wRS"/>
+        <segue reference="IgS-8A-6uT"/>
+        <segue reference="FBw-gp-2ID"/>
         <segue reference="wdK-Dk-fvk"/>
     </inferredMetricsTieBreakers>
 </document>

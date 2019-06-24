@@ -19,25 +19,40 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     @IBOutlet weak var tableViewList: UITableView!
 
     //var controller : NSFetchedResultsController<UserNotes>!
+    
+    
+    var isWillAppearLoadedFirstTime = false
+    var isDidLoadLoadedFirsttime = true
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //fetchNotesFromFirebase()
-        //print("********************1")
+        
+        if isDidLoadLoadedFirsttime{
+            self.noteArray.removeAll()
+            fetchNotesFromFirebase()
+        }
+        isDidLoadLoadedFirsttime = true
+
+        isWillAppearLoadedFirstTime = true
 
         //fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        isDidLoadLoadedFirsttime = true
+        
+        if !isWillAppearLoadedFirstTime {
+            // Do what you want to do when it is not the first load
+            self.noteArray.removeAll()
+            self.tableViewList.reloadData()
+            self.fetchNotesFromFirebase()
 
-        DispatchQueue.global(qos: .utility).async {
-                // do something time consuming here
-                DispatchQueue.main.async {
-                    // now update UI on main thread
-                    self.noteArray.removeAll()
-                    self.fetchNotesFromFirebase()
-                }
         }
+        isWillAppearLoadedFirstTime = false
+
         //fetch()
     }
     
@@ -73,12 +88,12 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         //cell.mycell(note: notelist[indexPath.row])
        // configureCell(cell: cell, indexPath: indexPath )
         
-        cell.textLabel?.text = noteArray[indexPath.row].noteName
+        cell.name?.text = noteArray[indexPath.row].noteName
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 70
     }
     
     

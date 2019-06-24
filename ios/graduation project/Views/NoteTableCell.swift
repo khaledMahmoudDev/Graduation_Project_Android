@@ -12,19 +12,19 @@ class NoteTableCell: UITableViewCell {
     
     
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var date: UILabel!
+
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func mycell(note: UserNotes){
-        name.text = note.notename
-                let dateformat = DateFormatter()
-                dateformat.dateFormat = "dd/MM/yyyy h:mm a"
-                date.text = dateformat.string(from: note.date as! Date)
-        
-    }
+//    func mycell(note: UserNotes){
+//        name.text = note.notename
+//                let dateformat = DateFormatter()
+//                dateformat.dateFormat = "dd/MM/yyyy h:mm a"
+//                date.text = dateformat.string(from: note.date as! Date)
+//        
+//    }
 
 }
