@@ -1535,7 +1535,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Public" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-id-bie">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-id-bie">
                                                     <rect key="frame" x="29" y="0.0" width="93" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
@@ -1636,6 +1636,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="PublicLabel" destination="2YQ-id-bie" id="SZh-Yh-AuD"/>
                         <outlet property="calendarView" destination="ooG-iR-8F9" id="vlK-1U-KjR"/>
                         <outlet property="dateDetailLabel" destination="W5r-hY-BXn" id="X3y-bH-Ggd"/>
                         <outlet property="locationLabel" destination="NMf-8S-huq" id="31I-HI-KH3"/>

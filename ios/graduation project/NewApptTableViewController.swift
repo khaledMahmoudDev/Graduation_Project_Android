@@ -88,12 +88,15 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         confirmAppointment()
     }
     
+    @IBOutlet weak var PublicLabel: UILabel!
     @IBAction func publicVSprivate(_ sender: Any) {
         if (sender as AnyObject).isOn == true {
             publicVsPrivate = 1
+            PublicLabel.text = "Public"
             print("on")
         }else
         {
+            PublicLabel.text = "Private"
             publicVsPrivate = 0
             print("off")
         }
