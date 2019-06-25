@@ -58,6 +58,7 @@
 		E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */; };
 		E20CB8A822B6E4E000C47CF6 /* TodoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */; };
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
+		E210485E22C2397B00F5520F /* CustomUsersWithSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */; };
 		E214212022898D400039D5CE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214211F22898D400039D5CE /* Note.swift */; };
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
 		E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DEA64228E4D4C00752B99 /* Appointments.swift */; };
@@ -84,7 +85,6 @@
 		E2AF6FA322862F6C00F4A77D /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */; };
 		E2AF6FA52286300A00F4A77D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA42286300A00F4A77D /* Constants.swift */; };
 		E2AF6FA72286307700F4A77D /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA62286307600F4A77D /* CommonFunctions.swift */; };
-		E2B06F6122BD2D43003883AA /* CustomUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6022BD2D43003883AA /* CustomUsers.swift */; };
 		E2B06F6522BD3161003883AA /* CustomUsersEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */; };
 		E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6622BD3B35003883AA /* CustomUserCell.swift */; };
 /* End PBXBuildFile section */
@@ -145,6 +145,7 @@
 		E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
 		E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTabBar.swift; sourceTree = "<group>"; };
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
+		E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersWithSearch.swift; sourceTree = "<group>"; };
 		E214211F22898D400039D5CE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
 		E21DEA64228E4D4C00752B99 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
@@ -172,7 +173,6 @@
 		E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E2AF6FA42286300A00F4A77D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2AF6FA62286307600F4A77D /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
-		E2B06F6022BD2D43003883AA /* CustomUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsers.swift; sourceTree = "<group>"; };
 		E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersEmail.swift; sourceTree = "<group>"; };
 		E2B06F6622BD3B35003883AA /* CustomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,7 +255,7 @@
 				E295B2CE22830E9700112E8C /* DateFormatters.swift */,
 				E295B2D222830EB800112E8C /* TimeSlotter.swift */,
 				E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */,
-				E2B06F6022BD2D43003883AA /* CustomUsers.swift */,
+				E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */,
 				E2B06F6622BD3B35003883AA /* CustomUserCell.swift */,
 				E2167B832277C8A0004D6BC3 /* Model */,
 				31DE36BF220B3F1300C9B2E6 /* Views */,
@@ -475,7 +475,6 @@
 				E2882C8122B3ED80000E6A34 /* TodoTable.swift in Sources */,
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
 				E2076EAD22861B77005EAAAD /* ViewController.swift in Sources */,
-				E2B06F6122BD2D43003883AA /* CustomUsers.swift in Sources */,
 				E2076EA12286195D005EAAAD /* TimeSlotsCVC.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
@@ -538,6 +537,7 @@
 				E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */,
 				31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */,
 				E295B2A522830C0300112E8C /* Appointment+CoreDataClass.swift in Sources */,
+				E210485E22C2397B00F5520F /* CustomUsersWithSearch.swift in Sources */,
 				E20CB8A822B6E4E000C47CF6 /* TodoTabBar.swift in Sources */,
 				315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */,
 			);

@@ -344,7 +344,7 @@ extension NewApptTableViewController {
             destinationVC.string2 = locationLabel.text!
  
         }else if  segue.identifier == "customuser" {
-            if let destination = segue.destination as? CustomUsers{
+            if let destination = segue.destination as? CustomUsersWithSearch{
                 destination.delegate = self
             }
             
