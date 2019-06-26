@@ -33,7 +33,6 @@
 		E2034060229588A50067C246 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203405F229588A50067C246 /* CategoryTableViewController.swift */; };
 		E2034062229588B10067C246 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034061229588B00067C246 /* TodoListViewController.swift */; };
 		E2034064229588BA0067C246 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034063229588BA0067C246 /* SwipeTableViewController.swift */; };
-		E2034066229588EE0067C246 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034065229588ED0067C246 /* Item.swift */; };
 		E2034068229589070067C246 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034067229589070067C246 /* Category.swift */; };
 		E2076E8B228615A7005EAAAD /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076E8A228615A7005EAAAD /* Coordinates.swift */; };
 		E2076E8D228615EC005EAAAD /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076E8C228615EC005EAAAD /* CurrentWeather.swift */; };
@@ -87,6 +86,7 @@
 		E2AF6FA72286307700F4A77D /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA62286307600F4A77D /* CommonFunctions.swift */; };
 		E2B06F6522BD3161003883AA /* CustomUsersEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */; };
 		E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6622BD3B35003883AA /* CustomUserCell.swift */; };
+		E2C7244D22C3F96E0062530C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7244C22C3F96E0062530C /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +120,6 @@
 		E203405F229588A50067C246 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		E2034061229588B00067C246 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		E2034063229588BA0067C246 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
-		E2034065229588ED0067C246 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E2034067229589070067C246 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E2076E8A228615A7005EAAAD /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		E2076E8C228615EC005EAAAD /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		E2AF6FA62286307600F4A77D /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersEmail.swift; sourceTree = "<group>"; };
 		E2B06F6622BD3B35003883AA /* CustomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserCell.swift; sourceTree = "<group>"; };
+		E2C7244C22C3F96E0062530C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +219,8 @@
 				E203405F229588A50067C246 /* CategoryTableViewController.swift */,
 				E2034061229588B00067C246 /* TodoListViewController.swift */,
 				E2034063229588BA0067C246 /* SwipeTableViewController.swift */,
-				E2034065229588ED0067C246 /* Item.swift */,
 				E2034067229589070067C246 /* Category.swift */,
+				E2C7244C22C3F96E0062530C /* Item.swift */,
 				E2076E92228616A4005EAAAD /* DarkSkyAPIClient.swift */,
 				E2076E94228616D9005EAAAD /* DarkSkyError.swift */,
 				E2076E9622861721005EAAAD /* CurrentWeatherViewModel.swift */,
@@ -412,8 +412,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -426,8 +424,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -467,8 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2076EA522861A20005EAAAD /* ActivityTableViewController.swift in Sources */,
-				E2034066229588EE0067C246 /* Item.swift in Sources */,
 				E214212022898D400039D5CE /* Note.swift in Sources */,
+				E2C7244D22C3F96E0062530C /* Item.swift in Sources */,
 				E2034064229588BA0067C246 /* SwipeTableViewController.swift in Sources */,
 				E2076E8D228615EC005EAAAD /* CurrentWeather.swift in Sources */,
 				E295B29A22830AF000112E8C /* Shadows.swift in Sources */,
