@@ -26,8 +26,10 @@ class CalendarViewController: UIViewController {
     let client = DarkSkyAPIClient()
     var appointmentsOfTheDay = [Appointment] ()
     
-    var isWillAppearLoadedFirstTime = true
-    var isDidSelectLoadedFirsttime = false
+    var isWillAppearLoadedFirstTime = false
+
+    
+    static var flagCheck = 0
     
     let formatter = DateFormatter()
     let date = Date()
@@ -59,8 +61,8 @@ class CalendarViewController: UIViewController {
         
         //self.appointmentsArray.removeAll()
         isWillAppearLoadedFirstTime = true
-        isDidSelectLoadedFirsttime = true
-        
+
+        CalendarViewController.flagCheck = 0
 
         formatter.dateFormat = "MMMM dd, yyyy"
         result = formatter.string(from: date)
@@ -92,16 +94,22 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        //isDidSelectLoadedFirsttime = false
-        
-        if isWillAppearLoadedFirstTime {
-            // Do what you want to do when it is not the first load
-            self.appointmentsArray.removeAll()
-            performFetch()
-        }
-        isWillAppearLoadedFirstTime = true
 
         
+        if !isWillAppearLoadedFirstTime {
+            // Do what you want to do when it is not the first load
+        if CalendarViewController.flagCheck != 0  || CalendarViewController.flagCheck != 2{
+            
+            self.appointmentsArray.removeAll()
+            performFetch()
+            self.tableView.reloadData()
+            print("123")
+        }
+    }
+        CalendarViewController.flagCheck = 1
+        isWillAppearLoadedFirstTime = false
+
+        print("flag", CalendarViewController.flagCheck)
     }
     
     
@@ -544,17 +552,25 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
         
-        isWillAppearLoadedFirstTime = false
-        if !isDidSelectLoadedFirsttime{
+
+
+        if CalendarViewController.flagCheck == 1 || CalendarViewController.flagCheck == 2{
             
             formatter.dateFormat = "MMMM dd, yyyy"
             result = formatter.string(from:date)
             print("didselect date", result)
             loadAppointmentsForDate(date: date)
             self.appointmentsArray.removeAll()
+            self.tableView.reloadData()
             performFetch()
+            print("321")
+            
         }
-        isDidSelectLoadedFirsttime = false
+        CalendarViewController.flagCheck = 2
+        
+        print("did", CalendarViewController.flagCheck)
+        
+
         
         
        
