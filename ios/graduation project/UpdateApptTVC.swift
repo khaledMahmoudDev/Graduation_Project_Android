@@ -88,17 +88,14 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if appointmentLoaded {
-//            loadAppointment()
-//            appointmentLoaded = false
-//        }
-//        if selectedTimeSlot != nil {
-//            timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
-//        }
-//        if myString != "" {
-//
-//            locationLabel.text = myString
-//        }
+
+        if selectedTimeSlot != nil {
+            timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
+        }
+        if myString != "" {
+
+            locationLabel.text = myString
+        }
         
         
     }
@@ -338,6 +335,15 @@ extension UpdateApptTVC {
             if let currentAppointments = appointmentsOfTheDay {
                 destinationVC.currentAppointments = currentAppointments
             }
+        }
+        else if segue.identifier == "editEndInSegue" {
+            let destinationVC = segue.destination as! TimeSlotsCVC
+            destinationVC.appointmentDate = calendarDate
+            if let currentAppointments = appointmentsOfTheDay {
+                destinationVC.currentAppointments = currentAppointments
+            }
+            
+            
         }
         else if segue.identifier == "segue3" {
             let destinationVC = segue.destination as! ViewController

@@ -339,6 +339,15 @@ extension NewApptTableViewController {
                 destinationVC.currentAppointments = currentAppointments
             }
         }
+        else if segue.identifier == "endInSegue" {
+            let destinationVC = segue.destination as! TimeSlotsCVC
+            destinationVC.appointmentDate = calendarDate
+            if let currentAppointments = appointmentsOfTheDay {
+                destinationVC.currentAppointments = currentAppointments
+            }
+            
+        }
+            
         else if segue.identifier == "segue2" {
             let destinationVC = segue.destination as! ViewController
             destinationVC.string2 = locationLabel.text!
