@@ -66,7 +66,7 @@ class Profile: UIViewController {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            let usernameValue = value?["username"] as? String ?? ""
+            let usernameValue = value?["firstName"] as? String ?? ""
             self.username.text = "\(usernameValue)"
             
             let emailValue = value?["email"] as? String ?? ""

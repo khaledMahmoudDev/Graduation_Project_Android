@@ -97,22 +97,18 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     func fetchUsersFromFirebase(){
         ref = Database.database().reference()
         ref.child("USERS").observe(.childAdded) { (snapshot) in
-            //if let dict = snapshot.value as? [String : Any]{
             
-            //                let UserEmail = dict["email"] as! String
-            //                print(UserEmail)
-            //                let UserName = "label"//dict["username"] as! String
             
             if let url = snapshot.value as? [String : Any] {
                 let UserEmail = url["email"] as! String
                 print(UserEmail)
-                let UserName = "label"
+                let UserName = url["firstName"] as! String
                 let UserImage = url["imageLink"] as! String
                 let Url = URL (string: UserImage)!
                 let request = URLRequest(url: Url)
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
                     if error != nil {
-                        print("mother fucker error", error)
+                        print(error)
                         return
                     }
                     DispatchQueue.main.async {
@@ -161,6 +157,13 @@ extension CustomUsersWithSearch {
         
         searchOnUsers = usersEmailArray.filter({ (text) -> Bool in
             let temp = text.usersEmail as NSString
+            let range = temp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive )
+            tableView.reloadData()
+            return range.location != NSNotFound
+        })
+        
+        searchOnUsers = usersEmailArray.filter({ (text) -> Bool in
+            let temp = text.userName as NSString
             let range = temp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive )
             tableView.reloadData()
             return range.location != NSNotFound

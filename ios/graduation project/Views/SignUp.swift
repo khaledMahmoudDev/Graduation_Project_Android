@@ -177,7 +177,7 @@ class SignUp: UIViewController{
                                 let urlString: String = (url?.absoluteString) ?? ""
                                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
                                 let usersReference = self.ref.child("USERS").child(uid)
-                                let values = ["username" : username , "email": email, "imageLink":urlString]
+                                let values = ["firstName" : username , "email": email, "imageLink":urlString]
                                 usersReference.updateChildValues(values, withCompletionBlock :{
                                     (error, ref) in
                                     if let err = error{

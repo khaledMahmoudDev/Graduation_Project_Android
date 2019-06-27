@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
 
         formatter.dateFormat = "MMMM dd, yyyy"
         result = formatter.string(from: date)
-        print("..........",result)
+        print("..........loaded",CalendarViewController.flagCheck)
         
         
         tableView.delegate = self
@@ -98,7 +98,7 @@ class CalendarViewController: UIViewController {
         
         if !isWillAppearLoadedFirstTime {
             // Do what you want to do when it is not the first load
-        if CalendarViewController.flagCheck != 0  || CalendarViewController.flagCheck != 2{
+            if CalendarViewController.flagCheck != 0  || CalendarViewController.flagCheck != 2 || CalendarViewController.flagCheck != 1{
             
             self.appointmentsArray.removeAll()
             performFetch()
