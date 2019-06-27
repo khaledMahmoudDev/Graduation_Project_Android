@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cL-nu-UpS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1753,6 +1753,7 @@
                         <outlet property="locationLabel" destination="NMf-8S-huq" id="31I-HI-KH3"/>
                         <outlet property="noteTextView" destination="yMt-gd-5qb" id="Y8y-xz-Vzo"/>
                         <outlet property="timeSlotLabel" destination="TZl-DV-POy" id="fhD-4z-C3z"/>
+                        <outlet property="timeSlotLabelEnd" destination="Aha-US-UI4" id="Slj-7B-J0d"/>
                         <outlet property="titleTextField" destination="FV5-Rb-j1B" id="fWl-FX-rKY"/>
                     </connections>
                 </tableViewController>
@@ -2727,8 +2728,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="acT-uA-LxE"/>
         <segue reference="hOK-MX-cos"/>
-        <segue reference="L32-St-71b"/>
-        <segue reference="MUv-b6-1sv"/>
+        <segue reference="IgS-8A-6uT"/>
+        <segue reference="wUh-NU-wV7"/>
         <segue reference="mHl-rz-7Z3"/>
     </inferredMetricsTieBreakers>
 </document>
