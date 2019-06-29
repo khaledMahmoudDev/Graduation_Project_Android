@@ -10,10 +10,11 @@ import UIKit
 import CoreData
 import Firebase
 import JTAppleCalendar
-
+var ylabel : Int = -1
 protocol AppointmentTVC {
     
     var selectedTimeSlot: Date? { get set }
+    var selectedEndTime : Date? { get set }
     var appointmentsOfTheDay: [Appointment]? { get set }
     
     func confirmAppointment()
@@ -23,6 +24,8 @@ protocol AppointmentTVC {
 
 
 class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSelectedUsers{
+    
+    
     func setSelectedUsers(selected: Array<String>) {
         self.selectedUsersEmailArray = selected
         //print("noooooooo",selectedUsersEmailArray)
@@ -41,6 +44,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     var publicVsPrivate = 0
     var myString = String()
     var selectedTimeSlot: Date?
+    var selectedEndTime: Date?
     var appointmentsOfTheDay: [Appointment]?
     let formatter = DateFormatter()
     
@@ -135,9 +139,10 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         
         if selectedTimeSlot != nil {
             timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
+            ylabel = Calendar.current.component(.hour, from: selectedTimeSlot!)
         }
-        if selectedTimeSlot != nil {
-            timeSlotLabelEnd.text = selectedTimeSlot?.toHourMinuteString()
+        if selectedEndTime != nil {
+            timeSlotLabelEnd.text = selectedEndTime?.toHourMinuteString()
         }
         if myString != "" {
             
@@ -344,7 +349,7 @@ extension NewApptTableViewController {
             }
         }
         else if segue.identifier == "endInSegue" {
-            let destinationVC = segue.destination as! TimeSlotsCVC
+            let destinationVC = segue.destination as! TimeSlots2VC
             destinationVC.appointmentDate = calendarDate
             if let currentAppointments = appointmentsOfTheDay {
                 destinationVC.currentAppointments = currentAppointments

@@ -6,13 +6,11 @@ import Firebase
 import JTAppleCalendar
 
 class UpdateApptTVC: UITableViewController, AppointmentTVC {
-    
+    var selectedEndTime: Date?
     var apptKey : String!
     var ref: DatabaseReference!
-    
     var selectedTimeSlot: Date?
     var appointmentsOfTheDay: [Appointment]?
-    
     var myString = String()
     var appointment: Appointment?
     let formatter = DateFormatter()
@@ -91,6 +89,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
 
         if selectedTimeSlot != nil {
             timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
+            xLabel = Calendar.current.component(.hour, from: selectedTimeSlot!)
         }
         if myString != "" {
 
@@ -336,8 +335,8 @@ extension UpdateApptTVC {
                 destinationVC.currentAppointments = currentAppointments
             }
         }
-        else if segue.identifier == "editEndInSegue" {
-            let destinationVC = segue.destination as! TimeSlotsCVC
+        else if segue.identifier == "updateEndSegue" {
+            let destinationVC = segue.destination as! TimeSlots2VC
             destinationVC.appointmentDate = calendarDate
             if let currentAppointments = appointmentsOfTheDay {
                 destinationVC.currentAppointments = currentAppointments

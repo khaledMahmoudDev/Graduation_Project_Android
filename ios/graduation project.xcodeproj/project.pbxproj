@@ -80,6 +80,8 @@
 		E295B2CF22830E9700112E8C /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2CE22830E9700112E8C /* DateFormatters.swift */; };
 		E295B2D122830EA900112E8C /* TimeSlotFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */; };
 		E295B2D322830EBA00112E8C /* TimeSlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D222830EB800112E8C /* TimeSlotter.swift */; };
+		E2ADE19F22C7FE2400D4473A /* TimeSlots2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ADE19E22C7FE2400D4473A /* TimeSlots2VC.swift */; };
+		E2ADE1A322C7FF5F00D4473A /* TimeSlotCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ADE1A222C7FF5F00D4473A /* TimeSlotCell2.swift */; };
 		E2AF6FA122862EEA00F4A77D /* TimeSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */; };
 		E2AF6FA322862F6C00F4A77D /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */; };
 		E2AF6FA52286300A00F4A77D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA42286300A00F4A77D /* Constants.swift */; };
@@ -168,6 +170,8 @@
 		E295B2CE22830E9700112E8C /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotFormatter.swift; sourceTree = "<group>"; };
 		E295B2D222830EB800112E8C /* TimeSlotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotter.swift; sourceTree = "<group>"; };
+		E2ADE19E22C7FE2400D4473A /* TimeSlots2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeSlots2VC.swift; path = ../TimeSlots2VC.swift; sourceTree = "<group>"; };
+		E2ADE1A222C7FF5F00D4473A /* TimeSlotCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeSlotCell2.swift; path = ../TimeSlotCell2.swift; sourceTree = "<group>"; };
 		E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCell.swift; sourceTree = "<group>"; };
 		E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E2AF6FA42286300A00F4A77D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */,
+				E2ADE19E22C7FE2400D4473A /* TimeSlots2VC.swift */,
+				E2ADE1A222C7FF5F00D4473A /* TimeSlotCell2.swift */,
 				E2076E8A228615A7005EAAAD /* Coordinates.swift */,
 				E2076E8C228615EC005EAAAD /* CurrentWeather.swift */,
 				E2076E8E2286162F005EAAAD /* JSONDownloader.swift */,
@@ -236,7 +242,6 @@
 				E295B28922830AE700112E8C /* UIColor+Hex.swift */,
 				E2076EB222862C6E005EAAAD /* CalendarDayCell.swift */,
 				E2076EB422862CEE005EAAAD /* AppointmentCelll.swift */,
-				E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */,
 				E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */,
 				E295B2A422830C0200112E8C /* Appointment+CoreDataClass.swift */,
 				E295B2A622830C2100112E8C /* Appointment+CoreDataProperties.swift */,
@@ -244,6 +249,7 @@
 				E2076E9C22861885005EAAAD /* ApptDetailTVC.swift */,
 				E2076E9E228618E5005EAAAD /* UpdateApptTVC.swift */,
 				E2076EA02286195D005EAAAD /* TimeSlotsCVC.swift */,
+				E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */,
 				E2076EA2228619C7005EAAAD /* NewApptTableViewController.swift */,
 				E2076EA422861A20005EAAAD /* ActivityTableViewController.swift */,
 				E2076EA622861A6F005EAAAD /* CalendarViewController.swift */,
@@ -463,8 +469,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2076EA522861A20005EAAAD /* ActivityTableViewController.swift in Sources */,
+				E2ADE1A322C7FF5F00D4473A /* TimeSlotCell2.swift in Sources */,
 				E214212022898D400039D5CE /* Note.swift in Sources */,
 				E2C7244D22C3F96E0062530C /* Item.swift in Sources */,
+				E2ADE19F22C7FE2400D4473A /* TimeSlots2VC.swift in Sources */,
 				E2034064229588BA0067C246 /* SwipeTableViewController.swift in Sources */,
 				E2076E8D228615EC005EAAAD /* CurrentWeather.swift in Sources */,
 				E295B29A22830AF000112E8C /* Shadows.swift in Sources */,

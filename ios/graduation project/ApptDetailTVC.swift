@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+var xLabel :Int = -1
 class ApptDetailTVC: UITableViewController {
     
     var ref: DatabaseReference!
@@ -117,6 +117,7 @@ class ApptDetailTVC: UITableViewController {
             let appointmentTimeStart = value?["mstartTime"] as? String ?? ""
             let startTime = inFormatter.date(from: appointmentTimeStart)!
             let timeInHourFormatter = hourFormatter(date: startTime)
+            xLabel = Calendar.current.component(.hour, from: startTime)
             self.hourLabel.text = timeInHourFormatter
             
         }) { (error) in
