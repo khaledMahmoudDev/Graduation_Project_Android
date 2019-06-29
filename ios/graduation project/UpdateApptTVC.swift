@@ -49,6 +49,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     
     @IBOutlet weak var timeSlotLabel: UILabel!
     
+    @IBOutlet weak var updatedEndTime: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
     
@@ -90,6 +91,10 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         if selectedTimeSlot != nil {
             timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
             xLabel = Calendar.current.component(.hour, from: selectedTimeSlot!)
+        }
+        if selectedEndTime != nil
+        {
+            updatedEndTime.text = selectedEndTime?.toHourMinuteString()
         }
         if myString != "" {
 
