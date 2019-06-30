@@ -15,6 +15,7 @@
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		3191A10C2224CAAA00A1F36A /* MainEntryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */; };
+		31A81B5E22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A81B5D22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
 		31DE3694220B3DDF00C9B2E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */; };
 		31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE3697220B3DDF00C9B2E6 /* Main.storyboard */; };
@@ -100,6 +101,7 @@
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryTableCell.swift; sourceTree = "<group>"; };
+		31A81B5D22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomUsersWithSearch.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
 		31DE3690220B3DDE00C9B2E6 /* graduation project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "graduation project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DE3693220B3DDF00C9B2E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				E295B2D222830EB800112E8C /* TimeSlotter.swift */,
 				E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */,
 				E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */,
+				31A81B5D22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift */,
 				E2B06F6622BD3B35003883AA /* CustomUserCell.swift */,
 				E2167B832277C8A0004D6BC3 /* Model */,
 				31DE36BF220B3F1300C9B2E6 /* Views */,
@@ -490,6 +493,7 @@
 				E2076E9722861721005EAAAD /* CurrentWeatherViewModel.swift in Sources */,
 				E2076EA3228619C7005EAAAD /* NewApptTableViewController.swift in Sources */,
 				31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */,
+				31A81B5E22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift in Sources */,
 				E202197E22B45B23003C7B10 /* DoneTable.swift in Sources */,
 				E2076EB322862C6E005EAAAD /* CalendarDayCell.swift in Sources */,
 				E2076EAF22862627005EAAAD /* EditUserProfile.swift in Sources */,

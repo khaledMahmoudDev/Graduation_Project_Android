@@ -109,6 +109,8 @@ class ApptDetailTVC: UITableViewController {
             self.apptCostLabel.text = apptLocation
             let apptDate = value?["mdate"] as? String ?? ""
             self.dateLabel.text = apptDate
+            let apptEventCreator = value?["meventCreator"] as? String ?? ""
+            self.eventCreator.text = apptEventCreator
             
             let inFormatter = DateFormatter()
             inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
@@ -116,9 +118,17 @@ class ApptDetailTVC: UITableViewController {
             
             let appointmentTimeStart = value?["mstartTime"] as? String ?? ""
             let startTime = inFormatter.date(from: appointmentTimeStart)!
-            let timeInHourFormatter = hourFormatter(date: startTime)
+            let startTimeInHourFormatter = hourFormatter(date: startTime)
             xLabel = Calendar.current.component(.hour, from: startTime)
-            self.hourLabel.text = timeInHourFormatter
+            
+            let appointmentTimeEnd = value?["mendTime"] as? String ?? ""
+            let endTime = inFormatter.date(from: appointmentTimeEnd)!
+            let endTimeInHourFormatter = hourFormatter(date: endTime)
+            xLabel = Calendar.current.component(.hour, from: endTime)
+            
+            let concatenatApptTime = "\(startTimeInHourFormatter) - \(endTimeInHourFormatter)"
+            
+            self.hourLabel.text = concatenatApptTime
             
         }) { (error) in
             print(error.localizedDescription)

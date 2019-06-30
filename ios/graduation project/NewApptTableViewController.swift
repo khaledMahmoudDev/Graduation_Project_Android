@@ -32,7 +32,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     }
     
    
-    static var privateVsPublic = 3
+    static var publicVsPrivate = 0
     
     var selectedUsersEmailArray : Array<String> = []
     
@@ -41,7 +41,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     var Mday = ""
     var Mmonth = ""
     var Myear = ""
-    var publicVsPrivate = 0
+    //var publicVsPrivate = 0
     var myString = String()
     var selectedTimeSlot: Date?
     var selectedEndTime: Date?
@@ -96,20 +96,20 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     @IBOutlet weak var PublicLabel: UILabel!
     @IBAction func publicVSprivate(_ sender: Any) {
         if (sender as AnyObject).isOn == true {
-            publicVsPrivate = 1
+            NewApptTableViewController.publicVsPrivate = 1
             PublicLabel.text = "Public"
             print("on")
         }else
         {
             PublicLabel.text = "Private"
-            publicVsPrivate = 0
+            NewApptTableViewController.publicVsPrivate = 0
             print("off")
         }
         
     }
     
     @IBAction func CustomUsers(_ sender: Any) {
-        publicVsPrivate = 2
+        NewApptTableViewController.publicVsPrivate = 2
     }
     
 
@@ -172,32 +172,32 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         
         //saving new appointment to firebase
         
-        guard let mstartTime = timeSlotLabel.text,let mendTime = timeSlotLabelEnd.text ,let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
+        guard let mstartTime = timeSlotLabel.text ,let mendTime = timeSlotLabelEnd.text ,let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
             return
         }
         
-        if publicVsPrivate == 1 {
+        if NewApptTableViewController.publicVsPrivate == 1 {
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
             self.ref.child("Events").childByAutoId().setValue(values)
             
             print("Appoinment saved savely in firebase as public")
             
-        }else if publicVsPrivate == 0 {
+        }else if NewApptTableViewController.publicVsPrivate == 0 {
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
             self.ref.child("Events").childByAutoId().setValue(values)
             
             print("Appoinment saved savely in firebase as private")
             
-        }else if publicVsPrivate == 2{
+        }else if NewApptTableViewController.publicVsPrivate == 2{
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
             self.ref.child("Events").childByAutoId().setValue(values)
             print("Appoinment saved savely in firebase as CustomUsers")
         }
         
-        publicVsPrivate = 3
+        NewApptTableViewController.publicVsPrivate = 0
         
         dismiss(animated: true, completion: nil)
     }
