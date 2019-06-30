@@ -148,8 +148,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
             self.dateDetailLabel.text = apptDate
             let appointmentTime = value?["mstartTime"] as? String ?? ""
             self.timeSlotLabel.text = appointmentTime
-            
-            
+            let appointmentEndTime = value?["mendTime"] as? String ?? ""
+            self.updatedEndTime.text = appointmentEndTime
             
         }) { (error) in
             print(error.localizedDescription)
@@ -184,13 +184,13 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         
         let userId = Auth.auth().currentUser?.uid
         
-        guard let apptDate = dateDetailLabel.text, let apptTime = timeSlotLabel.text, let apptTitle = titleTextField.text, let apptNote = noteTextView.text, let apptLocation = locationLabel.text else{
+        guard let apptDate = dateDetailLabel.text, let apptTime = timeSlotLabel.text,let endTime = updatedEndTime.text , let apptTitle = titleTextField.text, let apptNote = noteTextView.text, let apptLocation = locationLabel.text else{
             return
         }
         print(apptDate,apptNote,apptTitle, apptTime)
         
         ref = Database.database().reference().child("Events").child(apptKey)
-        let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
+        let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime  ,"mendTime": endTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
         ref.updateChildValues(userAppointment)
         print("edited")
         
