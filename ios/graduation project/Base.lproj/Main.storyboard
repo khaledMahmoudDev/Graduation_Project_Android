@@ -1276,6 +1276,7 @@
                         <outlet property="noteTextView" destination="lqu-Dy-mVL" id="eVg-E7-dCR"/>
                         <outlet property="timeSlotLabel" destination="Ow7-zt-B4J" id="sfI-qY-1rm"/>
                         <outlet property="titleTextField" destination="VwF-KE-MCX" id="D3z-Jq-fNK"/>
+                        <outlet property="toggleButton" destination="8EV-X8-J3X" id="OBT-Xb-AdT"/>
                         <outlet property="updatedEndTime" destination="4pZ-UO-VCc" id="bcf-J6-yr1"/>
                     </connections>
                 </tableViewController>

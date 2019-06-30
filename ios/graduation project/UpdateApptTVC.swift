@@ -100,6 +100,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
     
     
     @IBOutlet weak var PublicLabel: UILabel!
+    @IBOutlet weak var toggleButton: UISwitch!
     @IBAction func publicVSprivate(_ sender: Any) {
         if (sender as AnyObject).isOn == true {
             UpdateApptTVC.publicVsPrivate = 1
@@ -190,30 +191,26 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
             let appointmentEndTime = value?["mendTime"] as? String ?? ""
             self.updatedEndTime.text = appointmentEndTime
             let apptPrivacy = value?["privacy"] as? String ?? ""
-            self.PublicLabel.text = apptPrivacy
+            self.toggleButton.isSelected = !self.toggleButton.isSelected
             print(apptPrivacy)
-            print(self.PublicLabel.text)
             if apptPrivacy == "public"{
                 UpdateApptTVC.publicVsPrivate = 1
-                self.publicVSprivate(true)
+                self.toggleButton.isOn = true
+                self.PublicLabel.text = "Public"
             }else if apptPrivacy == "private"{
                 UpdateApptTVC.publicVsPrivate = 0
-                self.publicVSprivate(false)
+                self.toggleButton.isOn = false
+                self.PublicLabel.text = "Private"
+                //self.publicVSprivate(false)
             }else if apptPrivacy == "CustomUsers"{
                 UpdateApptTVC.publicVsPrivate = 2
                 self.customUserArray = (value?["customUsrs"] as? [String])!
 //                print("custom", self.customUserArray)
-                
+
             }
             
             print("custom", self.customUserArray)
             
-            
-
-            let appointmentTime = value?["mstartTime"] as? String ?? ""
-            self.timeSlotLabel.text = appointmentTime
-            let appointmentEndTime = value?["mendTime"] as? String ?? ""
-            self.updatedEndTime.text = appointmentEndTime
 
             
         }) { (error) in
@@ -252,85 +249,39 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
         
         //updating appointment in firebase
         
-
-        guard let mstartTime = timeSlotLabel.text ,let mendTime = updatedEndTime.text ,let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
-       
-            
-            
-            
-            if UpdateApptTVC.publicVsPrivate == 1 {
-                ref = Database.database().reference().child("Events").child(apptKey)
-                let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
-                self.ref.updateChildValues(values)
-                
-                print("updated as public")
-                
-            }else if UpdateApptTVC.publicVsPrivate == 0 {
-                ref = Database.database().reference().child("Events").child(apptKey)
-                let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
-                self.ref.updateChildValues(values)
-                
-                print("updated as private")
-                
-            }else if UpdateApptTVC.publicVsPrivate == 2{
-                ref = Database.database().reference().child("Events").child(apptKey)
-                let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
-                self.ref.updateChildValues(values)
-                print("updated as CustomUsers")
-            }
-            
-            UpdateApptTVC.publicVsPrivate = 0
-            
+        guard let mstartTime = timeSlotLabel.text ,let mendTime = updatedEndTime.text ,let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{return}
+        
+        
+        
+        
+        if UpdateApptTVC.publicVsPrivate == 1 {
             ref = Database.database().reference().child("Events").child(apptKey)
-            let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime  ,"mendTime": endTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
-            ref.updateChildValues(userAppointment)
-            print("edited")
- 
-            guard let mstartTime = timeSlotLabel.text ,let mendTime = updatedEndTime.text ,let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
-
-                let userId = Auth.auth().currentUser?.uid
-                
-                
-                
-                
-                if UpdateApptTVC.publicVsPrivate == 1 {
-                    ref = Database.database().reference().child("Events").child(apptKey)
-                    let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
-                    self.ref.updateChildValues(values)
-                    
-                    print("updated as public")
-                    
-                }else if UpdateApptTVC.publicVsPrivate == 0 {
-                    ref = Database.database().reference().child("Events").child(apptKey)
-                    let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
-                    self.ref.updateChildValues(values)
-                    
-                    print("updated as private")
-                    
-                }else if UpdateApptTVC.publicVsPrivate == 2{
-                    ref = Database.database().reference().child("Events").child(apptKey)
-                    let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
-                    self.ref.updateChildValues(values)
-                    print("updated as CustomUsers")
-                }
-                
-                UpdateApptTVC.publicVsPrivate = 0
-                
-                ref = Database.database().reference().child("Events").child(apptKey)
-                let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime  ,"mendTime": endTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
-                ref.updateChildValues(userAppointment)
-                print("edited")
-
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
+            self.ref.updateChildValues(values)
+            
+            print("updated as public")
+            
+        }else if UpdateApptTVC.publicVsPrivate == 0 {
+            ref = Database.database().reference().child("Events").child(apptKey)
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
+            self.ref.updateChildValues(values)
+            
+            print("updated as private")
+            
+        }else if UpdateApptTVC.publicVsPrivate == 2{
+            ref = Database.database().reference().child("Events").child(apptKey)
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
+            self.ref.updateChildValues(values)
+            print("updated as CustomUsers")
+        }
+        
+        UpdateApptTVC.publicVsPrivate = 0
+        
+        
         
         dismiss(animated: true, completion: nil)
-        
 
-        
-//        ref = Database.database().reference().child("Events").child(apptKey)
-//        let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
-//        ref.updateChildValues(userAppointment)
-//        print("edited")
-        
+
 
     }
     
@@ -380,7 +331,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
     //    }
     //  }
 
-
+}
 
 extension UpdateApptTVC {
     func toggleCalendarView() {
@@ -647,3 +598,5 @@ extension UpdateApptTVC: NSFetchedResultsControllerDelegate {
     }
     
 }
+
+
