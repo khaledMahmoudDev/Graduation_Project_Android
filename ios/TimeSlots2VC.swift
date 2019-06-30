@@ -30,6 +30,7 @@ class TimeSlots2VC: UICollectionViewController {
         {
             do{
             setupTimeSlotter(x: ylabel)
+                ylabel = -1
             }
             catch{}
         }
@@ -37,6 +38,7 @@ class TimeSlots2VC: UICollectionViewController {
             {
             do {
                 setupTimeSlotter(x: xLabel)
+                xLabel = -1
             }
             catch{}
                 
