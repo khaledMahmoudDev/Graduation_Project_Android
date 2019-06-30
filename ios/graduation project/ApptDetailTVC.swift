@@ -21,7 +21,7 @@ class ApptDetailTVC: UITableViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+    @IBOutlet weak var eventCreator: UILabel!
     @IBOutlet weak var apptCostLabel: UILabel!
     @IBOutlet weak var noteTextView: UITextView!
     

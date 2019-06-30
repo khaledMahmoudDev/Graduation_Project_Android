@@ -676,31 +676,25 @@
                         <sections>
                             <tableViewSection headerTitle="Appointment Info" id="kYX-rd-lYl" userLabel="Appt Info Card">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="192" id="RJe-Kj-IAf">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="192"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="205" id="RJe-Kj-IAf">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="205"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJe-Kj-IAf" id="5Fj-O8-VDa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="205"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcG-Vf-Uwl" customClass="CardView" customModule="graduation_project" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="4" width="351" height="176"/>
+                                                    <rect key="frame" x="12" y="4" width="351" height="189"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1:00 - 1:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOS-uJ-kIr">
-                                                            <rect key="frame" x="20" y="61" width="155.5" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <rect key="frame" x="20" y="61" width="130.5" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="September 25, 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6l-Ox-1qr">
-                                                            <rect key="frame" x="20" y="89" width="146.5" height="19.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEU-mp-ebC">
-                                                            <rect key="frame" x="20" y="126" width="268" height="50"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <rect key="frame" x="20" y="84" width="138.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -721,7 +715,20 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuG-VI-rQo">
                                                             <rect key="frame" x="5" y="0.0" width="341" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEU-mp-ebC">
+                                                            <rect key="frame" x="20" y="101" width="268" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Creator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYL-t9-iL2">
+                                                            <rect key="frame" x="20" y="150" width="249" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -767,7 +774,7 @@
                             <tableViewSection headerTitle="Notes" id="dEN-u8-HYV" userLabel="Notes Card">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="168" id="cf7-Zw-Shy">
-                                        <rect key="frame" x="0.0" y="293.5" width="375" height="168"/>
+                                        <rect key="frame" x="0.0" y="306.5" width="375" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cf7-Zw-Shy" id="0Gh-QA-qkO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
@@ -803,7 +810,7 @@
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="63" id="S0E-Nq-Gqe">
-                                        <rect key="frame" x="0.0" y="461.5" width="375" height="63"/>
+                                        <rect key="frame" x="0.0" y="474.5" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S0E-Nq-Gqe" id="WBZ-Ou-e4C">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
@@ -839,6 +846,7 @@
                         <outlet property="apptCostLabel" destination="QEU-mp-ebC" id="yeQ-o5-CGn"/>
                         <outlet property="dateLabel" destination="D6l-Ox-1qr" id="O3k-vW-Pju"/>
                         <outlet property="editApptButton" destination="Rav-lW-XYp" id="1Iw-de-vpU"/>
+                        <outlet property="eventCreator" destination="UYL-t9-iL2" id="2f0-Wk-dtY"/>
                         <outlet property="hideShowEditApptButton" destination="Rav-lW-XYp" id="k1v-ue-FEa"/>
                         <outlet property="hourLabel" destination="SOS-uJ-kIr" id="eUP-9l-hRa"/>
                         <outlet property="noteTextView" destination="Vml-Nt-E6a" id="5ke-kR-vvk"/>
