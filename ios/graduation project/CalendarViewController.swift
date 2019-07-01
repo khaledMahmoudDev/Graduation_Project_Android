@@ -153,7 +153,7 @@ class CalendarViewController: UIViewController {
 
         
         print("........",result)
-            ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.childAdded){ (snapshot) in
+            ref.child("IOSEvents").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.childAdded){ (snapshot) in
                 //print(snapshot)
             if let dict = snapshot.value as? [String : Any]{
                 if dict["privacy"] as! String == "private" && dict["meventCreator"] as? String == self.User?.email{
@@ -354,7 +354,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 //            CoreDataStore.instance.save()
             
             ref = Database.database().reference()
-            let removeRef = ref.child("Events").child(appointmentsArray[indexPath.row].appointmentKey)
+            let removeRef = ref.child("IOSEvents").child(appointmentsArray[indexPath.row].appointmentKey)
             removeRef.removeValue()
             appointmentsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

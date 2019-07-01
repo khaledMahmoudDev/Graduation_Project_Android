@@ -61,7 +61,7 @@ class EditUserProfile: UIViewController {
     func fetchUserInformationFromFirebase(){
         
         let userID = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("USERS").child(userID!)
+        ref = Database.database().reference().child("IOSUSERS").child(userID!)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -162,7 +162,7 @@ class EditUserProfile: UIViewController {
                     let urlString: String = (url?.absoluteString) ?? ""
                     let values = ["username" : newUserName , "imageLink":urlString]
                     self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                    let usersReference = self.ref.child("USERS").child(userID!)
+                    let usersReference = self.ref.child("IOSUSERS").child(userID!)
                     usersReference.updateChildValues(values, withCompletionBlock :{
                         (err, ref) in
                         if err != nil{

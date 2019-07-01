@@ -87,7 +87,7 @@ class ApptDetailTVC: UITableViewController {
         print(apptKey)
         
         let userId = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Events").child(apptKey)
+        ref = Database.database().reference().child("IOSEvents").child(apptKey)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             

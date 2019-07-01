@@ -179,21 +179,21 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         if NewApptTableViewController.publicVsPrivate == 1 {
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
-            self.ref.child("Events").childByAutoId().setValue(values)
+            self.ref.child("IOSEvents").childByAutoId().setValue(values)
             
             print("Appoinment saved savely in firebase as public")
             
         }else if NewApptTableViewController.publicVsPrivate == 0 {
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
-            self.ref.child("Events").childByAutoId().setValue(values)
+            self.ref.child("IOSEvents").childByAutoId().setValue(values)
             
             print("Appoinment saved savely in firebase as private")
             
         }else if NewApptTableViewController.publicVsPrivate == 2{
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
             let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
-            self.ref.child("Events").childByAutoId().setValue(values)
+            self.ref.child("IOSEvents").childByAutoId().setValue(values)
             print("Appoinment saved savely in firebase as CustomUsers")
         }
         

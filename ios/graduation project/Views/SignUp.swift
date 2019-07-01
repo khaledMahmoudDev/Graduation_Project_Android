@@ -176,7 +176,7 @@ class SignUp: UIViewController{
                                //print(url?.absoluteString) // this is the actual download url - the absolute string
                                 let urlString: String = (url?.absoluteString) ?? ""
                                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                                let usersReference = self.ref.child("USERS").child(uid)
+                                let usersReference = self.ref.child("IOSUSERS").child(uid)
                                 let values = ["firstName" : username , "email": email, "imageLink":urlString]
                                 usersReference.updateChildValues(values, withCompletionBlock :{
                                     (error, ref) in

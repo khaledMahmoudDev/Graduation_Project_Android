@@ -240,7 +240,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         }
         self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
         let values = ["noteName" : noteName , "noteContent": noteContent]
-        self.ref.child("UserNotes").child(User!.uid).childByAutoId().setValue(values)
+        self.ref.child("IOSUserNotes").child(User!.uid).childByAutoId().setValue(values)
         
             print("saved savely for the current user")
     }
@@ -250,7 +250,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         
       
         let userId = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("UserNotes").child(userId!).child(choosedNote)
+        ref = Database.database().reference().child("IOSUserNotes").child(userId!).child(choosedNote)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             

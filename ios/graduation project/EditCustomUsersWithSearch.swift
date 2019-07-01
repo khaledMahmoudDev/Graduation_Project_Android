@@ -99,15 +99,26 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        //let eventCreatorArray = self.fetchedArrayFromFireBase.append(eventCreator)
+        //var eventCreatorArray : Array<String> = []
+        //eventCreatorArray  = self.fetchedArrayFromFireBase.append(eventCreator)
+        print("fetched array",self.fetchedArrayFromFireBase )
+        //print("selected", eventCreatorArray )
+        self.editSelectedUsersEmailArray.append(contentsOf: self.fetchedArrayFromFireBase)
         self.editSelectedUsersEmailArray.append(eventCreator)
+        
         print("edited array", editSelectedUsersEmailArray)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let eventCreator = usersEmailArray[indexPath.row].usersEmail
+        self.editSelectedUsersEmailArray.remove(at: indexPath.row)
+        print("deleted", editSelectedUsersEmailArray)
     }
     
     
     func fetchUsersFromFirebase(){
         ref = Database.database().reference()
-        ref.child("USERS").observe(.childAdded) { (snapshot) in
+        ref.child("IOSUSERS").observe(.childAdded) { (snapshot) in
             
             
             if let url = snapshot.value as? [String : Any] {

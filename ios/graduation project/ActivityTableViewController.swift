@@ -55,7 +55,7 @@ class ActivityTableViewController: UITableViewController {
             return
         }
         ref = Database.database().reference()
-        ref.child("Events").observe(.childAdded) { (snapshot) in
+        ref.child("IOSEvents").observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 let appointmentTitle = dict["mtitle"] as! String
                 let appointmentTime = dict["mstartTime"] as! String

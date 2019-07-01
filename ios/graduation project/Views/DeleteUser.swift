@@ -85,8 +85,9 @@ class DeleteUser: UIViewController {
                     } else {
                         // Account deleted.
                         self.ref = Database.database().reference()
-                        self.ref.child("USERS").child(userId).removeValue()
-                        self.ref.child("UserNotes").child(userId).removeValue()
+                        self.ref.child("IOSUSERS").child(userId).removeValue()
+                        self.ref.child("IOSEvents").child(userId).removeValue()
+                        self.ref.child("IOSUserNotes").child(userId).removeValue()
                         print("user is removed")
                         
                         try!  Auth.auth().signOut()

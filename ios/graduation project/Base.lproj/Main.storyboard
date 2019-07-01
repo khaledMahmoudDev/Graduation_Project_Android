@@ -51,7 +51,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ide-Ug-GVj"/>
-                                    <segue destination="aOQ-BS-1Bo" kind="show" id="HDt-Bd-Vqh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VED-KP-tHG">

@@ -130,7 +130,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         if editingStyle == .delete{
             
             ref = Database.database().reference()
-            let removeRef = ref.child("UserNotes").child(User!.uid).child(noteArray[indexPath.row].noteKey)
+            let removeRef = ref.child("IOSUserNotes").child(User!.uid).child(noteArray[indexPath.row].noteKey)
             removeRef.removeValue()
             noteArray.remove(at: indexPath.row)
             
@@ -240,7 +240,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
             return
         }
         ref = Database.database().reference()
-        ref.child("UserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
+        ref.child("IOSUserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 
                 let noteName = dict["noteName"] as! String

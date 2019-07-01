@@ -61,7 +61,7 @@ class Profile: UIViewController {
     func fetchUserInformationFromFirebase(){
         
         let userID = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("USERS").child(userID!)
+        ref = Database.database().reference().child("IOSUSERS").child(userID!)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value

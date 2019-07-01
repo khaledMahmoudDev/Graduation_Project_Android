@@ -47,8 +47,13 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBAction func DoneUsersSelectionButton(_ sender: Any) {
-        self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
-        self.navigationController?.popViewController(animated: true)
+        if selectedUsersEmailArray != []{
+            self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,12 +96,19 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
         self.selectedUsersEmailArray.append(eventCreator)
+        print("hooo", selectedUsersEmailArray)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //let deselectEventCreator = usersEmailArray[indexPath.row].usersEmail
+        self.selectedUsersEmailArray.remove(at: indexPath.row)
+        print("deleted", selectedUsersEmailArray)
     }
     
     
     func fetchUsersFromFirebase(){
         ref = Database.database().reference()
-        ref.child("USERS").observe(.childAdded) { (snapshot) in
+        ref.child("IOSUSERS").observe(.childAdded) { (snapshot) in
             
             
             if let url = snapshot.value as? [String : Any] {
