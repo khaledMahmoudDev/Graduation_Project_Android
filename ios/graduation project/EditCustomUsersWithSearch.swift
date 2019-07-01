@@ -28,6 +28,10 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     
     
+//    let indexPath = NSIndexPath(row: 0, section: 0)
+//    let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomUserCell
+    
+    
     var delegate: SendEditedSelectedUsers!
     
     override func viewDidLoad() {
@@ -62,11 +66,21 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomUserCell
+        
+        if fetchedArrayFromFireBase.contains(usersEmailArray[indexPath.row].usersEmail){
+                cell.isSelected = true
+                cell.accessoryType = .checkmark
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
+                cell.isHighlighted = true
 
-//        for item in fetchedArrayFromFireBase{
-//            checkForCustomUserIsSelected = usersEmailArray.contains()
-//           
-//        }
+            }else{
+                cell.isSelected = false
+                cell.accessoryType = .none
+                cell.isHighlighted = false
+                tableView.deselectRow(at: indexPath, animated: false)
+
+            }
+
 
         if searchActive{
             cell.userEmail?.text = searchOnUsers[indexPath.row].usersEmail
@@ -85,7 +99,9 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
+        //let eventCreatorArray = self.fetchedArrayFromFireBase.append(eventCreator)
         self.editSelectedUsersEmailArray.append(eventCreator)
+        print("edited array", editSelectedUsersEmailArray)
     }
     
     
@@ -96,7 +112,6 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
             
             if let url = snapshot.value as? [String : Any] {
                 let UserEmail = url["email"] as! String
-                print(UserEmail)
                 let UserName = url["firstName"] as! String
                 let UserImage = url["imageLink"] as! String
                 let Url = URL (string: UserImage)!
@@ -107,7 +122,6 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
                         return
                     }
                     DispatchQueue.main.async {
-                        print("Oh ya")
                         let image = UIImage(data: data!)
                         let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
                         self.usersEmailArray.append(Users)
