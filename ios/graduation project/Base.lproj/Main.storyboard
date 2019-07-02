@@ -1878,6 +1878,7 @@
                         <outlet property="timeSlotLabel" destination="TZl-DV-POy" id="fhD-4z-C3z"/>
                         <outlet property="timeSlotLabelEnd" destination="Aha-US-UI4" id="Slj-7B-J0d"/>
                         <outlet property="titleTextField" destination="FV5-Rb-j1B" id="fWl-FX-rKY"/>
+                        <outlet property="toggleButton" destination="HNd-iE-Vf0" id="XaY-xY-obg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SO-3f-zoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2933,12 +2934,12 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P4d-ra-qAT"/>
+        <segue reference="Eim-kH-CZA"/>
         <segue reference="acT-uA-LxE"/>
         <segue reference="hOK-MX-cos"/>
-        <segue reference="L32-St-71b"/>
-        <segue reference="pmo-A3-wRS"/>
-        <segue reference="Z9y-n5-jaY"/>
+        <segue reference="IgS-8A-6uT"/>
+        <segue reference="FBw-gp-2ID"/>
+        <segue reference="mHl-rz-7Z3"/>
         <segue reference="mWK-uN-jQr"/>
     </inferredMetricsTieBreakers>
 </document>

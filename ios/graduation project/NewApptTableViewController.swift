@@ -94,6 +94,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     }
     
     @IBOutlet weak var PublicLabel: UILabel!
+    @IBOutlet weak var toggleButton: UISwitch!
     @IBAction func publicVSprivate(_ sender: Any) {
         if (sender as AnyObject).isOn == true {
             NewApptTableViewController.publicVsPrivate = 1
@@ -148,6 +149,21 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
             
             locationLabel.text = myString
         }
+        if NewApptTableViewController.publicVsPrivate == 2 {
+            print("here")
+            if selectedUsersEmailArray == [] {
+                NewApptTableViewController.publicVsPrivate = 0
+                self.toggleButton.isOn = false
+                self.PublicLabel.text = "Private"
+                let alert =  UIAlertController(title: "Custom Users", message: "There were no custom users selected, and your default privacy is private", preferredStyle: .alert)
+                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKButton)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                NewApptTableViewController.publicVsPrivate = 2
+            }
+        }
+        
     }
     
     
@@ -185,16 +201,18 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
             
         }else if NewApptTableViewController.publicVsPrivate == 0 {
             self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private"]
             self.ref.child("IOSEvents").childByAutoId().setValue(values)
             
             print("Appoinment saved savely in firebase as private")
             
         }else if NewApptTableViewController.publicVsPrivate == 2{
-            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
-            self.ref.child("IOSEvents").childByAutoId().setValue(values)
-            print("Appoinment saved savely in firebase as CustomUsers")
+                self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+                let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
+                self.ref.child("IOSEvents").childByAutoId().setValue(values)
+                print("Appoinment saved savely in firebase as CustomUsers")
+
+            
         }
         
         NewApptTableViewController.publicVsPrivate = 0

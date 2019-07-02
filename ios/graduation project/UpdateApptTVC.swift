@@ -140,6 +140,22 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
             locationLabel.text = myString
         }
         
+        if UpdateApptTVC.publicVsPrivate == 2{
+            
+            if selectedUsersEmailArray == []{
+                UpdateApptTVC.publicVsPrivate = 0
+                self.toggleButton.isOn = false
+                self.PublicLabel.text = "Private"
+                let alert =  UIAlertController(title: "Custom Users", message: "There were no custom users selected, and your default privacy is private", preferredStyle: .alert)
+                let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKButton)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                UpdateApptTVC.publicVsPrivate = 2
+            }
+            
+        }
+        
         
     }
     
@@ -270,10 +286,11 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
             
         }else if UpdateApptTVC.publicVsPrivate == 2{
             //print ("here", selectedUsersEmailArray)
-            ref = Database.database().reference().child("IOSEvents").child(apptKey)
-            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
-            self.ref.updateChildValues(values)
-            print("updated as CustomUsers")
+                ref = Database.database().reference().child("IOSEvents").child(apptKey)
+                let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : mendTime , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
+                self.ref.updateChildValues(values)
+                print("updated as CustomUsers")
+            
         }
         
         UpdateApptTVC.publicVsPrivate = 0
