@@ -275,7 +275,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             return
         }
         
-        ref = Database.database().reference().child("UserNotes").child(userId).child(choosedNote)
+        ref = Database.database().reference().child("IOSUserNotes").child(userId).child(choosedNote)
         let userNote = ["noteName" : noteName , "noteContent": noteContent]
         ref.updateChildValues(userNote)
 

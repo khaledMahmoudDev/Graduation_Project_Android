@@ -11,12 +11,12 @@ import CoreData
 import Firebase
 //import RealmSwift
 
-
 class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var ref: DatabaseReference!
     var noteArray = [Note]()
     @IBOutlet weak var tableViewList: UITableView!
+    static var flag = 0
 
     //var controller : NSFetchedResultsController<UserNotes>!
     
@@ -27,38 +27,49 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if isDidLoadLoadedFirsttime{
-            self.noteArray.removeAll()
-            fetchNotesFromFirebase()
+        if Notes.flag == 0{
+            if isDidLoadLoadedFirsttime{
+                self.noteArray.removeAll()
+                fetchNotesFromFirebase()
+                print("can1")
+            }
+            isDidLoadLoadedFirsttime = true
+
+            isWillAppearLoadedFirstTime = true
+        }else{
+            print("can't")
         }
-        isDidLoadLoadedFirsttime = true
-
-        isWillAppearLoadedFirstTime = true
-
+        
+        //this fetch was for coreData
         //fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        isDidLoadLoadedFirsttime = true
-        
-        if !isWillAppearLoadedFirstTime {
-            // Do what you want to do when it is not the first load
-            self.noteArray.removeAll()
-            self.tableViewList.reloadData()
-            self.fetchNotesFromFirebase()
+        if Notes.flag == 1{
+            isDidLoadLoadedFirsttime = true
 
+            if !isWillAppearLoadedFirstTime {
+                 //Do what you want to do when it is not the first load
+                self.noteArray.removeAll()
+                self.tableViewList.reloadData()
+                self.fetchNotesFromFirebase()
+                print("can1")
+                
+            }
+            isWillAppearLoadedFirstTime = false
+        }else{
+            print("can't2")
         }
-        isWillAppearLoadedFirstTime = false
-
+        
+        //this fetch was for coreData
         //fetch()
     }
     
     
     @IBAction func AddNewNote(_ sender: Any) {
-
+        Notes.flag = 1
         performSegue(withIdentifier: "noteDetails", sender: self)
     }
     
