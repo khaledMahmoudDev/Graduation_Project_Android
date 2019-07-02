@@ -28,7 +28,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     
     
-//    let indexPath = NSIndexPath(row: 0, section: 0)
+    let indexPath = NSIndexPath(row: 0, section: 0)
 //    let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomUserCell
     
     
@@ -40,6 +40,10 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
 
         usersEmailArray.removeAll()
         fetchUsersFromFirebase()
+        if fetchedArrayFromFireBase != []{
+            self.editSelectedUsersEmailArray.append(contentsOf: self.fetchedArrayFromFireBase)
+        }
+        print("view didload",editSelectedUsersEmailArray)
         
         self.tableView.allowsMultipleSelection = true
         self.tableView.allowsMultipleSelectionDuringEditing = true
@@ -99,19 +103,38 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        //var eventCreatorArray : Array<String> = []
-        //eventCreatorArray  = self.fetchedArrayFromFireBase.append(eventCreator)
-        print("fetched array",self.fetchedArrayFromFireBase )
-        //print("selected", eventCreatorArray )
-        self.editSelectedUsersEmailArray.append(contentsOf: self.fetchedArrayFromFireBase)
-        self.editSelectedUsersEmailArray.append(eventCreator)
+        if fetchedArrayFromFireBase.contains(eventCreator){
+//            tableView.deselectRow(at: indexPath, animated: true)
+//            self.fetchedArrayFromFireBase.remove(at: indexPath.row)
+//            print(self.fetchedArrayFromFireBase)
+//            self.editSelectedUsersEmailArray.remove(at: indexPath.row)
+//            tableView.reloadData()
+            print("deleted", editSelectedUsersEmailArray)
+        }else{
+            self.editSelectedUsersEmailArray.append(eventCreator)
+            print("appended", editSelectedUsersEmailArray)
+        }
+
         
-        print("edited array", editSelectedUsersEmailArray)
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        self.editSelectedUsersEmailArray.remove(at: indexPath.row)
+        if fetchedArrayFromFireBase.contains(eventCreator){
+            if let editedIndex = self.editSelectedUsersEmailArray.firstIndex(of: eventCreator){
+                self.editSelectedUsersEmailArray.remove(at: editedIndex)
+            }
+            if let fetchedIndex = self.fetchedArrayFromFireBase.firstIndex(of: eventCreator){
+                self.fetchedArrayFromFireBase.remove(at: fetchedIndex)
+            }
+            print(self.fetchedArrayFromFireBase)
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.reloadData()
+            print("edited array", editSelectedUsersEmailArray)
+            
+        }
         print("deleted", editSelectedUsersEmailArray)
     }
     

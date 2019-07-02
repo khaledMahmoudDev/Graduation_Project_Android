@@ -91,6 +91,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
         setTextViewDelegates()
         setDoneOnKeyboard()
         loadAppointment()
+        
+        UpdateApptTVC.publicVsPrivate = 0
         print("..........",apptKey)
         
         calendarView.visibleDates{ (visibleDates) in
@@ -150,6 +152,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
+                
             }else{
                 UpdateApptTVC.publicVsPrivate = 2
             }
