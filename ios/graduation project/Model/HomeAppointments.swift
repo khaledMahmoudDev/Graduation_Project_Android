@@ -22,6 +22,6 @@ class HomeAppointments{
         appointmentTime = appTime
         appointmentLocation = appLocation
         appomtmentDate = appDate
-        
+
     }
 }

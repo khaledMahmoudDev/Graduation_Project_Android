@@ -34,7 +34,7 @@ class CalendarViewController: UIViewController {
     let formatter = DateFormatter()
     let date = Date()
     var result : String?
-    
+    static var AppointmentDate = ""
     
     private let segueNewApptTVC = "SegueNewApptTVC"
     private let segueApptDetail = "SegueApptDetail"
@@ -558,6 +558,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             
             formatter.dateFormat = "MMMM dd, yyyy"
             result = formatter.string(from:date)
+            CalendarViewController.AppointmentDate = result!
             print("didselect date", result)
             loadAppointmentsForDate(date: date)
             self.appointmentsArray.removeAll()
