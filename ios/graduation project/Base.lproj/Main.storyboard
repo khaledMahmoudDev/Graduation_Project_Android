@@ -1492,6 +1492,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="D1n-gJ-97j"/>
+                    <connections>
+                        <segue destination="JnP-Qa-Qfy" kind="show" identifier="checkevent" id="RWm-Rx-9aS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awp-FX-ooJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2959,6 +2962,7 @@
         <segue reference="FBw-gp-2ID"/>
         <segue reference="mHl-rz-7Z3"/>
         <segue reference="mWK-uN-jQr"/>
+        <segue reference="wAv-hb-fvH"/>
         <segue reference="Z2P-hM-xJp"/>
     </inferredMetricsTieBreakers>
 </document>

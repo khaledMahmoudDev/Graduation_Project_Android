@@ -169,43 +169,45 @@ class CalendarViewController: UIViewController {
                     self.ref.keepSynced(true)
                     print("private")
                     
-                }else if  dict["privacy"] as! String == "public"{
+                }
+                else if  dict["privacy"] as! String == "public" && dict["meventCreator"] as? String == self.User?.email {
                     let appointmentTitle = dict["mtitle"] as! String
                     let appointmentDetail = dict["mdetails"] as! String
                     let appointmentTime = dict["mstartTime"] as! String
                     //print(appointmentTime)
                     let appointmentKey = snapshot.key
-                    
+
                     let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
                     self.appointmentsArray.append(appointments)
                     self.tableView.reloadData()
                     self.ref.keepSynced(true)
                     print("public")
-                    
-                }else if dict["meventCreator"] as? String != self.User?.email {
-                    if dict["privacy"] as! String == "CustomUsers"{
-                        let customUsersArray = dict["customUsrs"] as! [String]
-                        let checkForCustomUserIsExist = customUsersArray.contains((self.User?.email)!)
-                        print(checkForCustomUserIsExist)
-                        
-                        if checkForCustomUserIsExist == true{
-                            let appointmentTitle = dict["mtitle"] as! String
-                            let appointmentDetail = dict["mdetails"] as! String
-                            let appointmentTime = dict["mstartTime"] as! String
-                            //                          let CustomUsers = dict["customUsrs"] as! [String]
-                            //                          print(CustomUsers)
-                            let appointmentKey = snapshot.key
-                            
-                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                            self.appointmentsArray.append(appointments)
-                            self.tableView.reloadData()
-                            self.ref.keepSynced(true)
-                            
-                            print("custom")
-                            }
-                        }
-                    }else
-                        if dict["meventCreator"] as? String == self.User?.email {
+
+                }
+//                else if dict["meventCreator"] as? String != self.User?.email {
+//                    if dict["privacy"] as! String == "CustomUsers"{
+//                        let customUsersArray = dict["customUsrs"] as! [String]
+//                        let checkForCustomUserIsExist = customUsersArray.contains((self.User?.email)!)
+//                        print(checkForCustomUserIsExist)
+//
+//                        if checkForCustomUserIsExist == true{
+//                            let appointmentTitle = dict["mtitle"] as! String
+//                            let appointmentDetail = dict["mdetails"] as! String
+//                            let appointmentTime = dict["mstartTime"] as! String
+//                            //                          let CustomUsers = dict["customUsrs"] as! [String]
+//                            //                          print(CustomUsers)
+//                            let appointmentKey = snapshot.key
+//
+//                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+//                            self.appointmentsArray.append(appointments)
+//                            self.tableView.reloadData()
+//                            self.ref.keepSynced(true)
+//
+//                            print("custom")
+//                            }
+//                        }
+//                    }
+                    else if dict["meventCreator"] as? String == self.User?.email {
                             if dict["privacy"] as! String == "CustomUsers"  {
                                 let appointmentTitle = dict["mtitle"] as! String
                                 let appointmentDetail = dict["mdetails"] as! String

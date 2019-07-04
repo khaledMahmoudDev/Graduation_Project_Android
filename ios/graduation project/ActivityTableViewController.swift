@@ -74,9 +74,9 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentLocation = dict["location"] as! String
                     let appointmentTime = dict["mstartTime"] as! String
                     let appointmentDate = dict["mdate"] as! String
-                    //print(appointmentTime)
+                    let appointmentKey = snapshot.key
                     
-                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate)
+                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
                     self.privatAppointment.append(appointments)
                     self.tableView.reloadData()
                     self.ref.keepSynced(true)
@@ -87,9 +87,9 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentLocation = dict["location"] as! String
                     let appointmentTime = dict["mstartTime"] as! String
                     let appointmentDate = dict["mdate"] as! String
-                    //print(appointmentTime)
+                    let appointmentKey = snapshot.key
                     
-                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate)
+                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
                     self.publicAppointment.append(appointments)
                     self.tableView.reloadData()
                     self.ref.keepSynced(true)
@@ -106,9 +106,9 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentLocation = dict["location"] as! String
                             let appointmentTime = dict["mstartTime"] as! String
                             let appointmentDate = dict["mdate"] as! String
-                            //print(appointmentTime)
+                            let appointmentKey = snapshot.key
                             
-                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate)
+                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
                             self.customAppointment.append(appointments)
                             self.tableView.reloadData()
                             self.ref.keepSynced(true)
@@ -123,9 +123,9 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentLocation = dict["location"] as! String
                             let appointmentTime = dict["mstartTime"] as! String
                             let appointmentDate = dict["mdate"] as! String
-                            //print(appointmentTime)
+                            let appointmentKey = snapshot.key
                             
-                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate)
+                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
                             self.customAppointment.append(appointments)
                             self.tableView.reloadData()
                             self.ref.keepSynced(true)
@@ -193,33 +193,14 @@ class ActivityTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
-        
-        
-//        if cell == nil
-//        {
-//            cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "ActivityCell") as! ActivityCell
-//        }
-        
-//        let appointment = fetchedResultsController.object(at: indexPath)
-//        //  cell.timeIntervalLabel.text = dateFormatter(date: appointment.date)
-//        let timeAgo:String = timeAgoSinceDate(appointment.dateCreated, currentDate: Date(), numericDates: true)
-//        
-//        cell.timeIntervalLabel.text = timeAgo
-//        cell.activityLabel.text = "New appointment with for \(dateFormatter(date: appointment.date)) at \(hourFormatter(date: appointment.date)) location \(String(describing: appointment.cost))"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
+
         let inFormatter = DateFormatter()
         inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
         inFormatter.dateFormat = "HH:mm"
         
         
-//        let appointmentPrivate = privatAppointment[indexPath.row].appointmentPrivacy
-//        let appointmentCreatorPrivate = privatAppointment[indexPath.row].eventCreator
-//
-//        let appointmentPublic = publicAppointment[indexPath.row].appointmentPrivacy
-        
-        
         if indexPath.section == 0 {
-//            if appointmentPrivate == "private" && appointmentCreatorPrivate == self.User?.email {
             
                 
                 let appointmentTime = privatAppointment[indexPath.row].appointmentTime
@@ -233,9 +214,8 @@ class ActivityTableViewController: UITableViewController {
                 //cell.timeIntervalLabel.text = dateInHourFormatter
                 
                 cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
-            //}
+            
         }else if indexPath.section == 1{
-            //if appointmentPublic == "public"{
                 
                 let appointmentTime = publicAppointment[indexPath.row].appointmentTime
                 let appointmentDate = publicAppointment[indexPath.row].appomtmentDate
@@ -248,7 +228,7 @@ class ActivityTableViewController: UITableViewController {
                 //cell.timeIntervalLabel.text = dateInHourFormatter
                 
                 cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
-            //}
+
         }else if indexPath.section == 2{
             let appointmentTime = customAppointment[indexPath.row].appointmentTime
             let appointmentDate = customAppointment[indexPath.row].appomtmentDate
@@ -262,21 +242,45 @@ class ActivityTableViewController: UITableViewController {
             
             cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
         }
-        
-//        let appointmentTime = homeAppointmentsArray[indexPath.row].appointmentTime
-//        let appointmentDate = homeAppointmentsArray[indexPath.row].appomtmentDate
-//        let appointmentLocation = homeAppointmentsArray[indexPath.row].appointmentLocation
-//        let appointmentTitle = homeAppointmentsArray[indexPath.row].appointmentTitle
-//        let date = inFormatter.date(from: appointmentTime)!
-//        let dateInHourFormatter = hourFormatter(date: date)
-//        //print(dateInHourFormatter)
-//
-//        //cell.timeIntervalLabel.text = dateInHourFormatter
-//
-//        cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
 
  
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            
+            let choosenAppointment = privatAppointment[indexPath.row].appointmentKey
+            performSegue(withIdentifier: "checkevent", sender: choosenAppointment)
+            self.privatAppointment.removeAll()
+            
+        }else if indexPath.section == 1{
+            
+            let choosenAppointment = publicAppointment[indexPath.row].appointmentKey
+            performSegue(withIdentifier: "checkevent" , sender: choosenAppointment)
+            self.publicAppointment.removeAll()
+            
+        }else if indexPath.section == 2{
+            
+            let choosenAppointment = customAppointment[indexPath.row].appointmentKey
+            performSegue(withIdentifier: "checkevent" , sender: choosenAppointment)
+            self.customAppointment.removeAll()
+            
+        }
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "checkevent"{
+            if let destination = segue.destination as? ApptDetailTVC{
+                if let selectedAppointment = sender as? String{
+                    
+                    destination.choosedAppointment = selectedAppointment
+                    //self.privatAppointment.removeAll()
+                }
+            }
+        }
     }
     
 }

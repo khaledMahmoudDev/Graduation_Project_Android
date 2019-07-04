@@ -14,14 +14,16 @@ class HomeAppointments{
     var appointmentTime : String
     var appomtmentDate : String
     var appointmentLocation : String
+    var appointmentKey : String
     
     
-    init (appTitle : String, appTime : String, appLocation : String , appDate : String){
+    init (appTitle : String, appTime : String, appLocation : String , appDate : String , appKey : String){
         
         appointmentTitle = appTitle
         appointmentTime = appTime
         appointmentLocation = appLocation
         appomtmentDate = appDate
+        appointmentKey = appKey
 
     }
 }
