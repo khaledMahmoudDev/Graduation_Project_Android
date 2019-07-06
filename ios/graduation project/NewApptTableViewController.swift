@@ -280,10 +280,7 @@ extension NewApptTableViewController {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
             tableView.reloadData()
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -291,13 +288,13 @@ extension NewApptTableViewController {
             return 0
         }
         else if indexPath.row == 6 && toggleButton.isOn == false{
-            return 50
+            return 56
         }
         else if indexPath.row == 7{
             if toggleButton.isOn == false{
                 return 0.0
             }
-            return 50
+            return 56
         }
             
         else {

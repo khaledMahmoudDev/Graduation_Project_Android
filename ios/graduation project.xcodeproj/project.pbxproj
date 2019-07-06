@@ -95,6 +95,9 @@
 		E2B06F6522BD3161003883AA /* CustomUsersEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */; };
 		E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6622BD3B35003883AA /* CustomUserCell.swift */; };
 		E2C7244D22C3F96E0062530C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7244C22C3F96E0062530C /* Item.swift */; };
+		E2D24FCD22D1291D004AEBF0 /* z7p2XB.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */; };
+		E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FD222D137E0004AEBF0 /* locationViewController.png */; };
+		E2D24FD522D139D7004AEBF0 /* locationView.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FD422D139D7004AEBF0 /* locationView.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +194,9 @@
 		E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersEmail.swift; sourceTree = "<group>"; };
 		E2B06F6622BD3B35003883AA /* CustomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserCell.swift; sourceTree = "<group>"; };
 		E2C7244C22C3F96E0062530C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = z7p2XB.jpg; sourceTree = "<group>"; };
+		E2D24FD222D137E0004AEBF0 /* locationViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationViewController.png; sourceTree = "<group>"; };
+		E2D24FD422D139D7004AEBF0 /* locationView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationView.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,8 +216,11 @@
 			isa = PBXGroup;
 			children = (
 				E2077D9422D035B80067231B /* date.png */,
+				E2D24FD222D137E0004AEBF0 /* locationViewController.png */,
 				E2077D9A22D03E090067231B /* location2.png */,
+				E2D24FD422D139D7004AEBF0 /* locationView.png */,
 				E2077D9C22D041850067231B /* users.png */,
+				E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */,
 				E2077D9522D035B80067231B /* time.png */,
 				E2077D9822D03A0C0067231B /* privacy.png */,
 				31DE3692220B3DDE00C9B2E6 /* graduation project */,
@@ -415,9 +424,12 @@
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
 				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
+				E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */,
 				E2077D9B22D03E090067231B /* location2.png in Resources */,
 				E2077D9D22D041860067231B /* users.png in Resources */,
+				E2D24FCD22D1291D004AEBF0 /* z7p2XB.jpg in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
+				E2D24FD522D139D7004AEBF0 /* locationView.png in Resources */,
 				E2077D9722D035B90067231B /* time.png in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,
 				E2077D9622D035B90067231B /* date.png in Resources */,
