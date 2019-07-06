@@ -120,14 +120,12 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         setupCalendarView()
         
         fetchAppointmentsForDay()
-        
         noLargeTitles()
         setTextFieldDelegates()
         setTextViewDelegates()
-        setDoneOnKeyboard()
+     //   setDoneOnKeyboard()
         noteTextView.placeholder = "Notes"
-        setupKeyboardNotification()
-        
+    //    setupKeyboardNotification()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
     }

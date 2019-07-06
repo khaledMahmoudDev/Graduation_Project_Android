@@ -14,7 +14,10 @@ class CustomTabBar: UITabBarController {
     
 
     tabBar.frame = newTabBarFrame
-    tabBar.isTranslucent = true
+    tabBar.isTranslucent = false
+    
+    tabBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+    self.tabBar.tintColor = .white
   }
   
 }

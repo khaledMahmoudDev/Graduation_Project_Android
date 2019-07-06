@@ -19,8 +19,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var currentHumidityLabel: UILabel!
+    @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var currentPrecipitationLabel: UILabel!
-    @IBOutlet weak var currentWeatherIcon: UIImageView!
     @IBOutlet weak var currentSummaryLabel: UILabel!
     @IBOutlet weak var cityName: UILabel!
     let client = DarkSkyAPIClient()
@@ -67,19 +67,16 @@ class CalendarViewController: UIViewController {
         formatter.dateFormat = "MMMM dd, yyyy"
         result = formatter.string(from: date)
         print("..........loaded",CalendarViewController.flagCheck)
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         //performFetch()
         noLargeTitles()
         setupCalendarView()
-        
         calendarView.dropShadowBottom()
-        
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
-        
+        self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Calendar", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
@@ -469,9 +466,9 @@ extension CalendarViewController {
         
         let todaysDate = Date()
         if todaysDate.day() == cellState.date.day() {
-            validCell.dateLabel.textColor = UIColor.purple
+            validCell.dateLabel.textColor = UIColor.blue
         } else {
-            validCell.dateLabel.textColor = cellState.isSelected ? UIColor.purple : UIColor.darkGray
+            validCell.dateLabel.textColor = cellState.isSelected ? UIColor.blue : UIColor.darkGray
         }
         
         
@@ -497,7 +494,7 @@ extension CalendarViewController {
     func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
         guard let date = visibleDates.monthDates.first?.date else { return }
         
-        formatter.dateFormat = "MMMM"
+        formatter.dateFormat = "MMMM yyyy"
         title = formatter.string(from: date).uppercased()
     }
     
@@ -516,7 +513,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         var startDate = Date()
         var endDate = Date()
         if let calendarStartDate = formatter.date(from: "2019 01 01"),
-            let calendarEndndDate = formatter.date(from: "2019 12 31") {
+            let calendarEndndDate = formatter.date(from: "2020 12 31") {
             startDate = calendarStartDate
             endDate = calendarEndndDate
         }

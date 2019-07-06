@@ -54,6 +54,11 @@
 		E2076EAF22862627005EAAAD /* EditUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076EAE22862627005EAAAD /* EditUserProfile.swift */; };
 		E2076EB322862C6E005EAAAD /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076EB222862C6E005EAAAD /* CalendarDayCell.swift */; };
 		E2076EB522862CEE005EAAAD /* AppointmentCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076EB422862CEE005EAAAD /* AppointmentCelll.swift */; };
+		E2077D9622D035B90067231B /* date.png in Resources */ = {isa = PBXBuildFile; fileRef = E2077D9422D035B80067231B /* date.png */; };
+		E2077D9722D035B90067231B /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = E2077D9522D035B80067231B /* time.png */; };
+		E2077D9922D03A0C0067231B /* privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = E2077D9822D03A0C0067231B /* privacy.png */; };
+		E2077D9B22D03E090067231B /* location2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2077D9A22D03E090067231B /* location2.png */; };
+		E2077D9D22D041860067231B /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = E2077D9C22D041850067231B /* users.png */; };
 		E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */; };
 		E20A51D0227D161C0033C0E8 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */; };
 		E20CB8A822B6E4E000C47CF6 /* TodoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */; };
@@ -144,6 +149,11 @@
 		E2076EAE22862627005EAAAD /* EditUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfile.swift; sourceTree = "<group>"; };
 		E2076EB222862C6E005EAAAD /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		E2076EB422862CEE005EAAAD /* AppointmentCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCelll.swift; sourceTree = "<group>"; };
+		E2077D9422D035B80067231B /* date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = date.png; sourceTree = "<group>"; };
+		E2077D9522D035B80067231B /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		E2077D9822D03A0C0067231B /* privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = privacy.png; sourceTree = "<group>"; };
+		E2077D9A22D03E090067231B /* location2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location2.png; sourceTree = "<group>"; };
+		E2077D9C22D041850067231B /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = users.png; sourceTree = "<group>"; };
 		E20A51CD227CF5F70033C0E8 /* ResetSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
 		E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTabBar.swift; sourceTree = "<group>"; };
@@ -199,6 +209,11 @@
 		31DE3687220B3DDD00C9B2E6 = {
 			isa = PBXGroup;
 			children = (
+				E2077D9422D035B80067231B /* date.png */,
+				E2077D9A22D03E090067231B /* location2.png */,
+				E2077D9C22D041850067231B /* users.png */,
+				E2077D9522D035B80067231B /* time.png */,
+				E2077D9822D03A0C0067231B /* privacy.png */,
 				31DE3692220B3DDE00C9B2E6 /* graduation project */,
 				31DE3691220B3DDE00C9B2E6 /* Products */,
 				B606AB33CF8984DC2F5A67F3 /* Pods */,
@@ -399,8 +414,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
+				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
+				E2077D9B22D03E090067231B /* location2.png in Resources */,
+				E2077D9D22D041860067231B /* users.png in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
+				E2077D9722D035B90067231B /* time.png in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,
+				E2077D9622D035B90067231B /* date.png in Resources */,
 				31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
