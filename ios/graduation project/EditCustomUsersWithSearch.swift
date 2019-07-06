@@ -54,6 +54,13 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.delegate.setEditedSelectedUsers(selected: editSelectedUsersEmailArray)
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchActive {
@@ -76,7 +83,6 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
                 cell.accessoryType = .checkmark
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
                 cell.isHighlighted = true
-
             }else{
                 cell.isSelected = false
                 cell.accessoryType = .none

@@ -56,6 +56,11 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    
+    @IBAction func cancel(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1

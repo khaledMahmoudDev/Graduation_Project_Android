@@ -32,6 +32,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
     static var publicVsPrivate = 0
     var selectedUsersEmailArray : Array<String> = []
     var customUserArray : Array<String> = []
+    
 
     
     // let segueSelectPatient = "SegueSelectPatientsTVC"
@@ -98,6 +99,9 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
         calendarView.visibleDates{ (visibleDates) in
             self.setupViewsFromCalendar(from: visibleDates)
         }
+        
+        tableView.contentInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
+        
     }
     
     
@@ -114,6 +118,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
             UpdateApptTVC.publicVsPrivate = 0
             print("off")
         }
+        
+        tableView.reloadData()
         
     }
     
@@ -145,10 +151,10 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
         if UpdateApptTVC.publicVsPrivate == 2{
             
             if selectedUsersEmailArray == []{
-                UpdateApptTVC.publicVsPrivate = 0
-                self.toggleButton.isOn = false
-                self.PublicLabel.text = "Private"
-                let alert =  UIAlertController(title: "Custom Users", message: "There were no custom users selected, and your default privacy is private", preferredStyle: .alert)
+                UpdateApptTVC.publicVsPrivate = 1
+                self.toggleButton.isOn = true
+                self.PublicLabel.text = "Public"
+                let alert =  UIAlertController(title: "Custom Users", message: "No custom users were selected, and it will be pulic event unless you change it", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
@@ -224,7 +230,9 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
             }else if apptPrivacy == "CustomUsers"{
                 UpdateApptTVC.publicVsPrivate = 2
                 self.customUserArray = (value?["customUsrs"] as? [String])!
-//                print("custom", self.customUserArray)
+                self.toggleButton.isOn = true
+                self.PublicLabel.text = "Custom"
+               print("custom", self.customUserArray)
 
             }
             
@@ -368,16 +376,38 @@ extension UpdateApptTVC {
         dateDetailLabel.text = formatter.string(from: date)
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.section == 0 && indexPath.row == 0 {
             toggleCalendarView()
         }
+        
+        if (UpdateApptTVC.publicVsPrivate == 1 && toggleButton.isOn == true) || ( toggleButton.isOn == true &&  UpdateApptTVC.publicVsPrivate == 2 ) {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
+            tableView.reloadData()
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if calendarViewHidden && indexPath.section == 0 && indexPath.row == 1 {
             return 0
-        } else {
+        }
+        
+        else if indexPath.row == 5 && toggleButton.isOn == false{
+            return 50
+        }
+        else if indexPath.row == 6{
+            if toggleButton.isOn == false{
+                return 0.0
+            }
+            return 50
+        }
+        
+        else {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }

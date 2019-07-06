@@ -106,6 +106,8 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
             NewApptTableViewController.publicVsPrivate = 0
             print("off")
         }
+
+        tableView.reloadData()
         
     }
     
@@ -128,6 +130,8 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     //    setupKeyboardNotification()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
+        
+        tableView.contentInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
     }
     
     deinit {
@@ -147,13 +151,15 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
             
             locationLabel.text = myString
         }
+        
         if NewApptTableViewController.publicVsPrivate == 2 {
-            print("here")
+            
             if selectedUsersEmailArray == [] {
-                NewApptTableViewController.publicVsPrivate = 0
-                self.toggleButton.isOn = false
-                self.PublicLabel.text = "Private"
-                let alert =  UIAlertController(title: "Custom Users", message: "There were no custom users selected, and your default privacy is private", preferredStyle: .alert)
+                
+                NewApptTableViewController.publicVsPrivate = 1
+                self.toggleButton.isOn = true
+                self.PublicLabel.text = "Public"
+                let alert =  UIAlertController(title: "Custom Users", message: "No custom users were selected, and it will be pulic event unless you change it", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
@@ -270,13 +276,31 @@ extension NewApptTableViewController {
             toggleCalendarView()
         }
         
+        if (NewApptTableViewController.publicVsPrivate == 1 && toggleButton.isOn == true){
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
+            tableView.reloadData()
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if calendarViewHidden && indexPath.section == 0 && indexPath.row == 1 {
             return 0
-        } else {
+        }
+        else if indexPath.row == 6 && toggleButton.isOn == false{
+            return 50
+        }
+        else if indexPath.row == 7{
+            if toggleButton.isOn == false{
+                return 0.0
+            }
+            return 50
+        }
+            
+        else {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
