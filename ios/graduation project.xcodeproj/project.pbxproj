@@ -69,6 +69,9 @@
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
 		E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DEA64228E4D4C00752B99 /* Appointments.swift */; };
 		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
+		E2829E9622D19A290002472E /* private.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9522D19A290002472E /* private.png */; };
+		E2829E9822D19A310002472E /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9722D19A310002472E /* custom.png */; };
+		E2829E9A22D19A380002472E /* public.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9922D19A370002472E /* public.png */; };
 		E2882C8122B3ED80000E6A34 /* TodoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2882C8022B3ED80000E6A34 /* TodoTable.swift */; };
 		E295B29222830AF000112E8C /* CustomSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28822830AE600112E8C /* CustomSearch.swift */; };
 		E295B29322830AF000112E8C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B28922830AE700112E8C /* UIColor+Hex.swift */; };
@@ -168,6 +171,9 @@
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
 		E21DEA64228E4D4C00752B99 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
 		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
+		E2829E9522D19A290002472E /* private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = private.png; sourceTree = "<group>"; };
+		E2829E9722D19A310002472E /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
+		E2829E9922D19A370002472E /* public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = public.png; sourceTree = "<group>"; };
 		E2882C8022B3ED80000E6A34 /* TodoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTable.swift; sourceTree = "<group>"; };
 		E295B28822830AE600112E8C /* CustomSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearch.swift; sourceTree = "<group>"; };
 		E295B28922830AE700112E8C /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -220,7 +226,10 @@
 				E2077D9422D035B80067231B /* date.png */,
 				E2D24FD222D137E0004AEBF0 /* locationViewController.png */,
 				E2077D9A22D03E090067231B /* location2.png */,
+				E2829E9522D19A290002472E /* private.png */,
 				E2D24FD422D139D7004AEBF0 /* locationView.png */,
+				E2829E9922D19A370002472E /* public.png */,
+				E2829E9722D19A310002472E /* custom.png */,
 				E2077D9C22D041850067231B /* users.png */,
 				E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */,
 				E2077D9522D035B80067231B /* time.png */,
@@ -427,11 +436,14 @@
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
 				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
+				E2829E9822D19A310002472E /* custom.png in Resources */,
 				E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */,
 				E2077D9B22D03E090067231B /* location2.png in Resources */,
+				E2829E9622D19A290002472E /* private.png in Resources */,
 				E2077D9D22D041860067231B /* users.png in Resources */,
 				E2D24FCD22D1291D004AEBF0 /* z7p2XB.jpg in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
+				E2829E9A22D19A380002472E /* public.png in Resources */,
 				E2D24FD522D139D7004AEBF0 /* locationView.png in Resources */,
 				E2077D9722D035B90067231B /* time.png in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,

@@ -1582,28 +1582,35 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzG-Sg-PQX" customClass="CardView" customModule="graduation_project" customModuleProvider="target">
                                             <rect key="frame" x="12" y="4" width="357" height="119"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public" translatesAutoresizingMaskIntoConstraints="NO" id="rnB-0c-O7Z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="357" height="119"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-32-lcp">
                                                     <rect key="frame" x="8" y="99" width="173" height="19.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19.5" id="LFX-qY-M21"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="vbK-32-lcp" firstAttribute="leading" secondItem="uzG-Sg-PQX" secondAttribute="leadingMargin" id="6Zu-1s-XBl"/>
+                                                <constraint firstItem="rnB-0c-O7Z" firstAttribute="centerY" secondItem="uzG-Sg-PQX" secondAttribute="centerY" id="I6d-37-Sbr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vbK-32-lcp" secondAttribute="trailing" constant="168" id="Kaq-u0-e1B"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="vbK-32-lcp" secondAttribute="bottom" constant="-7.5" id="LoW-78-cNi"/>
+                                                <constraint firstItem="rnB-0c-O7Z" firstAttribute="centerX" secondItem="uzG-Sg-PQX" secondAttribute="centerX" id="NYb-Qh-5A5"/>
+                                                <constraint firstItem="rnB-0c-O7Z" firstAttribute="width" secondItem="uzG-Sg-PQX" secondAttribute="width" id="R8h-mN-CVT"/>
                                                 <constraint firstItem="vbK-32-lcp" firstAttribute="top" secondItem="uzG-Sg-PQX" secondAttribute="topMargin" constant="91" id="a1Z-PP-b6s"/>
+                                                <constraint firstItem="rnB-0c-O7Z" firstAttribute="height" secondItem="uzG-Sg-PQX" secondAttribute="height" id="pFx-We-dkF"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ActivityLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7X-VV-y8Z">
                                             <rect key="frame" x="24" y="12" width="235" height="102"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -3378,6 +3385,7 @@
         <image name="locationView.png" width="129.25984191894531" height="189.07086181640625"/>
         <image name="privacy.png" width="21.259841918945312" height="3.118110179901123"/>
         <image name="profileImg" width="225" height="225"/>
+        <image name="public" width="375" height="119"/>
         <image name="schedule" width="40" height="40"/>
         <image name="setting" width="50" height="50"/>
         <image name="time.png" width="21.259841918945312" height="3.118110179901123"/>

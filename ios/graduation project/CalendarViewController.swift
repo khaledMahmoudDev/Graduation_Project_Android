@@ -112,7 +112,7 @@ class CalendarViewController: UIViewController {
     
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
+}
     
     
     func displayWeather(using viewModel: CurrentWeatherViewModel) {
