@@ -96,6 +96,9 @@ class Profile: UIViewController {
         self.performSegue(withIdentifier: "AccountSettingTable", sender: self)
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }
 

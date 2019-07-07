@@ -60,8 +60,9 @@ class ProfileSettingTable: UITableViewController {
                 alert.dismiss(animated: true, completion: nil)
                 do {
                     try Auth.auth().signOut()
-                    
-                    self.navigationController?.popToRootViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                    //self.navigationController?.popToRootViewController(animated: true)
+                    //self.navigationController?.popToViewController(Login(), animated: true)
                     
                 } catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)

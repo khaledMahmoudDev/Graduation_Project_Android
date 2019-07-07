@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310ED6742218A05900EF59D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310ED66A22183D4100EF59D9 /* CoreData.framework */; };
+		311E474522D1546100EBF0DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E474422D1546100EBF0DE /* MainViewController.swift */; };
 		3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FB2221F2210066C46A /* NoteDetails.swift */; };
 		3157F3FE2221F23D0066C46A /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FD2221F23D0066C46A /* Notes.swift */; };
 		315EABE8221F44B5003EA8B3 /* MainEntryNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		310ED66A22183D4100EF59D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		311E474422D1546100EBF0DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3157F3FB2221F2210066C46A /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 		3157F3FD2221F23D0066C46A /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryNavigation.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				315EABE7221F44B5003EA8B3 /* MainEntryNavigation.swift */,
 				31DE36C4220B574200C9B2E6 /* MainEntry.swift */,
 				3191A10B2224CAAA00A1F36A /* MainEntryTableCell.swift */,
+				311E474422D1546100EBF0DE /* MainViewController.swift */,
 				31DE36AF220B3F1300C9B2E6 /* Profile.swift */,
 				E20E170B227CC60B002783DA /* ProfileSettingTable.swift */,
 				E2076EAE22862627005EAAAD /* EditUserProfile.swift */,
@@ -530,6 +533,7 @@
 				E2076EB322862C6E005EAAAD /* CalendarDayCell.swift in Sources */,
 				E2076EAF22862627005EAAAD /* EditUserProfile.swift in Sources */,
 				E2AF6FA72286307700F4A77D /* CommonFunctions.swift in Sources */,
+				311E474522D1546100EBF0DE /* MainViewController.swift in Sources */,
 				E2076E95228616D9005EAAAD /* DarkSkyError.swift in Sources */,
 				E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */,
 				31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */,

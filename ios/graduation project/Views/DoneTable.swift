@@ -16,6 +16,9 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var DoneTable: UITableView!
     
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

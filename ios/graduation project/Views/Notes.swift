@@ -74,6 +74,11 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

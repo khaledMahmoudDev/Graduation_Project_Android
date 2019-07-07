@@ -28,6 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         Database.database().isPersistenceEnabled = true
         Theme.current = DefaultTheme()
         
+        UINavigationBar.appearance().prefersLargeTitles = false
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+        let navigationController = UINavigationController(rootViewController: newViewController)
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = navigationController
         
         return true
     

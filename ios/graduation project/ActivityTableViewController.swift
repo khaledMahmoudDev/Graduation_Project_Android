@@ -33,6 +33,10 @@ class ActivityTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
         navBarDropShadow()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +46,11 @@ class ActivityTableViewController: UITableViewController {
         customAppointment.removeAll()
         tableView.reloadData()
         performFetch()
+    }
+    
+    
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -159,9 +168,21 @@ class ActivityTableViewController: UITableViewController {
         }
         return headerTitle
     }
-    //    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 50
-    //    }
+    
+    
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        var myCustomView = UIImageView()
+//        var myImage = UIImage(named: "public")!
+//        myCustomView.image = myImage
+//        
+//        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+//        header.addSubview(myCustomView)
+//        return header
+//    }
+//        override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//            return 50
+//        }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

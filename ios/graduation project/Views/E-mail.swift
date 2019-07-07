@@ -29,6 +29,9 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
 
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     //check if the device can send email or it showes errors
 
