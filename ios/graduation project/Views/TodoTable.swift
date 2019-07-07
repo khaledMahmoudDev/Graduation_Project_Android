@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 var list = ["todo1", "todo2"]
 
@@ -57,6 +58,10 @@ class TodoTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBAction func cancel(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = newViewController
         self.dismiss(animated: true, completion: nil)
     }
     

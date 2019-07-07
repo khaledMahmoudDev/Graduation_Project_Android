@@ -58,6 +58,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         //self.appointmentsArray.removeAll()
         isWillAppearLoadedFirstTime = true
@@ -111,6 +112,10 @@ class CalendarViewController: UIViewController {
     
     
     @IBAction func cancel(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = newViewController
         self.dismiss(animated: true, completion: nil)
 }
     

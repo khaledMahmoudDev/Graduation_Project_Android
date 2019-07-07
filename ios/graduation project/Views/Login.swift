@@ -25,9 +25,9 @@ class Login: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        if Auth.auth().currentUser != nil{
-            self.performSegue(withIdentifier: "goToMainEntry", sender: self)
-        }
+//        if Auth.auth().currentUser != nil{
+//            self.performSegue(withIdentifier: "goToMainEntry", sender: self)
+//        }
         
     }
     
@@ -81,9 +81,9 @@ class Login: UIViewController {
     
     @IBAction func signUp(_ sender: Any) {
         
-//      self.performSegue(withIdentifier: "signUp", sender: self)
-        let goToSignUp = storyboard?.instantiateViewController(withIdentifier: "signUp")
-        self.navigationController?.pushViewController(goToSignUp!, animated: true)
+      self.performSegue(withIdentifier: "signup", sender: self)
+//        let goToSignUp = storyboard?.instantiateViewController(withIdentifier: "signUp")
+//        self.navigationController?.pushViewController(goToSignUp!, animated: true)
     }
     
 }

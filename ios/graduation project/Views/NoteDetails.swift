@@ -238,8 +238,22 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
         guard let noteContent = content.text, let noteName = name.text else{
             return
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        let defaultDate = dateFormatter.string(from: NSDate() as Date)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "H:mm"
+        let defaultTime = timeFormatter.string(from: NSDate() as Date)
+        let time = timeFormatter.date(from: defaultTime )!
+        let dateInHourFormatter = hourFormatter(date: time
+        )
+        print("time am pm ",dateInHourFormatter)
+
+        
         self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["noteName" : noteName , "noteContent": noteContent]
+        let values = ["noteName" : noteName , "noteContent": noteContent, "noteDate": defaultDate, "noteTime": dateInHourFormatter]
         self.ref.child("IOSUserNotes").child(User!.uid).childByAutoId().setValue(values)
         
             print("saved savely for the current user")
@@ -275,8 +289,19 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             return
         }
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        let defaultDate = dateFormatter.string(from: NSDate() as Date)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "H:mm"
+        let defaultTime = timeFormatter.string(from: NSDate() as Date)
+        let time = timeFormatter.date(from: defaultTime )!
+        let dateInHourFormatter = hourFormatter(date: time
+        )
+        
         ref = Database.database().reference().child("IOSUserNotes").child(userId).child(choosedNote)
-        let userNote = ["noteName" : noteName , "noteContent": noteContent]
+        let userNote = ["noteName" : noteName , "noteContent": noteContent, "noteDate": defaultDate, "noteTime": dateInHourFormatter]
         ref.updateChildValues(userNote)
 
         

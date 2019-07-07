@@ -37,6 +37,11 @@ class SignUp: UIViewController{
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     //this func is here so we can go to the image gallery on the phone(UIImagePickerController)
     @objc func handleSelectProfileImageView(){
         print("hooo")

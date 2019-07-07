@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController {
 
@@ -17,14 +18,30 @@ class MainViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func logout(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Are you sure, you want to logout?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            do {
+                try Auth.auth().signOut()
+                self.performSegue(withIdentifier: "logout", sender: self)
+                //self.dismiss(animated: true, completion: nil)
+                //self.navigationController?.popToRootViewController(animated: true)
+                //self.navigationController?.popToViewController(Login(), animated: true)
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }))
+        
+        present(alert, animated: true, completion: nil)
+        
     }
-    */
-
+    
 }

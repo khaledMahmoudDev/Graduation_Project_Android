@@ -27,18 +27,19 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Notes.flag == 0{
-            if isDidLoadLoadedFirsttime{
-                self.noteArray.removeAll()
-                fetchNotesFromFirebase()
-                print("can1")
-            }
-            isDidLoadLoadedFirsttime = true
-
-            isWillAppearLoadedFirstTime = true
-        }else{
-            print("can't")
-        }
+        //self.tableViewList.reloadData()
+//        if Notes.flag == 0{
+//            if isDidLoadLoadedFirsttime{
+//                self.noteArray.removeAll()
+//                fetchNotesFromFirebase()
+//                print("can1")
+//            }
+//            isDidLoadLoadedFirsttime = true
+//
+//            isWillAppearLoadedFirstTime = true
+//        }else{
+//            print("can't")
+//        }
         
         //this fetch was for coreData
         //fetch()
@@ -46,25 +47,42 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        //self.tableViewList.reloadData()
         
-        if Notes.flag == 1{
-            isDidLoadLoadedFirsttime = true
+//        if Notes.flag == 1{
+//            isDidLoadLoadedFirsttime = true
+//
+//            if !isWillAppearLoadedFirstTime {
+//                 //Do what you want to do when it is not the first load
+//                self.noteArray.removeAll()
+//                self.tableViewList.reloadData()
+//                self.fetchNotesFromFirebase()
+//                print("can1")
+//
+//            }
+//            isWillAppearLoadedFirstTime = false
+//        }else{
+//            print("can't2")
+//        }
 
-            if !isWillAppearLoadedFirstTime {
-                 //Do what you want to do when it is not the first load
-                self.noteArray.removeAll()
-                self.tableViewList.reloadData()
-                self.fetchNotesFromFirebase()
-                print("can1")
-                
-            }
-            isWillAppearLoadedFirstTime = false
-        }else{
-            print("can't2")
-        }
-        
         //this fetch was for coreData
         //fetch()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //super.viewDidAppear(true)
+        
+        print("11")
+        
+        self.noteArray.removeAll()
+        //self.tableViewList.reloadData()
+        self.fetchNotesFromFirebase()
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
     }
     
     
@@ -105,11 +123,12 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
        // configureCell(cell: cell, indexPath: indexPath )
         
         cell.name?.text = noteArray[indexPath.row].noteName
+        cell.noteDateAndTime?.text = "\(noteArray[indexPath.row].noteDate) \(noteArray[indexPath.row].noteTime)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 90
     }
     
     
@@ -252,18 +271,18 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     //fetching data from firebase and save it in realm database so it can be viewd in the tableview
     
     func fetchNotesFromFirebase(){
-        guard let userId = Auth.auth().currentUser?.uid else{
-            return
-        }
+
         ref = Database.database().reference()
         ref.child("IOSUserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
                 
                 let noteName = dict["noteName"] as! String
+                let noteTime = dict["noteTime"] as! String
+                let noteDate = dict["noteDate"] as! String
                 let noteKey = snapshot.key
                 print("this is note key", noteKey)
                 
-                let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey)
+                let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey, noteDateTxt: noteDate, noteTimeTxt: noteTime)
                 self.noteArray.append(notes)
                 self.tableViewList.reloadData()
                 self.ref.keepSynced(true)

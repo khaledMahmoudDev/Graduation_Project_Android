@@ -12,7 +12,7 @@ import Firebase
 class ProfileSettingTable: UITableViewController {
     
     let segueId = ["EditUserProfile", "userResetPass","deleteUser"]
-    let tableSettingContent = ["Edit Profile", "Change Password", "Delete Account","Logout"]
+    let tableSettingContent = ["Edit Profile", "Change Password", "Delete Account"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,32 +48,7 @@ class ProfileSettingTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == tableSettingContent.lastIndex(of: "Logout") {
-            
-            let alert = UIAlertController(title: "", message: "Are you sure, you want to logout?", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-                do {
-                    try Auth.auth().signOut()
-                    self.dismiss(animated: true, completion: nil)
-                    //self.navigationController?.popToRootViewController(animated: true)
-                    //self.navigationController?.popToViewController(Login(), animated: true)
-                    
-                } catch let signOutError as NSError {
-                    print ("Error signing out: %@", signOutError)
-                }
-            }))
-            
-            present(alert, animated: true, completion: nil)
-            
-        }else{
             performSegue(withIdentifier: segueId[indexPath.row], sender: self)
-        }
         
     }
     

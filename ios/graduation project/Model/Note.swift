@@ -10,9 +10,13 @@ import Foundation
 class Note{
     var noteName : String
     var noteKey : String
+    var noteDate : String
+    var noteTime : String
     
-    init (noteNametxt : String, noteKeytxt : String) {
+    init (noteNametxt : String, noteKeytxt : String, noteDateTxt : String, noteTimeTxt : String) {
         noteName = noteNametxt
         noteKey = noteKeytxt
+        noteDate = noteDateTxt
+        noteTime = noteTimeTxt
     }
 }
