@@ -32,7 +32,6 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
     //save button to save a todo in the table view
     
     @IBAction func saveTodo(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
         print("save clicked")
         
         if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
@@ -46,7 +45,8 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
             ToDoDetail.text = ""
             ToDoCategory.text = ""
             
-            
+            navigationController?.popViewController(animated: true)
+
             //save the category in category label in todo table
     }
         else {
@@ -81,16 +81,20 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         
         ToDoDetail.delegate = self
       //  CategorySwiftyMenu.delegate = self
+        
+//        CategorySwiftyMenu.delegate = self as? SwiftyMenuDelegate
+//        CategorySwiftyMenu.options = optionsData as! [SwiftMenuDisplayable]
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         ToDoDetail.text = ""
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        
-//        CategorySwiftyMenu.delegate = self as? SwiftyMenuDelegate
-//        CategorySwiftyMenu.options = optionsData as! [SwiftMenuDisplayable]
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if (ToDoDetail.text == "") 
+        {
+            ToDoDetail.text = "Details"
+        }
     }
     
 
