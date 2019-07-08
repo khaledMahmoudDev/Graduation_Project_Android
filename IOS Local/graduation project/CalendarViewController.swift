@@ -25,12 +25,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var cityName: UILabel!
     let client = DarkSkyAPIClient()
     var appointmentsOfTheDay = [Appointment] ()
-    
-    var isWillAppearLoadedFirstTime = false
 
-    
-    static var flagCheck = 0
-    
     let formatter = DateFormatter()
     let date = Date()
     var result : String?
@@ -59,15 +54,6 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        //self.appointmentsArray.removeAll()
-        isWillAppearLoadedFirstTime = true
-
-        CalendarViewController.flagCheck = 0
-
-        formatter.dateFormat = "MMMM dd, yyyy"
-        result = formatter.string(from: date)
-        print("..........loaded",CalendarViewController.flagCheck)
         tableView.delegate = self
         tableView.dataSource = self
         //performFetch()
@@ -77,7 +63,7 @@ class CalendarViewController: UIViewController {
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
-        self.navigationController?.navigationBar.isTranslucent = false
+        //self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         
@@ -89,27 +75,6 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-
-        
-        if !isWillAppearLoadedFirstTime {
-            // Do what you want to do when it is not the first load
-            if CalendarViewController.flagCheck != 0  || CalendarViewController.flagCheck != 2 || CalendarViewController.flagCheck != 1{
-            
-            self.appointmentsArray.removeAll()
-            performFetch()
-            self.tableView.reloadData()
-            print("123")
-        }
-    }
-        CalendarViewController.flagCheck = 1
-        isWillAppearLoadedFirstTime = false
-
-        print("flag", CalendarViewController.flagCheck)
-    }
     
     
     @IBAction func cancel(_ sender: Any) {
@@ -157,72 +122,47 @@ class CalendarViewController: UIViewController {
         
         
         ref = Database.database().reference()
-        //ref.child("Events").queryOrdered(byChild: "mdate").queryEqual(toValue: "June 18, 2019").observeSingleEvent(of: .value, with: { (snapshot) in
 
-        
-        print("........",result)
-            ref.child("IOSEvents").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.childAdded){ (snapshot) in
-                //print(snapshot)
-            if let dict = snapshot.value as? [String : Any]{
-                if dict["privacy"] as! String == "private" && dict["meventCreator"] as? String == self.User?.email{
-                    let appointmentTitle = dict["mtitle"] as! String
-                    let appointmentDetail = dict["mdetails"] as! String
-                    let appointmentTime = dict["mstartTime"] as! String
-                    //print(appointmentTime)
-                    let appointmentKey = snapshot.key
-                    
-                    let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                    self.appointmentsArray.append(appointments)
-                    self.tableView.reloadData()
-                    self.ref.keepSynced(true)
-                    print("private")
-                    
-                }
-                else if  dict["privacy"] as! String == "public" && dict["meventCreator"] as? String == self.User?.email {
-                    let appointmentTitle = dict["mtitle"] as! String
-                    let appointmentDetail = dict["mdetails"] as! String
-                    let appointmentTime = dict["mstartTime"] as! String
-                    //print(appointmentTime)
-                    let appointmentKey = snapshot.key
-
-                    let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                    self.appointmentsArray.append(appointments)
-                    self.tableView.reloadData()
-                    self.ref.keepSynced(true)
-                    print("public")
-
-                }
-//                else if dict["meventCreator"] as? String != self.User?.email {
-//                    if dict["privacy"] as! String == "CustomUsers"{
-//                        let customUsersArray = dict["customUsrs"] as! [String]
-//                        let checkForCustomUserIsExist = customUsersArray.contains((self.User?.email)!)
-//                        print(checkForCustomUserIsExist)
-//
-//                        if checkForCustomUserIsExist == true{
-//                            let appointmentTitle = dict["mtitle"] as! String
-//                            let appointmentDetail = dict["mdetails"] as! String
-//                            let appointmentTime = dict["mstartTime"] as! String
-//                            //                          let CustomUsers = dict["customUsrs"] as! [String]
-//                            //                          print(CustomUsers)
-//                            let appointmentKey = snapshot.key
-//
-//                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-//                            self.appointmentsArray.append(appointments)
-//                            self.tableView.reloadData()
-//                            self.ref.keepSynced(true)
-//
-//                            print("custom")
-//                            }
-//                        }
-//                    }
-                    else if dict["meventCreator"] as? String == self.User?.email {
+            ref.child("IOSEvents").queryOrdered(byChild: "mdate").queryEqual(toValue: result! ).observe(.value){ (snapshot) in
+                
+                self.appointmentsArray.removeAll()
+                for child in snapshot.children.allObjects as! [DataSnapshot]{
+                    if let dict = child.value as? [String : Any]{
+                        if dict["privacy"] as! String == "private" && dict["meventCreator"] as? String == self.User?.email{
+                            let appointmentTitle = dict["mtitle"] as! String
+                            let appointmentDetail = dict["mdetails"] as! String
+                            let appointmentTime = dict["mstartTime"] as! String
+                            //print(appointmentTime)
+                            let appointmentKey = child.key
+                            
+                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                            self.appointmentsArray.append(appointments)
+                            self.tableView.reloadData()
+                            self.ref.keepSynced(true)
+                            print("private")
+                            
+                        } else if  dict["privacy"] as! String == "public" && dict["meventCreator"] as? String == self.User?.email {
+                            let appointmentTitle = dict["mtitle"] as! String
+                            let appointmentDetail = dict["mdetails"] as! String
+                            let appointmentTime = dict["mstartTime"] as! String
+                            //print(appointmentTime)
+                            let appointmentKey = child.key
+                            
+                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
+                            self.appointmentsArray.append(appointments)
+                            self.tableView.reloadData()
+                            self.ref.keepSynced(true)
+                            print("public")
+                            
+                        }
+                        else if dict["meventCreator"] as? String == self.User?.email {
                             if dict["privacy"] as! String == "CustomUsers"  {
                                 let appointmentTitle = dict["mtitle"] as! String
                                 let appointmentDetail = dict["mdetails"] as! String
                                 let appointmentTime = dict["mstartTime"] as! String
                                 //                          let CustomUsers = dict["customUsrs"] as! [String]
                                 //                          print(CustomUsers)
-                                let appointmentKey = snapshot.key
+                                let appointmentKey = child.key
                                 
                                 let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
                                 self.appointmentsArray.append(appointments)
@@ -235,10 +175,9 @@ class CalendarViewController: UIViewController {
                             
                         }
                     }
-                
-                
                 }
             }
+        }
  
     
     
@@ -263,7 +202,7 @@ class CalendarViewController: UIViewController {
                 if let selectedAppointment = sender as? String{
                     
                     destination.choosedAppointment = selectedAppointment
-                    self.appointmentsArray.removeAll()
+
                 }
             }
         }
@@ -350,7 +289,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let choosenAppointment = appointmentsArray[indexPath.row].appointmentKey
         print("apptKey", choosenAppointment)
         performSegue(withIdentifier: segueApptDetail, sender: choosenAppointment)
-        self.appointmentsArray.removeAll()
         
     }
     
@@ -570,30 +508,14 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        
-
-
-        if CalendarViewController.flagCheck == 1 || CalendarViewController.flagCheck == 2{
             
             formatter.dateFormat = "MMMM dd, yyyy"
             result = formatter.string(from:date)
             CalendarViewController.AppointmentDate = result!
-            print("didselect date", result)
             loadAppointmentsForDate(date: date)
-            self.appointmentsArray.removeAll()
-            self.tableView.reloadData()
-            performFetch()
-            print("321")
-            
-        }
-        CalendarViewController.flagCheck = 2
-        
-        print("did", CalendarViewController.flagCheck)
-        
 
-        
-        
-       
+            performFetch()
+ 
         //calendarViewDateChanged()
     }
     

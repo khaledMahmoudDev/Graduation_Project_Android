@@ -18,6 +18,8 @@ class ActivityTableViewController: UITableViewController {
     var publicAppointment = [HomeAppointments]()
     var customAppointment = [HomeAppointments]()
     
+    
+    
     let persistentContainer = CoreDataStore.instance.persistentContainer
     
     lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
@@ -35,7 +37,9 @@ class ActivityTableViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+
         
         navBarDropShadow()
     }
@@ -226,33 +230,39 @@ class ActivityTableViewController: UITableViewController {
         
         
         if indexPath.section == 0 {
-            
-                
-                let appointmentTime = privatAppointment[indexPath.row].appointmentTime
-                let appointmentDate = privatAppointment[indexPath.row].appomtmentDate
-                let appointmentLocation = privatAppointment[indexPath.row].appointmentLocation
-                let appointmentTitle = privatAppointment[indexPath.row].appointmentTitle
-                let date = inFormatter.date(from: appointmentTime)!
-                let dateInHourFormatter = hourFormatter(date: date)
+ 
+            let appointmentTime = privatAppointment[indexPath.row].appointmentTime
+            let appointmentDate = privatAppointment[indexPath.row].appomtmentDate
+            let appointmentLocation = privatAppointment[indexPath.row].appointmentLocation
+            let appointmentTitle = privatAppointment[indexPath.row].appointmentTitle
+            let date = inFormatter.date(from: appointmentTime)!
+            let dateInHourFormatter = hourFormatter(date: date)
                 //print(dateInHourFormatter)
                 
                 //cell.timeIntervalLabel.text = dateInHourFormatter
-                
-                cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            
+            let image : UIImage = UIImage(named: "private")!
+            cell.cellBackground.image = image
+            
+            cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            
             
         }else if indexPath.section == 1{
                 
-                let appointmentTime = publicAppointment[indexPath.row].appointmentTime
-                let appointmentDate = publicAppointment[indexPath.row].appomtmentDate
-                let appointmentLocation = publicAppointment[indexPath.row].appointmentLocation
-                let appointmentTitle = publicAppointment[indexPath.row].appointmentTitle
-                let date = inFormatter.date(from: appointmentTime)!
-                let dateInHourFormatter = hourFormatter(date: date)
+            let appointmentTime = publicAppointment[indexPath.row].appointmentTime
+            let appointmentDate = publicAppointment[indexPath.row].appomtmentDate
+            let appointmentLocation = publicAppointment[indexPath.row].appointmentLocation
+            let appointmentTitle = publicAppointment[indexPath.row].appointmentTitle
+            let date = inFormatter.date(from: appointmentTime)!
+            let dateInHourFormatter = hourFormatter(date: date)
                 //print(dateInHourFormatter)
                 
                 //cell.timeIntervalLabel.text = dateInHourFormatter
-                
-                cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            
+            let image : UIImage = UIImage(named: "public")!
+            cell.cellBackground.image = image
+            
+            cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
 
         }else if indexPath.section == 2{
             let appointmentTime = customAppointment[indexPath.row].appointmentTime
@@ -264,6 +274,8 @@ class ActivityTableViewController: UITableViewController {
             //print(dateInHourFormatter)
             
             //cell.timeIntervalLabel.text = dateInHourFormatter
+            let image : UIImage = UIImage(named: "custom")!
+            cell.cellBackground.image = image
             
             cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
         }

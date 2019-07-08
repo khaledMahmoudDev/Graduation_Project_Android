@@ -16,69 +16,15 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     var ref: DatabaseReference!
     var noteArray = [Note]()
     @IBOutlet weak var tableViewList: UITableView!
-    static var flag = 0
 
     //var controller : NSFetchedResultsController<UserNotes>!
     
     
-    var isWillAppearLoadedFirstTime = false
-    var isDidLoadLoadedFirsttime = true
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableViewList.reloadData()
-//        if Notes.flag == 0{
-//            if isDidLoadLoadedFirsttime{
-//                self.noteArray.removeAll()
-//                fetchNotesFromFirebase()
-//                print("can1")
-//            }
-//            isDidLoadLoadedFirsttime = true
-//
-//            isWillAppearLoadedFirstTime = true
-//        }else{
-//            print("can't")
-//        }
-        
-        //this fetch was for coreData
-        //fetch()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        //self.tableViewList.reloadData()
-        
-//        if Notes.flag == 1{
-//            isDidLoadLoadedFirsttime = true
-//
-//            if !isWillAppearLoadedFirstTime {
-//                 //Do what you want to do when it is not the first load
-//                self.noteArray.removeAll()
-//                self.tableViewList.reloadData()
-//                self.fetchNotesFromFirebase()
-//                print("can1")
-//
-//            }
-//            isWillAppearLoadedFirstTime = false
-//        }else{
-//            print("can't2")
-//        }
-
-        //this fetch was for coreData
-        //fetch()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //super.viewDidAppear(true)
-        
-        print("11")
-        
-        self.noteArray.removeAll()
-        //self.tableViewList.reloadData()
         self.fetchNotesFromFirebase()
-
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -87,7 +33,6 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     
     
     @IBAction func AddNewNote(_ sender: Any) {
-        Notes.flag = 1
         performSegue(withIdentifier: "noteDetails", sender: self)
     }
     
@@ -144,7 +89,6 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         let choosenNote = noteArray[indexPath.row].noteKey
         print("choosenKey", choosenNote)
        performSegue(withIdentifier: "noteDetails", sender: choosenNote)
-        self.noteArray.removeAll()
 //        }
     }
     
@@ -273,23 +217,29 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     func fetchNotesFromFirebase(){
 
         ref = Database.database().reference()
-        ref.child("IOSUserNotes").child(User!.uid).observe(.childAdded) { (snapshot) in
-            if let dict = snapshot.value as? [String : Any]{
-                
-                let noteName = dict["noteName"] as! String
-                let noteTime = dict["noteTime"] as! String
-                let noteDate = dict["noteDate"] as! String
-                let noteKey = snapshot.key
-                print("this is note key", noteKey)
-                
-                let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey, noteDateTxt: noteDate, noteTimeTxt: noteTime)
-                self.noteArray.append(notes)
-                self.tableViewList.reloadData()
-                self.ref.keepSynced(true)
-                print("fetched")
-
-               
+        ref.child("IOSUserNotes").child(User!.uid).observe(.value) { (snapshot) in
+            self.noteArray.removeAll()
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                if let dict = child.value as? NSDictionary{
+                    
+                    let noteName = dict["noteName"] as? String ?? ""
+                    let noteTime = dict["noteTime"] as? String ?? ""
+                    let noteDate = dict["noteDate"] as? String ?? ""
+                    let noteKey = child.key
+                    print("this is note key", noteKey)
+                    
+                    let notes = Note(noteNametxt: noteName, noteKeytxt: noteKey, noteDateTxt: noteDate, noteTimeTxt: noteTime)
+                    self.noteArray.append(notes)
+                    DispatchQueue.main.async { self.tableViewList.reloadData() }
+                    
+                    
+                    self.ref.keepSynced(true)
+                    print("fetched")
+                    
+                    
+                }
             }
+            
             
         }
     }

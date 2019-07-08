@@ -67,6 +67,14 @@ class SignUp: UIViewController{
                     print(error!)
                 }else{
                     print("okay verification mail has been sent")
+                    let alert = UIAlertController(title: "Verification", message: "Verification mail has been sent.", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
             })
         }
@@ -151,7 +159,7 @@ class SignUp: UIViewController{
                     print("error0000000000000",err)
                     //return
                 }else{
-                    self.sendVerificationMail()
+                    //self.sendVerificationMail()
                 }
 
                 
@@ -193,6 +201,7 @@ class SignUp: UIViewController{
                                     }
                                  
                                     print("saved user successfully into firebase db")
+                                    self.sendVerificationMail()
                                     
                                     } )
                                 
@@ -203,11 +212,7 @@ class SignUp: UIViewController{
                         
                     }
             }
-//            self.navigationController?.popViewController(animated: true)
         }
-        self.navigationController?.popViewController(animated: true)
-         //self.navigationController?.popToRootViewController(animated: true)
-
     }
 }
 

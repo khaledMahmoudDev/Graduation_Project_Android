@@ -91,7 +91,11 @@ class DeleteUser: UIViewController {
                         print("user is removed")
                         
                         try!  Auth.auth().signOut()
-                        self.navigationController?.popToRootViewController(animated: true)
+                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+                        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                        appdelegate.window!.rootViewController = newViewController
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }

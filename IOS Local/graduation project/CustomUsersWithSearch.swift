@@ -32,7 +32,6 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usersEmailArray.removeAll()
         fetchUsersFromFirebase()
         
         self.tableView.dataSource = self
@@ -42,10 +41,14 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.allowsMultipleSelection = true
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
+        self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        //self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         
     }
     
-    
+
     @IBAction func DoneUsersSelectionButton(_ sender: Any) {
         if selectedUsersEmailArray != []{
             self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
@@ -83,6 +86,12 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! CustomUserCell
         
+        cell.userImage.layer.borderWidth = 1
+        cell.userImage.layer.masksToBounds = false
+        cell.userImage.layer.borderColor = UIColor.lightGray.cgColor
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+        cell.userImage.clipsToBounds = true
+        
         if searchActive{
             cell.userEmail?.text = searchOnUsers[indexPath.row].usersEmail
             cell.userName?.text = searchOnUsers[indexPath.row].userName
@@ -110,39 +119,48 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         print("deleted", selectedUsersEmailArray)
     }
     
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
     
     func fetchUsersFromFirebase(){
         ref = Database.database().reference()
-        ref.child("IOSUSERS").observe(.childAdded) { (snapshot) in
-            
-            
-            if let url = snapshot.value as? [String : Any] {
-                let UserEmail = url["email"] as! String
-                print(UserEmail)
-                let UserName = url["firstName"] as! String
-                let UserImage = url["imageLink"] as! String
-                let Url = URL (string: UserImage)!
-                let request = URLRequest(url: Url)
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    if error != nil {
-                        print(error)
-                        return
+        ref.child("IOSUSERS").observe(.value) { (snapshot) in
+            self.usersEmailArray.removeAll()
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                if let url = child.value as? [String : Any]{
+                    let UserEmail = url["email"] as! String
+                    print(UserEmail)
+                    let UserName = url["firstName"] as! String
+                    let UserImage = url["imageLink"] as! String
+                    let Url = URL (string: UserImage)!
+                    let request = URLRequest(url: Url)
+                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                        if error != nil {
+                            print(error)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            let image = UIImage(data: data!)
+                            let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
+                            
+                            if self.User?.email != UserEmail{
+                                self.usersEmailArray.append(Users)
+                                self.tableView.reloadData()
+                                self.ref.keepSynced(true)
+                            }else{
+                                print("current user")
+                            }
+                            
+                            
+                        }
                     }
-                    DispatchQueue.main.async {
-                        print("Oh ya")
-                        let image = UIImage(data: data!)
-                        let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
-                        self.usersEmailArray.append(Users)
+                    task.resume()
+                    DispatchQueue.main.async{
                         self.tableView.reloadData()
-                        self.ref.keepSynced(true)
-                        print("fetched info")
                     }
                 }
-                task.resume()
             }
-            
-            
-            self.tableView.reloadData()
             
         }
     }

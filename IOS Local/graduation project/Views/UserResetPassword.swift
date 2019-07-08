@@ -74,7 +74,11 @@ class UserResetPassword: UIViewController {
                             // handle your signout smth like:
                             print("password has been updated")
                             try Auth.auth().signOut()
-                            self.navigationController?.popToRootViewController(animated: true)
+                            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+                            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                            appdelegate.window!.rootViewController = newViewController
+                            self.dismiss(animated: true, completion: nil)
                         } catch let logoutError {
                             // handle your error here
                             print("second error")

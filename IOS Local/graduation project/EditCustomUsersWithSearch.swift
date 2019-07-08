@@ -78,6 +78,12 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomUserCell
         
+        cell.userImage.layer.borderWidth = 1
+        cell.userImage.layer.masksToBounds = false
+        cell.userImage.layer.borderColor = UIColor.lightGray.cgColor
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+        cell.userImage.clipsToBounds = true
+        
         if fetchedArrayFromFireBase.contains(usersEmailArray[indexPath.row].usersEmail){
                 cell.isSelected = true
                 cell.accessoryType = .checkmark
@@ -144,6 +150,9 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
         print("deleted", editSelectedUsersEmailArray)
     }
     
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
     
     func fetchUsersFromFirebase(){
         ref = Database.database().reference()
@@ -164,18 +173,22 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
                     DispatchQueue.main.async {
                         let image = UIImage(data: data!)
                         let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
-                        self.usersEmailArray.append(Users)
-                        self.tableView.reloadData()
-                        self.ref.keepSynced(true)
-                        print("fetched info")
+                        
+                        if self.User?.email != UserEmail{
+                            self.usersEmailArray.append(Users)
+                            self.tableView.reloadData()
+                            self.ref.keepSynced(true)
+                        }else{
+                            print("current user")
+                        }
+                        
                     }
                 }
                 task.resume()
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                }
             }
-            
-            
-            self.tableView.reloadData()
-            
         }
     }
 }
