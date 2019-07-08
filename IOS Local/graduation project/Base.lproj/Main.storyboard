@@ -135,7 +135,7 @@
                                     <action selector="SendEmailToResetPass:" destination="FQ7-Vx-tKw" eventType="touchUpInside" id="TRl-hf-OIu"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vga-Zj-CHM">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vga-Zj-CHM">
                                 <rect key="frame" x="77" y="311" width="274" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="3FA-Ct-5MM"/>
