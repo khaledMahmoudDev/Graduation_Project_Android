@@ -2356,10 +2356,11 @@
                                 <rect key="frame" x="0.0" y="170" width="369" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category(shopping,work,fun...etc)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Qp-Ll-K7v">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category(shopping,work,fun...etc)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Qp-Ll-K7v">
                                 <rect key="frame" x="0.0" y="319" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -2381,11 +2382,38 @@
                                     <action selector="MoveToDone:" destination="pym-lw-JgE" eventType="touchUpInside" id="eJF-Lo-5Wl"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-9j-qvN">
-                                <rect key="frame" x="64" y="373" width="258" height="62"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyg-mB-Ytt">
+                                <rect key="frame" x="6" y="357" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                                <state key="normal" title="Shopping"/>
+                                <connections>
+                                    <action selector="ShoppingCat:" destination="pym-lw-JgE" eventType="touchUpInside" id="Ald-tl-YyG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxl-5M-wsN">
+                                <rect key="frame" x="318" y="357" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="None"/>
+                                <connections>
+                                    <action selector="NoneCat:" destination="pym-lw-JgE" eventType="touchUpInside" id="pXA-Wh-dHI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33Z-sf-Ttx">
+                                <rect key="frame" x="223" y="357" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fun"/>
+                                <connections>
+                                    <action selector="FunCat:" destination="pym-lw-JgE" eventType="touchUpInside" id="6Mi-Jg-kE9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aR-9A-7AM">
+                                <rect key="frame" x="128" y="357" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Work"/>
+                                <connections>
+                                    <action selector="WorkCat:" destination="pym-lw-JgE" eventType="touchUpInside" id="C42-xZ-OpS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Bno-nf-jW3"/>
@@ -2400,7 +2428,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="CategorySwiftyMenu" destination="MJI-9j-qvN" id="aqJ-KE-luz"/>
                         <outlet property="ToDoCategory" destination="2Qp-Ll-K7v" id="6ZP-y3-7cH"/>
                         <outlet property="ToDoDetail" destination="J0p-DB-mjg" id="Byo-UK-9Md"/>
                         <outlet property="ToDoTitle" destination="4h6-B7-tqB" id="6Wo-Tq-R9S"/>

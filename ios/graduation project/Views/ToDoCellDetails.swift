@@ -13,17 +13,41 @@ import SwiftyMenu
 
 
 class ToDoCellDetails: UIViewController , UITextViewDelegate {
+    
+    
+    
+    var categChoosen = "None"
+    
 
     @IBOutlet weak var ToDoTitle: UITextField!
     @IBOutlet weak var ToDoDetail: UITextView!
     @IBOutlet weak var ToDoCategory: UITextField!
     
     
-    @IBOutlet weak var CategorySwiftyMenu: SwiftyMenu!
+//    @IBOutlet weak var CategorySwiftyMenu: SwiftyMenu!
     
     
+    @IBAction func ShoppingCat(_ sender: Any) {
+        categChoosen = "Shopping"
+        ToDoCategory.text = categChoosen
+    }
+    
+    @IBAction func WorkCat(_ sender: Any) {
+        categChoosen = "Work"
+        ToDoCategory.text = categChoosen
 
+    }
+    @IBAction func FunCat(_ sender: Any) {
+        categChoosen = "Fun"
+        ToDoCategory.text = categChoosen
 
+    }
+    @IBAction func NoneCat(_ sender: Any) {
+        categChoosen = "None"
+        ToDoCategory.text = categChoosen
+
+    }
+    
 //    private let optionsData = ["Work", "Shopping", "Fun", "Others"]
     
 
@@ -34,7 +58,7 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
     @IBAction func saveTodo(_ sender: Any) {
         print("save clicked")
         
-        if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
+        if (ToDoTitle.text != "" && ToDoDetail.text != "" ){
             
             var title = ToDoTitle.text
             var details = ToDoDetail.text
@@ -84,10 +108,13 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         
 //        CategorySwiftyMenu.delegate = self as? SwiftyMenuDelegate
 //        CategorySwiftyMenu.options = optionsData as! [SwiftMenuDisplayable]
+        
+        
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         ToDoDetail.text = ""
+        
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
