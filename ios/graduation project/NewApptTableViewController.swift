@@ -20,10 +20,25 @@ protocol AppointmentTVC {
     func setupCalendarView()
 }
 
-class NewApptTableViewController: UITableViewController, AppointmentTVC {
+
+
+class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSelectedUsers{
+    func setSelectedUsers(selected: Array<String>) {
+        self.selectedUsersEmailArray = selected
+        //print("noooooooo",selectedUsersEmailArray)
+    }
+    
+   
+    static var privateVsPublic = 3
+    
+    var selectedUsersEmailArray : Array<String> = []
     
     var ref: DatabaseReference!
-    
+    var mDay = ""
+    var Mday = ""
+    var Mmonth = ""
+    var Myear = ""
+    var publicVsPrivate = 0
     var myString = String()
     var selectedTimeSlot: Date?
     var appointmentsOfTheDay: [Appointment]?
@@ -72,6 +87,24 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
         confirmAppointment()
     }
+    
+    @IBAction func publicVSprivate(_ sender: Any) {
+        if (sender as AnyObject).isOn == true {
+            publicVsPrivate = 1
+            print("on")
+        }else
+        {
+            publicVsPrivate = 0
+            print("off")
+        }
+        
+    }
+    
+    @IBAction func CustomUsers(_ sender: Any) {
+        publicVsPrivate = 2
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,14 +160,32 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
         
         //saving new appointment to firebase
         
-        guard let appointmentTime = timeSlotLabel.text, let appointmentNote = noteTextView.text, let appointmentCost = locationLabel.text, let appointmentTitle = titleTextField.text, let appointmentDate = dateDetailLabel.text else{
+        guard let mstartTime = timeSlotLabel.text, let mdetails = noteTextView.text, let location = locationLabel.text, let mtitle = titleTextField.text, let mdate = dateDetailLabel.text, let meventCreator = User?.email else{
             return
         }
-        self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-        let values = ["appointmentDate" : appointmentDate, "appointmentTime" : appointmentTime , "appointmentNote" : appointmentNote, "appointmentCost" : appointmentCost, "appointmentTitle" : appointmentTitle]
-        self.ref.child("Events").child(User!.uid).childByAutoId().setValue(values)
         
-        print("Appoinment saved savely in firebase")
+        if publicVsPrivate == 1 {
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "public" ]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            
+            print("Appoinment saved savely in firebase as public")
+            
+        }else if publicVsPrivate == 0 {
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "private" ]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            
+            print("Appoinment saved savely in firebase as private")
+            
+        }else if publicVsPrivate == 2{
+            self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
+            let values = ["mdate" : mdate, "mstartTime" : mstartTime, "mendTime" : "" , "mdetails" : mdetails, "location" : location, "mtitle" : mtitle, "meventCreator" : meventCreator, "privacy" : "CustomUsers" , "customUsrs" : selectedUsersEmailArray] as [String : Any]
+            self.ref.child("Events").childByAutoId().setValue(values)
+            print("Appoinment saved savely in firebase as CustomUsers")
+        }
+        
+        publicVsPrivate = 3
         
         dismiss(animated: true, completion: nil)
     }
@@ -177,6 +228,13 @@ extension NewApptTableViewController {
     func updateDateDetailLabel(date: Date){
         formatter.dateFormat = "MMMM dd, yyyy"
         dateDetailLabel.text = formatter.string(from: date)
+        mDay = dateDetailLabel.text! ;
+      //  print ( " dnt == ", mDay)
+//let calanderDate = Calendar.current.dateComponents([.month, .day, .year], from: date)
+//         Mday = String( calanderDate.day!)
+//         Mmonth = String( calanderDate.month!)
+//         Myear = String(calanderDate.year!)
+     //   print(Mday,Mmonth,Myear)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -267,6 +325,7 @@ extension NewApptTableViewController {
         updateDateDetailLabel(date: date)
         loadAppointmentsForDate(date: date)
     }
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let calendarDate = calendarView.selectedDates.first
@@ -280,8 +339,11 @@ extension NewApptTableViewController {
         else if segue.identifier == "segue2" {
             let destinationVC = segue.destination as! ViewController
             destinationVC.string2 = locationLabel.text!
-            
-            
+ 
+        }else if  segue.identifier == "customuser" {
+            if let destination = segue.destination as? CustomUsers{
+                destination.delegate = self
+            }
             
         }
     }

@@ -18,8 +18,9 @@ class UserResetPassword: UIViewController {
     @IBOutlet weak var currPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
 
-        // Do any additional setup after loading the view.
     }
     
 
@@ -29,12 +30,28 @@ class UserResetPassword: UIViewController {
             return
         }
         
+        
+        if newPass != "" || currPass != ""{
+        
         let credential = EmailAuthProvider.credential(withEmail: user.email!, password: currPass)
         
         user.reauthenticateAndRetrieveData(with: credential, completion: {(result, error) in
             if error != nil {
                 // An error happened.
-                print(error!.localizedDescription)
+                print("here",error!.localizedDescription)
+                if error!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred."{
+                    
+                    let alert =  UIAlertController(title: "NETWORK ERROR", message: "Please try again", preferredStyle: .alert)
+                    let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(OKButton)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }else if error!.localizedDescription == "The password is invalid or the user does not have a password."{
+                    let alert =  UIAlertController(title: "ERROR", message: "The password is invalid, Please re-enter the passwprd again", preferredStyle: .alert)
+                    let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(OKButton)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }else{
                 // User re-authenticated.
                 user.updatePassword(to: newPass) { (error) in
@@ -43,6 +60,15 @@ class UserResetPassword: UIViewController {
                     if error != nil {
                         print("there is an error !!")
                         print(error!.localizedDescription)
+                        if error!.localizedDescription == "The password must be 6 characters long or more." {
+                            
+                            let alert =  UIAlertController(title: "ERROR", message: "The password must be 6 characters long or more.", preferredStyle: .alert)
+                            let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                            alert.addAction(OKButton)
+                            self.present(alert, animated: true, completion: nil)
+                            
+                        }
+                      
                     }else{
                         do {
                             // handle your signout smth like:
@@ -58,46 +84,15 @@ class UserResetPassword: UIViewController {
                 }
             }
         })
+    }else{
+            let alert =  UIAlertController(title: "ERROR", message: "You can't leave any of these two fields empty", preferredStyle: .alert)
+            let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OKButton)
+            self.present(alert, animated: true, completion: nil)
     }
-    
     
 }
 
 
 
-
-
-
-
-
-//////for deletion
-
-//
-//guard let currUser = Auth.auth().currentUser ,let userID = Auth.auth().currentUser?.uid else{
-//    return
-//}
-//var credential: AuthCredential
-//
-//currUser.reauthenticate(with:credential) { error in
-//    if let error = error {
-//        // An error happened.
-//        print(error.localizedDescription)
-//    } else {
-//        // User re-authenticated.
-//        currUser.delete { error in
-//            if let error = error {
-//                // An error happened.
-//                print(error.localizedDescription)
-//            } else {
-//                // Account deleted.
-//                self.ref = Database.database().reference()
-//                self.ref.child("USERS").child(userID).removeValue()
-//
-//                try!  Auth.auth().signOut()
-//                self.navigationController?.popToRootViewController(animated: true)
-//            }
-//        }
-//
-//    }
-//    print("Try again later")
-//}
+}

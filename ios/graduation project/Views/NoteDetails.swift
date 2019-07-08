@@ -25,6 +25,8 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround() 
+        
         if choosedNote != nil {
             fetchUsersNoteFromFirebase()
             content.textColor = UIColor.black

@@ -132,20 +132,20 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         print(apptKey)
         
         let userId = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
+        ref = Database.database().reference().child("Events").child(apptKey)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
-            let apptTitle = value?["appointmentTitle"] as? String ?? ""
+            let apptTitle = value?["mtitle"] as? String ?? ""
             self.titleTextField.text = apptTitle
-            let apptNote = value?["appointmentNote"] as? String ?? ""
+            let apptNote = value?["mdetails"] as? String ?? ""
             self.noteTextView.text = apptNote
-            let apptLocation = value?["appointmentCost"] as? String ?? ""
+            let apptLocation = value?["location"] as? String ?? ""
             self.locationLabel.text = apptLocation
-            let apptDate = value?["appointmentDate"] as? String ?? ""
+            let apptDate = value?["mdate"] as? String ?? ""
             self.dateDetailLabel.text = apptDate
-            let appointmentTime = value?["appointmentTime"] as? String ?? ""
+            let appointmentTime = value?["mstartTime"] as? String ?? ""
             self.timeSlotLabel.text = appointmentTime
             
             
@@ -188,8 +188,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         }
         print(apptDate,apptNote,apptTitle, apptTime)
         
-        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
-        let userAppointment = ["appointmentDate" : apptDate , "appointmentTime": apptTime , "appointmentTitle" : apptTitle , "appointmentNote" : apptNote , "appointmentCost" : apptLocation ]
+        ref = Database.database().reference().child("Events").child(apptKey)
+        let userAppointment = ["mdate" : apptDate , "mstartTime": apptTime , "mtitle" : apptTitle , "mdetails" : apptNote , "location" : apptLocation ]
         ref.updateChildValues(userAppointment)
         print("edited")
         

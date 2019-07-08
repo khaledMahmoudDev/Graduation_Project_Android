@@ -84,6 +84,9 @@
 		E2AF6FA322862F6C00F4A77D /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */; };
 		E2AF6FA52286300A00F4A77D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA42286300A00F4A77D /* Constants.swift */; };
 		E2AF6FA72286307700F4A77D /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA62286307600F4A77D /* CommonFunctions.swift */; };
+		E2B06F6122BD2D43003883AA /* CustomUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6022BD2D43003883AA /* CustomUsers.swift */; };
+		E2B06F6522BD3161003883AA /* CustomUsersEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */; };
+		E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B06F6622BD3B35003883AA /* CustomUserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +172,9 @@
 		E2AF6FA222862F6C00F4A77D /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E2AF6FA42286300A00F4A77D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2AF6FA62286307600F4A77D /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		E2B06F6022BD2D43003883AA /* CustomUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsers.swift; sourceTree = "<group>"; };
+		E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersEmail.swift; sourceTree = "<group>"; };
+		E2B06F6622BD3B35003883AA /* CustomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +255,8 @@
 				E295B2CE22830E9700112E8C /* DateFormatters.swift */,
 				E295B2D222830EB800112E8C /* TimeSlotter.swift */,
 				E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */,
+				E2B06F6022BD2D43003883AA /* CustomUsers.swift */,
+				E2B06F6622BD3B35003883AA /* CustomUserCell.swift */,
 				E2167B832277C8A0004D6BC3 /* Model */,
 				31DE36BF220B3F1300C9B2E6 /* Views */,
 				31DE369A220B3DFF00C9B2E6 /* Assets.xcassets */,
@@ -306,6 +314,7 @@
 				E214211F22898D400039D5CE /* Note.swift */,
 				E21DEA64228E4D4C00752B99 /* Appointments.swift */,
 				E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */,
+				E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,9 +479,12 @@
 				E2882C8122B3ED80000E6A34 /* TodoTable.swift in Sources */,
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
 				E2076EAD22861B77005EAAAD /* ViewController.swift in Sources */,
+				E2B06F6122BD2D43003883AA /* CustomUsers.swift in Sources */,
 				E2076EA12286195D005EAAAD /* TimeSlotsCVC.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
+				E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */,
+				E2B06F6522BD3161003883AA /* CustomUsersEmail.swift in Sources */,
 				E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */,
 				3157F3FE2221F23D0066C46A /* Notes.swift in Sources */,
 				E20A51CE227CF5F70033C0E8 /* ResetSetting.swift in Sources */,

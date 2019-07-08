@@ -79,25 +79,25 @@ class ApptDetailTVC: UITableViewController {
         print(apptKey)
         
         let userId = Auth.auth().currentUser?.uid
-        ref = Database.database().reference().child("Events").child(userId!).child(apptKey)
+        ref = Database.database().reference().child("Events").child(apptKey)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
-            let apptTitle = value?["appointmentTitle"] as? String ?? ""
+            let apptTitle = value?["mtitle"] as? String ?? ""
             self.titleLabel.text = apptTitle
-            let apptNote = value?["appointmentNote"] as? String ?? ""
+            let apptNote = value?["mdetails"] as? String ?? ""
             self.noteTextView.text = apptNote
-            let apptLocation = value?["appointmentCost"] as? String ?? ""
+            let apptLocation = value?["location"] as? String ?? ""
             self.apptCostLabel.text = apptLocation
-            let apptDate = value?["appointmentDate"] as? String ?? ""
+            let apptDate = value?["mdate"] as? String ?? ""
             self.dateLabel.text = apptDate
             
             let inFormatter = DateFormatter()
             inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
             inFormatter.dateFormat = "HH:mm"
             
-            let appointmentTimeStart = value?["appointmentTime"] as? String ?? ""
+            let appointmentTimeStart = value?["mstartTime"] as? String ?? ""
             let startTime = inFormatter.date(from: appointmentTimeStart)!
             let timeInHourFormatter = hourFormatter(date: startTime)
             self.hourLabel.text = timeInHourFormatter

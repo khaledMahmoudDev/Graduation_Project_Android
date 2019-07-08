@@ -55,12 +55,12 @@ class ActivityTableViewController: UITableViewController {
             return
         }
         ref = Database.database().reference()
-        ref.child("Events").child(userId).observe(.childAdded) { (snapshot) in
+        ref.child("Events").observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{
-                let appointmentTitle = dict["appointmentTitle"] as! String
-                let appointmentTime = dict["appointmentTime"] as! String
-                let appointmentDate = dict["appointmentDate"] as! String
-                let appointmentLocation = dict["appointmentCost"] as! String
+                let appointmentTitle = dict["mtitle"] as! String
+                let appointmentTime = dict["mstartTime"] as! String
+                let appointmentDate = dict["mdate"] as! String
+                let appointmentLocation = dict["location"] as! String
                 
                 let homeAppointments = HomeAppointments(appTitle : appointmentTitle, appTime : appointmentTime, appLocation : appointmentLocation , appDate : appointmentDate)
                 self.homeAppointmentsArray.append(homeAppointments)

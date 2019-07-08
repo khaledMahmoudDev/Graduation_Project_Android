@@ -21,6 +21,8 @@ class EditUserProfile: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround() 
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUp.handleSelectProfileImageView))
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
@@ -89,8 +91,15 @@ class EditUserProfile: UIViewController {
     
     @IBAction func saveUserUpdates(_ sender: Any) {
         //updateUserName()
-        updateProfileImage()
-        self.navigationController?.popViewController(animated: true)
+        if username.text != ""{
+            updateProfileImage()
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            let alert =  UIAlertController(title: "ERROR", message: "You can't set username as empty., Please set a username", preferredStyle: .alert)
+            let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OKButton)
+            self.present(alert, animated: true, completion: nil)
+        }
         
     }
     

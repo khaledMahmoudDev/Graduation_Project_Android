@@ -29,6 +29,8 @@ class SignUp: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround() 
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUp.handleSelectProfileImageView))
         profileImg.addGestureRecognizer(tapGesture)
         profileImg.isUserInteractionEnabled = true
@@ -213,5 +215,18 @@ extension SignUp : UIImagePickerControllerDelegate, UINavigationControllerDelega
             profileImg.image = img
         }
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
