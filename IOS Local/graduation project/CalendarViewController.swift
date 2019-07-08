@@ -462,9 +462,18 @@ extension CalendarViewController {
 extension CalendarViewController {
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
         guard let validCell = view as? CalendarDayCell else { return }
+        let current = Date ()
         if cellState.isSelected {
             validCell.selectedView.isHidden = false
-        } else {
+        }
+        else if current.day() == cellState.date.day() {
+            
+            //validCell.selectedView.isHidden = false
+            validCell.selectedView.backgroundColor = UIColor.gray
+            
+        }
+        
+        else {
             validCell.selectedView.isHidden = true
         }
     }

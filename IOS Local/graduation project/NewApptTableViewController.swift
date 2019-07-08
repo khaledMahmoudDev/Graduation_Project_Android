@@ -369,7 +369,7 @@ extension NewApptTableViewController {
         formatter.dateFormat = "MMMM dd, yyyy"
         dateDetailLabel.text = formatter.string(from: date)
         
-        calendarView.selectDates( [date] )
+        //calendarView.selectDates( [date] )
         
         updateDateDetailLabel(date: date)
         loadAppointmentsForDate(date: date)
