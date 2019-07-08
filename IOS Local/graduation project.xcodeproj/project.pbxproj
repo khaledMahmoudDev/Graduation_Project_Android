@@ -99,6 +99,9 @@
 		E2D24FCD22D1291D004AEBF0 /* z7p2XB.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */; };
 		E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FD222D137E0004AEBF0 /* locationViewController.png */; };
 		E2D24FD522D139D7004AEBF0 /* locationView.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D24FD422D139D7004AEBF0 /* locationView.png */; };
+		E2FD071722D3BB4F00323A77 /* signup2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FD071522D3BB4F00323A77 /* signup2.png */; };
+		E2FD071822D3BB4F00323A77 /* signin2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FD071622D3BB4F00323A77 /* signin2.png */; };
+		E2FD071A22D3C6B500323A77 /* forgotpass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FD071922D3C6B400323A77 /* forgotpass.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +202,9 @@
 		E2D24FCC22D1291C004AEBF0 /* z7p2XB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = z7p2XB.jpg; sourceTree = "<group>"; };
 		E2D24FD222D137E0004AEBF0 /* locationViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationViewController.png; sourceTree = "<group>"; };
 		E2D24FD422D139D7004AEBF0 /* locationView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationView.png; sourceTree = "<group>"; };
+		E2FD071522D3BB4F00323A77 /* signup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup2.png; sourceTree = "<group>"; };
+		E2FD071622D3BB4F00323A77 /* signin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin2.png; sourceTree = "<group>"; };
+		E2FD071922D3C6B400323A77 /* forgotpass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forgotpass.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,9 @@
 		31DE3687220B3DDD00C9B2E6 = {
 			isa = PBXGroup;
 			children = (
+				E2FD071622D3BB4F00323A77 /* signin2.png */,
+				E2FD071922D3C6B400323A77 /* forgotpass.png */,
+				E2FD071522D3BB4F00323A77 /* signup2.png */,
 				E2077D9422D035B80067231B /* date.png */,
 				E2D24FD222D137E0004AEBF0 /* locationViewController.png */,
 				E2077D9A22D03E090067231B /* location2.png */,
@@ -428,9 +437,12 @@
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
 				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
 				E2829E9822D19A310002472E /* custom.png in Resources */,
+				E2FD071A22D3C6B500323A77 /* forgotpass.png in Resources */,
 				E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */,
 				E2077D9B22D03E090067231B /* location2.png in Resources */,
 				E2829E9622D19A290002472E /* private.png in Resources */,
+				E2FD071822D3BB4F00323A77 /* signin2.png in Resources */,
+				E2FD071722D3BB4F00323A77 /* signup2.png in Resources */,
 				E2077D9D22D041860067231B /* users.png in Resources */,
 				E2D24FCD22D1291D004AEBF0 /* z7p2XB.jpg in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,

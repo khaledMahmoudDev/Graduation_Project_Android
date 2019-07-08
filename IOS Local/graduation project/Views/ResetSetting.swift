@@ -16,6 +16,8 @@ class ResetSetting: UIViewController {
     @IBOutlet weak var Email: UITextField!
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.barTintColor = .init(red: 30/255, green: 57/255, blue: 83/255, alpha: 1.00)
+        self.navigationController?.navigationBar.isTranslucent = false
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

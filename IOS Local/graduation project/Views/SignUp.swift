@@ -28,6 +28,8 @@ class SignUp: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = .init(red: 30/255, green: 57/255, blue: 83/255, alpha: 1.00)
+        self.navigationController?.navigationBar.isTranslucent = false
         
         self.hideKeyboardWhenTappedAround() 
         
