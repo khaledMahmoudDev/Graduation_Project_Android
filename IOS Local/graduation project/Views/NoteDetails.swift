@@ -25,6 +25,10 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        //self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         self.hideKeyboardWhenTappedAround() 
         
         if choosedNote != nil {
@@ -36,12 +40,12 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             name.returnKeyType = .done
             name.delegate = self
         }else{
-            content.text = "Enter Note.."
-            content.textColor = UIColor.lightGray
+            content.text = "Note.."
+            content.textColor = UIColor.darkGray
             content.returnKeyType = .done
             content.delegate = self
-            name.text = "Enter Note Title"
-            name.textColor = UIColor.lightGray
+            name.text = "Note Title"
+            name.textColor = UIColor.darkGray
             name.returnKeyType = .done
             name.delegate = self
             
@@ -62,7 +66,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if name.text == "Enter Note Title"{
+        if name.text == "Note Title"{
             name.text = ""
             name.textColor = UIColor.black
         }
@@ -70,13 +74,13 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if name.text == "" {
-            name.text = "Enter Note Title"
+            name.text = "Note Title"
             name.textColor = UIColor.lightGray
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if content.text == "Enter Note.."{
+        if content.text == "Note.."{
             content.text = ""
             content.textColor = UIColor.black
         }
@@ -84,7 +88,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if content.text == "" {
-            content.text = "Enter Note.."
+            content.text = "Note.."
             content.textColor = UIColor.lightGray
         }
     }
@@ -97,7 +101,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if name.text == "" || content.text == "" || (name.text == "Enter Note Title" && name.textColor == UIColor.lightGray) || (content.text == "Enter Note.." && content.textColor == UIColor.lightGray){
+        if name.text == "" || content.text == "" || (name.text == "Note Title" && name.textColor == UIColor.darkGray) || (content.text == "Note.." && content.textColor == UIColor.darkGray){
             let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Two Fields Empty.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
@@ -142,7 +146,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     @IBAction func cancel(_ sender: Any) {
         if name.text != "" || content.text != "" /*|| (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) */{
-            if choosedNote == nil && ((name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray)){
+            if choosedNote == nil && ((name.text != "Note Title" && name.textColor != UIColor.darkGray) || (content.text != "Note.." && content.textColor != UIColor.darkGray)){
                 let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
 
                 alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
