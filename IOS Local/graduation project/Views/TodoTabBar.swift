@@ -24,11 +24,6 @@ class TodoTabBar: UITabBarController {
 //@objc func add(){
 //    performSegue(withIdentifier: "addtodo", sender: self)
 //}
-
-    
-    @IBAction func addNewTodo(_ sender: Any) {
-        performSegue(withIdentifier: "addtodo", sender: self)
-    }
     
     /*
     // MARK: - Navigation

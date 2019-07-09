@@ -92,6 +92,7 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
         let choosenNote = noteArray[indexPath.row].noteKey
         print("choosenKey", choosenNote)
        performSegue(withIdentifier: "noteDetails", sender: choosenNote)
+        tableViewList.deselectRow(at: indexPath, animated: false)
 //        }
     }
     

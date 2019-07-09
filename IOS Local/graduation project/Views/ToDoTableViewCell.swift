@@ -24,8 +24,11 @@ class ToDoTableViewCell: UITableViewCell {
 //            label.backgroundcolor = uicolor.green
 //
 //    }
-
-     override func awakeFromNib() {
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var category: UILabel!
+    @IBOutlet weak var dateAndTime: UILabel!
+    
+    override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

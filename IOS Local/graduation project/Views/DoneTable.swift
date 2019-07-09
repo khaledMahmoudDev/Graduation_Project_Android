@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 var DoneList = ["done1","done2"]
 
 class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    var ref: DatabaseReference!
+    
+    var firebaseArray = [TodoDone]()
 
     @IBOutlet weak var DoneTable: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchDoneFromFireBase()
+        // Do any additional setup after loading the view.
+    }
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
     
     
     @IBAction func cancel(_ sender: Any) {
@@ -26,13 +40,43 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DoneList.count
+        if firebaseArray != nil{
+            return firebaseArray.count
+        }else{
+            return 0
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style:UITableViewCell.CellStyle.default, reuseIdentifier: "donecell")
+        let cell : DoneTableCell = tableView.dequeueReusableCell(withIdentifier: "donecell", for: indexPath) as! DoneTableCell
         
-        cell.textLabel?.text = DoneList[indexPath.row]
+        if firebaseArray[indexPath.row].priority == "red"{
+            cell.title?.text = firebaseArray[indexPath.row].title
+            cell.category?.text = firebaseArray[indexPath.row].category
+            cell.category?.backgroundColor = UIColor.red
+            cell.timeAndDate?.text = "\(firebaseArray[indexPath.row].date) \(firebaseArray[indexPath.row].time)"
+        }else if firebaseArray[indexPath.row].priority == "yellow"{
+            cell.title?.text = firebaseArray[indexPath.row].title
+            cell.category?.text = firebaseArray[indexPath.row].category
+            cell.category?.backgroundColor = UIColor.yellow
+            cell.timeAndDate?.text = "\(firebaseArray[indexPath.row].date) \(firebaseArray[indexPath.row].time)"
+        }else if firebaseArray[indexPath.row].priority == "green"{
+            cell.title?.text = firebaseArray[indexPath.row].title
+            cell.category?.text = firebaseArray[indexPath.row].category
+            cell.category?.backgroundColor = UIColor.green
+            cell.timeAndDate?.text = "\(firebaseArray[indexPath.row].date) \(firebaseArray[indexPath.row].time)"
+        }else{
+            cell.title?.text = firebaseArray[indexPath.row].title
+            cell.category?.text = firebaseArray[indexPath.row].category
+            cell.timeAndDate?.text = "\(firebaseArray[indexPath.row].date) \(firebaseArray[indexPath.row].time)"
+        }
+        
+        
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -42,30 +86,46 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
-            DoneList.remove(at: indexPath.row)
-            DoneTable.reloadData()
+            ref = Database.database().reference()
+            let removeRef = ref.child("IOSUserTodo").child(User!.uid).child(firebaseArray[indexPath.row].firebaseKey)
+            removeRef.removeValue()
+            firebaseArray.remove(at: indexPath.row)
+            DoneTable.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func fetchDoneFromFireBase(){
+        
+        ref = Database.database().reference()
+        
+        ref.child("IOSUserTodo").child(User!.uid).queryOrdered(byChild: "stats").queryEqual(toValue: "done" ).observe(.value){ (snapshot) in
+            print(snapshot)
+            self.firebaseArray.removeAll()
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                if let dict = child.value as? NSDictionary{
+                    
+                    let title = dict["todoTitle"] as? String ?? "no title"
+                    let time = dict["todoTime"] as? String ?? ""
+                    let date = dict["todoDate"] as? String ?? ""
+                    let category = dict["todoCategory"] as? String ?? ""
+                    let priority = dict["todoPriority"] as? String ?? ""
+                    let FIRKey = child.key
+                    
+                    let todoDone = TodoDone(titletxt: title, keytxt: FIRKey, dateTxt: date, timeTxt: time, categoryTxt: category, prioritytxt : priority)
+                    self.firebaseArray.append(todoDone)
+                    DispatchQueue.main.async { self.DoneTable.reloadData() }
+                }
+                
+                
+            }
+            
+            
         }
     }
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        DoneTable.reloadData()
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
+  
 
 }

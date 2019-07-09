@@ -13,6 +13,8 @@
 		3157F3FE2221F23D0066C46A /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157F3FD2221F23D0066C46A /* Notes.swift */; };
 		315EABEA221F46CE003EA8B3 /* LoginNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */; };
 		31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31634675221DAB9000E70AC0 /* GoogleService-Info.plist */; };
+		3176FD6622D4AF220002E711 /* TodoDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176FD6522D4AF220002E711 /* TodoDone.swift */; };
+		3176FD6822D4D77F0002E711 /* DoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176FD6722D4D77F0002E711 /* DoneTableCell.swift */; };
 		3187A0FB2215F1450042C109 /* NoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3187A0FA2215F1450042C109 /* NoteTableCell.swift */; };
 		31A81B5E22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A81B5D22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift */; };
 		31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B9424B22120C3F005C8C16 /* graduation project.xcdatamodeld */; };
@@ -112,6 +114,8 @@
 		3157F3FD2221F23D0066C46A /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		315EABE9221F46CE003EA8B3 /* LoginNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigation.swift; sourceTree = "<group>"; };
 		31634675221DAB9000E70AC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3176FD6522D4AF220002E711 /* TodoDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDone.swift; sourceTree = "<group>"; };
+		3176FD6722D4D77F0002E711 /* DoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTableCell.swift; sourceTree = "<group>"; };
 		3187A0FA2215F1450042C109 /* NoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCell.swift; sourceTree = "<group>"; };
 		31A81B5D22C8C74D00FE9F9B /* EditCustomUsersWithSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomUsersWithSearch.swift; sourceTree = "<group>"; };
 		31B9424C22120C3F005C8C16 /* graduation project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "graduation project.xcdatamodel"; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 				E204D19F22D45E02002FE67F /* ToDoTableViewCell.swift */,
 				E202197B22B443EE003C7B10 /* ToDoCellDetails.swift */,
 				E202197D22B45B23003C7B10 /* DoneTable.swift */,
+				3176FD6722D4D77F0002E711 /* DoneTableCell.swift */,
 				E202197F22B4679C003C7B10 /* DoneDetails.swift */,
 			);
 			path = Views;
@@ -363,6 +368,7 @@
 				E21DEA64228E4D4C00752B99 /* Appointments.swift */,
 				E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */,
 				E2B06F6422BD3161003883AA /* CustomUsersEmail.swift */,
+				3176FD6522D4AF220002E711 /* TodoDone.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				3157F3FC2221F2210066C46A /* NoteDetails.swift in Sources */,
 				E2076EAD22861B77005EAAAD /* ViewController.swift in Sources */,
 				E2076EA12286195D005EAAAD /* TimeSlotsCVC.swift in Sources */,
+				3176FD6622D4AF220002E711 /* TodoDone.swift in Sources */,
 				31B9424D22120C3F005C8C16 /* graduation project.xcdatamodeld in Sources */,
 				31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */,
 				E2B06F6722BD3B35003883AA /* CustomUserCell.swift in Sources */,
@@ -593,6 +600,7 @@
 				E2AF6FA322862F6C00F4A77D /* ActivityCell.swift in Sources */,
 				E2076E912286166E005EAAAD /* Weather.swift in Sources */,
 				E295B29722830AF000112E8C /* TextFieldDelegate.swift in Sources */,
+				3176FD6822D4D77F0002E711 /* DoneTableCell.swift in Sources */,
 				E2076EAB22861AFD005EAAAD /* Place.swift in Sources */,
 				E295B2A922830C3900112E8C /* CoreDataStore.swift in Sources */,
 				E295B29922830AF000112E8C /* TextViewDelegate.swift in Sources */,
