@@ -14,6 +14,7 @@ var list = ["todo1", "todo2"]
 
 class TodoTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var PriorityLabel: UILabel!
     
     @IBOutlet weak var todoTable: UITableView!
     

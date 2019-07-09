@@ -10,10 +10,15 @@ import UIKit
 
 
 
+
+var priorityColor = ""
+
+
 class ToDoCellDetails: UIViewController , UITextViewDelegate {
     
     
       var categChoosen = "None"
+    @IBOutlet weak var Priority: UILabel!
     
 
     @IBOutlet weak var ToDoTitle: UITextField!
@@ -93,7 +98,7 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
 //            
         ToDoDetail.delegate = self
 
-        // Do any additional setup after loading the view.
+    
     }
     
     
@@ -109,6 +114,20 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }
     }
     
+    @IBAction func HighPr(_ sender: Any) {
+        Priority.backgroundColor = UIColor.red
+        priorityColor = "red"
+    }
     
+    @IBAction func MiddlePr(_ sender: Any) {
+        Priority.backgroundColor = UIColor.yellow
+        priorityColor = "yellow"
 
+    }
+    @IBAction func LowPr(_ sender: Any) {
+        Priority.backgroundColor = UIColor.green
+        priorityColor = "green"
+
+    }
+    
 }

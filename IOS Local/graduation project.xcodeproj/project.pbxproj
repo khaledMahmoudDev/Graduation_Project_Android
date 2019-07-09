@@ -33,6 +33,7 @@
 		E2034062229588B10067C246 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034061229588B00067C246 /* TodoListViewController.swift */; };
 		E2034064229588BA0067C246 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034063229588BA0067C246 /* SwipeTableViewController.swift */; };
 		E2034068229589070067C246 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2034067229589070067C246 /* Category.swift */; };
+		E204D1A022D45E02002FE67F /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204D19F22D45E02002FE67F /* ToDoTableViewCell.swift */; };
 		E2076E8B228615A7005EAAAD /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076E8A228615A7005EAAAD /* Coordinates.swift */; };
 		E2076E8D228615EC005EAAAD /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076E8C228615EC005EAAAD /* CurrentWeather.swift */; };
 		E2076E8F2286162F005EAAAD /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2076E8E2286162F005EAAAD /* JSONDownloader.swift */; };
@@ -135,6 +136,7 @@
 		E2034061229588B00067C246 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		E2034063229588BA0067C246 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		E2034067229589070067C246 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E204D19F22D45E02002FE67F /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		E2076E8A228615A7005EAAAD /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		E2076E8C228615EC005EAAAD /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		E2076E8E2286162F005EAAAD /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				3187A0FA2215F1450042C109 /* NoteTableCell.swift */,
 				E20CB8A722B6E4E000C47CF6 /* TodoTabBar.swift */,
 				E2882C8022B3ED80000E6A34 /* TodoTable.swift */,
+				E204D19F22D45E02002FE67F /* ToDoTableViewCell.swift */,
 				E202197B22B443EE003C7B10 /* ToDoCellDetails.swift */,
 				E202197D22B45B23003C7B10 /* DoneTable.swift */,
 				E202197F22B4679C003C7B10 /* DoneDetails.swift */,
@@ -548,6 +551,7 @@
 				E2076EB322862C6E005EAAAD /* CalendarDayCell.swift in Sources */,
 				E2076EAF22862627005EAAAD /* EditUserProfile.swift in Sources */,
 				E2AF6FA72286307700F4A77D /* CommonFunctions.swift in Sources */,
+				E204D1A022D45E02002FE67F /* ToDoTableViewCell.swift in Sources */,
 				311E474522D1546100EBF0DE /* MainViewController.swift in Sources */,
 				E2076E95228616D9005EAAAD /* DarkSkyError.swift in Sources */,
 				E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */,
