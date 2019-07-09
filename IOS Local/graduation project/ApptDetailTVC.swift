@@ -34,6 +34,7 @@ class ApptDetailTVC: UITableViewController {
         noLargeTitles()
         setupUI()
         navBarDropShadow()
+        self.navigationController?.navigationBar.tintColor = .white
         //print(choosedAppointment)
     }
     

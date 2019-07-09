@@ -39,7 +39,9 @@ class ActivityTableViewController: UITableViewController {
         tableView.dataSource = self
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = .white
+        self.tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0,right: 0)
         
         navBarDropShadow()
     }

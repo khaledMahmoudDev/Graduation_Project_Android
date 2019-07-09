@@ -23,8 +23,9 @@ class Notes: UIViewController , UITableViewDelegate, UITableViewDataSource, NSFe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
-        //self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.fetchNotesFromFirebase()
     }
     

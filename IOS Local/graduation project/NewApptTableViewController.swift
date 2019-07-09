@@ -130,8 +130,11 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     //    setupKeyboardNotification()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates( [Date()] )
-        
-        tableView.contentInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
+        self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        tableView.contentInset = UIEdgeInsets(top: -35,left: 0,bottom: 0,right: 0)
     }
     
     deinit {
