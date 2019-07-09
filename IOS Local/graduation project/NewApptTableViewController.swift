@@ -134,7 +134,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
-        tableView.contentInset = UIEdgeInsets(top: -35,left: 0,bottom: 0,right: 0)
+        tableView.contentInset = UIEdgeInsets(top: -30,left: 0,bottom: 0,right: 0)
     }
     
     deinit {

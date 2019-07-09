@@ -86,7 +86,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         cell.userImage.layer.borderWidth = 1
         cell.userImage.layer.masksToBounds = false
         cell.userImage.layer.borderColor = UIColor.lightGray.cgColor
-        cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+        //cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
         cell.userImage.clipsToBounds = true
         
         if searchActive{
