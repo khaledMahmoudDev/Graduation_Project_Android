@@ -66,6 +66,9 @@ class TodoTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    @IBAction func AddToDo(_ sender: Any) {
+         performSegue(withIdentifier: "addtodo", sender: self)
+    }
     
     
 }

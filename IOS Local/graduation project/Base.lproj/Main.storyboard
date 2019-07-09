@@ -2945,6 +2945,16 @@
                                 <action selector="cancel:" destination="Gd7-az-aMW" id="G2f-Zf-BgE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dOP-kU-Kgp">
+                            <connections>
+                                <action selector="AddToDo:" destination="Gd7-az-aMW" id="SQb-8i-CD7"/>
+                                <segue destination="pym-lw-JgE" kind="show" id="eMZ-HV-HTI"/>
+                            </connections>
+                        </barButtonItem>
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="1jC-q5-20Y" id="pXF-kM-D01"/>
+                            <outlet property="rightBarButtonItem" destination="dOP-kU-Kgp" id="4Kh-yC-JPM"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="todoTable" destination="GvX-h5-apZ" id="oPd-g9-Zqi"/>
@@ -2953,7 +2963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qnb-gg-o5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12812" y="2286.2068965517242"/>
+            <point key="canvasLocation" x="12812" y="2285"/>
         </scene>
         <!--TODO DETAILS-->
         <scene sceneID="xpk-Sy-fwc">
@@ -2970,7 +2980,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category(shopping,work,fun...etc)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Qp-Ll-K7v">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category(shopping,work,fun...etc)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Qp-Ll-K7v">
                                 <rect key="frame" x="0.0" y="319" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -2990,6 +3000,38 @@
                                 <state key="normal" title="move to Done"/>
                                 <connections>
                                     <action selector="MoveToDone:" destination="pym-lw-JgE" eventType="touchUpInside" id="eJF-Lo-5Wl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngJ-Cy-rQh">
+                                <rect key="frame" x="6" y="357" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shopping"/>
+                                <connections>
+                                    <action selector="Shopping:" destination="pym-lw-JgE" eventType="touchUpInside" id="sNe-xq-B9e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BH-nD-cQe">
+                                <rect key="frame" x="128" y="357" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Work"/>
+                                <connections>
+                                    <action selector="Work:" destination="pym-lw-JgE" eventType="touchUpInside" id="ORr-HL-gYC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ip9-Qr-aeK">
+                                <rect key="frame" x="318" y="357" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="None"/>
+                                <connections>
+                                    <action selector="None:" destination="pym-lw-JgE" eventType="touchUpInside" id="QOF-U9-HQQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZV-Pu-8Px">
+                                <rect key="frame" x="223" y="357" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fun"/>
+                                <connections>
+                                    <action selector="Fun:" destination="pym-lw-JgE" eventType="touchUpInside" id="Kdb-ZU-1Xo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3157,7 +3199,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDv-Z9-O23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13791.200000000001" y="2285.307346326837"/>
+            <point key="canvasLocation" x="13890" y="1630"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6xR-Td-Wz6">
@@ -3485,7 +3527,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Eim-kH-CZA"/>
         <segue reference="acT-uA-LxE"/>
-        <segue reference="O4p-1t-V4G"/>
+        <segue reference="hOK-MX-cos"/>
         <segue reference="IgS-8A-6uT"/>
         <segue reference="FBw-gp-2ID"/>
         <segue reference="mHl-rz-7Z3"/>

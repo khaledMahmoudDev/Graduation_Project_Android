@@ -10,18 +10,42 @@ import UIKit
 
 
 
-class ToDoCellDetails: UIViewController {
+class ToDoCellDetails: UIViewController , UITextViewDelegate {
+    
+    
+      var categChoosen = "None"
+    
 
     @IBOutlet weak var ToDoTitle: UITextField!
     @IBOutlet weak var ToDoDetail: UITextView!
     @IBOutlet weak var ToDoCategory: UITextField!
     
     
+    @IBAction func Shopping(_ sender: Any) {
+        categChoosen = "Shopping"
+        ToDoCategory.text = categChoosen
+    }
+    @IBAction func Work(_ sender: Any) {
+        categChoosen = "Work"
+        ToDoCategory.text = categChoosen
+    }
+    
+    @IBAction func Fun(_ sender: Any) {
+        categChoosen = "Fun"
+        ToDoCategory.text = categChoosen
+    }
+    
+    @IBAction func None(_ sender: Any) {
+        categChoosen = "None"
+        ToDoCategory.text = categChoosen
+    }
+    
+    
     
     //save button to save a todo in the table view
     
     @IBAction func saveTodo(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        
         
         if (ToDoTitle.text != "" && ToDoDetail.text != "" && ToDoCategory.text != ""){
             
@@ -34,7 +58,7 @@ class ToDoCellDetails: UIViewController {
             ToDoDetail.text = ""
             ToDoCategory.text = ""
             
-            
+            navigationController?.popViewController(animated: true)
             //save the category in category label in todo table
     }
         else {
@@ -67,11 +91,24 @@ class ToDoCellDetails: UIViewController {
 //        func showCats (textfield: UITextField)
 //        { // show the cats table}
 //            
-            
+        ToDoDetail.delegate = self
+
         // Do any additional setup after loading the view.
     }
     
-
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        ToDoDetail.text = ""
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if (ToDoDetail.text == "")
+        {
+            ToDoDetail.text = "Details"
+        }
+    }
+    
     
 
 }
