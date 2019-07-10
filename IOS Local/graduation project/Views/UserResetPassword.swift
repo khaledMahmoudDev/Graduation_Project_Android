@@ -18,7 +18,7 @@ class UserResetPassword: UIViewController {
     @IBOutlet weak var currPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.tintColor = .white
         self.hideKeyboardWhenTappedAround()
 
     }

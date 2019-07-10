@@ -301,7 +301,7 @@ extension NewApptTableViewController {
             if toggleButton.isOn == false{
                 return 0.0
             }
-            return 150
+            return 160
         }
             
         else {

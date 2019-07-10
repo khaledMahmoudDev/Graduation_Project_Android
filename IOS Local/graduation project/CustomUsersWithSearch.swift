@@ -76,7 +76,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 120
     }
     
     

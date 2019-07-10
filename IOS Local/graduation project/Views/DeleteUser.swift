@@ -17,7 +17,7 @@ class DeleteUser: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.tintColor = .white
         self.hideKeyboardWhenTappedAround() 
     }
     

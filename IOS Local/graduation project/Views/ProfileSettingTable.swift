@@ -15,8 +15,10 @@ class ProfileSettingTable: UITableViewController {
     let tableSettingContent = ["Edit Profile", "Change Password", "Delete Account"]
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        
+        super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .white
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -42,6 +44,7 @@ class ProfileSettingTable: UITableViewController {
         
         let cell = UITableViewCell(style: .default ,reuseIdentifier: "settingCell")
         cell.textLabel?.text = tableSettingContent[indexPath.row]
+        
         
         return cell
     }

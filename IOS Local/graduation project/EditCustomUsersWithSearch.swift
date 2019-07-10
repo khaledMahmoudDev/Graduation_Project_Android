@@ -37,7 +37,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+       // tableView.contentInset = UIEdgeInsets(top: -30,left: 0,bottom: 0,right: 0)
         usersEmailArray.removeAll()
         fetchUsersFromFirebase()
         if fetchedArrayFromFireBase != []{
@@ -71,7 +71,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 120
     }
     
     
