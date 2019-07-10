@@ -20,6 +20,7 @@ class ResetSetting: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         // Do any additional setup after loading the view.
     }
     @IBAction func cancel(_ sender: Any) {

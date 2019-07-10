@@ -18,6 +18,7 @@ class DeleteUser: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.hideKeyboardWhenTappedAround() 
     }
     

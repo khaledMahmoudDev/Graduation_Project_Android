@@ -19,6 +19,7 @@ class ProfileSettingTable: UITableViewController {
         
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
