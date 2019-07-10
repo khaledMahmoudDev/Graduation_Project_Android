@@ -84,6 +84,8 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateDetailLabel: UILabel!
     
+    @IBOutlet weak var customUserLabel: UILabel!
+    
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -162,12 +164,14 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
                 NewApptTableViewController.publicVsPrivate = 1
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Public"
-                let alert =  UIAlertController(title: "Custom Users", message: "No custom users were selected, and it will be pulic event unless you change it", preferredStyle: .alert)
+                let alert =  UIAlertController(title: "No selection", message: "Public by default", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
             }else{
+                self.PublicLabel.text = "Custom"
                 NewApptTableViewController.publicVsPrivate = 2
+                customUserLabel.text = selectedUsersEmailArray.joined(separator: "\n")
             }
         }
         
@@ -297,7 +301,7 @@ extension NewApptTableViewController {
             if toggleButton.isOn == false{
                 return 0.0
             }
-            return 56
+            return 150
         }
             
         else {

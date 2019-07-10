@@ -73,6 +73,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateDetailLabel: UILabel!
     
+    @IBOutlet weak var customUserLabel: UILabel!
+    
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -154,13 +156,15 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
                 UpdateApptTVC.publicVsPrivate = 1
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Public"
-                let alert =  UIAlertController(title: "Custom Users", message: "No custom users were selected, and it will be pulic event unless you change it", preferredStyle: .alert)
+                let alert =  UIAlertController(title: "No selection", message: "Public by default", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
+                self.PublicLabel.text = "Custom"
                 UpdateApptTVC.publicVsPrivate = 2
+                customUserLabel.text = selectedUsersEmailArray.joined(separator: "\n")
             }
             
         }
@@ -232,11 +236,9 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
                 self.customUserArray = (value?["customUsrs"] as? [String])!
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Custom"
-               print("custom", self.customUserArray)
-
+                self.customUserLabel.text = self.customUserArray.joined(separator: "\n")
             }
-            
-            print("custom", self.customUserArray)
+
             
 
             
@@ -404,7 +406,7 @@ extension UpdateApptTVC {
             if toggleButton.isOn == false{
                 return 0.0
             }
-            return 50
+            return 150
         }
         
         else {

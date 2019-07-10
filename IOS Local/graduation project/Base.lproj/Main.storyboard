@@ -1386,11 +1386,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4rY-sh-zjw">
-                                        <rect key="frame" x="0.0" y="544" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="146" id="4rY-sh-zjw">
+                                        <rect key="frame" x="0.0" y="544" width="375" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4rY-sh-zjw" id="bnF-Aa-u36">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-2l-IMO">
@@ -1403,11 +1403,18 @@
                                                         <segue destination="1y2-cq-mRl" kind="show" identifier="editcustomusers" id="mWK-uN-jQr"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Custom users selected .." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="698-wf-1KE">
+                                                    <rect key="frame" x="16" y="48" width="343" height="98"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" focusStyle="custom" rowHeight="56" id="vhN-HY-BxS">
-                                        <rect key="frame" x="0.0" y="588" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="690" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vhN-HY-BxS" id="3U8-qd-8Q1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
@@ -1441,7 +1448,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="mr6-Dd-U7y">
-                                        <rect key="frame" x="0.0" y="644" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="746" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mr6-Dd-U7y" id="FhB-Ee-nA0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
@@ -1487,6 +1494,7 @@
                     <connections>
                         <outlet property="PublicLabel" destination="3pn-HM-1c8" id="qZD-Z8-WjQ"/>
                         <outlet property="calendarView" destination="nTj-q7-3jA" id="HkK-oe-Rba"/>
+                        <outlet property="customUserLabel" destination="698-wf-1KE" id="KFW-QD-Zgz"/>
                         <outlet property="dateDetailLabel" destination="M2l-9m-fMe" id="wA8-0Z-XoQ"/>
                         <outlet property="locationLabel" destination="VxK-UM-7Af" id="mwJ-WS-n1M"/>
                         <outlet property="noteTextView" destination="lqu-Dy-mVL" id="eVg-E7-dCR"/>
@@ -2154,18 +2162,18 @@
                                             <constraint firstItem="rdz-OW-knf" firstAttribute="centerY" secondItem="bPZ-Wy-W7F" secondAttribute="centerY" id="x33-h9-NOe"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="56" id="lBk-eK-vrT">
-                                        <rect key="frame" x="0.0" y="625" width="375" height="56"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="162" id="lBk-eK-vrT">
+                                        <rect key="frame" x="0.0" y="625" width="375" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lBk-eK-vrT" id="knr-oM-v7h">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="users.png" translatesAutoresizingMaskIntoConstraints="NO" id="13M-rs-zwy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uck-yG-6aw">
-                                                    <rect key="frame" x="130" y="8" width="115" height="39.5"/>
+                                                    <rect key="frame" x="130" y="-18" width="115" height="91.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" title="Custom Users">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2175,20 +2183,28 @@
                                                         <segue destination="pk3-mV-88h" kind="show" identifier="customuser" id="mHl-rz-7Z3"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Custom users selected .." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-br-qt7">
+                                                    <rect key="frame" x="8" y="52" width="359" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="13M-rs-zwy" firstAttribute="centerX" secondItem="uck-yG-6aw" secondAttribute="centerX" id="BmT-1F-hAP"/>
                                                 <constraint firstItem="13M-rs-zwy" firstAttribute="leading" secondItem="knr-oM-v7h" secondAttribute="leading" id="VcA-IR-92E"/>
-                                                <constraint firstItem="uck-yG-6aw" firstAttribute="bottom" secondItem="knr-oM-v7h" secondAttribute="bottomMargin" id="bFx-rd-dbW"/>
+                                                <constraint firstItem="uck-yG-6aw" firstAttribute="bottom" secondItem="knr-oM-v7h" secondAttribute="bottomMargin" constant="-80" id="bFx-rd-dbW"/>
                                                 <constraint firstItem="13M-rs-zwy" firstAttribute="top" secondItem="knr-oM-v7h" secondAttribute="top" id="c1a-AK-Owr"/>
-                                                <constraint firstItem="13M-rs-zwy" firstAttribute="centerY" secondItem="knr-oM-v7h" secondAttribute="centerY" id="ds0-GA-U7c"/>
-                                                <constraint firstItem="13M-rs-zwy" firstAttribute="centerY" secondItem="uck-yG-6aw" secondAttribute="centerY" id="thx-IZ-Y2x"/>
+                                                <constraint firstItem="13M-rs-zwy" firstAttribute="centerY" secondItem="knr-oM-v7h" secondAttribute="centerY" constant="-50.75" id="ds0-GA-U7c"/>
+                                                <constraint firstItem="13M-rs-zwy" firstAttribute="centerY" secondItem="uck-yG-6aw" secondAttribute="centerY" constant="2.25" id="thx-IZ-Y2x"/>
                                                 <constraint firstAttribute="trailing" secondItem="13M-rs-zwy" secondAttribute="trailing" id="vRI-0j-fOz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99672788381576538" green="0.96400481462478638" blue="0.92125684022903442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="400" id="X4g-T0-s8I">
-                                        <rect key="frame" x="0.0" y="681" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="787" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X4g-T0-s8I" id="gNY-gw-dVS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
@@ -2238,6 +2254,7 @@
                     <connections>
                         <outlet property="PublicLabel" destination="2YQ-id-bie" id="SZh-Yh-AuD"/>
                         <outlet property="calendarView" destination="ooG-iR-8F9" id="vlK-1U-KjR"/>
+                        <outlet property="customUserLabel" destination="hWn-br-qt7" id="r4l-8v-uH7"/>
                         <outlet property="dateDetailLabel" destination="W5r-hY-BXn" id="X3y-bH-Ggd"/>
                         <outlet property="locationLabel" destination="NMf-8S-huq" id="31I-HI-KH3"/>
                         <outlet property="noteTextView" destination="yMt-gd-5qb" id="Y8y-xz-Vzo"/>
@@ -3716,10 +3733,10 @@
         <image name="users.png" width="21.259841918945312" height="3.118110179901123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eim-kH-CZA"/>
+        <segue reference="P4d-ra-qAT"/>
         <segue reference="ciz-7E-7LF"/>
-        <segue reference="IgS-8A-6uT"/>
-        <segue reference="FBw-gp-2ID"/>
+        <segue reference="L32-St-71b"/>
+        <segue reference="pmo-A3-wRS"/>
         <segue reference="mHl-rz-7Z3"/>
         <segue reference="mWK-uN-jQr"/>
         <segue reference="wAv-hb-fvH"/>
