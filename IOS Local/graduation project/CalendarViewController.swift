@@ -129,7 +129,7 @@ class CalendarViewController: UIViewController {
                 self.appointmentsArray.removeAll()
                 for child in snapshot.children.allObjects as! [DataSnapshot]{
                     if let dict = child.value as? [String : Any]{
-                        if dict["privacy"] as! String == "private" && dict["meventCreator"] as? String == self.User?.email{
+                        if dict["meventCreator"] as? String == self.User?.email{
                             let appointmentTitle = dict["mtitle"] as! String
                             let appointmentDetail = dict["mdetails"] as! String
                             let appointmentTime = dict["mstartTime"] as! String
@@ -140,39 +140,6 @@ class CalendarViewController: UIViewController {
                             self.appointmentsArray.append(appointments)
                             self.tableView.reloadData()
                             self.ref.keepSynced(true)
-                            print("private")
-                            
-                        } else if  dict["privacy"] as! String == "public" && dict["meventCreator"] as? String == self.User?.email {
-                            let appointmentTitle = dict["mtitle"] as! String
-                            let appointmentDetail = dict["mdetails"] as! String
-                            let appointmentTime = dict["mstartTime"] as! String
-                            //print(appointmentTime)
-                            let appointmentKey = child.key
-                            
-                            let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                            self.appointmentsArray.append(appointments)
-                            self.tableView.reloadData()
-                            self.ref.keepSynced(true)
-                            print("public")
-                            
-                        }
-                        else if dict["meventCreator"] as? String == self.User?.email {
-                            if dict["privacy"] as! String == "CustomUsers"  {
-                                let appointmentTitle = dict["mtitle"] as! String
-                                let appointmentDetail = dict["mdetails"] as! String
-                                let appointmentTime = dict["mstartTime"] as! String
-                                //                          let CustomUsers = dict["customUsrs"] as! [String]
-                                //                          print(CustomUsers)
-                                let appointmentKey = child.key
-                                
-                                let appointments = Appointments(appTitle: appointmentTitle, appDetails: appointmentDetail, appTime: appointmentTime, appKey : appointmentKey)
-                                self.appointmentsArray.append(appointments)
-                                self.tableView.reloadData()
-                                self.ref.keepSynced(true)
-                                
-                                print("custom")
-                                
-                            }
                             
                         }
                     }
