@@ -97,6 +97,18 @@ class CalendarViewController: UIViewController {
     }
     
     
+    @IBAction func today(_ sender: Any) {
+
+        formatter.dateFormat = "MMMM dd, yyyy"
+        result = formatter.string(from:date)
+        CalendarViewController.AppointmentDate = result!
+        loadAppointmentsForDate(date: date)
+        
+        performFetch()
+        calendarView.reloadData(withanchor: date, completionHandler: nil)
+    }
+    
+    
     
     private var User : User? {
         return Auth.auth().currentUser
@@ -229,7 +241,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         inFormatter.dateFormat = "HH:mm"
         
         let appointmentTime = appointmentsArray[indexPath.row].appointmentTime
-        print("hooooo",appointmentTime)
         let date = inFormatter.date(from: appointmentTime)!
         let dateInHourFormatter = hourFormatter(date: date)
         print(dateInHourFormatter)
@@ -255,7 +266,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let choosenAppointment = appointmentsArray[indexPath.row].appointmentKey
-        print("apptKey", choosenAppointment)
         performSegue(withIdentifier: segueApptDetail, sender: choosenAppointment)
         
     }

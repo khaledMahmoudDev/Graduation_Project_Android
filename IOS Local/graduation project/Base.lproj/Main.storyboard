@@ -2797,12 +2797,20 @@
                                 <action selector="cancel:" destination="Rfx-pT-1QG" id="zb5-qf-Q8r"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Pk-jY-Yxo">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="tJr-Qe-0Ce" kind="show" identifier="SegueNewApptTVC" id="1Uc-0j-QxJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="3Pk-jY-Yxo">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="tJr-Qe-0Ce" kind="show" identifier="SegueNewApptTVC" id="1Uc-0j-QxJ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Today" id="lDg-mc-U5D">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="today:" destination="Rfx-pT-1QG" id="Ixp-SS-F2B"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="GMV-ez-tHH" id="SpQ-UJ-peo"/>
@@ -3733,10 +3741,10 @@
         <image name="users.png" width="21.259841918945312" height="3.118110179901123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P4d-ra-qAT"/>
+        <segue reference="Eim-kH-CZA"/>
         <segue reference="ciz-7E-7LF"/>
-        <segue reference="L32-St-71b"/>
-        <segue reference="pmo-A3-wRS"/>
+        <segue reference="IgS-8A-6uT"/>
+        <segue reference="FBw-gp-2ID"/>
         <segue reference="mHl-rz-7Z3"/>
         <segue reference="mWK-uN-jQr"/>
         <segue reference="wAv-hb-fvH"/>
