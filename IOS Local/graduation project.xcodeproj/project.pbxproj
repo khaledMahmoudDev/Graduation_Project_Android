@@ -72,6 +72,7 @@
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
 		E21DEA65228E4D4C00752B99 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DEA64228E4D4C00752B99 /* Appointments.swift */; };
 		E273C00F227E671B00738DAE /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E273C00E227E671B00738DAE /* DeleteUser.swift */; };
+		E27E23F022D65C0700C4B620 /* sunny.png in Resources */ = {isa = PBXBuildFile; fileRef = E27E23EF22D65C0700C4B620 /* sunny.png */; };
 		E2829E9622D19A290002472E /* private.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9522D19A290002472E /* private.png */; };
 		E2829E9822D19A310002472E /* custom.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9722D19A310002472E /* custom.png */; };
 		E2829E9A22D19A380002472E /* public.png in Resources */ = {isa = PBXBuildFile; fileRef = E2829E9922D19A370002472E /* public.png */; };
@@ -179,6 +180,7 @@
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
 		E21DEA64228E4D4C00752B99 /* Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointments.swift; sourceTree = "<group>"; };
 		E273C00E227E671B00738DAE /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
+		E27E23EF22D65C0700C4B620 /* sunny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunny.png; sourceTree = "<group>"; };
 		E2829E9522D19A290002472E /* private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = private.png; sourceTree = "<group>"; };
 		E2829E9722D19A310002472E /* custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom.png; sourceTree = "<group>"; };
 		E2829E9922D19A370002472E /* public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = public.png; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				E2FD071622D3BB4F00323A77 /* signin2.png */,
+				E27E23EF22D65C0700C4B620 /* sunny.png */,
 				E2FD071922D3C6B400323A77 /* forgotpass.png */,
 				E20F577322D651C000CD6F69 /* temp.png */,
 				E2FD071522D3BB4F00323A77 /* signup2.png */,
@@ -456,6 +459,7 @@
 				E2FD071A22D3C6B500323A77 /* forgotpass.png in Resources */,
 				E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */,
 				E2077D9B22D03E090067231B /* location2.png in Resources */,
+				E27E23F022D65C0700C4B620 /* sunny.png in Resources */,
 				E2829E9622D19A290002472E /* private.png in Resources */,
 				E2FD071822D3BB4F00323A77 /* signin2.png in Resources */,
 				E2FD071722D3BB4F00323A77 /* signup2.png in Resources */,
