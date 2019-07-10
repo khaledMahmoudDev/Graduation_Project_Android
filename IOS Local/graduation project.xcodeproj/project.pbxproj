@@ -66,6 +66,8 @@
 		E20E170C227CC60B002783DA /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E170B227CC60B002783DA /* ProfileSettingTable.swift */; };
 		E20F577022D6463400CD6F69 /* locIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E20F576F22D6463400CD6F69 /* locIcon.png */; };
 		E20F577222D6488400CD6F69 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = E20F577122D6488300CD6F69 /* profile.png */; };
+		E20F577522D651C000CD6F69 /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = E20F577322D651C000CD6F69 /* temp.png */; };
+		E20F577622D651C000CD6F69 /* sunny.png in Resources */ = {isa = PBXBuildFile; fileRef = E20F577422D651C000CD6F69 /* sunny.png */; };
 		E210485E22C2397B00F5520F /* CustomUsersWithSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */; };
 		E214212022898D400039D5CE /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214211F22898D400039D5CE /* Note.swift */; };
 		E219D3DB2290F4B800ACCAAF /* HomeAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */; };
@@ -174,6 +176,8 @@
 		E20E170B227CC60B002783DA /* ProfileSettingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		E20F576F22D6463400CD6F69 /* locIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locIcon.png; sourceTree = "<group>"; };
 		E20F577122D6488300CD6F69 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		E20F577322D651C000CD6F69 /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
+		E20F577422D651C000CD6F69 /* sunny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sunny.png; path = ../../../../Desktop/sunny.png; sourceTree = "<group>"; };
 		E210485D22C2397B00F5520F /* CustomUsersWithSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsersWithSearch.swift; sourceTree = "<group>"; };
 		E214211F22898D400039D5CE /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E219D3DA2290F4B800ACCAAF /* HomeAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppointments.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				E2FD071622D3BB4F00323A77 /* signin2.png */,
 				E2AB87BD22D5109E004916F6 /* sunny.png */,
 				E2FD071922D3C6B400323A77 /* forgotpass.png */,
+				E20F577422D651C000CD6F69 /* sunny.png */,
+				E20F577322D651C000CD6F69 /* temp.png */,
 				E2FD071522D3BB4F00323A77 /* signup2.png */,
 				E2077D9422D035B80067231B /* date.png */,
 				E20F576F22D6463400CD6F69 /* locIcon.png */,
@@ -453,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DE369E220B3DFF00C9B2E6 /* LaunchScreen.storyboard in Resources */,
+				E20F577522D651C000CD6F69 /* temp.png in Resources */,
 				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
 				E2829E9822D19A310002472E /* custom.png in Resources */,
 				E2FD071A22D3C6B500323A77 /* forgotpass.png in Resources */,
@@ -473,6 +480,7 @@
 				E2077D9622D035B90067231B /* date.png in Resources */,
 				E20F577022D6463400CD6F69 /* locIcon.png in Resources */,
 				31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */,
+				E20F577622D651C000CD6F69 /* sunny.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
