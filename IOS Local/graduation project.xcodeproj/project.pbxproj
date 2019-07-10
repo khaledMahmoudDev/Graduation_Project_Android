@@ -25,7 +25,6 @@
 		31DE36A8220B3F1300C9B2E6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36A7220B3F1300C9B2E6 /* Login.swift */; };
 		31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36A9220B3F1300C9B2E6 /* SignUp.swift */; };
 		31DE36B0220B3F1300C9B2E6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36AF220B3F1300C9B2E6 /* Profile.swift */; };
-		31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36B9220B3F1300C9B2E6 /* Notification.swift */; };
 		31DE36C1220B444100C9B2E6 /* E-mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE36C0220B444100C9B2E6 /* E-mail.swift */; };
 		67214173C8A8C19B8D6E241F /* Pods_graduation_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */; };
 		E202197C22B443EE003C7B10 /* ToDoCellDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202197B22B443EE003C7B10 /* ToDoCellDetails.swift */; };
@@ -131,7 +130,6 @@
 		31DE36A7220B3F1300C9B2E6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		31DE36A9220B3F1300C9B2E6 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		31DE36AF220B3F1300C9B2E6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		31DE36B9220B3F1300C9B2E6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		31DE36C0220B444100C9B2E6 /* E-mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E-mail.swift"; sourceTree = "<group>"; };
 		3F5BEDEF3BA0764FBD1BE918 /* Pods_graduation_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduation_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2617FCC9609508046B1C51 /* Pods-graduation project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduation project.debug.xcconfig"; path = "Target Support Files/Pods-graduation project/Pods-graduation project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 				E2076EAE22862627005EAAAD /* EditUserProfile.swift */,
 				E20A51CF227D161C0033C0E8 /* UserResetPassword.swift */,
 				E273C00E227E671B00738DAE /* DeleteUser.swift */,
-				31DE36B9220B3F1300C9B2E6 /* Notification.swift */,
 				31DE36C0220B444100C9B2E6 /* E-mail.swift */,
 				3157F3FD2221F23D0066C46A /* Notes.swift */,
 				3157F3FB2221F2210066C46A /* NoteDetails.swift */,
@@ -595,7 +592,6 @@
 				31DE36AA220B3F1300C9B2E6 /* SignUp.swift in Sources */,
 				E295B2D322830EBA00112E8C /* TimeSlotter.swift in Sources */,
 				E202198022B4679C003C7B10 /* DoneDetails.swift in Sources */,
-				31DE36BA220B3F1300C9B2E6 /* Notification.swift in Sources */,
 				E295B29822830AF000112E8C /* Theme.swift in Sources */,
 				E2076E9F228618E5005EAAAD /* UpdateApptTVC.swift in Sources */,
 				E202197C22B443EE003C7B10 /* ToDoCellDetails.swift in Sources */,

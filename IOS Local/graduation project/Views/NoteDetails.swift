@@ -41,11 +41,11 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
             name.delegate = self
         }else{
             content.text = "Note.."
-            content.textColor = UIColor.darkGray
+            content.textColor = UIColor.gray
             content.returnKeyType = .done
             content.delegate = self
             name.text = "Note Title"
-            name.textColor = UIColor.darkGray
+            name.textColor = UIColor.gray
             name.returnKeyType = .done
             name.delegate = self
             
@@ -75,7 +75,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if name.text == "" {
             name.text = "Note Title"
-            name.textColor = UIColor.lightGray
+            name.textColor = UIColor.gray
         }
     }
     
@@ -89,7 +89,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if content.text == "" {
             content.text = "Note.."
-            content.textColor = UIColor.lightGray
+            content.textColor = UIColor.gray
         }
     }
     
@@ -101,7 +101,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     }
     
     @IBAction func save(_ sender: Any) {
-        if name.text == "" || content.text == "" || (name.text == "Note Title" && name.textColor == UIColor.darkGray) || (content.text == "Note.." && content.textColor == UIColor.darkGray){
+        if name.text == "" || content.text == "" || (name.text == "Note Title" && name.textColor == UIColor.gray) || (content.text == "Note.." && content.textColor == UIColor.gray){
             let alert = UIAlertController(title: "", message: "You Can't Leave Any Of These Two Fields Empty.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
@@ -146,7 +146,7 @@ class NoteDetails: UIViewController, UITextViewDelegate , UITextFieldDelegate {
     
     @IBAction func cancel(_ sender: Any) {
         if name.text != "" || content.text != "" /*|| (name.text != "Enter Note Title" && name.textColor != UIColor.lightGray) || (content.text != "Enter Note.." && content.textColor != UIColor.lightGray) */{
-            if choosedNote == nil && ((name.text != "Note Title" && name.textColor != UIColor.darkGray) || (content.text != "Note.." && content.textColor != UIColor.darkGray)){
+            if choosedNote == nil && ((name.text != "Note Title" && name.textColor != UIColor.gray) || (content.text != "Note.." && content.textColor != UIColor.gray)){
                 let alert = UIAlertController(title: "", message: "Do You Want To Discard This Note ?", preferredStyle: .alert)
 
                 alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in

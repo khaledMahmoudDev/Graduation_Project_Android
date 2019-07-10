@@ -161,7 +161,7 @@ class EditUserProfile: UIViewController {
                     print(url?.absoluteString) // this is the actual download url - the absolute string
                     guard let newUserName = self.username.text else {return}
                     let urlString: String = (url?.absoluteString) ?? ""
-                    let values = ["username" : newUserName , "imageLink":urlString]
+                    let values = ["firstName" : newUserName , "imageLink":urlString]
                     self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
                     let usersReference = self.ref.child("IOSUSERS").child(userID!)
                     usersReference.updateChildValues(values, withCompletionBlock :{
