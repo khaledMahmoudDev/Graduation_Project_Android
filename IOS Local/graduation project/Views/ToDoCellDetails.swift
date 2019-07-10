@@ -34,8 +34,8 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        ToDoCellDetails.category = 0
-//        ToDoCellDetails.priority = 0
+        ToDoCellDetails.category = 0
+        ToDoCellDetails.priority = 0
         ToDoDetail.delegate = self
         
         if todoKey != nil{
@@ -190,22 +190,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         if ToDoCellDetails.category == 1 {
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }
@@ -216,22 +216,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
             
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }
@@ -240,22 +240,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 3{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }
@@ -265,22 +265,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 4{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).childByAutoId().setValue(values)
                 
             }
@@ -363,22 +363,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         if ToDoCellDetails.category == 1 {
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -389,22 +389,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
             
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -413,22 +413,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 3{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -438,22 +438,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 4{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "todo"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "todo"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -484,22 +484,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         if ToDoCellDetails.category == 1 {
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -510,22 +510,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
             
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -534,22 +534,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 3{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }
@@ -559,22 +559,22 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         }else if ToDoCellDetails.category == 4{
             if ToDoCellDetails.priority == 1{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "red" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 2{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "yellow" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else if ToDoCellDetails.priority == 3{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "green" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }else{
                 self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
-                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "stats": "done"]
+                let values = ["todoTitle" : todoTitle , "todoDetails": todoDetails, "todoCategory": todoCategory, "todoPriority": "" ,"todoDate": defaultDate, "todoTime": dateInHourFormatter, "state": "done"]
                 self.ref.child("IOSUserTodo").child(User!.uid).child(todoKey).updateChildValues(values)
                 
             }

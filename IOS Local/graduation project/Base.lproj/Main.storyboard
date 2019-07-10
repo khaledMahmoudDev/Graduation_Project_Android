@@ -3026,7 +3026,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="DoneTable" destination="JvQ-ff-aHP" id="eH3-TD-3UY"/>
-                        <segue destination="6zn-Y8-8eB" kind="show" identifier="donedetails" id="acT-uA-LxE"/>
+                        <segue destination="mUP-Zn-TqT" kind="show" identifier="donedetails" id="ebB-z7-cS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gY-af-3os" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3350,30 +3350,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyU-Zx-2hT">
-                                <rect key="frame" x="306" y="545" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="OK"/>
-                                <connections>
-                                    <action selector="OKDone:" destination="6zn-Y8-8eB" eventType="touchUpInside" id="QNJ-VX-sXY"/>
-                                    <action selector="Save:" destination="6zn-Y8-8eB" eventType="touchUpInside" id="dAr-Ft-Nat"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Lzy-bn-KBq"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="DONE DETAILS" id="VBH-fR-Xac"/>
+                    <navigationItem key="navigationItem" title="DONE DETAILS" id="VBH-fR-Xac">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oFf-9l-Clu">
+                            <connections>
+                                <action selector="OKDone:" destination="6zn-Y8-8eB" id="qen-GP-Of5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="DoneDetails" destination="Gjr-9y-jaX" id="uMm-RH-HeP"/>
                         <outlet property="DoneTitle" destination="9Hy-zQ-xoe" id="S1t-1e-m9g"/>
+                        <outlet property="categoryLabel" destination="i92-NH-v7j" id="pTW-R5-9p4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKv-LJ-QwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14775.200000000001" y="3314.3928035982012"/>
+            <point key="canvasLocation" x="14775" y="3315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="myf-Qi-dec">
@@ -3409,7 +3407,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTo-zL-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13791.200000000001" y="3314.3928035982012"/>
+            <point key="canvasLocation" x="13790" y="3730"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgB-YG-KQ4">
@@ -3720,7 +3718,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Eim-kH-CZA"/>
         <segue reference="ciz-7E-7LF"/>
-        <segue reference="acT-uA-LxE"/>
         <segue reference="IgS-8A-6uT"/>
         <segue reference="FBw-gp-2ID"/>
         <segue reference="mHl-rz-7Z3"/>

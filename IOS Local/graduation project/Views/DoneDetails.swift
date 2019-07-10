@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DoneDetails: UIViewController {
 
@@ -16,18 +17,36 @@ class DoneDetails: UIViewController {
     
     @IBOutlet weak var DoneDetails: UITextView!
     
+    @IBOutlet weak var categoryLabel: UITextField!
+    
+    var doneKey : String!
+    var ref: DatabaseReference!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchDoneFromFirebase()
+        
+        // Do any additional setup after loading the view.
+    }
+    
     @IBAction func OKDone(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    func fetchDoneFromFirebase(){
+        let userId = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("IOSUserTodo").child(userId!).child(doneKey)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            self.DoneTitle.text = value?["todoTitle"] as? String ?? ""
+            self.DoneDetails.text = value?["todoDetails"] as? String ?? ""
+            self.categoryLabel.text = value?["todoCategory"] as? String ?? ""
+        }
+        
+    )}
 
-        // Do any additional setup after loading the view.
-    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        DoneTitle.text =
-//        DoneDetails.text =
-//    }
 
 }

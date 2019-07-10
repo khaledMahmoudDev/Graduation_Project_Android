@@ -80,7 +80,22 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "donedetails", sender: self)
+        let doneKey = firebaseArray[indexPath.row].firebaseKey
+        performSegue(withIdentifier: "donedetails", sender: doneKey)
+        DoneTable.deselectRow(at: indexPath, animated: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "donedetails"{
+            if let destination = segue.destination as? UINavigationController{
+                let controller = (destination.topViewController as! DoneDetails)
+                if let selectedKey = sender as? String{
+                    
+                    controller.doneKey = selectedKey
+                }
+                
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -98,13 +113,13 @@ class DoneTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         ref = Database.database().reference()
         
-        ref.child("IOSUserTodo").child(User!.uid).queryOrdered(byChild: "stats").queryEqual(toValue: "done" ).observe(.value){ (snapshot) in
+        ref.child("IOSUserTodo").child(User!.uid).queryOrdered(byChild: "state").queryEqual(toValue: "done" ).observe(.value){ (snapshot) in
             print(snapshot)
             self.firebaseArray.removeAll()
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 if let dict = child.value as? NSDictionary{
                     
-                    let title = dict["todoTitle"] as? String ?? "no title"
+                    let title = dict["todoTitle"] as? String ?? ""
                     let time = dict["todoTime"] as? String ?? ""
                     let date = dict["todoDate"] as? String ?? ""
                     let category = dict["todoCategory"] as? String ?? ""
