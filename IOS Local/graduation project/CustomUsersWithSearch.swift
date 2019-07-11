@@ -19,6 +19,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     var reference: StorageReference!
     var usersEmailArray = [CustomUsersEmail]()
     var selectedUsersEmailArray : Array<String> = []
+    var checkCustomSelectedEmails : Array<String> = []
     
     var searchOnUsers : [CustomUsersEmail] = []
     var searchActive = false
@@ -31,6 +32,11 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("selected", checkCustomSelectedEmails)
+        
+        if checkCustomSelectedEmails != []{
+            self.selectedUsersEmailArray.append(contentsOf: self.checkCustomSelectedEmails)
+        }
         
         fetchUsersFromFirebase()
         self.tableView.dataSource = self
@@ -51,6 +57,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
             self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
             self.navigationController?.popViewController(animated: true)
         }else{
+            self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -89,6 +96,21 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
         cell.userImage.clipsToBounds = true
         
+        
+        if checkCustomSelectedEmails.contains(usersEmailArray[indexPath.row].usersEmail){
+            cell.isSelected = true
+            cell.accessoryType = .checkmark
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
+            cell.isHighlighted = true
+        }else{
+            cell.isSelected = false
+            cell.accessoryType = .none
+            cell.isHighlighted = false
+            tableView.deselectRow(at: indexPath, animated: false)
+            
+        }
+        
+        
         if searchActive{
             cell.userEmail?.text = searchOnUsers[indexPath.row].usersEmail
             cell.userName?.text = searchOnUsers[indexPath.row].userName
@@ -106,14 +128,48 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        self.selectedUsersEmailArray.append(eventCreator)
-        print("hooo", selectedUsersEmailArray)
+//        self.selectedUsersEmailArray.append(eventCreator)
+//        print("hooo", selectedUsersEmailArray)
+        
+        if checkCustomSelectedEmails.contains(eventCreator){
+//                        tableView.deselectRow(at: indexPath, animated: true)
+//                        self.checkCustomSelectedEmails.remove(at: indexPath.row)
+//                        print(self.checkCustomSelectedEmails)
+//                        self.selectedUsersEmailArray.remove(at: indexPath.row)
+//                        tableView.reloadData()
+            print("deleted", checkCustomSelectedEmails)
+        }else{
+            self.selectedUsersEmailArray.append(eventCreator)
+            print("hooo", selectedUsersEmailArray)
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         //let deselectEventCreator = usersEmailArray[indexPath.row].usersEmail
-        self.selectedUsersEmailArray.remove(at: indexPath.row)
-        print("deleted", selectedUsersEmailArray)
+//        self.selectedUsersEmailArray.remove(at: indexPath.row)
+//        print("deleted", selectedUsersEmailArray)
+//
+        let eventCreator = usersEmailArray[indexPath.row].usersEmail
+        if checkCustomSelectedEmails.contains(eventCreator){
+            if let editedIndex = self.checkCustomSelectedEmails.firstIndex(of: eventCreator){
+                self.selectedUsersEmailArray.remove(at: editedIndex)
+            }
+            if let fetchedIndex = self.checkCustomSelectedEmails.firstIndex(of: eventCreator){
+                self.checkCustomSelectedEmails.remove(at: fetchedIndex)
+            }
+            print(self.checkCustomSelectedEmails)
+
+            DispatchQueue.main.async {
+                tableView.deselectRow(at: indexPath, animated: true)
+                tableView.reloadData()
+                print("edited array", self.selectedUsersEmailArray)
+            }
+
+
+        }
+        
+        
     }
     
     private var User : User? {

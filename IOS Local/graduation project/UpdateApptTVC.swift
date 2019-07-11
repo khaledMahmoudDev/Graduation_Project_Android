@@ -160,6 +160,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
                 UpdateApptTVC.publicVsPrivate = 1
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Public"
+                customUserLabel.text = "No Custom Users selected"
                 let alert =  UIAlertController(title: "No selection", message: "Public by default", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)

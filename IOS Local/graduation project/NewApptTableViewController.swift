@@ -35,6 +35,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
     static var publicVsPrivate = 0
     
     var selectedUsersEmailArray : Array<String> = []
+    var checkSelectedEmails : Array<String> = []
     
     var ref: DatabaseReference!
     var mDay = ""
@@ -164,6 +165,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
                 NewApptTableViewController.publicVsPrivate = 1
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Public"
+                customUserLabel.text = "No Custom Users selected"
                 let alert =  UIAlertController(title: "No selection", message: "Public by default", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)
@@ -172,6 +174,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
                 self.PublicLabel.text = "Custom"
                 NewApptTableViewController.publicVsPrivate = 2
                 customUserLabel.text = selectedUsersEmailArray.joined(separator: "\n")
+                checkSelectedEmails = selectedUsersEmailArray
             }
         }
         
@@ -295,13 +298,13 @@ extension NewApptTableViewController {
             return 0
         }
         else if indexPath.row == 6 && toggleButton.isOn == false{
-            return 56
+            return 60
         }
         else if indexPath.row == 7{
             if toggleButton.isOn == false{
                 return 0.0
             }
-            return 160
+            return 170
         }
             
         else {
@@ -408,6 +411,10 @@ extension NewApptTableViewController {
         }else if  segue.identifier == "customuser" {
             if let destination = segue.destination as? CustomUsersWithSearch{
                 destination.delegate = self
+                if checkSelectedEmails != []{
+                    destination.checkCustomSelectedEmails = checkSelectedEmails
+                    destination.delegate = self
+                }
             }
             
         }
