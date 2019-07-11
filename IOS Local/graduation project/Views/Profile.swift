@@ -22,6 +22,8 @@ class Profile: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phone: UILabel!
+    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     
     override func viewDidLoad() {
@@ -31,6 +33,13 @@ class Profile: UIViewController {
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         makeProfileImageRounded()
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.white
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         DispatchQueue.global(qos: .utility).async {
             // do something time consuming here
             DispatchQueue.main.async {
@@ -43,6 +52,13 @@ class Profile: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.white
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         DispatchQueue.global(qos: .utility).async {
             // do something time consuming here
             DispatchQueue.main.async {
@@ -91,15 +107,18 @@ class Profile: UIViewController {
                 let data = NSData(contentsOf: url!)
                 let image = UIImage(data: data! as Data)
                 self.profileImage.image = image
+                self.activityIndicator.stopAnimating()
             }
         }
     }
     
     @IBAction func AccountSetting(_ sender: Any) {
+        self.activityIndicator.stopAnimating()
         self.performSegue(withIdentifier: "AccountSettingTable", sender: self)
     }
     
     @IBAction func cancel(_ sender: Any) {
+        self.activityIndicator.stopAnimating()
         self.dismiss(animated: true, completion: nil)
     }
     

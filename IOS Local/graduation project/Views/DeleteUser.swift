@@ -15,6 +15,8 @@ class DeleteUser: UIViewController {
     var credential: AuthCredential!
 
     @IBOutlet weak var userPassword: UITextField!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
@@ -30,10 +32,18 @@ class DeleteUser: UIViewController {
             let alert =  UIAlertController(title: "Are you sure you want to delete your account?", message: "Deleting your account means you will lose all your data.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }))
             
             alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
+                self.activityIndicator.center = self.view.center
+                self.activityIndicator.hidesWhenStopped = true
+                self.activityIndicator.style = UIActivityIndicatorView.Style.white
+                self.view.addSubview(self.activityIndicator)
+                self.activityIndicator.startAnimating()
+                UIApplication.shared.beginIgnoringInteractionEvents()
                 self.deleteUseraccount()
             }))
             
@@ -44,6 +54,8 @@ class DeleteUser: UIViewController {
             let alert =  UIAlertController(title: "ERROR", message: "You can't leave your password fields empty, Please enter your password.", preferredStyle: .alert)
             let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(OKButton)
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
             self.present(alert, animated: true, completion: nil)
             
         }
@@ -68,12 +80,16 @@ class DeleteUser: UIViewController {
                     let alert =  UIAlertController(title: "ERROR", message: "The password is invalid, Please re-enter the passwprd again", preferredStyle: .alert)
                     let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(OKButton)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(alert, animated: true, completion: nil)
                 }else if error!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred."{
                     
                     let alert =  UIAlertController(title: "NETWORK ERROR", message: "Please try again", preferredStyle: .alert)
                     let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(OKButton)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(alert, animated: true, completion: nil)
                     
                 }
@@ -96,6 +112,10 @@ class DeleteUser: UIViewController {
                         let newViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
                         let appdelegate = UIApplication.shared.delegate as! AppDelegate
                         appdelegate.window!.rootViewController = newViewController
+                        
+                        self.activityIndicator.stopAnimating()
+                        UIApplication.shared.endIgnoringInteractionEvents()
+                        
                         self.dismiss(animated: true, completion: nil)
                     }
                 }

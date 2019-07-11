@@ -14,6 +14,7 @@ class ResetSetting: UIViewController {
     var ref: DatabaseReference!
 
     @IBOutlet weak var Email: UITextField!
+     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.barTintColor = .init(red: 30/255, green: 57/255, blue: 83/255, alpha: 1.00)
@@ -24,10 +25,19 @@ class ResetSetting: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func cancel(_ sender: Any) {
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func SendEmailToResetPass(_ sender: Any) {
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.white
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         
         guard let resetEmail = Email.text else{
             return
@@ -40,10 +50,14 @@ class ResetSetting: UIViewController {
                 if let error = error {
                     let resetFailedAlert = UIAlertController(title: "Reset Failed", message: error.localizedDescription, preferredStyle: .alert)
                     resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(resetFailedAlert, animated: true, completion: nil)
                 } else {
                     let resetEmailSentAlert = UIAlertController(title: "Reset email sent successfully", message: "Check your email", preferredStyle: .alert)
                     resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(resetEmailSentAlert, animated: true, completion: nil)
                 }
             }

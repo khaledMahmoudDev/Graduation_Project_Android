@@ -16,6 +16,9 @@ class UserResetPassword: UIViewController {
     
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var currPassword: UITextField!
+    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
@@ -27,6 +30,14 @@ class UserResetPassword: UIViewController {
 
   
     @IBAction func restPass(_ sender: Any) {
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.white
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
         guard let user = Auth.auth().currentUser ,let newPass = newPassword.text, let currPass = currPassword.text else{
             return
         }
@@ -45,12 +56,16 @@ class UserResetPassword: UIViewController {
                     let alert =  UIAlertController(title: "NETWORK ERROR", message: "Please try again", preferredStyle: .alert)
                     let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(OKButton)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(alert, animated: true, completion: nil)
                     
                 }else if error!.localizedDescription == "The password is invalid or the user does not have a password."{
                     let alert =  UIAlertController(title: "ERROR", message: "The password is invalid, Please re-enter the passwprd again", preferredStyle: .alert)
                     let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(OKButton)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(alert, animated: true, completion: nil)
                 }
             }else{
@@ -66,6 +81,8 @@ class UserResetPassword: UIViewController {
                             let alert =  UIAlertController(title: "ERROR", message: "The password must be 6 characters long or more.", preferredStyle: .alert)
                             let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                             alert.addAction(OKButton)
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.shared.endIgnoringInteractionEvents()
                             self.present(alert, animated: true, completion: nil)
                             
                         }
@@ -79,6 +96,10 @@ class UserResetPassword: UIViewController {
                             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
                             let appdelegate = UIApplication.shared.delegate as! AppDelegate
                             appdelegate.window!.rootViewController = newViewController
+                            
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.shared.endIgnoringInteractionEvents()
+                            
                             self.dismiss(animated: true, completion: nil)
                         } catch let logoutError {
                             // handle your error here
@@ -92,6 +113,8 @@ class UserResetPassword: UIViewController {
     }else{
             let alert =  UIAlertController(title: "ERROR", message: "You can't leave any of these two fields empty", preferredStyle: .alert)
             let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
             alert.addAction(OKButton)
             self.present(alert, animated: true, completion: nil)
     }
