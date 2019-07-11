@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class EditUserProfile: UIViewController {
+class EditUserProfile: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var ref: DatabaseReference!
     var reference: StorageReference!
@@ -18,11 +18,15 @@ class EditUserProfile: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UITextField!
     
+    static var flag = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.hideKeyboardWhenTappedAround() 
+        self.hideKeyboardWhenTappedAround()
+        
+        //EditUserProfile.flag = 0
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUp.handleSelectProfileImageView))
         profileImage.addGestureRecognizer(tapGesture)
@@ -44,10 +48,27 @@ class EditUserProfile: UIViewController {
     @objc func handleSelectProfileImageView(){
         print("hooo")
         
-        let imgPickerController = UIImagePickerController()
-        imgPickerController.delegate = self
-        present(imgPickerController, animated: true, completion: nil)
+//        let imgPickerController = UIImagePickerController()
+//        imgPickerController.delegate = self
+//        imgPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+//        imgPickerController.allowsEditing = false
+//        present(imgPickerController, animated: true, completion: nil)
         
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        self.present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //selected image
+        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        profileImage.image = image
+        self.dismiss(animated: true, completion: nil)
+        EditUserProfile.flag = 1
     }
     
     func makeProfileImageRounded() {
@@ -93,7 +114,10 @@ class EditUserProfile: UIViewController {
     @IBAction func saveUserUpdates(_ sender: Any) {
         //updateUserName()
         if username.text != ""{
-            updateProfileImage()
+            updateUserName()
+            if EditUserProfile.flag == 1{
+                updateProfileImage()
+            }
             self.navigationController?.popViewController(animated: true)
         }else{
             let alert =  UIAlertController(title: "ERROR", message: "You can't set username as empty., Please set a username", preferredStyle: .alert)
@@ -104,19 +128,19 @@ class EditUserProfile: UIViewController {
         
     }
     
-//    func updateUserName(){
-//        let userID = Auth.auth().currentUser?.uid
-//        ref = Database.database().reference().child("USERS").child(userID!)
-//        if let newUserName = username.text {
-//            ref?.updateChildValues(["username": newUserName]) { (error, refrence) in
-//                if error == nil{
-//                    print("username updated")
-//                }else{
-//                    print(error?.localizedDescription)
-//                }
-//            }
-//        }
-//    }
+    func updateUserName(){
+        let userID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child("IOSUSERS").child(userID!)
+        if let newUserName = username.text {
+            ref?.updateChildValues(["firstName": newUserName]) { (error, refrence) in
+                if error == nil{
+                    print("username updated")
+                }else{
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+    }
     
     func updateProfileImage(){
         
@@ -136,32 +160,30 @@ class EditUserProfile: UIViewController {
             
             storageRef.downloadURL(completion: { (url, error) in
                 
-                //                if let updatedProfileImg = url?.absoluteString{
-                //                    guard let newUserName = self.username.text else {return}
-                //
-                //                    let updatedvalues = ["username" : newUserName , "imageLink":updatedProfileImg]
-                //                    self.ref = Database.database().reference()
-                //                    let usersReference = self.ref.child("USERS").child(userID!)
-                //                    usersReference.updateChildValues(updatedvalues, withCompletionBlock: { (error, ref) in
-                //                        if error != nil{
-                //                            print(error!)
-                //                            return
-                //                        }
-                //                        print("profile updated1")
-                //                    })
-                //                }
-                //
+//                                if let updatedProfileImg = url?.absoluteString{
+//                                    let updatedvalues = ["imageLink":updatedProfileImg]
+//                                    self.ref = Database.database().reference()
+//                                    let usersReference = self.ref.child("IOSUSERS").child(userID!)
+//                                    usersReference.updateChildValues(updatedvalues, withCompletionBlock: { (error, ref) in
+//                                        if error != nil{
+//                                            print(error!)
+//                                            return
+//                                        }
+//                                        print("image is updated")
+//                                    })
+//                                }
+                
                 
                 
                 
                 if let err = error{
                     print(err)
                 } else {
-                    
-                    print(url?.absoluteString) // this is the actual download url - the absolute string
-                    guard let newUserName = self.username.text else {return}
+
+//                    print(url?.absoluteString) // this is the actual download url - the absolute string
+//                    guard let newUserName = self.username.text else {return}
                     let urlString: String = (url?.absoluteString) ?? ""
-                    let values = ["firstName" : newUserName , "imageLink":urlString]
+                    let values = ["imageLink":urlString]
                     self.ref = Database.database().reference(fromURL: "https://ajenda-a702f.firebaseio.com/")
                     let usersReference = self.ref.child("IOSUSERS").child(userID!)
                     usersReference.updateChildValues(values, withCompletionBlock :{
@@ -171,9 +193,9 @@ class EditUserProfile: UIViewController {
                             return
                         }
                         print("profile updated2")
-                        
-                        
-                        
+
+
+
                     } )
                 }
                 
@@ -187,17 +209,26 @@ class EditUserProfile: UIViewController {
         
     }
 }
-extension EditUserProfile : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
-    
-    //to set the selected image into the UIImage view
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("selected")
-        if let img = info[.originalImage] as? UIImage{
-            selectedImage = img
-            profileImage.image = img
-        }
-        dismiss(animated: true, completion: nil)
-    }
-}
+//extension EditUserProfile : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+//
+//
+//
+//
+//    //to set the selected image into the UIImage view
+////    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+////        print("selected")
+////
+////        self.dismiss(animated: true, completion: nil)
+////        var chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+////        profileImage.image = chosenImage
+////        EditUserProfile.flag = 1
+////
+//////        if let img = info[.originalImage] as? UIImage{
+//////            selectedImage = img
+//////            profileImage.image = img
+//////            EditUserProfile.flag = 1
+//////        }
+//////        dismiss(animated: true, completion: nil)
+////    }
+//}
 

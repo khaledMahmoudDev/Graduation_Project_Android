@@ -130,32 +130,55 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
                     print(UserEmail)
                     let UserName = url["firstName"] as! String
                     let UserImage = url["imageLink"] as! String
-                    let Url = URL (string: UserImage)!
-                    let request = URLRequest(url: Url)
-                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                        if error != nil {
+                    //let Url = URL (string: UserImage)!
+                    
+                    self.reference = Storage.storage().reference(forURL: UserImage)
+                    
+                    self.reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+                        if (error != nil) {
                             print(error)
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            let image = UIImage(data: data!)
-                            let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
-                            
-                            if self.User?.email != UserEmail{
-                                self.usersEmailArray.append(Users)
-                                self.tableView.reloadData()
-                                self.ref.keepSynced(true)
-                            }else{
-                                print("current user")
+                        } else {
+                            DispatchQueue.main.async {
+                                let image = UIImage(data: data!)
+                                let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
+                                
+                                if self.User?.email != UserEmail{
+                                    self.usersEmailArray.append(Users)
+                                    self.tableView.reloadData()
+                                    self.ref.keepSynced(true)
+                                }else{
+                                    print("current user")
+                                }
+                                
                             }
-                            
-                            
                         }
                     }
-                    task.resume()
-                    DispatchQueue.main.async{
-                        self.tableView.reloadData()
-                    }
+                    
+//                    let request = URLRequest(url: Url)
+//                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//                        if error != nil {
+//                            print(error)
+//                            return
+//                        }
+//                        DispatchQueue.main.async {
+//                            let image = UIImage(data: data!)
+//                            let Users = CustomUsersEmail(usersEmailtxt : UserEmail, userNametxt: UserName ,userImageImg : image!)
+//
+//                            if self.User?.email != UserEmail{
+//                                self.usersEmailArray.append(Users)
+//                                self.tableView.reloadData()
+//                                self.ref.keepSynced(true)
+//                            }else{
+//                                print("current user")
+//                            }
+//
+//
+//                        }
+//                    }
+//                    task.resume()
+//                    DispatchQueue.main.async{
+//                        self.tableView.reloadData()
+//                    }
                 }
             }
             
