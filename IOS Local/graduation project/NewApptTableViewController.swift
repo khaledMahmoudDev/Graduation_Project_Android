@@ -166,6 +166,8 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC , SendSe
                 self.toggleButton.isOn = true
                 self.PublicLabel.text = "Public"
                 customUserLabel.text = "No Custom Users selected"
+                self.checkSelectedEmails.removeAll()
+                self.selectedUsersEmailArray.removeAll()
                 let alert =  UIAlertController(title: "No selection", message: "Public by default", preferredStyle: .alert)
                 let OKButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OKButton)

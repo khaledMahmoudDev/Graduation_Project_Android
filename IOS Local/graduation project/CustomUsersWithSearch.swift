@@ -58,6 +58,8 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
             self.navigationController?.popViewController(animated: true)
         }else{
             self.delegate.setSelectedUsers(selected: selectedUsersEmailArray)
+            self.selectedUsersEmailArray.removeAll()
+            self.checkCustomSelectedEmails.removeAll()
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -137,7 +139,6 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
 //                        print(self.checkCustomSelectedEmails)
 //                        self.selectedUsersEmailArray.remove(at: indexPath.row)
 //                        tableView.reloadData()
-            print("deleted", checkCustomSelectedEmails)
         }else{
             self.selectedUsersEmailArray.append(eventCreator)
             print("hooo", selectedUsersEmailArray)
