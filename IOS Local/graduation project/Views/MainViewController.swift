@@ -13,7 +13,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.shared.statusBarView?.backgroundColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         // Do any additional setup after loading the view.
     }
     
@@ -43,5 +44,19 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        UIApplication.shared.statusBarView?.backgroundColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+    }
     
+    
+}
+extension UIApplication {
+    var statusBarView: UIView? {
+        if responds(to: Selector("statusBar")) {
+            return value(forKey: "statusBar") as? UIView
+        }
+        return nil
+}
 }

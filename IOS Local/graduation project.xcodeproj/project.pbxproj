@@ -93,6 +93,9 @@
 		E295B2CF22830E9700112E8C /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2CE22830E9700112E8C /* DateFormatters.swift */; };
 		E295B2D122830EA900112E8C /* TimeSlotFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */; };
 		E295B2D322830EBA00112E8C /* TimeSlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295B2D222830EB800112E8C /* TimeSlotter.swift */; };
+		E296AF3E22D8C5FA00F8E9D0 /* change.png in Resources */ = {isa = PBXBuildFile; fileRef = E296AF3B22D8C5F900F8E9D0 /* change.png */; };
+		E296AF3F22D8C5FA00F8E9D0 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = E296AF3C22D8C5FA00F8E9D0 /* delete.png */; };
+		E296AF4022D8C5FA00F8E9D0 /* logooo.png in Resources */ = {isa = PBXBuildFile; fileRef = E296AF3D22D8C5FA00F8E9D0 /* logooo.png */; };
 		E2ADE19F22C7FE2400D4473A /* TimeSlots2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ADE19E22C7FE2400D4473A /* TimeSlots2VC.swift */; };
 		E2ADE1A322C7FF5F00D4473A /* TimeSlotCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ADE1A222C7FF5F00D4473A /* TimeSlotCell2.swift */; };
 		E2AF6FA122862EEA00F4A77D /* TimeSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */; };
@@ -201,6 +204,9 @@
 		E295B2CE22830E9700112E8C /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		E295B2D022830EA800112E8C /* TimeSlotFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotFormatter.swift; sourceTree = "<group>"; };
 		E295B2D222830EB800112E8C /* TimeSlotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotter.swift; sourceTree = "<group>"; };
+		E296AF3B22D8C5F900F8E9D0 /* change.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change.png; sourceTree = "<group>"; };
+		E296AF3C22D8C5FA00F8E9D0 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		E296AF3D22D8C5FA00F8E9D0 /* logooo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logooo.png; sourceTree = "<group>"; };
 		E2ADE19E22C7FE2400D4473A /* TimeSlots2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeSlots2VC.swift; path = ../TimeSlots2VC.swift; sourceTree = "<group>"; };
 		E2ADE1A222C7FF5F00D4473A /* TimeSlotCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeSlotCell2.swift; path = ../TimeSlotCell2.swift; sourceTree = "<group>"; };
 		E2AF6FA022862EEA00F4A77D /* TimeSlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCell.swift; sourceTree = "<group>"; };
@@ -241,6 +247,9 @@
 				E2077D9422D035B80067231B /* date.png */,
 				E20F576F22D6463400CD6F69 /* locIcon.png */,
 				E20F577122D6488300CD6F69 /* profile.png */,
+				E296AF3B22D8C5F900F8E9D0 /* change.png */,
+				E296AF3C22D8C5FA00F8E9D0 /* delete.png */,
+				E296AF3D22D8C5FA00F8E9D0 /* logooo.png */,
 				E2D24FD222D137E0004AEBF0 /* locationViewController.png */,
 				E2077D9A22D03E090067231B /* location2.png */,
 				E2829E9522D19A290002472E /* private.png */,
@@ -453,6 +462,7 @@
 				E20F577522D651C000CD6F69 /* temp.png in Resources */,
 				E2077D9922D03A0C0067231B /* privacy.png in Resources */,
 				E2829E9822D19A310002472E /* custom.png in Resources */,
+				E296AF4022D8C5FA00F8E9D0 /* logooo.png in Resources */,
 				E2FD071A22D3C6B500323A77 /* forgotpass.png in Resources */,
 				E2D24FD322D137E0004AEBF0 /* locationViewController.png in Resources */,
 				E2077D9B22D03E090067231B /* location2.png in Resources */,
@@ -460,6 +470,7 @@
 				E2829E9622D19A290002472E /* private.png in Resources */,
 				E2FD071822D3BB4F00323A77 /* signin2.png in Resources */,
 				E2FD071722D3BB4F00323A77 /* signup2.png in Resources */,
+				E296AF3E22D8C5FA00F8E9D0 /* change.png in Resources */,
 				E2077D9D22D041860067231B /* users.png in Resources */,
 				31634676221DAB9000E70AC0 /* GoogleService-Info.plist in Resources */,
 				E20F577222D6488400CD6F69 /* profile.png in Resources */,
@@ -467,6 +478,7 @@
 				E2D24FD522D139D7004AEBF0 /* locationView.png in Resources */,
 				E2077D9722D035B90067231B /* time.png in Resources */,
 				31DE369B220B3DFF00C9B2E6 /* Assets.xcassets in Resources */,
+				E296AF3F22D8C5FA00F8E9D0 /* delete.png in Resources */,
 				E2077D9622D035B90067231B /* date.png in Resources */,
 				E20F577022D6463400CD6F69 /* locIcon.png in Resources */,
 				31DE3699220B3DDF00C9B2E6 /* Main.storyboard in Resources */,
