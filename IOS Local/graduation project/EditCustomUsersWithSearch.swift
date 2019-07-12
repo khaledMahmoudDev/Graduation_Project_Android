@@ -31,11 +31,19 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     let indexPath = NSIndexPath(row: 0, section: 0)
 //    let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomUserCell
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     var delegate: SendEditedSelectedUsers!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         
        // tableView.contentInset = UIEdgeInsets(top: -30,left: 0,bottom: 0,right: 0)
         usersEmailArray.removeAll()
@@ -182,6 +190,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
                             }
 
                         }
+                        self.activityIndicator.stopAnimating()
                     }
                 }
 //                print("Url",Url)

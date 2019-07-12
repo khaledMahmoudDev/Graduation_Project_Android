@@ -20,7 +20,7 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var EmailBody: UITextView!
     
-    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,8 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
             
             alert.addAction(UIAlertAction(title: "Discard", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 self.navigationController?.popViewController(animated: true)
             }))
             
@@ -56,7 +58,13 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
         }
         else {
 
-
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.style = UIActivityIndicatorView.Style.white
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            
         let mailCompose = configureMailCont()
         if MFMailComposeViewController.canSendMail(){
             self.present (mailCompose, animated: true, completion: nil)
@@ -88,6 +96,8 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
         let sendMailErrorAlert = UIAlertController(title: "couldn't send Email", message: "your device couldn't send Email", preferredStyle: .alert)
         let dismiss = UIAlertAction (title: "OK", style: .default, handler: nil)
         sendMailErrorAlert.addAction(dismiss)
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
         self.present(sendMailErrorAlert, animated: true, completion: nil)
         
     }
@@ -97,6 +107,8 @@ class E_mail: UIViewController, MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         controller.dismiss(animated: true)
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
         
     }
     }

@@ -18,7 +18,7 @@ class ActivityTableViewController: UITableViewController {
     var publicAppointment = [HomeAppointments]()
     var customAppointment = [HomeAppointments]()
     
-    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     let persistentContainer = CoreDataStore.instance.persistentContainer
     
@@ -35,6 +35,7 @@ class ActivityTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
@@ -47,11 +48,19 @@ class ActivityTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         privatAppointment.removeAll()
         publicAppointment.removeAll()
         customAppointment.removeAll()
-        tableView.reloadData()
-        performFetch()
+            tableView.reloadData()
+            performFetch()
+        
     }
     
     
@@ -96,8 +105,9 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentKey = snapshot.key
                     
                     let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
-                    self.privatAppointment.append(appointments)
-                    self.tableView.reloadData()
+                    
+                        self.privatAppointment.append(appointments)
+                        self.tableView.reloadData()
                     self.ref.keepSynced(true)
                     print("private")
                     
@@ -109,8 +119,8 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentKey = snapshot.key
                     
                     let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
-                    self.publicAppointment.append(appointments)
-                    self.tableView.reloadData()
+                        self.publicAppointment.append(appointments)
+                        self.tableView.reloadData()
                     self.ref.keepSynced(true)
                     print("public")
                     
@@ -128,15 +138,14 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentKey = snapshot.key
                             
                             let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
-                            self.customAppointment.append(appointments)
-                            self.tableView.reloadData()
+                                self.customAppointment.append(appointments)
+                                self.tableView.reloadData()
                             self.ref.keepSynced(true)
                             
                             print("custom")
                         }
                     }
-                }else
-                    if dict["meventCreator"] as? String == self.User?.email {
+                }else if dict["meventCreator"] as? String == self.User?.email {
                         if dict["privacy"] as! String == "CustomUsers"  {
                             let appointmentTitle = dict["mtitle"] as! String
                             let appointmentLocation = dict["location"] as! String
@@ -145,8 +154,8 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentKey = snapshot.key
                             
                             let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
-                            self.customAppointment.append(appointments)
-                            self.tableView.reloadData()
+                                self.customAppointment.append(appointments)
+                                self.tableView.reloadData()
                             self.ref.keepSynced(true)
                             
                             print("custom")
@@ -154,8 +163,12 @@ class ActivityTableViewController: UITableViewController {
                         }
                         
                 }
+                
+                self.activityIndicator.stopAnimating()
             }
+            
         }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

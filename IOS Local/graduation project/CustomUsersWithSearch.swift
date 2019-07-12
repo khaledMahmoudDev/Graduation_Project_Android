@@ -24,6 +24,8 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     var searchOnUsers : [CustomUsersEmail] = []
     var searchActive = false
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     var delegate: SendSelectedUsers!
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +35,12 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         print("selected", checkCustomSelectedEmails)
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         
         if checkCustomSelectedEmails != []{
             self.selectedUsersEmailArray.append(contentsOf: self.checkCustomSelectedEmails)
@@ -208,6 +216,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
                                 }
                                 
                             }
+                            self.activityIndicator.stopAnimating()
                         }
                     }
                     
