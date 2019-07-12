@@ -17,6 +17,8 @@ class DeleteUser: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
+    var Useremail : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
@@ -24,6 +26,10 @@ class DeleteUser: UIViewController {
         self.hideKeyboardWhenTappedAround() 
     }
     
+    
+    private var User : User? {
+        return Auth.auth().currentUser
+    }
 
     @IBAction func deleteAccount(_ sender: Any) {
         
@@ -66,7 +72,7 @@ class DeleteUser: UIViewController {
     func deleteUseraccount(){
         
         
-        guard let user = Auth.auth().currentUser, let userId = Auth.auth().currentUser?.uid, let pass = userPassword.text else{
+        guard let user = Auth.auth().currentUser, let userId = Auth.auth().currentUser?.uid, let pass = userPassword.text, let userEmail = Auth.auth().currentUser?.email else{
             return
         }
         
@@ -103,8 +109,25 @@ class DeleteUser: UIViewController {
                         // Account deleted.
                         self.ref = Database.database().reference()
                         self.ref.child("IOSUSERS").child(userId).removeValue()
-                        self.ref.child("IOSEvents").child(userId).removeValue()
+                        self.ref.child("IOSUserTodo").child(userId).removeValue()
                         self.ref.child("IOSUserNotes").child(userId).removeValue()
+                        
+                        self.ref = Database.database().reference()
+                        self.Useremail = self.User?.email
+                        self.ref.child("IOSEvents").queryOrdered(byChild: "meventCreator").queryEqual(toValue: userEmail ).observe(.value){ (snapshot) in
+                            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                                if let dict = child.value as? [String : Any]{
+                                        //print(appointmentTime)
+                                        let appointmentKey = child.key
+                                        
+                                      self.ref.child("IOSEvents").child(appointmentKey).removeValue()
+                                        
+                                    
+                                }
+                            }
+                        }
+                        
+                        
                         print("user is removed")
                         
                         try!  Auth.auth().signOut()

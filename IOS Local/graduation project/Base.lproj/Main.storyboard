@@ -133,7 +133,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="3FA-Ct-5MM"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
