@@ -3610,6 +3610,7 @@
                         <outlet property="ToDoCategory" destination="2Qp-Ll-K7v" id="6ZP-y3-7cH"/>
                         <outlet property="ToDoDetail" destination="J0p-DB-mjg" id="Byo-UK-9Md"/>
                         <outlet property="ToDoTitle" destination="4h6-B7-tqB" id="6Wo-Tq-R9S"/>
+                        <outlet property="moveToDoneOutlet" destination="jb6-oO-fdT" id="eo1-YW-xeg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFB-4K-Int" userLabel="First Responder" sceneMemberID="firstResponder"/>

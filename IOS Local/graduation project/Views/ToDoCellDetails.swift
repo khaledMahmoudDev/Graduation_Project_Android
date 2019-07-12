@@ -31,6 +31,8 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
     @IBOutlet weak var ToDoCategory: UITextField!
     
     
+    @IBOutlet weak var moveToDoneOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
@@ -42,11 +44,13 @@ class ToDoCellDetails: UIViewController , UITextViewDelegate {
         
         if todoKey != nil{
             fetchTodoFromFirebase()
+            moveToDoneOutlet.isHidden = false
         }else{
             ToDoTitle.text = ""
             ToDoDetail.text = ""
             ToDoCategory.text = ""
             Priority.backgroundColor = UIColor.clear
+            moveToDoneOutlet.isHidden = true
         }
         
         print(ToDoCellDetails.category )
