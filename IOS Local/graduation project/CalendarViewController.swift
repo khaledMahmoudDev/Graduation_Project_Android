@@ -60,7 +60,8 @@ class CalendarViewController: UIViewController {
         noLargeTitles()
         setupCalendarView()
         calendarView.dropShadowBottom()
-        calendarView.scrollToDate(Date(), animateScroll: false)
+        calendarView.scrollToDate(Date(), animateScroll: true)
+       // calendarView.selectDates([date])
         calendarView.selectDates( [Date()] )
         self.navigationController?.navigationBar.barTintColor = .init(red: 71/255, green: 130/255, blue: 143/255, alpha: 1.00)
         //self.navigationController?.navigationBar.isTranslucent = false
@@ -102,11 +103,14 @@ class CalendarViewController: UIViewController {
         formatter.dateFormat = "MMMM dd, yyyy"
         result = formatter.string(from:date)
         CalendarViewController.AppointmentDate = result!
-        loadAppointmentsForDate(date: date)
-        
+      // loadAppointmentsForDate(date: date)
+     
         performFetch()
         calendarView.scrollToDate(date)
-        calendarView.deselect(dates: [date])
+         calendarView.selectDates([date])
+        
+        
+       // calendarView.deselect(dates: [date])
         //calendarView.deselectAllDates()
         //calendarView.reloadData(withanchor: date, completionHandler: nil)
       //  calendarView.deselectDates(from: date, to: date)
@@ -242,6 +246,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         let inFormatter = DateFormatter()
         inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        
         inFormatter.dateFormat = "HH:mm"
         
         let appointmentTime = appointmentsArray[indexPath.row].appointmentTime
@@ -383,16 +388,19 @@ extension CalendarViewController {
 extension CalendarViewController {
     func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
         guard let validCell = view as? CalendarDayCell else { return }
-        let current = Date ()
+       
+        //let current = Date ()
         if cellState.isSelected {
             validCell.selectedView.isHidden = false
-            
+          
         }
-        else if current.day() == cellState.date.day() && current.month() == cellState.date.month() {
+        else if date.day() == cellState.date.day() {
             
             //validCell.selectedView.isHidden = false
             validCell.selectedView.backgroundColor = UIColor.gray
-            calendarView.selectDates(from: current, to: current)
+        
+          
+         
            
         }
         
@@ -498,7 +506,8 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             result = formatter.string(from:date)
             CalendarViewController.AppointmentDate = result!
             loadAppointmentsForDate(date: date)
-
+        
+        
             performFetch()
  
         //calendarViewDateChanged()
