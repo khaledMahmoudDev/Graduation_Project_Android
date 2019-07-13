@@ -21,6 +21,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     var usersEmailArray = [CustomUsersEmail]()
     var editSelectedUsersEmailArray : Array<String> = []
     var fetchedArrayFromFireBase : Array<String> = []
+    var checkSelectedNewEmails : Array<String> = []
     var searchOnUsers : [CustomUsersEmail] = []
     var searchActive = false
     var checkForCustomUserIsSelected = false
@@ -38,6 +39,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(".....heeere.......",checkSelectedNewEmails)
         
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -50,6 +52,9 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
         fetchUsersFromFirebase()
         if fetchedArrayFromFireBase != []{
             self.editSelectedUsersEmailArray.append(contentsOf: self.fetchedArrayFromFireBase)
+        }
+        if checkSelectedNewEmails != []{
+            self.editSelectedUsersEmailArray.append(contentsOf: self.checkSelectedNewEmails)
         }
         print("view didload",editSelectedUsersEmailArray)
         
@@ -92,7 +97,7 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
         cell.userImage.layer.cornerRadius = cell.userImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
         cell.userImage.clipsToBounds = true
         
-        if fetchedArrayFromFireBase.contains(usersEmailArray[indexPath.row].usersEmail){
+        if editSelectedUsersEmailArray.contains(usersEmailArray[indexPath.row].usersEmail){
                 cell.isSelected = true
                 cell.accessoryType = .checkmark
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
@@ -141,14 +146,14 @@ class EditCustomUsersWithSearch: UIViewController , UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        if fetchedArrayFromFireBase.contains(eventCreator){
+        if editSelectedUsersEmailArray.contains(eventCreator){
             if let editedIndex = self.editSelectedUsersEmailArray.firstIndex(of: eventCreator){
                 self.editSelectedUsersEmailArray.remove(at: editedIndex)
             }
-            if let fetchedIndex = self.fetchedArrayFromFireBase.firstIndex(of: eventCreator){
-                self.fetchedArrayFromFireBase.remove(at: fetchedIndex)
-            }
-            print(self.fetchedArrayFromFireBase)
+//            if let fetchedIndex = self.fetchedArrayFromFireBase.firstIndex(of: eventCreator){
+//                self.fetchedArrayFromFireBase.remove(at: fetchedIndex)
+//            }
+//            print(self.fetchedArrayFromFireBase)
             
             tableView.deselectRow(at: indexPath, animated: true)
             tableView.reloadData()

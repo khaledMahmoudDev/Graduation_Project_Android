@@ -32,6 +32,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
     static var publicVsPrivate = 0
     var selectedUsersEmailArray : Array<String> = []
     var customUserArray : Array<String> = []
+    var checkSelectedNewEmails : Array<String> = []
     
 
     
@@ -170,6 +171,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC , SendEditedSelectedU
                 self.PublicLabel.text = "Custom"
                 UpdateApptTVC.publicVsPrivate = 2
                 customUserLabel.text = selectedUsersEmailArray.joined(separator: "\n")
+                checkSelectedNewEmails = selectedUsersEmailArray
+                print(".........",checkSelectedNewEmails)
             }
             
         }
@@ -504,8 +507,13 @@ extension UpdateApptTVC {
         }
         else if  segue.identifier == "editcustomusers" {
             if let destination = segue.destination as? EditCustomUsersWithSearch{
-                destination.fetchedArrayFromFireBase = customUserArray
-                destination.delegate = self 
+                if checkSelectedNewEmails != []{
+                    destination.checkSelectedNewEmails = selectedUsersEmailArray
+                    destination.delegate = self
+                }else{
+                    destination.fetchedArrayFromFireBase = customUserArray
+                    destination.delegate = self
+                }
             }
             
         }
