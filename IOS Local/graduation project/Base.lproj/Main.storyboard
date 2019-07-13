@@ -2475,7 +2475,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privacy.png" translatesAutoresizingMaskIntoConstraints="NO" id="rdz-OW-knf">
-                                                    <rect key="frame" x="0.0" y="-41" width="375" height="16"/>
+                                                    <rect key="frame" x="0.0" y="-41" width="375" height="3"/>
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </imageView>
                                             </subviews>
@@ -4053,7 +4053,6 @@
         <image name="users.png" width="21.259841918945312" height="3.118110179901123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dyk-a9-qAT"/>
         <segue reference="Eim-kH-CZA"/>
         <segue reference="ciz-7E-7LF"/>
         <segue reference="IgS-8A-6uT"/>

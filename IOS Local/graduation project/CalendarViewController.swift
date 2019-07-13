@@ -105,8 +105,10 @@ class CalendarViewController: UIViewController {
         loadAppointmentsForDate(date: date)
         
         performFetch()
-        calendarView.deselectAllDates()
-       // calendarView.reloadData(withanchor: date, completionHandler: nil)
+        calendarView.scrollToDate(date)
+        calendarView.deselect(dates: [date])
+        //calendarView.deselectAllDates()
+        //calendarView.reloadData(withanchor: date, completionHandler: nil)
       //  calendarView.deselectDates(from: date, to: date)
     }
     
@@ -384,16 +386,19 @@ extension CalendarViewController {
         let current = Date ()
         if cellState.isSelected {
             validCell.selectedView.isHidden = false
+            
         }
         else if current.day() == cellState.date.day() && current.month() == cellState.date.month() {
             
             //validCell.selectedView.isHidden = false
             validCell.selectedView.backgroundColor = UIColor.gray
-            
+            calendarView.selectDates(from: current, to: current)
+           
         }
         
         else {
             validCell.selectedView.isHidden = true
+            
         }
     }
     
