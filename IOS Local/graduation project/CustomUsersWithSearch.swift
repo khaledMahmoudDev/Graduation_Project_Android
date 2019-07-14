@@ -107,7 +107,7 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
         cell.userImage.clipsToBounds = true
         
         
-        if checkCustomSelectedEmails.contains(usersEmailArray[indexPath.row].usersEmail){
+        if selectedUsersEmailArray.contains(usersEmailArray[indexPath.row].usersEmail){
             cell.isSelected = true
             cell.accessoryType = .checkmark
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
@@ -160,14 +160,14 @@ class CustomUsersWithSearch: UIViewController, UITableViewDelegate, UITableViewD
 //        print("deleted", selectedUsersEmailArray)
 //
         let eventCreator = usersEmailArray[indexPath.row].usersEmail
-        if checkCustomSelectedEmails.contains(eventCreator){
-            if let editedIndex = self.checkCustomSelectedEmails.firstIndex(of: eventCreator){
+        if selectedUsersEmailArray.contains(eventCreator){
+            if let editedIndex = self.selectedUsersEmailArray.firstIndex(of: eventCreator){
                 self.selectedUsersEmailArray.remove(at: editedIndex)
             }
-            if let fetchedIndex = self.checkCustomSelectedEmails.firstIndex(of: eventCreator){
-                self.checkCustomSelectedEmails.remove(at: fetchedIndex)
-            }
-            print(self.checkCustomSelectedEmails)
+//            if let fetchedIndex = self.checkCustomSelectedEmails.firstIndex(of: eventCreator){
+//                self.checkCustomSelectedEmails.remove(at: fetchedIndex)
+//            }
+            print(self.selectedUsersEmailArray)
 
             DispatchQueue.main.async {
                 tableView.deselectRow(at: indexPath, animated: true)
