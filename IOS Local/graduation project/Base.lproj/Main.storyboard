@@ -777,19 +777,6 @@ Are you sure for this action ?</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="sent from iphone" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pJO-DC-Q4T">
-                                <rect key="frame" x="9" y="234" width="357" height="425"/>
-                                <color key="backgroundColor" red="0.2784313725" green="0.50980392159999999" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your subject here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-kN-36f">
-                                <rect key="frame" x="85" y="188" width="281" height="29"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="From" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email from example@gmail.com" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-8Z-8sF">
                                 <rect key="frame" x="85" y="89" width="281" height="30"/>
                                 <nil key="textColor"/>
@@ -802,6 +789,19 @@ Are you sure for this action ?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your subject here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-kN-36f">
+                                <rect key="frame" x="85" y="188" width="281" height="29"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="sent from iphone" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pJO-DC-Q4T">
+                                <rect key="frame" x="9" y="234" width="357" height="425"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.50980392159999999" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From     :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-Pd-NAN">
                                 <rect key="frame" x="9" y="93" width="70" height="22"/>
                                 <constraints>
@@ -4073,10 +4073,10 @@ Are you sure for this action ?</string>
         <image name="users.png" width="21.259841918945312" height="3.118110179901123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eim-kH-CZA"/>
+        <segue reference="P4d-ra-qAT"/>
         <segue reference="ciz-7E-7LF"/>
-        <segue reference="IgS-8A-6uT"/>
-        <segue reference="FBw-gp-2ID"/>
+        <segue reference="L32-St-71b"/>
+        <segue reference="pmo-A3-wRS"/>
         <segue reference="mHl-rz-7Z3"/>
         <segue reference="mWK-uN-jQr"/>
         <segue reference="RWm-Rx-9aS"/>

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import IQKeyboardManagerSwift
 
 
 
@@ -45,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             appdelegate.window!.rootViewController = navigationController
             
         }
+        IQKeyboardManager.shared.enable = true
         return true
     
     }

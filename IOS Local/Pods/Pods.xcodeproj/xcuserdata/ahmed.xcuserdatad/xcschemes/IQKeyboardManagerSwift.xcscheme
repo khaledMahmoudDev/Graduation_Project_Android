@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7852253CCB2C2BA571FAF1CFABBBCAA1"
-               BuildableName = "SwipeCellKit.framework"
-               BlueprintName = "SwipeCellKit"
+               BlueprintIdentifier = "EFF87187B46551C36797F2B899C54212"
+               BuildableName = "IQKeyboardManagerSwift.framework"
+               BlueprintName = "IQKeyboardManagerSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
