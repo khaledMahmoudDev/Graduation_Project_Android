@@ -31,6 +31,11 @@ class TodoTable: UIViewController, UITableViewDelegate, UITableViewDataSource {
         todoTable.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchTodoFromFireBase()
+    }
+    
     private var User : User? {
         return Auth.auth().currentUser
     }
