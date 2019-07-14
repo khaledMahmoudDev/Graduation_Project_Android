@@ -18,7 +18,6 @@ class ActivityTableViewController: UITableViewController {
     var publicAppointment = [HomeAppointments]()
     var customAppointment = [HomeAppointments]()
     
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     let persistentContainer = CoreDataStore.instance.persistentContainer
     
@@ -48,12 +47,6 @@ class ActivityTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
         
         privatAppointment.removeAll()
         publicAppointment.removeAll()
@@ -102,9 +95,10 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentLocation = dict["location"] as! String
                     let appointmentTime = dict["mstartTime"] as! String
                     let appointmentDate = dict["mdate"] as! String
+                    let appointmentCreator = dict["meventCreator"] as! String
                     let appointmentKey = snapshot.key
                     
-                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
+                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey, appCreator: appointmentCreator)
                     
                         self.privatAppointment.append(appointments)
                         self.tableView.reloadData()
@@ -116,9 +110,10 @@ class ActivityTableViewController: UITableViewController {
                     let appointmentLocation = dict["location"] as! String
                     let appointmentTime = dict["mstartTime"] as! String
                     let appointmentDate = dict["mdate"] as! String
+                    let appointmentCreator = dict["meventCreator"] as! String
                     let appointmentKey = snapshot.key
                     
-                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
+                    let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey, appCreator: appointmentCreator)
                         self.publicAppointment.append(appointments)
                         self.tableView.reloadData()
                     self.ref.keepSynced(true)
@@ -135,9 +130,10 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentLocation = dict["location"] as! String
                             let appointmentTime = dict["mstartTime"] as! String
                             let appointmentDate = dict["mdate"] as! String
+                            let appointmentCreator = dict["meventCreator"] as! String
                             let appointmentKey = snapshot.key
                             
-                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
+                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey, appCreator: appointmentCreator)
                                 self.customAppointment.append(appointments)
                                 self.tableView.reloadData()
                             self.ref.keepSynced(true)
@@ -151,9 +147,10 @@ class ActivityTableViewController: UITableViewController {
                             let appointmentLocation = dict["location"] as! String
                             let appointmentTime = dict["mstartTime"] as! String
                             let appointmentDate = dict["mdate"] as! String
+                            let appointmentCreator = dict["meventCreator"] as! String
                             let appointmentKey = snapshot.key
                             
-                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey)
+                            let appointments = HomeAppointments(appTitle: appointmentTitle, appTime: appointmentTime, appLocation: appointmentLocation, appDate: appointmentDate, appKey : appointmentKey, appCreator: appointmentCreator)
                                 self.customAppointment.append(appointments)
                                 self.tableView.reloadData()
                             self.ref.keepSynced(true)
@@ -164,7 +161,6 @@ class ActivityTableViewController: UITableViewController {
                         
                 }
                 
-                self.activityIndicator.stopAnimating()
             }
             
         }
@@ -250,6 +246,7 @@ class ActivityTableViewController: UITableViewController {
             let appointmentDate = privatAppointment[indexPath.row].appomtmentDate
             let appointmentLocation = privatAppointment[indexPath.row].appointmentLocation
             let appointmentTitle = privatAppointment[indexPath.row].appointmentTitle
+            let appointmentCreator = privatAppointment[indexPath.row].appointmentCreator
             let date = inFormatter.date(from: appointmentTime)!
             let dateInHourFormatter = hourFormatter(date: date)
                 //print(dateInHourFormatter)
@@ -259,7 +256,7 @@ class ActivityTableViewController: UITableViewController {
             let image : UIImage = UIImage(named: "private")!
             cell.cellBackground.image = image
             
-            cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            cell.activityLabel.text = "New appointment \(appointmentTitle) from \(appointmentCreator) in \(appointmentDate) at \(dateInHourFormatter)  and location is \(String(describing: appointmentLocation))"
             
             
         }else if indexPath.section == 1{
@@ -268,6 +265,7 @@ class ActivityTableViewController: UITableViewController {
             let appointmentDate = publicAppointment[indexPath.row].appomtmentDate
             let appointmentLocation = publicAppointment[indexPath.row].appointmentLocation
             let appointmentTitle = publicAppointment[indexPath.row].appointmentTitle
+            let appointmentCreator = publicAppointment[indexPath.row].appointmentCreator
             let date = inFormatter.date(from: appointmentTime)!
             let dateInHourFormatter = hourFormatter(date: date)
                 //print(dateInHourFormatter)
@@ -277,13 +275,14 @@ class ActivityTableViewController: UITableViewController {
             let image : UIImage = UIImage(named: "public")!
             cell.cellBackground.image = image
             
-            cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            cell.activityLabel.text = "New appointment \(appointmentTitle) from \(appointmentCreator) in \(appointmentDate) at \(dateInHourFormatter)  and location is \(String(describing: appointmentLocation))"
 
         }else if indexPath.section == 2{
             let appointmentTime = customAppointment[indexPath.row].appointmentTime
             let appointmentDate = customAppointment[indexPath.row].appomtmentDate
             let appointmentLocation = customAppointment[indexPath.row].appointmentLocation
             let appointmentTitle = customAppointment[indexPath.row].appointmentTitle
+            let appointmentCreator = customAppointment[indexPath.row].appointmentCreator
             let date = inFormatter.date(from: appointmentTime)!
             let dateInHourFormatter = hourFormatter(date: date)
             //print(dateInHourFormatter)
@@ -292,7 +291,7 @@ class ActivityTableViewController: UITableViewController {
             let image : UIImage = UIImage(named: "custom")!
             cell.cellBackground.image = image
             
-            cell.activityLabel.text = "New appointment \(appointmentTitle) with for \(appointmentDate) at \(dateInHourFormatter) location \(String(describing: appointmentLocation))"
+            cell.activityLabel.text = "New appointment \(appointmentTitle) from \(appointmentCreator) in \(appointmentDate) at \(dateInHourFormatter)  and location is \(String(describing: appointmentLocation))"
         }
 
  
