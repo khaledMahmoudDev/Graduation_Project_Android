@@ -1,5 +1,6 @@
 package com.example.graduationproject.profile
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -24,11 +25,20 @@ class Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         usr = User()
+        val actionBar = supportActionBar
+        actionBar!!.title = "Profile"
+        actionBar.elevation = 4.0F
 
 
         mAuth = FirebaseAuth.getInstance()
         firebaseDataBase = FirebaseDatabase.getInstance()
         dbReference = firebaseDataBase!!.getReference("USERS")
+
+
+
+        btn_updateData.setOnClickListener {
+            startActivity(Intent(this,UpdateProfile::class.java))
+        }
 
 
         var uId = mAuth!!.currentUser!!.uid
@@ -43,7 +53,6 @@ class Profile : AppCompatActivity() {
 
                 profileFirstName.text = usr!!.firstName
                 profileEmail.text = usr!!.email
-                Toast.makeText(applicationContext,"image is ${usr!!.imageLink}",Toast.LENGTH_SHORT).show()
                 if(usr!!.imageLink!!.isNotEmpty())
                 {
                    Glide.with(applicationContext).load(usr!!.imageLink).into(profileImageView)

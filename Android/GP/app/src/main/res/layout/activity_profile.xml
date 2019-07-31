@@ -5,55 +5,68 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profile.Profile">
-
-    <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:srcCompat="@drawable/account_24dp"
-            android:id="@+id/profileImageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
-           />
+        tools:context=".profile.Profile"
+        android:gravity="center"
+        android:background="@drawable/top"
+>
     <LinearLayout
-            android:id="@+id/lin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profileImageView"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true">
-        <TextView
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:text="@string/profile_first_name"
+            android:layout_width="306dp"
+            android:layout_height="356dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+    >
+        <ImageView
+
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/boy"
+                android:id="@+id/profileImageView"
+                android:layout_centerHorizontal="true"
+
+        />
+        <LinearLayout
+                android:id="@+id/lin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/profileFirstName"
-                android:layout_marginEnd="16dp"
+                android:layout_below="@id/profileImageView"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true">
+            <TextView
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:text="@string/profile_first_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/profileFirstName"
+            />
+        </LinearLayout>
+
+        <TextView
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:text="@string/profileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileEmail"
+                android:layout_below="@+id/lin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+        />
+        <Button
+                android:padding="4dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="8dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:text="@string/update_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_updateData"
+
         />
     </LinearLayout>
 
-    <TextView
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:text="@string/profileEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/profileEmail"
-            android:layout_below="@+id/lin"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-    />
-    <Button
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:text="@string/update_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16dp"
 
-    />
 </RelativeLayout>

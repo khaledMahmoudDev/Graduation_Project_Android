@@ -9,24 +9,41 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
+            android:name=".App"
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/logooo"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@drawable/logooo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".toDo.UpdateToDo">
+        </activity>
+        <activity android:name=".toDo.ShowTodo">
+        </activity>
+        <activity android:name=".note.EditNote">
+        </activity>
+        <activity android:name=".note.AddNote">
+        </activity>
+        <activity android:name=".calender.CustomUsers">
+        </activity>
+        <activity android:name=".toDo.ChooseCategory">
+        </activity>
+        <activity android:name=".toDo.AddToDo">
+            <intent-filter>
+                <action android:name="com.gb.action.addToDo"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".calender.SingleUser">
         </activity>
         <activity
                 android:name=".calender.MainPageCalender"
                 android:label="@string/title_activity_main_page_calender"
                 android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-                android:name=".calender.Main"
-                android:label="@string/title_activity_main">
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -59,8 +76,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".calender.Calender">
-        </activity>
         <activity android:name=".profile.Profile">
         </activity>
         <activity android:name=".profile.SignIn">
@@ -69,7 +84,7 @@
         </activity>
         <activity android:name=".location.Location">
         </activity>
-        <activity android:name=".weather.Weather">
+        <activity android:name=".weather.Weather1">
         </activity>
         <activity android:name=".note.Note">
         </activity>

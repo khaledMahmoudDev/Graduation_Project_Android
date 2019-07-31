@@ -1,11 +1,8 @@
 package com.example.graduationproject.model
 
 import android.os.Parcelable
-import io.realm.RealmObject
-import io.realm.annotations.RealmClass
 import kotlinx.android.parcel.Parcelize
 
-@RealmClass
 @Parcelize
 open class Event(
     var id : String = "",
@@ -15,8 +12,11 @@ open class Event(
     ,var startTime :String = ""
     ,var endTime :String = "",
     var eventCreator : String = "",
-    var privacy : Boolean = true,
-    var location: String = ""
-):RealmObject(), Parcelable {
+    var privacy : String = "",
+    var location: String = "",
+    var startDate : String = "",
+    var endDate : String = "",
+    var customUsrs : ArrayList<String> = ArrayList()
+): Parcelable {
 
 }

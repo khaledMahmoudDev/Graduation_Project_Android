@@ -3,6 +3,9 @@
 
     <item android:title="Edit"
           android:id="@+id/edit_menu_button"
-          app:showAsAction="always"/>
+          app:showAsAction="ifRoom"/>
+    <item android:title="Delete"
+          android:id="@+id/Delete_menu_button"
+          app:showAsAction="ifRoom"/>
 
 </menu>

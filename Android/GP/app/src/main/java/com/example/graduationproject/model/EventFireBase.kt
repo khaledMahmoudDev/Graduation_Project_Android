@@ -8,8 +8,11 @@ class EventFireBase(
     ,var mStartTime :String = ""
     ,var mEndTime :String = "",
     var mEventCreator : String = "",
-    var privacy : Boolean = true,
-    var location: String = "") {
+    var privacy : String = "",
+    var location: String = "",
+    var startDate : String = "",
+    var endDate : String = "",
+    var customUsrs : ArrayList<String>? = ArrayList()) {
 
 
 }

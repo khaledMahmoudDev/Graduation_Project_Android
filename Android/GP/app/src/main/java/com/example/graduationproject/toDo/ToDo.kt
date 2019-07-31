@@ -10,6 +10,9 @@ class ToDo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do)
+        val actionBar = supportActionBar
+        actionBar!!.title = "Todo"
+        actionBar.elevation = 4.0F
         var mToDOAdapter = ToDoAdapter(supportFragmentManager)
         TodoViewPager.adapter = mToDOAdapter
     }

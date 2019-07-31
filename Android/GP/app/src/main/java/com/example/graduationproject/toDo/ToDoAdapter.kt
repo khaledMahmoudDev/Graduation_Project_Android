@@ -27,7 +27,7 @@ class ToDoAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         when(position)
         {
             0 -> title = "ToDo"
-            1 -> title = "Review"
+            1 -> title = "In Progress"
             2 -> title = "Done"
         }
         return title

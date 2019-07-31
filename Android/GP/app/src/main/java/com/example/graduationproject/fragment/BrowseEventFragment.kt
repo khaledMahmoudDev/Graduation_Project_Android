@@ -8,15 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import com.example.graduationproject.AdapterForEventList
 
 import com.example.graduationproject.R
 import com.example.graduationproject.calender.CalendarView
 import com.example.graduationproject.model.Event
 import com.example.graduationproject.model.EventFireBase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_calender.*
 import kotlinx.android.synthetic.main.fragment_browse_event.*
 import java.util.ArrayList
 
@@ -34,6 +33,7 @@ class BrowseEventFragment : Fragment() {
     lateinit var adapterForEventList : AdapterForEventList
     private var firebaseDataBase : FirebaseDatabase? = null
     private var dbReference : DatabaseReference? = null
+    private var mAuth : FirebaseAuth? = null
 
 
     override fun onCreateView(
@@ -41,6 +41,7 @@ class BrowseEventFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_browse_event, container, false)
     }
 
@@ -48,6 +49,7 @@ class BrowseEventFragment : Fragment() {
         super.onStart()
         firebaseDataBase = FirebaseDatabase.getInstance()
         dbReference = firebaseDataBase!!.getReference("Events")
+        mAuth = FirebaseAuth.getInstance()
         listEvent = ArrayList()
 
 
@@ -70,14 +72,29 @@ class BrowseEventFragment : Fragment() {
                     mEv.id = ev.id
                     mEv.privacy = ev.privacy
                     mEv.location = ev.location
+                    mEv.startDate = ev.startDate
+                    mEv.endDate = ev.endDate
 
-                    if(ev.privacy)
+                    if (ev.mEventCreator == mAuth!!.currentUser!!.email.toString())
                     {
                         listEvent!!.add(mEv)
-
                     }else
                     {
-                        Toast.makeText(context,"privacy  ${mEv.privacy}",Toast.LENGTH_SHORT).show()
+                        if(mEv.privacy == "public")
+                        {
+                            listEvent!!.add(mEv)
+
+                        }else if (mEv.privacy == "CustomUsers")
+                        {
+                            for (n in mEv.customUsrs!!)
+                            {
+                                if (n == mAuth!!.currentUser!!.email.toString())
+                                {
+                                    listEvent!!.add(mEv)
+                                }
+                            }
+
+                        }
 
                     }
                 }
@@ -86,14 +103,8 @@ class BrowseEventFragment : Fragment() {
             }
 
         })
-        Toast.makeText(context,"items count ${listEvent!!.size}",Toast.LENGTH_SHORT).show()
-
-
-
 
     }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         PublicList.onItemClickListener =

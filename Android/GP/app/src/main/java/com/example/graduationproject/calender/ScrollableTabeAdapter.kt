@@ -48,7 +48,7 @@ class ScrollableTabeAdapter (fm: FragmentManager?, val context: Context) : Fragm
             }
             1 -> {
                 drawable = context.resources.getDrawable(R.drawable.ic_event_black_24dp)
-                title = "Public Events"
+                title = "Events"
             }
             2 -> {
                 drawable = context.resources.getDrawable(R.drawable.users)

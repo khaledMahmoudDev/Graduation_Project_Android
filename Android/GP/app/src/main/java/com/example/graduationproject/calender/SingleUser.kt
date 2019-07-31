@@ -31,6 +31,10 @@ class SingleUser : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_user)
 
+        val actionBar = supportActionBar
+        actionBar!!.title = "User"
+        actionBar.elevation = 4.0F
+
         listEvent = ArrayList()
         inUser= intent.getParcelableExtra("ClickedUser")
         showUserName.text = inUser.firstName
@@ -63,7 +67,7 @@ class SingleUser : AppCompatActivity() {
 
                     if (ev.mEventCreator == inUser.email )
                     {
-                        if (ev.privacy)
+                        if (ev.privacy == "public")
                         {
                             listEvent!!.add(mEv)
 

@@ -7,56 +7,112 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".calender.AddEvent"
-        android:weightSum="6"
+        android:background="@color/colorPrimaryDark"
+
 >
     <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:padding="8dp"
     >
-        <Button
-                android:id="@+id/addEventStartTime"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Start Time "
-                android:textColor="#000000"
-                android:textSize="20sp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:layout_margin="2dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/addEventStartTime"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Start Time "
+                    android:textSize="18sp"/>
 
-        <Button
-                android:id="@+id/addEventEndTime"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="End Time "
-                android:textColor="#000000"
-                android:textSize="20sp"
-        />
+            <Button
+                    android:layout_margin="2dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/addEventEndTime"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="End Time "
+                    android:textSize="18sp"
+            />
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:layout_margin="2dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/addEventStartDate"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Start Date "
+                    android:textSize="18sp"/>
+
+            <Button
+                    android:layout_margin="2dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/addEventEndDate"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="End Date "
+                    android:textSize="18sp"
+            />
+
+        </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="8dp"
     >
-        <TextView
-                android:layout_weight=".3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="TITLE :-"
-                android:textColor="#000000"
-                android:textSize="20sp"
-        />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+        >
+            <EditText
+                    android:textColorHint="#000000"
+                    android:textColor="#000000"
+                    android:hint="Title"
+                    android:id="@+id/AddEventTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+        >
+            <Button
+                    android:layout_margin="2dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/setAlarmButton"
+                    android:layout_gravity="center"
+                    android:text="set Alarm"
+                    android:layout_width="134dp"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-        <EditText
-                android:id="@+id/AddEventTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -66,35 +122,59 @@
             android:orientation="vertical"
     >
         <Button
+                android:layout_margin="2dp"
+                android:textColor="#FFFFFF"
+                android:background="@color/colorPrimary"
                 android:id="@+id/addLocation"
                 android:text="Enter Location"
-                android:layout_width="wrap_content"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="20sp"/>
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"
+        />
         <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_height="34dp">
+            <Button
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:id="@+id/publicButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text= "privacy "
-                    android:textSize="20sp"
-                    android:textColor="#000000"
+                    android:text="public"
+                    android:background="@drawable/public_clicked"
             />
-            <Spinner
+            <Button
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:id="@+id/privateButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-            android:id="@+id/spinnerPrivacy"></Spinner>
+                    android:text="private"
+                    android:background="@drawable/private_unclicked"
+            />
+            <Button
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:id="@+id/groupButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" choose group "
+                    android:background="@drawable/custom_unclicked"
+            />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:padding="8dp"
     >
         <EditText
+                android:textColorHint="#000000"
+                android:textColor="#000000"
                 android:id="@+id/AddEventDetails"
                 android:hint="ENTER DETAILS HERE "
                 android:layout_width="match_parent"
@@ -108,12 +188,14 @@
             android:gravity="center"
     >
         <Button
+                android:layout_margin="2dp"
+                android:textColor="#FFFFFF"
+                android:background="@color/colorPrimary"
                 android:id="@+id/AddEventAdd"
                 android:text="Add now"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
     </LinearLayout>
 
 

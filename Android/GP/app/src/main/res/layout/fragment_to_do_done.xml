@@ -2,15 +2,35 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".toDo.ToDoDone">
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".toDo.ToDoDone"
+
+>
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+            android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Done"
-            android:gravity="center"
-            android:textSize="50sp"/>
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/todoListDone"
+        >
+
+        </android.support.v7.widget.RecyclerView>
+        <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/add2"
+                android:id="@+id/floatingActionButtonDone"
+                android:layout_marginEnd="8dp"
+                android:layout_alignEnd="@+id/todoListDone"
+                android:layout_marginBottom="8dp"
+                android:layout_alignBottom="@+id/todoListDone"/>
+    </RelativeLayout>
 
 </FrameLayout>

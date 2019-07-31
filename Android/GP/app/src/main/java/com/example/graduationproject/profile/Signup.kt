@@ -22,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_signup.*
-import java.io.ByteArrayOutputStream
-import java.text.SimpleDateFormat
 import java.util.*
 
 class Signup : AppCompatActivity() {
@@ -40,6 +38,9 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+        val actionBar = supportActionBar
+        actionBar!!.title = "Sign Up"
+        actionBar.elevation = 4.0F
 
         auth = FirebaseAuth.getInstance()
         database1 = FirebaseDatabase.getInstance()
@@ -132,51 +133,13 @@ class Signup : AppCompatActivity() {
 
                 }
             }!!.addOnFailureListener{
-               Toast.makeText(applicationContext,"failure form on failure",Toast.LENGTH_SHORT).show()
             }
 
         }else{
             Toast.makeText(applicationContext,"image is null", Toast.LENGTH_SHORT).show()
         }
-
-
-
-
     }
-//    fun saveimage()
-//    {
-//        var currentUser = auth?.currentUser
-//        val storage = FirebaseStorage.getInstance()
-//        val email2 = currentUser?.email?.toString()
-//        val storageRef = storage.getReferenceFromUrl("gs://ajenda-a702f.appspot.com")
-//        val df = SimpleDateFormat("ddMMyyHHss")
-//        val dataObj = Date()
-//        val imagepath = email2+df.format(dataObj)+".jpg"
-//        val imageRef = storageRef.child("profileImages/$imagepath")
-//        accountImage.isDrawingCacheEnabled = true
-//        accountImage.buildDrawingCache()
-//        val img = accountImage.drawable as BitmapDrawable
-//        val bitmap = img.bitmap
-//        val baos = ByteArrayOutputStream()
-//        bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos)
-//        val data = baos.toByteArray()
-//        val uploadTask = imageRef.putBytes(data).addOnFailureListener {  }.addOnSuccessListener (){
-//            taskSnapshot ->
-//            imageRef.downloadUrl.addOnCompleteListener (){
-//                task ->
-//                val downUrl = task.result.toString()
-//                Toast.makeText(applicationContext,"url is $downUrl", Toast.LENGTH_SHORT).show()
-//
-//                with(myref) {
-//                    child("Users").run {
-//                        child(currentUser!!.uid).child("email").setValue(currentUser.email)
-//                        child(currentUser.uid).child("profileImage").setValue(downUrl)
-//                    }
-//                }
-//
-//            }
-//        }
-//    }
+
     fun signUpNow()
     {
         if (editEmail1.text.toString().isNotEmpty() && EditPassword1.text.toString().isNotEmpty())
@@ -198,27 +161,12 @@ class Signup : AppCompatActivity() {
                         usr.userId = uId
 
                         myref!!.child("USERS").child(uId).setValue(usr)
-
-
-
-
-//                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("email").setValue(auth!!.currentUser!!.email)
-//                        myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("userName").setValue(et_first_name.text.toString())
-                        //myref!!.child("USERS").child(auth!!.currentUser!!.uid).child("Id").setValue(auth!!.currentUser!!.uid)
-
-
-//                        myref!!.child("Events").push().child("em").setValue("no way")
-//                        myref!!.child("Events").push().child("em").setValue("no way")
-//                        myref!!.child("Events").push().child("em").setValue("no way")
-//                        myref!!.child("Events").push().child("em").setValue("no way")
                         saveImage2()
                         sendEmailVerification()
 
                     }else
                     {
-                        Toast.makeText(applicationContext,"failed ${it.exception}", Toast.LENGTH_SHORT).show()
                     }
-
                 }
         }else
         {

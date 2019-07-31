@@ -3,10 +3,12 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="@color/colorPrimaryDark"
              tools:context=".fragment.BrowseEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
+
             android:layout_margin="8dp"
             android:id="@+id/PublicList"
             android:layout_width="match_parent"

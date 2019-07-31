@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profile.UpdateProfile">
+        tools:context=".profile.UpdateProfile"
+        android:gravity="center"
+        android:background="@drawable/top"
+>
+    <LinearLayout
+            android:layout_width="306dp"
+            android:layout_height="326dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+    >
+        <EditText
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:id="@+id/update_et_first_name"
+                style="@style/viewCustom"
+                android:ems="10"
+                android:hint="@string/user_name"
+                android:inputType="textPersonName"/>
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/boy"
+                android:id="@+id/update_accountImage"
+                android:layout_below="@id/update_et_first_name"
+
+                android:layout_centerHorizontal="true"/>
+
+        <Button
+                android:id="@+id/update_btn_register"
+                style="@style/viewCustom"
+                android:background="@color/colorPrimary"
+                android:text="Update Now"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

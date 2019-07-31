@@ -11,6 +11,7 @@ class MainPageCalender : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main_page_calender)
 
+
         var mScrollAdapter = ScrollableTabeAdapter(supportFragmentManager,this)
         myViewPager.adapter = mScrollAdapter
 

@@ -22,6 +22,9 @@ class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+        val actionBar = supportActionBar
+        actionBar!!.title = "Sign In"
+        actionBar.elevation = 4.0F
 
 
         mAuth = FirebaseAuth.getInstance()
@@ -29,6 +32,7 @@ class SignIn : AppCompatActivity() {
         btn_login.setOnClickListener { login() }
 
         btn_register_account.setOnClickListener {startActivity(Intent(this,Signup::class.java)) }
+        tv_forgot_password.setOnClickListener { startActivity(Intent(this,ForgetPassword::class.java)) }
 
 
     }
@@ -62,7 +66,7 @@ class SignIn : AppCompatActivity() {
 
                     }else
                     {
-                        Toast.makeText(applicationContext,"failed ${it.exception}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"failed to log in", Toast.LENGTH_SHORT).show()
                     }
 
                 }

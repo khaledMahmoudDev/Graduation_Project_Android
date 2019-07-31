@@ -15,6 +15,7 @@ import com.example.graduationproject.calender.CalendarView
 import com.example.graduationproject.calender.SingleUser
 import com.example.graduationproject.model.Event
 import com.example.graduationproject.model.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_browse_event.*
 import kotlinx.android.synthetic.main.fragment_users_view.*
@@ -30,6 +31,7 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class UsersView : Fragment() {
+    var mAuth : FirebaseAuth? = null
     var listUsers : ArrayList<User>?= null
     lateinit var usersAdapter: UsersAdapter
     private var firebaseDataBase : FirebaseDatabase? = null
@@ -37,6 +39,7 @@ class UsersView : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        mAuth = FirebaseAuth.getInstance()
         firebaseDataBase = FirebaseDatabase.getInstance()
         dbReference = firebaseDataBase!!.getReference("USERS")
         listUsers = ArrayList()
@@ -52,10 +55,10 @@ class UsersView : Fragment() {
                 {
                     var users = n.getValue(User::class.java)
                     if (users != null) {
+
                         listUsers!!.add(users)
                     }
                 }
-
                 usersAdapter = UsersAdapter(context!!,listUsers!!)
                 UsersList.adapter = usersAdapter
 
